@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roquemore Skierski PLLC — Dallas Business Litigation</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================================
+       VARIABLES
+       =========================================== */
+    :root {
+      --teal: #0B3030;
+      --teal-90: rgba(11, 48, 48, 0.9);
+      --teal-60: rgba(11, 48, 48, 0.6);
+      --teal-30: rgba(11, 48, 48, 0.3);
+      --teal-15: rgba(11, 48, 48, 0.15);
+      --orange: #CD4A16;
+      --orange-hover: #b5410f;
+      --white: #FFFFFF;
+      --off-white: #FAF9F7;
+      --content-width: 1200px;
+      --nav-height: 95px;
+      --nav-height-scrolled: 70px;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, serif;
+      --font-heading: var(--font-sans);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ===========================================
+       RESET & BASE
+       =========================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--teal);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--orange); color: var(--white); }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ===========================================
+       LAYOUT
+       =========================================== */
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ===========================================
+       SECTION TOGGLE CONTROLS
+       =========================================== */
+    /* Designer picks panel — bottom left */
+    .designer-picks {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 200px;
+    }
+    .designer-picks-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-30);
+      padding-left: 2px;
+    }
+    .designer-picks-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .designer-pick {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: var(--white);
+      border: 1.5px solid var(--teal-15);
+      border-radius: 8px;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all 150ms ease;
+      font-family: inherit;
+      text-align: left;
+    }
+    .designer-pick:hover {
+      border-color: var(--teal-30);
+    }
+    .designer-pick.active {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 1px var(--orange);
+    }
+    .designer-pick-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1.2;
+    }
+    .designer-pick.active .designer-pick-name {
+      color: var(--orange);
+    }
+    .designer-pick-desc {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--teal-60);
+      line-height: 1.3;
+    }
+
+    /* Preset tooltips */
+    .designer-pick {
+      position: relative;
+    }
+    .designer-pick-tooltip {
+      display: none;
+      position: absolute;
+      left: calc(100% + 10px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--teal);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+      padding: 10px 14px;
+      border-radius: 6px;
+      width: 240px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      pointer-events: none;
+    }
+    .designer-pick-tooltip::before {
+      content: '';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 5px solid transparent;
+      border-right-color: var(--teal);
+    }
+    .designer-pick:hover .designer-pick-tooltip {
+      display: block;
+    }
+
+    /* Customize panel — bottom right */
+    .customize-panel {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 10000;
+    }
+    .customize-toggle {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--teal-60);
+      background: var(--white);
+      border: 1px solid var(--teal-15);
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: all 150ms ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .customize-toggle:hover {
+      border-color: var(--teal-30);
+      color: var(--teal);
+    }
+    .customize-toggle .custom-indicator {
+      display: none;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .customize-panel.is-custom .customize-toggle .custom-indicator {
+      display: block;
+    }
+    .customize-drawer {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      right: 0;
+      max-height: min(70vh, 520px);
+      overflow-y: auto;
+      background: var(--white);
+      border: 1px solid var(--teal-15);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      min-width: 180px;
+    }
+    .customize-panel.open .customize-drawer {
+      display: block;
+    }
+    .customize-section + .customize-section {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--teal-15);
+    }
+    .customize-section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-30);
+      margin-bottom: 8px;
+    }
+    .customize-options {
+      display: flex;
+      gap: 2px;
+      background: rgba(11,48,48,0.06);
+      border-radius: 5px;
+      padding: 2px;
+    }
+    .customize-options button {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--teal-60);
+      background: none;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all 150ms ease;
+      flex: 1;
+      text-align: center;
+    }
+    .customize-options button:hover {
+      color: var(--teal);
+    }
+    .customize-options button.active {
+      background: var(--white);
+      color: var(--teal);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* ===========================================
+       A1. NAVIGATION
+       =========================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 1000;
+      background: var(--white);
+      transition: height 200ms ease, box-shadow 200ms ease;
+    }
+    .nav.scrolled {
+      height: var(--nav-height-scrolled);
+      box-shadow: 0 1px 0 var(--teal-15);
+    }
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      transition: height 200ms ease;
+    }
+    .nav-logo .logo-serif,
+    .nav-logo .logo-sans { display: none; }
+    .nav-logo .logo-default { display: block; }
+    body.serif-headings .nav-logo .logo-default,
+    body.serif-headings .nav-logo .logo-sans { display: none; }
+    body.serif-headings .nav-logo .logo-serif { display: block; }
+    body.sans-headings .nav-logo .logo-default,
+    body.sans-headings .nav-logo .logo-serif { display: none; }
+    body.sans-headings .nav-logo .logo-sans { display: block; }
+    .nav.scrolled .nav-logo img { height: 30px; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--teal);
+      transition: color 200ms ease;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 200ms ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-phone {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--teal-60);
+      letter-spacing: 0.01em;
+    }
+    .nav-cta {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--orange);
+      transition: all 200ms ease;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { color: var(--orange-hover); }
+
+    /* CTA variant: outlined */
+    body.cta-outlined .nav-cta {
+      border: 1.5px solid var(--orange);
+      border-radius: 4px;
+      padding: 8px 18px;
+    }
+    body.cta-outlined .nav-cta:hover {
+      background: rgba(205, 74, 22, 0.06);
+    }
+
+    /* CTA variant: filled */
+    body.cta-filled .nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 4px;
+      padding: 8px 18px;
+    }
+    body.cta-filled .nav-cta:hover {
+      background: var(--orange-hover);
+      color: var(--white);
+    }
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      padding: 4px;
+      color: var(--teal);
+    }
+    .nav-hamburger svg { width: 24px; height: 24px; }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 1001;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--teal);
+      transition: color 200ms ease;
+    }
+    .mobile-nav a:hover { color: var(--orange); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--teal);
+      padding: 4px;
+    }
+    .mobile-nav-close svg { width: 28px; height: 28px; }
+    .mobile-nav-cta {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--orange);
+      margin-top: 16px;
+    }
+    .mobile-nav-phone {
+      font-size: 15px;
+      color: var(--teal-60);
+    }
+
+    /* ===========================================
+       A2. HERO
+       =========================================== */
+    .hero {
+      padding-top: var(--nav-height);
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    /* Founder hero variant */
+    .hero-founder { position: relative; }
+    .hero-founder .hero-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      min-height: 520px;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .hero-text {
+      max-width: 560px;
+    }
+    .hero-text > * {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .hero-text.visible > * {
+      animation: fadeUp 0.7s var(--ease-out) forwards;
+    }
+    .hero-text.visible > *:nth-child(1) { animation-delay: 0s; }
+    .hero-text.visible > *:nth-child(2) { animation-delay: 0.1s; }
+    .hero-text.visible > *:nth-child(3) { animation-delay: 0.2s; }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--teal);
+    }
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--teal-60);
+      margin-top: 20px;
+      max-width: 480px;
+    }
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--orange);
+      transition: gap 200ms ease;
+    }
+    .hero-link:hover { gap: 12px; }
+    .hero-link svg { width: 16px; height: 16px; }
+    .hero-photo {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 3 / 2;
+    }
+
+    /* City hero variant */
+    .hero-city {
+      display: none;
+      position: relative;
+      background: var(--teal);
+    }
+    .hero-city-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-city-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.4) brightness(0.35);
+    }
+    .hero-city-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(11, 48, 48, 0.75) 0%, rgba(11, 48, 48, 0.45) 60%, rgba(11, 48, 48, 0.65) 100%);
+    }
+    .hero-city .hero-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 48px;
+      position: relative;
+      z-index: 1;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .hero-city h1 { color: var(--white); }
+    .hero-city .hero-sub { color: rgba(255,255,255,0.7); }
+
+    /* Hero rule */
+    .hero-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin: 0;
+    }
+
+    /* ===========================================
+       A3. FIRM POSITIONING
+       =========================================== */
+    .positioning {
+      padding: 100px 48px;
+      text-align: center;
+    }
+    .positioning-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .positioning p {
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--teal);
+    }
+
+    /* ===========================================
+       A4. PRACTICE AREAS
+       =========================================== */
+    .practice-areas {
+      background: var(--off-white);
+      padding: 100px 0;
+    }
+    .practice-areas h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .practice-areas-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin-bottom: 0;
+    }
+    .accordion-list {
+      list-style: none;
+    }
+    .accordion-item {
+      border-bottom: 1px solid var(--teal-15);
+    }
+    .accordion-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 22px 0;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--teal);
+      transition: color 200ms ease;
+    }
+    .accordion-trigger:hover { color: var(--orange); }
+    .accordion-icon {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--orange);
+      transition: transform 300ms ease;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .accordion-trigger[aria-expanded="true"] .accordion-icon {
+      transform: rotate(45deg);
+    }
+    .accordion-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .accordion-body {
+      padding: 0 0 24px 0;
+      opacity: 0;
+      transition: opacity 250ms ease 50ms;
+    }
+    .accordion-trigger[aria-expanded="true"] + .accordion-content .accordion-body {
+      opacity: 1;
+    }
+    .accordion-body p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--teal-60);
+      max-width: 600px;
+      margin-bottom: 12px;
+    }
+    .accordion-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--orange);
+      transition: gap 200ms ease;
+    }
+    .accordion-link:hover { gap: 10px; }
+    .accordion-link svg { width: 14px; height: 14px; }
+
+    /* ===========================================
+       A5. TEAM
+       =========================================== */
+    .team {
+      padding: 100px 0;
+    }
+    .team h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .team-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin-bottom: 48px;
+    }
+    .team-grid {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      justify-content: center;
+    }
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: opacity 200ms ease;
+      flex-shrink: 0;
+    }
+    .team-grid.has-active .team-member:not(.active) {
+      opacity: 0.55;
+    }
+    .team-member-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 12px;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .team-member.active .team-member-photo {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 3px var(--orange);
+    }
+    .team-member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    .team-member-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1.3;
+    }
+    .team-member-title {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--teal-60);
+      margin-top: 2px;
+    }
+    .team-member-focus {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--teal-30);
+      margin-top: 4px;
+      max-width: 160px;
+      line-height: 1.4;
+    }
+    .team-detail {
+      margin-top: 40px;
+      min-height: 80px;
+      text-align: center;
+    }
+    .team-detail-content {
+      max-width: 600px;
+      margin: 0 auto;
+      transition: opacity 200ms ease;
+    }
+    .team-detail-content p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--teal-60);
+    }
+    .team-profile-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--orange);
+      margin-top: 12px;
+      transition: gap 200ms ease;
+    }
+    .team-profile-link:hover { gap: 10px; }
+    .team-profile-link svg { width: 14px; height: 14px; }
+
+    /* ===========================================
+       A6. CASE RESULTS
+       =========================================== */
+    .case-results {
+      background: var(--teal);
+      padding: 100px 0;
+    }
+    .case-results h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .case-results-rule {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 0;
+    }
+    .results-list {
+      list-style: none;
+    }
+    .result-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background 200ms ease;
+      gap: 24px;
+    }
+    .result-row:hover {
+      background: rgba(255,255,255,0.04);
+      padding-left: 12px;
+      padding-right: 12px;
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+    .result-outcome {
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 700;
+      color: var(--orange);
+      white-space: nowrap;
+      line-height: 1.3;
+    }
+    .result-category {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-align: right;
+      line-height: 1.5;
+    }
+    .results-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--orange);
+      margin-top: 32px;
+      transition: gap 200ms ease;
+    }
+    .results-link:hover { gap: 12px; }
+    .results-link svg { width: 16px; height: 16px; }
+
+    /* ===========================================
+       A7. INSIGHTS
+       =========================================== */
+    .insights {
+      padding: 100px 0;
+    }
+    .insights h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .insights-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin-bottom: 0;
+    }
+    .insights-list {
+      list-style: none;
+    }
+    .insight-row {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--teal-15);
+      transition: padding-left 200ms ease;
+    }
+    .insight-row:hover { padding-left: 8px; }
+    .insight-category {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    .insight-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1.4;
+      transition: color 200ms ease;
+      display: block;
+    }
+    .insight-row:hover .insight-title { color: var(--orange); }
+    .insight-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+    .insight-date {
+      font-size: 13px;
+      color: var(--teal-30);
+    }
+    .insight-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--orange);
+      transition: gap 200ms ease;
+    }
+    .insight-link:hover { gap: 10px; }
+    .insight-link svg { width: 12px; height: 12px; }
+
+    /* ===========================================
+       A8. FOOTER CTA
+       =========================================== */
+    .footer-cta {
+      background: var(--off-white);
+      padding: 120px 48px;
+      text-align: center;
+    }
+    .footer-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+    .footer-cta-contact {
+      font-size: 17px;
+      color: var(--teal-60);
+      line-height: 1.7;
+    }
+    .footer-cta-contact a.phone {
+      font-weight: 600;
+      color: var(--teal);
+    }
+    .footer-cta-contact a.cta-link {
+      font-weight: 600;
+      color: var(--orange);
+      transition: color 200ms ease;
+    }
+    .footer-cta-contact a.cta-link:hover { color: var(--orange-hover); }
+    .footer-cta-locations {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--teal-30);
+      letter-spacing: 0.02em;
+    }
+    .footer-cta-locations span { margin: 0 8px; }
+
+    /* ===========================================
+       A9. FOOTER
+       =========================================== */
+    .site-footer {
+      border-top: 1px solid var(--teal-15);
+      padding: 56px 0 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 40px;
+    }
+    .footer-brand img {
+      height: 30px;
+      margin-bottom: 16px;
+    }
+    .footer-brand .logo-serif,
+    .footer-brand .logo-sans { display: none; }
+    .footer-brand .logo-default { display: block; }
+    body.serif-headings .footer-brand .logo-default,
+    body.serif-headings .footer-brand .logo-sans { display: none; }
+    body.serif-headings .footer-brand .logo-serif { display: block; }
+    body.sans-headings .footer-brand .logo-default,
+    body.sans-headings .footer-brand .logo-serif { display: none; }
+    body.sans-headings .footer-brand .logo-sans { display: block; }
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--teal-60);
+      max-width: 360px;
+    }
+    .footer-available {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--teal-60);
+    }
+    .footer-available-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .footer-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .footer-nav h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-30);
+      margin-bottom: 16px;
+    }
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-nav a {
+      font-size: 14px;
+      color: var(--teal-60);
+      transition: color 200ms ease;
+    }
+    .footer-nav a:hover { color: var(--orange); }
+    .footer-bottom {
+      border-top: 1px solid var(--teal-15);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copyright {
+      font-size: 12px;
+      color: var(--teal-30);
+    }
+    .footer-legal {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-legal a {
+      font-size: 12px;
+      color: var(--teal-30);
+      transition: color 200ms ease;
+    }
+    .footer-legal a:hover { color: var(--teal-60); }
+
+    /* ===========================================
+       SCROLL REVEAL
+       =========================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal[data-delay="1"] { transition-delay: 80ms; }
+    .reveal[data-delay="2"] { transition-delay: 160ms; }
+    .reveal[data-delay="3"] { transition-delay: 240ms; }
+    .reveal[data-delay="4"] { transition-delay: 320ms; }
+    .reveal[data-delay="5"] { transition-delay: 400ms; }
+    .reveal[data-delay="6"] { transition-delay: 480ms; }
+    .reveal[data-delay="7"] { transition-delay: 560ms; }
+
+    /* ===========================================
+       SERIF VARIANT
+       =========================================== */
+    body.serif-headings .hero h1,
+    body.serif-headings .practice-areas h2,
+    body.serif-headings .team h2,
+    body.serif-headings .case-results h2,
+    body.serif-headings .insights h2,
+    body.serif-headings .footer-cta h2 {
+      font-family: var(--font-serif);
+      letter-spacing: -0.01em;
+    }
+
+    /* ===========================================
+       DARK HERO VARIANT
+       =========================================== */
+    body.dark-hero .hero {
+      background: var(--teal);
+    }
+    body.dark-hero .hero h1 { color: var(--white); }
+    body.dark-hero .hero-sub { color: rgba(255,255,255,0.7); }
+    body.dark-hero .hero-city-bg img {
+      filter: none;
+      opacity: 0.35;
+    }
+    body.dark-hero .hero-city-bg::after { display: none; }
+    body.dark-hero .hero-rule { background: rgba(255,255,255,0.15); }
+
+    /* ===========================================
+       PRACTICE AREAS: LIST VARIANT
+       =========================================== */
+    .practice-list {
+      display: none;
+      list-style: none;
+    }
+    body.practice-list-mode .accordion-list { display: none; }
+    body.practice-list-mode .practice-list { display: block; }
+    .practice-list-item {
+      border-bottom: 1px solid var(--teal-15);
+    }
+    .practice-list-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--teal);
+      transition: color 200ms ease;
+    }
+    .practice-list-link:hover { color: var(--orange); }
+    .practice-list-link svg {
+      width: 14px;
+      height: 14px;
+      color: var(--teal-30);
+      transition: transform 200ms ease;
+      flex-shrink: 0;
+    }
+    .practice-list-link:hover svg {
+      transform: translateX(4px);
+      color: var(--orange);
+    }
+
+    /* ===========================================
+       TEAM: TYPOGRAPHIC VARIANT
+       =========================================== */
+    .team-typographic {
+      display: none;
+      list-style: none;
+    }
+    body.team-typographic-mode .team-grid,
+    body.team-typographic-mode .team-detail { display: none; }
+    body.team-typographic-mode .team-typographic { display: block; }
+    .team-typo-member {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--teal-15);
+    }
+    .team-typo-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .team-typo-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--teal);
+      transition: color 200ms ease;
+    }
+    .team-typo-member:hover .team-typo-name { color: var(--orange); }
+    .team-typo-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--teal-60);
+    }
+    .team-typo-rule {
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+      margin: 14px 0;
+      border: none;
+    }
+    .team-typo-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--teal-60);
+      max-width: 560px;
+    }
+    .team-typo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--orange);
+      margin-top: 12px;
+      transition: gap 200ms ease;
+    }
+    .team-typo-link:hover { gap: 10px; }
+    .team-typo-link svg { width: 14px; height: 14px; }
+
+    /* ===========================================
+       TEAM: EDITORIAL VARIANT
+       =========================================== */
+    .team-editorial {
+      display: none;
+      list-style: none;
+    }
+    body.team-editorial-mode .team-grid,
+    body.team-editorial-mode .team-detail { display: none; }
+    body.team-editorial-mode .team-editorial { display: block; }
+    .team-editorial-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--teal-15);
+      transition: padding-left 200ms ease;
+    }
+    .team-editorial-row:hover { padding-left: 8px; }
+    .team-editorial-photo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .team-editorial-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    .team-editorial-info {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .team-editorial-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--teal);
+      transition: color 200ms ease;
+    }
+    .team-editorial-row:hover .team-editorial-name { color: var(--orange); }
+    .team-editorial-sep {
+      color: var(--teal-15);
+      font-size: 14px;
+    }
+    .team-editorial-title {
+      font-size: 14px;
+      color: var(--teal-60);
+    }
+    .team-editorial-focus {
+      font-size: 13px;
+      color: var(--teal-30);
+    }
+
+    /* ===========================================
+       CASE RESULTS: REVEAL VARIANT
+       =========================================== */
+    .results-list-reveal {
+      display: none;
+      list-style: none;
+    }
+    body.cases-reveal .results-list { display: none; }
+    body.cases-reveal .results-link { display: none; }
+    body.cases-reveal .results-list-reveal { display: block; }
+    .result-reveal-row {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .result-reveal-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 20px 0;
+      background: none;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: color 200ms ease;
+    }
+    .result-reveal-trigger:hover { color: rgba(255,255,255,0.9); }
+    .result-reveal-trigger[aria-expanded="true"] { color: rgba(255,255,255,0.9); }
+    .result-reveal-icon {
+      font-size: 18px;
+      color: var(--orange);
+      transition: transform 300ms ease;
+      line-height: 1;
+    }
+    .result-reveal-trigger[aria-expanded="true"] .result-reveal-icon {
+      transform: rotate(45deg);
+    }
+    .result-reveal-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 300ms ease;
+    }
+    .result-reveal-body {
+      padding: 0 0 20px 0;
+    }
+    .result-reveal-figure {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--orange);
+    }
+    .results-list-reveal .results-link {
+      display: inline-flex;
+    }
+
+    /* ===========================================
+       CASE RESULTS: DETAILED VARIANT
+       =========================================== */
+    .result-desc {
+      display: none;
+      width: 100%;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.4);
+      margin-top: 6px;
+    }
+    body.cases-detailed .result-desc { display: block; }
+    body.cases-detailed .result-row {
+      flex-wrap: wrap;
+      padding: 24px 0;
+    }
+
+    /* ===========================================
+       INSIGHTS: FEATURED VARIANT
+       =========================================== */
+    .insight-excerpt {
+      display: none;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--teal-60);
+      margin-top: 8px;
+      max-width: 640px;
+    }
+    body.insights-featured .insights-list .insight-row:first-child {
+      padding: 32px 0;
+      border-bottom-width: 2px;
+      border-bottom-color: var(--teal-30);
+    }
+    body.insights-featured .insights-list .insight-row:first-child .insight-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      font-family: var(--font-heading);
+    }
+    body.insights-featured .insights-list .insight-row:first-child .insight-excerpt {
+      display: block;
+    }
+    body.insights-featured .insights-list .insight-row:not(:first-child) {
+      padding: 16px 0;
+    }
+    body.insights-featured .insights-list .insight-row:not(:first-child) .insight-title {
+      font-size: 16px;
+    }
+
+    /* ===========================================
+       FOOTER CTA: BUTTON VARIANT
+       =========================================== */
+    .footer-cta-btn {
+      display: none;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 4px;
+      padding: 14px 32px;
+      margin-top: 20px;
+      transition: background 200ms ease;
+    }
+    .footer-cta-btn:hover { background: var(--orange-hover); }
+    body.footercta-button .footer-cta-or { display: none; }
+    body.footercta-button .footer-cta-btn { display: inline-block; }
+
+    /* ===========================================
+       RESPONSIVE
+       =========================================== */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .nav-phone { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: block; }
+      .designer-picks { width: 160px; }
+      .designer-pick { padding: 10px 12px; }
+      .designer-pick-name { font-size: 12px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .nav { padding: 0 24px; }
+
+      .hero-founder .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-top: 48px;
+        padding-bottom: 48px;
+        min-height: auto;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .hero-city .hero-inner {
+        padding-left: 24px;
+        padding-right: 24px;
+        min-height: 400px;
+      }
+      .hero-photo { order: -1; }
+
+      .positioning { padding: 64px 24px; }
+
+      .practice-areas { padding: 64px 0; }
+      .practice-areas .container { padding: 0 24px; }
+
+      .team { padding: 64px 0; }
+      .team .container { padding: 0 24px; }
+      .team-grid {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .team-member-photo { width: 80px; height: 80px; }
+
+      .case-results { padding: 64px 0; }
+      .case-results .container { padding: 0 24px; }
+      .result-row { flex-direction: column; gap: 4px; }
+      .result-category { text-align: left; }
+
+      .insights { padding: 64px 0; }
+      .insights .container { padding: 0 24px; }
+
+      .team-editorial-info { flex-direction: column; gap: 2px; }
+      .team-editorial-sep { display: none; }
+      .team-typo-header { flex-direction: column; gap: 2px; }
+
+      .footer-cta { padding: 64px 24px; }
+      .footer-cta-locations span { display: none; }
+      .footer-cta-locations { line-height: 2; }
+
+      .site-footer .container { padding: 0 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Designer's Selections — top left -->
+  <div class="designer-picks" id="designer-picks">
+    <div class="designer-picks-options" id="preset-toggles">
+      <button class="designer-pick active" data-preset="a">
+        <span class="designer-pick-name">Option A</span>
+        <span class="designer-pick-desc">Photo-forward, sans-serif, evidence visible</span>
+        <span class="designer-pick-tooltip">Here are the people who will handle your matter, here's what they've achieved, explore at your pace.</span>
+      </button>
+      <button class="designer-pick" data-preset="b">
+        <span class="designer-pick-name">Option B</span>
+        <span class="designer-pick-desc">Typographic, serif, editorial</span>
+        <span class="designer-pick-tooltip">Read our work, judge our depth, decide when you're ready.</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Customize — bottom right -->
+  <div class="customize-panel" id="customize-panel">
+    <div class="customize-drawer">
+      <div class="customize-section">
+        <div class="customize-section-label">Headings</div>
+        <div class="customize-options" id="font-toggles">
+          <button class="active" data-font="sans">Sans-serif</button>
+          <button data-font="serif">Serif</button>
+        </div>
+      </div>
+      <div class="customize-section">
+        <div class="customize-section-label">Nav CTA</div>
+        <div class="customize-options" id="cta-toggles">
+          <button class="active" data-cta="text">Text</button>
+          <button data-cta="outlined">Outlined</button>
+          <button data-cta="filled">Filled</button>
+        </div>
+      </div>
+      <div class="customize-section">
+        <div class="customize-section-label">Hero</div>
+        <div class="customize-options" id="hero-toggles">
+          <button class="active" data-hero="founders">Founders</button>
+          <button data-hero="dark">Dark</button>
+          <button data-hero="city">City</button>
+        </div>
+      </div>
+      <div class="customize-section">
+        <div class="customize-section-label">Practice Areas</div>
+        <div class="customize-options" id="practice-toggles">
+          <button class="active" data-practice="accordion">Accordion</button>
+          <button data-practice="list">List</button>
+        </div>
+      </div>
+      <div class="customize-section">
+        <div class="customize-section-label">Team</div>
+        <div class="customize-options" id="team-toggles">
+          <button class="active" data-team="photos">Photos</button>
+          <button data-team="typographic">Typographic</button>
+          <button data-team="editorial">Editorial</button>
+        </div>
+      </div>
+      <div class="customize-section">
+        <div class="customize-section-label">Case Results</div>
+        <div class="customize-options" id="cases-toggles">
+          <button class="active" data-cases="ledger">Ledger</button>
+          <button data-cases="reveal">Reveal</button>
+          <button data-cases="detailed">Detailed</button>
+        </div>
+      </div>
+      <div class="customize-section">
+        <div class="customize-section-label">Insights</div>
+        <div class="customize-options" id="insights-toggles">
+          <button class="active" data-insights="uniform">Uniform</button>
+          <button data-insights="featured">Featured</button>
+        </div>
+      </div>
+      <div class="customize-section">
+        <div class="customize-section-label">Footer CTA</div>
+        <div class="customize-options" id="footercta-toggles">
+          <button class="active" data-footercta="text">Text</button>
+          <button data-footercta="button">Button</button>
+        </div>
+      </div>
+    </div>
+    <button class="customize-toggle" id="customize-toggle">
+      <span class="custom-indicator"></span>
+      Customize
+    </button>
+  </div>
+
+  <!-- A1. Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <img class="logo-default" src="images/logo.png" alt="Roquemore Skierski PLLC">
+      <img class="logo-serif" src="images/serif_logo.svg" alt="Roquemore Skierski PLLC">
+      <img class="logo-sans" src="images/sans_serif_logo.svg" alt="Roquemore Skierski PLLC">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Practice Areas</a></li>
+        <li><a href="#">Case Results</a></li>
+        <li><a href="#">Locations</a></li>
+        <li><a href="#">Resources</a></li>
+      </ul>
+      <a href="tel:9723256591" class="nav-phone">(972) 325-6591</a>
+      <a href="#contact" class="nav-cta">Schedule a Consultation</a>
+      <button class="nav-hamburger" id="nav-open" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="nav-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+    <a href="#">About</a>
+    <a href="#">Practice Areas</a>
+    <a href="#">Case Results</a>
+    <a href="#">Locations</a>
+    <a href="#">Resources</a>
+    <a href="tel:9723256591" class="mobile-nav-phone">(972) 325-6591</a>
+    <a href="#contact" class="mobile-nav-cta">Schedule a Consultation</a>
+  </div>
+
+  <!-- A2. Hero (Founder variant - default) -->
+  <section class="hero hero-founder" id="hero-founder">
+    <div class="hero-inner">
+      <div class="hero-text" id="hero-text-founder">
+        <h1>Strategic counsel for&nbsp;complex commercial disputes</h1>
+        <p class="hero-sub">A Dallas-Fort Worth litigation firm built on decades of courtroom experience and a team approach to every matter.</p>
+        <a href="#practice-areas" class="hero-link">
+          See our practice areas
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="hero-photo">
+        <img src="images/hero-founders.jpg" alt="Kelvin Roquemore and Doug Skierski, Managing Partners">
+      </div>
+    </div>
+  </section>
+
+  <!-- A2. Hero (City variant - hidden by default) -->
+  <section class="hero hero-city" id="hero-city">
+    <div class="hero-city-bg">
+      <img src="images/hero-city.jpg" alt="">
+    </div>
+    <div class="hero-inner">
+      <div class="hero-text" id="hero-text-city">
+        <h1>Strategic counsel for&nbsp;complex commercial disputes</h1>
+        <p class="hero-sub">A Dallas-Fort Worth litigation firm built on decades of courtroom experience and a team approach to every matter.</p>
+        <a href="#practice-areas" class="hero-link" style="color: var(--orange);">
+          See our practice areas
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hero-rule">
+
+
+  <!-- A3. Firm Positioning -->
+  <section class="positioning">
+    <div class="positioning-inner">
+      <p class="reveal">Roquemore Skierski represents businesses, entrepreneurs, and executives in high-stakes commercial litigation across Texas. The firm staffs a dedicated legal team on every matter, from initial strategy through trial. Business litigation is not a side practice here. It is the entire focus.</p>
+    </div>
+  </section>
+
+  <!-- A4. Practice Areas -->
+  <section class="practice-areas" id="practice-areas">
+    <div class="container">
+      <h2 class="reveal">Practice Areas</h2>
+      <hr class="practice-areas-rule reveal" data-delay="1">
+      <ul class="accordion-list">
+        <li class="accordion-item reveal" data-delay="1">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Business Litigation</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>When a business relationship breaks down and the stakes are significant, the response needs to be strategic, not reactive. The firm handles complex commercial disputes in state and federal courts across Texas, from breach of contract claims to multi-party business torts.</p>
+              <a href="#" class="accordion-link">Learn more <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="accordion-item reveal" data-delay="2">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Breach of Contract</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>A vendor stops performing. A partner walks away from their obligations. A buyer defaults on a purchase agreement. Contract breaches put operations at risk and demand a clear legal strategy to recover what is owed and protect the business going forward.</p>
+              <a href="#" class="accordion-link">Learn more <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="accordion-item reveal" data-delay="3">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Breach of Fiduciary Duty</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Partners, officers, and advisors owe legal duties to the businesses and people who trust them. When those duties are violated through self-dealing, misuse of funds, or disloyal conduct, the firm pursues accountability and recovery through litigation.</p>
+              <a href="#" class="accordion-link">Learn more <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="accordion-item reveal" data-delay="4">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Business Fraud</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Fraud in a business context ranges from misrepresentation in a deal to systematic diversion of company assets. The firm brings claims for actual and exemplary damages and, where necessary, seeks emergency relief to prevent further harm while the case proceeds.</p>
+              <a href="#" class="accordion-link">Learn more <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="accordion-item reveal" data-delay="5">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Contract Review</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Before a dispute begins, the contract defines the relationship. The firm reviews and drafts commercial agreements, purchase contracts, and operating documents to protect clients before problems arise, not after.</p>
+              <a href="#" class="accordion-link">Learn more <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="accordion-item reveal" data-delay="5">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Injunctions & TROs</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Some situations require immediate court intervention. The firm obtains and defends temporary restraining orders and injunctions when ongoing harm demands a faster resolution than standard litigation timelines allow.</p>
+              <a href="#" class="accordion-link">Learn more <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="accordion-item reveal" data-delay="6">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Partnership Disputes</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>When business partners disagree on direction, distributions, or management, the dispute can threaten the company itself. The firm handles partner buyouts, dissolution actions, and claims arising from breach of partnership agreements.</p>
+              <a href="#" class="accordion-link">Learn more <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </li>
+        <li class="accordion-item reveal" data-delay="7">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>Shareholder Disputes</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Minority shareholder oppression, mismanagement of corporate assets, and disputes over company control require litigation that understands both corporate governance and courtroom strategy. The firm represents shareholders and corporations in these matters.</p>
+              <a href="#" class="accordion-link">Learn more <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul class="practice-list">
+        <li class="practice-list-item reveal"><a href="#" class="practice-list-link">Business Litigation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a></li>
+        <li class="practice-list-item reveal"><a href="#" class="practice-list-link">Breach of Contract <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a></li>
+        <li class="practice-list-item reveal"><a href="#" class="practice-list-link">Breach of Fiduciary Duty <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a></li>
+        <li class="practice-list-item reveal"><a href="#" class="practice-list-link">Business Fraud <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a></li>
+        <li class="practice-list-item reveal"><a href="#" class="practice-list-link">Contract Review <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a></li>
+        <li class="practice-list-item reveal"><a href="#" class="practice-list-link">Injunctions &amp; TROs <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a></li>
+        <li class="practice-list-item reveal"><a href="#" class="practice-list-link">Partnership Disputes <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a></li>
+        <li class="practice-list-item reveal"><a href="#" class="practice-list-link">Shareholder Disputes <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- A5. Team -->
+  <section class="team" id="team">
+    <div class="container">
+      <h2 class="reveal">The Litigation Team</h2>
+      <hr class="team-rule reveal" data-delay="1">
+      <div class="team-grid reveal" data-delay="2" id="team-grid">
+        <div class="team-member founder" data-index="0">
+          <div class="team-member-photo">
+            <img src="images/kr.jpg" alt="Kelvin Roquemore">
+          </div>
+          <span class="team-member-name">Kelvin Roquemore</span>
+          <span class="team-member-title">Managing Partner</span>
+          <span class="team-member-focus">Commercial litigation, fiduciary duty, partnership disputes</span>
+        </div>
+        <div class="team-member founder" data-index="1">
+          <div class="team-member-photo">
+            <img src="images/ds.jpg" alt="Doug Skierski">
+          </div>
+          <span class="team-member-name">Doug Skierski</span>
+          <span class="team-member-title">Managing Partner</span>
+          <span class="team-member-focus">Business disputes, M&amp;A litigation, injunctions</span>
+        </div>
+        <div class="team-member" data-index="2">
+          <div class="team-member-photo">
+            <img src="images/ad.jpg" alt="Alex L. Davis">
+          </div>
+          <span class="team-member-name">Alex L. Davis</span>
+          <span class="team-member-title">Real Estate & Litigation</span>
+        </div>
+        <div class="team-member" data-index="3">
+          <div class="team-member-photo">
+            <img src="images/jc.jpg" alt="Jennifer L. Culver">
+          </div>
+          <span class="team-member-name">Jennifer L. Culver</span>
+          <span class="team-member-title">Commercial Litigation</span>
+        </div>
+        <div class="team-member" data-index="4">
+          <div class="team-member-photo">
+            <img src="images/aj.jpg" alt="Team Member">
+          </div>
+          <span class="team-member-name">Attorney</span>
+          <span class="team-member-title">Litigation</span>
+        </div>
+        <div class="team-member" data-index="5">
+          <div class="team-member-photo">
+            <img src="images/gh.jpg" alt="Team Member">
+          </div>
+          <span class="team-member-name">Attorney</span>
+          <span class="team-member-title">Litigation</span>
+        </div>
+      </div>
+      <div class="team-detail" id="team-detail">
+        <div class="team-detail-content" id="team-detail-content">
+          <p>Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.</p>
+        </div>
+      </div>
+      <ul class="team-typographic">
+        <li class="team-typo-member reveal">
+          <div class="team-typo-header"><span class="team-typo-name">Kelvin Roquemore</span><span class="team-typo-role">Managing Partner</span></div>
+          <hr class="team-typo-rule">
+          <p class="team-typo-desc">Leads the firm's commercial litigation practice. Represents businesses and executives in complex disputes across Texas state and federal courts, with particular depth in breach of fiduciary duty and partnership matters.</p>
+          <a href="#" class="team-typo-link">Full profile <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        </li>
+        <li class="team-typo-member reveal">
+          <div class="team-typo-header"><span class="team-typo-name">Doug Skierski</span><span class="team-typo-role">Managing Partner</span></div>
+          <hr class="team-typo-rule">
+          <p class="team-typo-desc">Focuses on business disputes, transactional litigation, and M&amp;A-related claims. Handles matters from initial demand through trial, including injunctions and emergency relief in North Texas courts.</p>
+          <a href="#" class="team-typo-link">Full profile <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        </li>
+        <li class="team-typo-member reveal">
+          <div class="team-typo-header"><span class="team-typo-name">Alex L. Davis</span><span class="team-typo-role">Real Estate &amp; Litigation</span></div>
+          <hr class="team-typo-rule">
+          <p class="team-typo-desc">Handles real estate disputes, construction litigation, and commercial property matters across the DFW metroplex.</p>
+          <a href="#" class="team-typo-link">Full profile <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        </li>
+        <li class="team-typo-member reveal">
+          <div class="team-typo-header"><span class="team-typo-name">Jennifer L. Culver</span><span class="team-typo-role">Commercial Litigation</span></div>
+          <hr class="team-typo-rule">
+          <p class="team-typo-desc">Focuses on contract disputes, fraud claims, and fiduciary duty matters in state and federal courts.</p>
+          <a href="#" class="team-typo-link">Full profile <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+        </li>
+      </ul>
+      <ul class="team-editorial">
+        <li class="team-editorial-row reveal">
+          <div class="team-editorial-photo"><img src="images/kr.jpg" alt="Kelvin Roquemore"></div>
+          <div class="team-editorial-info"><span class="team-editorial-name">Kelvin Roquemore</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-title">Managing Partner</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-focus">Commercial litigation, fiduciary duty, partnership disputes</span></div>
+        </li>
+        <li class="team-editorial-row reveal">
+          <div class="team-editorial-photo"><img src="images/ds.jpg" alt="Doug Skierski"></div>
+          <div class="team-editorial-info"><span class="team-editorial-name">Doug Skierski</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-title">Managing Partner</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-focus">Business disputes, M&amp;A litigation, injunctions</span></div>
+        </li>
+        <li class="team-editorial-row reveal">
+          <div class="team-editorial-photo"><img src="images/ad.jpg" alt="Alex L. Davis"></div>
+          <div class="team-editorial-info"><span class="team-editorial-name">Alex L. Davis</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-title">Real Estate &amp; Litigation</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-focus">Real estate disputes, construction litigation</span></div>
+        </li>
+        <li class="team-editorial-row reveal">
+          <div class="team-editorial-photo"><img src="images/jc.jpg" alt="Jennifer L. Culver"></div>
+          <div class="team-editorial-info"><span class="team-editorial-name">Jennifer L. Culver</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-title">Commercial Litigation</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-focus">Contract disputes, fraud, fiduciary duty</span></div>
+        </li>
+        <li class="team-editorial-row reveal">
+          <div class="team-editorial-photo"><img src="images/aj.jpg" alt="Attorney"></div>
+          <div class="team-editorial-info"><span class="team-editorial-name">Attorney</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-title">Litigation</span></div>
+        </li>
+        <li class="team-editorial-row reveal">
+          <div class="team-editorial-photo"><img src="images/gh.jpg" alt="Attorney"></div>
+          <div class="team-editorial-info"><span class="team-editorial-name">Attorney</span><span class="team-editorial-sep">&middot;</span><span class="team-editorial-title">Litigation</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- A6. Case Results -->
+  <section class="case-results" id="case-results">
+    <div class="container">
+      <h2 class="reveal">Case Results</h2>
+      <hr class="case-results-rule reveal" data-delay="1">
+      <ul class="results-list">
+        <li class="result-row reveal" data-delay="1">
+          <span class="result-outcome">$682,000</span>
+          <span class="result-category">Mergers &amp; Acquisitions</span>
+          <span class="result-desc">Buyer defaulted on promissory note after practice sale. Enforced contractual rights and recovered full damages.</span>
+        </li>
+        <li class="result-row reveal" data-delay="2">
+          <span class="result-outcome">$450,000</span>
+          <span class="result-category">Business Sale</span>
+          <span class="result-desc">Negotiated and executed hospice sale to national entity. Coordinated due diligence and transition.</span>
+        </li>
+        <li class="result-row reveal" data-delay="3">
+          <span class="result-outcome">$250,000+</span>
+          <span class="result-category">Construction Litigation</span>
+          <span class="result-desc">Custom home build dispute. Pursued TROs, expedited discovery, and depositions for relief excluding damages.</span>
+        </li>
+        <li class="result-row reveal" data-delay="4">
+          <span class="result-outcome">$200,000</span>
+          <span class="result-category">Breach of Contract</span>
+          <span class="result-desc">General contractor withheld payment for completed fiber optic work. Enforced subcontractor agreement.</span>
+        </li>
+        <li class="result-row reveal" data-delay="5">
+          <span class="result-outcome">Full Recovery</span>
+          <span class="result-category">Partnership Dispute</span>
+          <span class="result-desc">Partner excluded from ownership and charged $25,000 to personal credit. Filed demand letter and TRO.</span>
+        </li>
+        <li class="result-row reveal" data-delay="6">
+          <span class="result-outcome">TRO Dissolved</span>
+          <span class="result-category">Creditor Defense</span>
+          <span class="result-desc">Defended commercial lender against wrongful foreclosure claims. TRO dissolved on response.</span>
+        </li>
+        <li class="result-row reveal" data-delay="7">
+          <span class="result-outcome">Favorable Judgment</span>
+          <span class="result-category">Breach of Fiduciary Duty</span>
+          <span class="result-desc">Investment advisor stopped communicating. Secured judgment for principal, promised returns, and fees.</span>
+        </li>
+      </ul>
+      <ul class="results-list-reveal">
+        <li class="result-reveal-row reveal" data-delay="1">
+          <button class="result-reveal-trigger" aria-expanded="false"><span>Mergers &amp; Acquisitions</span><span class="result-reveal-icon">+</span></button>
+          <div class="result-reveal-content"><div class="result-reveal-body"><span class="result-reveal-figure">$682,000</span></div></div>
+        </li>
+        <li class="result-reveal-row reveal" data-delay="2">
+          <button class="result-reveal-trigger" aria-expanded="false"><span>Business Sale</span><span class="result-reveal-icon">+</span></button>
+          <div class="result-reveal-content"><div class="result-reveal-body"><span class="result-reveal-figure">$450,000</span></div></div>
+        </li>
+        <li class="result-reveal-row reveal" data-delay="3">
+          <button class="result-reveal-trigger" aria-expanded="false"><span>Construction Litigation</span><span class="result-reveal-icon">+</span></button>
+          <div class="result-reveal-content"><div class="result-reveal-body"><span class="result-reveal-figure">$250,000+</span></div></div>
+        </li>
+        <li class="result-reveal-row reveal" data-delay="4">
+          <button class="result-reveal-trigger" aria-expanded="false"><span>Breach of Contract</span><span class="result-reveal-icon">+</span></button>
+          <div class="result-reveal-content"><div class="result-reveal-body"><span class="result-reveal-figure">$200,000</span></div></div>
+        </li>
+        <li class="result-reveal-row reveal" data-delay="5">
+          <button class="result-reveal-trigger" aria-expanded="false"><span>Partnership Dispute</span><span class="result-reveal-icon">+</span></button>
+          <div class="result-reveal-content"><div class="result-reveal-body"><span class="result-reveal-figure">Full Recovery</span></div></div>
+        </li>
+        <li class="result-reveal-row reveal" data-delay="6">
+          <button class="result-reveal-trigger" aria-expanded="false"><span>Creditor Defense</span><span class="result-reveal-icon">+</span></button>
+          <div class="result-reveal-content"><div class="result-reveal-body"><span class="result-reveal-figure">TRO Dissolved</span></div></div>
+        </li>
+        <li class="result-reveal-row reveal" data-delay="7">
+          <button class="result-reveal-trigger" aria-expanded="false"><span>Breach of Fiduciary Duty</span><span class="result-reveal-icon">+</span></button>
+          <div class="result-reveal-content"><div class="result-reveal-body"><span class="result-reveal-figure">Favorable Judgment</span></div></div>
+        </li>
+      </ul>
+      <a href="#" class="results-link reveal" data-delay="7">
+        View all case results
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- A7. Insights -->
+  <section class="insights" id="insights">
+    <div class="container">
+      <h2 class="reveal">Insights</h2>
+      <hr class="insights-rule reveal" data-delay="1">
+      <ul class="insights-list">
+        <li class="insight-row reveal" data-delay="1">
+          <div class="insight-category">Business Litigation</div>
+          <a href="#" class="insight-title">Understanding Breach of Fiduciary Duty Claims in Texas Business Partnerships</a>
+          <p class="insight-excerpt">A fiduciary duty claim can unravel a business partnership, but understanding the legal standards in Texas is essential before taking action. What business owners need to prove and what to expect.</p>
+          <div class="insight-meta">
+            <span class="insight-date">March 2026</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="2">
+          <div class="insight-category">Contract Disputes</div>
+          <a href="#" class="insight-title">When a Business Partner Breaches Their Contract: Steps to Protect Your Interests</a>
+          <div class="insight-meta">
+            <span class="insight-date">February 2026</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="3">
+          <div class="insight-category">Real Estate</div>
+          <a href="#" class="insight-title">Commercial Lease Disputes in North Texas: What Landlords and Tenants Should Know</a>
+          <div class="insight-meta">
+            <span class="insight-date">January 2026</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="4">
+          <div class="insight-category">Injunctions</div>
+          <a href="#" class="insight-title">Emergency Relief in Texas Courts: When and How to Seek a TRO</a>
+          <div class="insight-meta">
+            <span class="insight-date">December 2025</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- A8. Footer CTA -->
+  <section class="footer-cta reveal" id="contact">
+    <h2>Ready to discuss your matter?</h2>
+    <p class="footer-cta-contact">
+      Call <a href="tel:9723256591" class="phone">(972) 325-6591</a><span class="footer-cta-or"> or
+      <a href="#" class="cta-link">schedule a consultation</a></span>
+    </p>
+    <a href="#" class="footer-cta-btn">Schedule a Consultation</a>
+    <p class="footer-cta-locations">
+      McKinney<span>&middot;</span>Fort Worth<span>&middot;</span>Mansfield<span>&middot;</span>Dallas<span>&middot;</span>Houston<span>&middot;</span>Austin<span>&middot;</span>San Antonio
+    </p>
+  </section>
+
+  <!-- A9. Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img class="logo-default" src="images/logo.png" alt="Roquemore Skierski PLLC">
+          <img class="logo-serif" src="images/serif_logo.svg" alt="Roquemore Skierski PLLC">
+          <img class="logo-sans" src="images/sans_serif_logo.svg" alt="Roquemore Skierski PLLC">
+          <p>A Dallas-Fort Worth business litigation firm representing companies, entrepreneurs, and executives in commercial disputes across Texas.</p>
+          <div class="footer-available">
+            <span class="footer-available-dot"></span>
+            Available 24/7
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div>
+            <h4>Firm</h4>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Practice Areas</a></li>
+              <li><a href="#">Case Results</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Locations</h4>
+            <ul>
+              <li><a href="#">McKinney</a></li>
+              <li><a href="#">Fort Worth</a></li>
+              <li><a href="#">Mansfield</a></li>
+              <li><a href="#">Dallas</a></li>
+              <li><a href="#">Houston</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2026 Roquemore Skierski PLLC. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Disclaimer</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Communications Policy</a>
+          <a href="#">Text Messaging Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // ==========================================
+      // TEAM BIOS DATA
+      // ==========================================
+      var teamBios = [
+        "Kelvin co-founded the firm and leads its commercial litigation practice. He represents businesses and executives in complex disputes across Texas state and federal courts, with particular depth in breach of fiduciary duty and partnership matters.",
+        "Doug co-founded the firm and focuses on business disputes, transactional litigation, and M&A-related claims. He handles matters from initial demand through trial, including injunctions and emergency relief in North Texas courts.",
+        "Alex handles real estate disputes, construction litigation, and commercial property matters. His practice spans lease disputes, construction defect claims, and real estate transactional work across the DFW metroplex.",
+        "Jennifer focuses on commercial litigation, including contract disputes, fraud claims, and fiduciary duty matters. She works closely with clients on case strategy and represents businesses in state and federal courts.",
+        "A key member of the litigation team, supporting the firm\u2019s commercial and real estate practice across multiple Texas jurisdictions.",
+        "Supports the firm\u2019s commercial litigation practice with a focus on client communication, case management, and legal research."
+      ];
+
+      var defaultTeamText = "Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.";
+
+      // ==========================================
+      // PRESET DEFINITIONS
+      // ==========================================
+      var presets = {
+        a: { hero: 'founders', font: 'sans', cta: 'text', practice: 'accordion', team: 'photos', cases: 'ledger', insights: 'uniform', footercta: 'text' },
+        b: { hero: 'city', font: 'serif', cta: 'text', practice: 'list', team: 'typographic', cases: 'detailed', insights: 'featured', footercta: 'button' }
+      };
+
+      // ==========================================
+      // STATE
+      // ==========================================
+      var heroFounder = document.getElementById('hero-founder');
+      var heroCity = document.getElementById('hero-city');
+      var presetToggles = document.getElementById('preset-toggles');
+      var heroToggles = document.getElementById('hero-toggles');
+      var ctaToggles = document.getElementById('cta-toggles');
+      var fontToggles = document.getElementById('font-toggles');
+      var practiceToggles = document.getElementById('practice-toggles');
+      var teamToggles = document.getElementById('team-toggles');
+      var casesToggles = document.getElementById('cases-toggles');
+      var insightsToggles = document.getElementById('insights-toggles');
+      var footerctaToggles = document.getElementById('footercta-toggles');
+      var customizePanel = document.getElementById('customize-panel');
+      var customizeToggleBtn = document.getElementById('customize-toggle');
+
+      function setHero(mode) {
+        heroToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.hero === mode);
+        });
+        document.body.classList.remove('dark-hero');
+        heroFounder.style.display = '';
+        heroCity.style.display = 'none';
+
+        if (mode === 'dark') {
+          document.body.classList.add('dark-hero');
+        } else if (mode === 'city') {
+          heroFounder.style.display = 'none';
+          heroCity.style.display = 'block';
+          setTimeout(function() {
+            document.getElementById('hero-text-city').classList.add('visible');
+          }, 100);
+        }
+      }
+
+      function setCta(mode) {
+        ctaToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.cta === mode);
+        });
+        document.body.classList.remove('cta-outlined', 'cta-filled');
+        if (mode !== 'text') {
+          document.body.classList.add('cta-' + mode);
+        }
+      }
+
+      function setFont(mode) {
+        fontToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.font === mode);
+        });
+        document.body.classList.toggle('serif-headings', mode === 'serif');
+        document.body.classList.toggle('sans-headings', mode === 'sans');
+      }
+
+      function setPractice(mode) {
+        practiceToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.practice === mode);
+        });
+        document.body.classList.toggle('practice-list-mode', mode === 'list');
+        // Close any open accordion items when switching away
+        if (mode === 'list') {
+          document.querySelectorAll('.accordion-trigger[aria-expanded="true"]').forEach(function(t) {
+            t.nextElementSibling.style.maxHeight = '0';
+            t.setAttribute('aria-expanded', 'false');
+          });
+        }
+        // Re-observe reveals for list items
+        if (mode === 'list') {
+          document.querySelectorAll('.practice-list .reveal:not(.visible)').forEach(function(el) {
+            revealObserver.observe(el);
+          });
+        }
+      }
+
+      function setTeam(mode) {
+        teamToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.team === mode);
+        });
+        document.body.classList.remove('team-typographic-mode', 'team-editorial-mode');
+        if (mode === 'typographic') document.body.classList.add('team-typographic-mode');
+        if (mode === 'editorial') document.body.classList.add('team-editorial-mode');
+        var sel = mode === 'typographic' ? '.team-typographic' : '.team-editorial';
+        if (mode !== 'photos') {
+          document.querySelectorAll(sel + ' .reveal:not(.visible)').forEach(function(el) {
+            revealObserver.observe(el);
+          });
+        }
+      }
+
+      function setCases(mode) {
+        casesToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.cases === mode);
+        });
+        document.body.classList.remove('cases-reveal', 'cases-detailed');
+        if (mode !== 'ledger') document.body.classList.add('cases-' + mode);
+        if (mode === 'reveal') {
+          document.querySelectorAll('.results-list-reveal .reveal:not(.visible)').forEach(function(el) {
+            revealObserver.observe(el);
+          });
+        }
+      }
+
+      function setInsights(mode) {
+        insightsToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.insights === mode);
+        });
+        document.body.classList.toggle('insights-featured', mode === 'featured');
+      }
+
+      function setFooterCta(mode) {
+        footerctaToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.footercta === mode);
+        });
+        document.body.classList.toggle('footercta-button', mode === 'button');
+      }
+
+      function getActive(el, key) {
+        var btn = el.querySelector('button.active');
+        return btn ? btn.dataset[key] : null;
+      }
+
+      function syncPreset() {
+        var current = {
+          hero: getActive(heroToggles, 'hero') || 'founders',
+          cta: getActive(ctaToggles, 'cta') || 'text',
+          font: getActive(fontToggles, 'font') || 'sans',
+          practice: getActive(practiceToggles, 'practice') || 'accordion',
+          team: getActive(teamToggles, 'team') || 'photos',
+          cases: getActive(casesToggles, 'cases') || 'ledger',
+          insights: getActive(insightsToggles, 'insights') || 'uniform',
+          footercta: getActive(footerctaToggles, 'footercta') || 'text'
+        };
+        var matched = null;
+
+        Object.keys(presets).forEach(function(key) {
+          var p = presets[key];
+          var match = true;
+          Object.keys(p).forEach(function(k) {
+            if (p[k] !== current[k]) match = false;
+          });
+          if (match) matched = key;
+        });
+
+        presetToggles.querySelectorAll('.designer-pick').forEach(function(b) { b.classList.remove('active'); });
+
+        if (matched) {
+          presetToggles.querySelector('[data-preset="' + matched + '"]').classList.add('active');
+          customizePanel.classList.remove('is-custom');
+        } else {
+          customizePanel.classList.add('is-custom');
+        }
+      }
+
+      // ==========================================
+      // CUSTOMIZE PANEL
+      // ==========================================
+      customizeToggleBtn.addEventListener('click', function() {
+        customizePanel.classList.toggle('open');
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!customizePanel.contains(e.target)) {
+          customizePanel.classList.remove('open');
+        }
+      });
+
+      // All drawer toggles use event delegation
+      heroToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setHero(btn.dataset.hero);
+        syncPreset();
+      });
+
+      ctaToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setCta(btn.dataset.cta);
+        syncPreset();
+      });
+
+      fontToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setFont(btn.dataset.font);
+        syncPreset();
+      });
+
+      practiceToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setPractice(btn.dataset.practice);
+        syncPreset();
+      });
+
+      teamToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setTeam(btn.dataset.team);
+        syncPreset();
+      });
+
+      casesToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setCases(btn.dataset.cases);
+        syncPreset();
+      });
+
+      insightsToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setInsights(btn.dataset.insights);
+        syncPreset();
+      });
+
+      footerctaToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setFooterCta(btn.dataset.footercta);
+        syncPreset();
+      });
+
+      // ==========================================
+      // PRESET CLICKS (Designer's selections)
+      // ==========================================
+      presetToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('[data-preset]');
+        if (!btn) return;
+
+        var p = presets[btn.dataset.preset];
+        setHero(p.hero);
+        setCta(p.cta);
+        setFont(p.font);
+        setPractice(p.practice);
+        setTeam(p.team);
+        setCases(p.cases);
+        setInsights(p.insights);
+        setFooterCta(p.footercta);
+        syncPreset();
+      });
+
+      // ==========================================
+      // NAVIGATION SCROLL BEHAVIOR
+      // ==========================================
+      var nav = document.getElementById('nav');
+
+      window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      // ==========================================
+      // MOBILE NAV
+      // ==========================================
+      var mobileNav = document.getElementById('mobile-nav');
+      document.getElementById('nav-open').addEventListener('click', function() {
+        mobileNav.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+      document.getElementById('nav-close').addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // ==========================================
+      // HERO TEXT ANIMATION
+      // ==========================================
+      setTimeout(function() {
+        document.getElementById('hero-text-founder').classList.add('visible');
+      }, 200);
+
+      // Set initial font state so logo matches
+      setFont(getActive(fontToggles, 'font') || 'sans');
+
+      // ==========================================
+      // SCROLL REVEAL
+      // ==========================================
+      var reveals = document.querySelectorAll('.reveal');
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      reveals.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+
+      // ==========================================
+      // ACCORDION (Practice Areas)
+      // ==========================================
+      document.querySelectorAll('.accordion-trigger').forEach(function(trigger) {
+        var content = trigger.nextElementSibling;
+
+        trigger.addEventListener('click', function() {
+          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+          // Close all others
+          document.querySelectorAll('.accordion-trigger[aria-expanded="true"]').forEach(function(openTrigger) {
+            if (openTrigger !== trigger) {
+              var openContent = openTrigger.nextElementSibling;
+              openContent.style.maxHeight = openContent.scrollHeight + 'px';
+              openContent.offsetHeight;
+              openContent.style.maxHeight = '0';
+              openTrigger.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          if (isOpen) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.offsetHeight;
+            content.style.maxHeight = '0';
+            trigger.setAttribute('aria-expanded', 'false');
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            trigger.setAttribute('aria-expanded', 'true');
+            content.addEventListener('transitionend', function handler() {
+              if (trigger.getAttribute('aria-expanded') === 'true') {
+                content.style.maxHeight = 'none';
+              }
+              content.removeEventListener('transitionend', handler);
+            });
+          }
+        });
+      });
+
+      // ==========================================
+      // CASE RESULTS REVEAL ACCORDION
+      // ==========================================
+      document.querySelectorAll('.result-reveal-trigger').forEach(function(trigger) {
+        var content = trigger.nextElementSibling;
+
+        trigger.addEventListener('click', function() {
+          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+          document.querySelectorAll('.result-reveal-trigger[aria-expanded="true"]').forEach(function(openTrigger) {
+            if (openTrigger !== trigger) {
+              var openContent = openTrigger.nextElementSibling;
+              openContent.style.maxHeight = openContent.scrollHeight + 'px';
+              openContent.offsetHeight;
+              openContent.style.maxHeight = '0';
+              openTrigger.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          if (isOpen) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.offsetHeight;
+            content.style.maxHeight = '0';
+            trigger.setAttribute('aria-expanded', 'false');
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            trigger.setAttribute('aria-expanded', 'true');
+            content.addEventListener('transitionend', function handler() {
+              if (trigger.getAttribute('aria-expanded') === 'true') {
+                content.style.maxHeight = 'none';
+              }
+              content.removeEventListener('transitionend', handler);
+            });
+          }
+        });
+      });
+
+      // ==========================================
+      // TEAM INTERACTION
+      // ==========================================
+      var teamGrid = document.getElementById('team-grid');
+      var teamDetailContent = document.getElementById('team-detail-content');
+      var teamMembers = document.querySelectorAll('.team-member');
+
+      function showTeamBio(index) {
+        teamMembers.forEach(function(m) { m.classList.remove('active'); });
+        teamMembers[index].classList.add('active');
+        teamGrid.classList.add('has-active');
+
+        teamDetailContent.style.opacity = '0';
+        setTimeout(function() {
+          var p = document.createElement('p');
+          p.textContent = teamBios[index];
+          var link = document.createElement('a');
+          link.href = '#';
+          link.className = 'team-profile-link';
+          link.textContent = 'Full profile ';
+          var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.setAttribute('viewBox', '0 0 14 14');
+          svg.setAttribute('fill', 'none');
+          svg.setAttribute('width', '14');
+          svg.setAttribute('height', '14');
+          var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', 'M2 7h10M8 3l4 4-4 4');
+          path.setAttribute('stroke', 'currentColor');
+          path.setAttribute('stroke-width', '2');
+          svg.appendChild(path);
+          link.appendChild(svg);
+
+          teamDetailContent.replaceChildren(p, link);
+          teamDetailContent.style.opacity = '1';
+        }, 150);
+      }
+
+      function resetTeamBio() {
+        teamMembers.forEach(function(m) { m.classList.remove('active'); });
+        teamGrid.classList.remove('has-active');
+        teamDetailContent.style.opacity = '0';
+        setTimeout(function() {
+          var p = document.createElement('p');
+          p.textContent = defaultTeamText;
+          teamDetailContent.replaceChildren(p);
+          teamDetailContent.style.opacity = '1';
+        }, 150);
+      }
+
+      teamMembers.forEach(function(member, i) {
+        member.addEventListener('mouseenter', function() { showTeamBio(i); });
+        member.addEventListener('click', function() { showTeamBio(i); });
+      });
+
+      teamGrid.addEventListener('mouseleave', resetTeamBio);
+    })();
+  </script>
+</body>
+</html>
