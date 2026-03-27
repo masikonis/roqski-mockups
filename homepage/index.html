@@ -633,6 +633,21 @@
     .accordion-link svg { width: 14px; height: 14px; }
 
     /* ===========================================
+       IMAGE BREAK
+       =========================================== */
+    .image-break {
+      width: 100%;
+      height: 360px;
+      overflow: hidden;
+    }
+    .image-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    /* ===========================================
        A5. TEAM
        =========================================== */
     .team {
@@ -1044,19 +1059,47 @@
     }
 
     /* ===========================================
-       DARK HERO VARIANT
+       LIFESTYLE HERO VARIANT
        =========================================== */
-    body.dark-hero .hero {
-      background: var(--teal);
+    .hero-lifestyle {
+      display: none;
     }
-    body.dark-hero .hero h1 { color: var(--white); }
-    body.dark-hero .hero-sub { color: rgba(255,255,255,0.7); }
-    body.dark-hero .hero-city-bg img {
-      filter: none;
-      opacity: 0.35;
+    .hero-lifestyle .hero-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 48px;
+      position: relative;
+      min-height: 540px;
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+      padding-bottom: 72px;
     }
-    body.dark-hero .hero-city-bg::after { display: none; }
-    body.dark-hero .hero-rule { background: rgba(255,255,255,0.15); }
+    .hero-lifestyle-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hero-lifestyle-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-lifestyle-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(to right, rgba(11,48,48,0.85) 0%, rgba(11,48,48,0.65) 40%, rgba(11,48,48,0.25) 70%, transparent 100%);
+    }
+    .hero-lifestyle .hero-text {
+      position: relative;
+      z-index: 2;
+      max-width: 560px;
+    }
+    .hero-lifestyle h1 { color: var(--white); }
+    .hero-lifestyle .hero-sub { color: rgba(255,255,255,0.8); }
 
     /* ===========================================
        PRACTICE AREAS: LIST VARIANT
@@ -1314,6 +1357,34 @@
     }
 
     /* ===========================================
+       INSIGHTS: SPLIT VARIANT
+       =========================================== */
+    body.insights-split .insights .container {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 0 64px;
+      align-items: start;
+    }
+    body.insights-split .insights h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      position: sticky;
+      top: 120px;
+      grid-row: 1 / 3;
+    }
+    body.insights-split .insights-rule {
+      display: none;
+    }
+    body.insights-split .insights-list .insight-row:first-child .insight-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      font-family: var(--font-heading);
+    }
+    body.insights-split .insights-list .insight-row:first-child .insight-excerpt {
+      display: block;
+    }
+
+    /* ===========================================
        FOOTER CTA: BUTTON VARIANT
        =========================================== */
     .footer-cta-btn {
@@ -1357,7 +1428,8 @@
         padding-left: 24px;
         padding-right: 24px;
       }
-      .hero-city .hero-inner {
+      .hero-city .hero-inner,
+      .hero-lifestyle .hero-inner {
         padding-left: 24px;
         padding-right: 24px;
         min-height: 400px;
@@ -1369,6 +1441,7 @@
       .practice-areas { padding: 64px 0; }
       .practice-areas .container { padding: 0 24px; }
 
+      .image-break { height: 220px; }
       .team { padding: 64px 0; }
       .team .container { padding: 0 24px; }
       .team-grid {
@@ -1384,6 +1457,8 @@
 
       .insights { padding: 64px 0; }
       .insights .container { padding: 0 24px; }
+      body.insights-split .insights .container { grid-template-columns: 1fr; }
+      body.insights-split .insights h2 { position: static; }
 
       .team-editorial-info { flex-direction: column; gap: 2px; }
       .team-editorial-sep { display: none; }
@@ -1439,7 +1514,7 @@
         <div class="customize-section-label">Hero</div>
         <div class="customize-options" id="hero-toggles">
           <button class="active" data-hero="founders">Founders</button>
-          <button data-hero="dark">Dark</button>
+          <button data-hero="lifestyle">Lifestyle</button>
           <button data-hero="city">City</button>
         </div>
       </div>
@@ -1471,6 +1546,7 @@
         <div class="customize-options" id="insights-toggles">
           <button class="active" data-insights="uniform">Uniform</button>
           <button data-insights="featured">Featured</button>
+          <button data-insights="split">Split</button>
         </div>
       </div>
       <div class="customize-section">
@@ -1558,8 +1634,24 @@
     </div>
   </section>
 
-  <hr class="hero-rule">
+  <!-- A2. Hero (Lifestyle variant - hidden by default) -->
+  <section class="hero hero-lifestyle" id="hero-lifestyle">
+    <div class="hero-lifestyle-bg">
+      <img src="images/hero-lifestyle.jpg" alt="Kelvin Roquemore and Doug Skierski in the office">
+    </div>
+    <div class="hero-inner">
+      <div class="hero-text" id="hero-text-lifestyle">
+        <h1>Strategic counsel for&nbsp;complex commercial disputes</h1>
+        <p class="hero-sub">A Dallas-Fort Worth litigation firm built on decades of courtroom experience and a team approach to every matter.</p>
+        <a href="#practice-areas" class="hero-link" style="color: var(--orange);">
+          See our practice areas
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
+  <hr class="hero-rule">
 
   <!-- A3. Firm Positioning -->
   <section class="positioning">
@@ -1683,6 +1775,11 @@
       </ul>
     </div>
   </section>
+
+  <!-- Image Break -->
+  <div class="image-break reveal">
+    <img src="images/section-break.jpg" alt="">
+  </div>
 
   <!-- A5. Team -->
   <section class="team" id="team">
@@ -1999,7 +2096,7 @@
       // ==========================================
       var presets = {
         a: { hero: 'founders', font: 'sans', cta: 'text', practice: 'accordion', team: 'photos', cases: 'ledger', insights: 'uniform', footercta: 'text' },
-        b: { hero: 'city', font: 'serif', cta: 'text', practice: 'list', team: 'typographic', cases: 'detailed', insights: 'featured', footercta: 'button' }
+        b: { hero: 'city', font: 'serif', cta: 'text', practice: 'list', team: 'typographic', cases: 'detailed', insights: 'split', footercta: 'button' }
       };
 
       // ==========================================
@@ -2007,6 +2104,7 @@
       // ==========================================
       var heroFounder = document.getElementById('hero-founder');
       var heroCity = document.getElementById('hero-city');
+      var heroLifestyle = document.getElementById('hero-lifestyle');
       var presetToggles = document.getElementById('preset-toggles');
       var heroToggles = document.getElementById('hero-toggles');
       var ctaToggles = document.getElementById('cta-toggles');
@@ -2023,14 +2121,18 @@
         heroToggles.querySelectorAll('button').forEach(function(b) {
           b.classList.toggle('active', b.dataset.hero === mode);
         });
-        document.body.classList.remove('dark-hero');
-        heroFounder.style.display = '';
+        heroFounder.style.display = 'none';
         heroCity.style.display = 'none';
+        heroLifestyle.style.display = 'none';
 
-        if (mode === 'dark') {
-          document.body.classList.add('dark-hero');
+        if (mode === 'founders') {
+          heroFounder.style.display = '';
+        } else if (mode === 'lifestyle') {
+          heroLifestyle.style.display = 'block';
+          setTimeout(function() {
+            document.getElementById('hero-text-lifestyle').classList.add('visible');
+          }, 100);
         } else if (mode === 'city') {
-          heroFounder.style.display = 'none';
           heroCity.style.display = 'block';
           setTimeout(function() {
             document.getElementById('hero-text-city').classList.add('visible');
@@ -2108,7 +2210,10 @@
         insightsToggles.querySelectorAll('button').forEach(function(b) {
           b.classList.toggle('active', b.dataset.insights === mode);
         });
-        document.body.classList.toggle('insights-featured', mode === 'featured');
+        document.body.classList.remove('insights-featured', 'insights-split');
+        if (mode !== 'uniform') {
+          document.body.classList.add('insights-' + mode);
+        }
       }
 
       function setFooterCta(mode) {
