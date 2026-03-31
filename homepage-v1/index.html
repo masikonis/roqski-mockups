@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Roquemore Skierski PLLC - Dallas Business Litigation</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================================
+       VARIABLES
+       =========================================== */
+    :root {
+      --teal: #0B3030;
+      --teal-90: rgba(11, 48, 48, 0.9);
+      --teal-60: rgba(11, 48, 48, 0.6);
+      --teal-30: rgba(11, 48, 48, 0.3);
+      --teal-15: rgba(11, 48, 48, 0.15);
+      --orange: #CD4A16;
+      --orange-hover: #b5410f;
+      --white: #FFFFFF;
+      --off-white: #FAF9F7;
+      --content-width: 1200px;
+      --nav-height: 95px;
+      --nav-height-scrolled: 70px;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, serif;
+      --font-heading: var(--font-serif);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ===========================================
+       RESET & BASE
+       =========================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--teal);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--orange); color: var(--white); }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ===========================================
+       LAYOUT
+       =========================================== */
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ===========================================
+       NAVIGATION
+       =========================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 100;
+      transition: height 300ms ease, background 300ms ease, box-shadow 300ms ease;
+    }
+    .nav.scrolled {
+      height: var(--nav-height-scrolled);
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 1px 0 var(--teal-15);
+    }
+    .nav-logo img { height: 28px; }
+    .nav-logo .logo-color { display: none; }
+    .nav.scrolled .logo-white { display: none; }
+    .nav.scrolled .logo-color { display: block; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--white);
+      transition: opacity 200ms ease;
+    }
+    .nav-links a:hover { opacity: 0.7; }
+    .nav.scrolled .nav-links a { color: var(--teal); }
+    .nav.scrolled .nav-links a:hover { color: var(--orange); opacity: 1; }
+    .nav-links .nav-contact {
+      font-weight: 600;
+      color: var(--orange);
+      transition: color 200ms ease;
+      opacity: 1;
+    }
+    .nav-links .nav-contact:hover { color: var(--orange-hover); opacity: 1; }
+    .nav.scrolled .nav-links .nav-contact { color: var(--orange); }
+
+    /* Nav dropdown */
+    .nav-dropdown-wrap {
+      position: relative;
+    }
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      padding-top: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-dropdown-inner {
+      background: var(--white);
+      min-width: 260px;
+      padding: 8px 0;
+      border-top: 2px solid var(--orange);
+      box-shadow: 0 8px 32px rgba(11, 48, 48, 0.12);
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--teal) !important;
+      opacity: 1 !important;
+      line-height: 1.4;
+      transition: color 200ms ease, padding-left 200ms ease;
+    }
+    .nav-dropdown a:hover {
+      color: var(--orange) !important;
+      padding-left: 28px;
+    }
+    .nav.scrolled .nav-links .nav-contact:hover { color: var(--orange-hover); }
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger svg {
+      width: 24px;
+      height: 24px;
+      color: var(--white);
+    }
+    .nav.scrolled .nav-hamburger svg { color: var(--teal); }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: auto; }
+    .mobile-nav a {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--teal);
+      transition: color 200ms ease;
+    }
+    .mobile-nav a:hover { color: var(--orange); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      background: none;
+      border: none;
+    }
+    .mobile-nav-close svg { width: 28px; height: 28px; color: var(--teal); }
+    .mobile-nav-contact {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--orange) !important;
+      margin-top: 16px;
+    }
+
+    /* ===========================================
+       HERO
+       =========================================== */
+    .hero {
+      position: relative;
+      background: var(--teal);
+      padding-top: var(--nav-height);
+      padding-bottom: 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.4) brightness(0.35);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(11, 48, 48, 0.75) 0%, rgba(11, 48, 48, 0.45) 60%, rgba(11, 48, 48, 0.65) 100%);
+    }
+    .hero-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 48px;
+      position: relative;
+      z-index: 1;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    .hero-text {
+      max-width: 680px;
+    }
+    .hero-text > * {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .hero-text.visible > * {
+      animation: fadeUp 0.7s var(--ease-out) forwards;
+    }
+    .hero-text.visible > *:nth-child(1) { animation-delay: 0s; }
+    .hero-text.visible > *:nth-child(2) { animation-delay: 0.1s; }
+    .hero-text.visible > *:nth-child(3) { animation-delay: 0.2s; }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 4.2vw, 56px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .hero-your {
+      color: var(--orange);
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    .hero-your.in-flow {
+      position: static;
+    }
+    .hero-your.visible {
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
+    .hero-slide {
+      display: inline-block;
+      will-change: transform;
+    }
+    .hero-cycling {
+      transition: opacity 0.4s ease;
+    }
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.7);
+      margin-top: 20px;
+      max-width: 520px;
+    }
+    .hero-contact {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      font-size: 15px;
+    }
+    .hero-phone {
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      transition: color 200ms ease;
+    }
+    .hero-phone:hover { color: var(--white); }
+    .hero-contact-sep { color: rgba(255,255,255,0.25); }
+    .hero-contact-link {
+      color: var(--orange);
+      font-weight: 600;
+      transition: color 200ms ease;
+    }
+    .hero-contact-link:hover { color: var(--orange-hover); }
+
+    /* ===========================================
+       AWARDS
+       =========================================== */
+    .awards {
+      position: relative;
+      z-index: 2;
+      margin-top: -56px;
+    }
+    .awards-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 36px 48px;
+      background: var(--off-white);
+      text-align: center;
+    }
+    .awards-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .award-logo {
+      height: 40px;
+      width: auto;
+      filter: grayscale(1);
+      opacity: 0.45;
+      transition: opacity 200ms ease, filter 200ms ease;
+    }
+    .award-logo:hover {
+      opacity: 0.8;
+      filter: grayscale(0);
+    }
+
+    /* ===========================================
+       POSITIONING
+       =========================================== */
+    .positioning {
+      padding: 100px 48px;
+      text-align: center;
+    }
+    .positioning-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .positioning h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--teal);
+    }
+    .positioning-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--orange);
+      border: none;
+      margin: 28px auto;
+    }
+    .positioning p {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--teal-60);
+    }
+
+    /* ===========================================
+       PRACTICE AREAS
+       =========================================== */
+    .practice-areas {
+      background: var(--off-white);
+      padding: 100px 0;
+    }
+    .practice-areas h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .practice-areas-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin-bottom: 0;
+    }
+    .practice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .practice-cell {
+      padding: 40px 48px;
+      transition: background 250ms ease;
+    }
+    .practice-cell:nth-child(odd) {
+      border-right: 1px solid var(--teal-15);
+    }
+    .practice-cell:nth-child(-n+4) {
+      border-bottom: 1px solid var(--teal-15);
+    }
+    .practice-cell:hover {
+      background: rgba(11, 48, 48, 0.03);
+    }
+    .practice-cell-name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--teal);
+      transition: color 200ms ease;
+    }
+    .practice-cell:hover .practice-cell-name { color: var(--orange); }
+    .practice-cell-name svg {
+      width: 16px;
+      height: 16px;
+      color: var(--teal-15);
+      transition: color 200ms ease, transform 200ms ease;
+      flex-shrink: 0;
+    }
+    .practice-cell:hover .practice-cell-name svg {
+      color: var(--orange);
+      transform: translateX(4px);
+    }
+    .practice-cell-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--teal-30);
+      margin-top: 8px;
+    }
+
+    /* ===========================================
+       IMAGE BREAK
+       =========================================== */
+    .image-break {
+      width: 100%;
+      height: 360px;
+      overflow: hidden;
+      position: relative;
+    }
+    .image-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    /* ===========================================
+       TEAM
+       =========================================== */
+    .team {
+      padding: 100px 0;
+    }
+    .team h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .team-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin-bottom: 16px;
+    }
+    .team-intro {
+      font-size: 17px;
+      color: var(--teal-60);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .team-grid {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      justify-content: center;
+    }
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: opacity 200ms ease;
+      flex-shrink: 0;
+    }
+    .team-grid.has-active .team-member:not(.active) {
+      opacity: 0.55;
+    }
+    .team-member-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 12px;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+.team-member.active .team-member-photo {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 3px var(--orange);
+    }
+    .team-member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    .team-member-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1.3;
+    }
+    .team-member-title {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--teal-60);
+      margin-top: 2px;
+    }
+    .team-member-focus {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--teal-30);
+      margin-top: 4px;
+      max-width: 160px;
+      line-height: 1.4;
+    }
+    .team-detail {
+      margin-top: 40px;
+      min-height: 80px;
+      text-align: center;
+    }
+    .team-detail-content {
+      max-width: 600px;
+      margin: 0 auto;
+      transition: opacity 200ms ease;
+    }
+    .team-detail-content p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--teal-60);
+    }
+    .team-profile-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--orange);
+      margin-top: 12px;
+      transition: gap 200ms ease;
+    }
+    .team-profile-link:hover { gap: 10px; }
+    .team-profile-link svg { width: 14px; height: 14px; }
+
+    /* ===========================================
+       CASE RESULTS
+       =========================================== */
+    .case-results {
+      background: var(--teal);
+      padding: 100px 0;
+    }
+    .case-results h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .case-results-rule {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 0;
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .results-grid-cell {
+      padding: 36px 32px;
+    }
+    /* Vertical lines: right border on columns 1 and 2 */
+    .results-grid-cell:nth-child(3n+1),
+    .results-grid-cell:nth-child(3n+2) {
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    /* Horizontal line between rows */
+    .results-grid-cell:nth-child(-n+3) {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    /* Last row: single centered cell */
+    .results-grid-cell:last-child:nth-child(3n+1) {
+      grid-column: 2;
+    }
+    .result-outcome {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .result-category {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+    .results-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--orange);
+      margin-top: 40px;
+      transition: gap 200ms ease;
+    }
+    .results-link:hover { gap: 12px; }
+    .results-link svg { width: 16px; height: 16px; }
+    .results-cta {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+    .results-cta span {
+      color: rgba(255,255,255,0.4);
+    }
+    .results-cta a {
+      color: var(--white);
+      font-weight: 600;
+      transition: color 200ms ease;
+    }
+    .results-cta a:hover { color: var(--orange); }
+    .results-cta-sep {
+      color: rgba(255,255,255,0.2);
+      margin: 0 4px;
+    }
+    .results-cta-link {
+      color: var(--orange) !important;
+    }
+    .results-cta-link:hover { color: var(--orange-hover) !important; }
+
+    /* ===========================================
+       TESTIMONIALS
+       =========================================== */
+    .testimonials {
+      position: relative;
+      padding: 120px 0;
+      overflow: hidden;
+    }
+    .testimonials-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .testimonials-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .testimonials-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 48, 48, 0.65);
+    }
+    .testimonials-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 48px;
+      text-align: center;
+    }
+    .testimonial-carousel {
+      position: relative;
+      min-height: 200px;
+    }
+    .testimonial-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .testimonial-slide.active {
+      opacity: 1;
+      position: relative;
+    }
+    .testimonial-mark {
+      font-family: var(--font-serif);
+      font-size: 64px;
+      line-height: 0.6;
+      color: var(--orange);
+      margin-bottom: 20px;
+      user-select: none;
+    }
+    .testimonial-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 2.2vw, 24px);
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--white);
+    }
+    .testimonial-attr {
+      margin-top: 28px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .testimonial-dots {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .testimonial-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 200ms ease;
+    }
+    .testimonial-dot.active {
+      background: var(--orange);
+    }
+    .testimonial-dot:hover:not(.active) {
+      background: rgba(255,255,255,0.45);
+    }
+
+    /* ===========================================
+       INSIGHTS
+       =========================================== */
+    .insights {
+      padding: 100px 0;
+    }
+    .insights h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .insights-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin-bottom: 0;
+    }
+    .insights-list {
+      list-style: none;
+    }
+    .insight-row {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--teal-15);
+      transition: padding-left 200ms ease;
+    }
+    .insight-row:hover { padding-left: 8px; }
+    .insight-category {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    .insight-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1.4;
+      transition: color 200ms ease;
+      display: block;
+    }
+    .insight-row:hover .insight-title { color: var(--orange); }
+    .insight-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+    .insight-date {
+      font-size: 13px;
+      color: var(--teal-30);
+    }
+    .insight-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--orange);
+      transition: gap 200ms ease;
+    }
+    .insight-link:hover { gap: 10px; }
+    .insight-link svg { width: 12px; height: 12px; }
+
+    /* ===========================================
+       FOOTER CTA
+       =========================================== */
+    .footer-cta {
+      background: var(--off-white);
+      padding: 120px 48px;
+      text-align: center;
+    }
+    .footer-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+    .footer-cta-contact {
+      font-size: 17px;
+      color: var(--teal-60);
+      line-height: 1.7;
+    }
+    .footer-cta-contact a.phone {
+      font-weight: 600;
+      color: var(--teal);
+    }
+    .footer-cta-contact a.cta-link {
+      font-weight: 600;
+      color: var(--orange);
+      transition: color 200ms ease;
+    }
+    .footer-cta-contact a.cta-link:hover { color: var(--orange-hover); }
+    .footer-cta-locations {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--teal-30);
+      letter-spacing: 0.02em;
+    }
+    .footer-cta-locations span { margin: 0 8px; }
+
+    /* ===========================================
+       FOOTER
+       =========================================== */
+    .site-footer {
+      border-top: 1px solid var(--teal-15);
+      padding: 56px 0 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 40px;
+    }
+    .footer-brand img { height: 30px; margin-bottom: 16px; }
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--teal-60);
+      max-width: 360px;
+    }
+    .footer-available {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--teal-60);
+    }
+    .footer-available-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .footer-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .footer-nav h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-30);
+      margin-bottom: 16px;
+    }
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-nav a {
+      font-size: 14px;
+      color: var(--teal-60);
+      transition: color 200ms ease;
+    }
+    .footer-nav a:hover { color: var(--orange); }
+    .footer-bottom {
+      border-top: 1px solid var(--teal-15);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copyright {
+      font-size: 12px;
+      color: var(--teal-30);
+    }
+    .footer-legal {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-legal a {
+      font-size: 12px;
+      color: var(--teal-30);
+      transition: color 200ms ease;
+    }
+    .footer-legal a:hover { color: var(--teal-60); }
+
+    /* ===========================================
+       SCROLL REVEAL
+       =========================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal[data-delay="1"] { transition-delay: 80ms; }
+    .reveal[data-delay="2"] { transition-delay: 160ms; }
+    .reveal[data-delay="3"] { transition-delay: 240ms; }
+    .reveal[data-delay="4"] { transition-delay: 320ms; }
+    .reveal[data-delay="5"] { transition-delay: 400ms; }
+    .reveal[data-delay="6"] { transition-delay: 480ms; }
+    .reveal[data-delay="7"] { transition-delay: 560ms; }
+
+    /* ===========================================
+       RESPONSIVE
+       =========================================== */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .nav-contact { display: none; }
+      .nav-hamburger { display: block; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .nav { padding: 0 24px; }
+
+      .hero-inner {
+        padding: 48px 24px;
+        min-height: 380px;
+      }
+      .hero { padding-bottom: 60px; }
+      .awards { margin-top: -40px; }
+      .awards-inner { padding: 28px 24px; }
+      .awards-list { gap: 20px; }
+      .award-logo { height: 32px; }
+
+      .positioning { padding: 64px 24px; }
+      .desktop-br { display: none; }
+
+      .practice-areas { padding: 64px 0; }
+      .practice-areas .container { padding: 0 24px; }
+      .practice-grid { grid-template-columns: 1fr; }
+      .practice-cell:nth-child(odd) { border-right: none; }
+      .practice-cell:nth-child(-n+4) { border-bottom: 1px solid var(--teal-15); }
+      .practice-cell:nth-child(5) { border-bottom: 1px solid var(--teal-15); }
+      .practice-cell { padding: 28px 0; }
+
+      .image-break { height: 220px; }
+
+      .team { padding: 64px 0; }
+      .team .container { padding: 0 24px; }
+      .team-grid { flex-wrap: wrap; gap: 20px; }
+      .team-member-photo { width: 80px !important; height: 80px !important; }
+
+      .case-results { padding: 64px 0; }
+      .case-results .container { padding: 0 24px; }
+      .results-grid { grid-template-columns: 1fr; }
+      .results-grid-cell:nth-child(3n+1),
+      .results-grid-cell:nth-child(3n+2) { border-right: none; }
+      .results-grid-cell:nth-child(-n+3) { border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .results-grid-cell { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 24px 0; }
+      .results-grid-cell:last-child { border-bottom: none; grid-column: auto; }
+
+      .testimonials { padding: 80px 0; }
+      .testimonials-inner { padding: 0 24px; }
+
+      .insights { padding: 64px 0; }
+      .insights .container { padding: 0 24px; }
+
+      .footer-cta { padding: 64px 24px; }
+      .footer-cta-locations span { display: none; }
+      .footer-cta-locations { line-height: 2; }
+
+      .site-footer .container { padding: 0 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <img class="logo-white" src="images/serif_logo_white.svg" alt="Roquemore Skierski PLLC">
+      <img class="logo-color" src="images/serif_logo.svg" alt="Roquemore Skierski PLLC">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#">About</a></li>
+        <li class="nav-dropdown-wrap">
+          <a href="#">Practice Areas</a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-inner">
+              <a href="#">Litigation</a>
+              <a href="#">Business Law</a>
+              <a href="#">Real Estate</a>
+              <a href="#">Intellectual Property</a>
+              <a href="#">Business Transactions</a>
+              <a href="#">Fraud &amp; Misrepresentation</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">Case Results</a></li>
+        <li><a href="#">Locations</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#contact" class="nav-contact">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-open" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="nav-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+    <a href="#">About</a>
+    <a href="#">Practice Areas</a>
+    <a href="#">Case Results</a>
+    <a href="#">Locations</a>
+    <a href="#">Resources</a>
+    <a href="#contact" class="mobile-nav-contact">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="images/hero-city.jpg" alt="">
+    </div>
+    <div class="hero-inner">
+      <div class="hero-text" id="hero-text">
+        <h1>We'll take care of<br><span class="hero-your" id="hero-your">your </span><span class="hero-slide" id="hero-slide"><span class="hero-cycling" id="hero-cycling">business</span>.</span></h1>
+        <p class="hero-sub">A Dallas-Fort Worth firm built on modern infrastructure and decades of courtroom experience. Exclusively focused on business and commercial matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="awards reveal">
+    <div class="awards-inner">
+      <ul class="awards-list">
+        <li><img class="award-logo" src="images/awards/superlawyers.png" alt="Super Lawyers Rising Stars"></li>
+        <li><img class="award-logo" src="images/awards/av-rated.jpg" alt="AV Rated - Martindale-Hubbell"></li>
+        <li><img class="award-logo" src="images/awards/aba.png" alt="American Bar Association"></li>
+        <li><img class="award-logo" src="images/awards/state-bar-tx.jpg" alt="State Bar of Texas"></li>
+        <li><img class="award-logo" src="images/awards/dallas-bar.webp" alt="Dallas Bar Association"></li>
+        <li><img class="award-logo" src="images/awards/tx-bar-college.webp" alt="Texas Bar College"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Positioning -->
+  <section class="positioning">
+    <div class="positioning-inner">
+      <h2 class="reveal">Strategic counsel for complex<br class="desktop-br"> commercial disputes</h2>
+      <hr class="positioning-rule reveal" data-delay="1">
+      <p class="reveal" data-delay="2">Recognized by Chambers USA and Super Lawyers, Roquemore Skierski represents businesses, entrepreneurs, and executives in high-stakes commercial litigation across Texas. The firm staffs a dedicated legal team on every matter, from initial strategy through trial. Business litigation is not a side practice here. It is the entire focus.</p>
+    </div>
+  </section>
+
+  <!-- Practice Areas -->
+  <section class="practice-areas" id="practice-areas">
+    <div class="container">
+      <h2 class="reveal">Practice Areas</h2>
+      <hr class="practice-areas-rule reveal" data-delay="1">
+      <div class="practice-grid">
+        <a href="#" class="practice-cell reveal" data-delay="1">
+          <div class="practice-cell-name">
+            Litigation
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Complex commercial disputes in state and federal courts across Texas</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="2">
+          <div class="practice-cell-name">
+            Business Law
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Formation, governance, compliance, and corporate counsel</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="2">
+          <div class="practice-cell-name">
+            Real Estate
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Commercial transactions, disputes, and development matters</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="3">
+          <div class="practice-cell-name">
+            Intellectual Property
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Protection, licensing, and enforcement of IP assets</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="3">
+          <div class="practice-cell-name">
+            Business Transactions
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">M&amp;A, contracts, and deal structuring</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="4">
+          <div class="practice-cell-name">
+            Fraud &amp; Misrepresentation
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Business fraud, deceptive trade practices, and recovery actions</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Break -->
+  <div class="image-break">
+    <img src="images/section-break.jpg" alt="">
+  </div>
+
+  <!-- Team -->
+  <section class="team" id="team">
+    <div class="container">
+      <h2 class="reveal">Our Team</h2>
+      <hr class="team-rule reveal" data-delay="1">
+      <p class="team-intro reveal" data-delay="1">A partner, an attorney, and a paralegal on every matter.</p>
+      <div class="team-grid reveal" data-delay="2" id="team-grid">
+        <div class="team-member" data-index="0">
+          <div class="team-member-photo">
+            <img src="images/kr.jpg" alt="Kelvin Roquemore">
+          </div>
+          <span class="team-member-name">Kelvin Roquemore</span>
+          <span class="team-member-title">Managing Partner</span>
+          <span class="team-member-focus">Commercial litigation, fiduciary duty, partnership disputes</span>
+        </div>
+        <div class="team-member" data-index="1">
+          <div class="team-member-photo">
+            <img src="images/ds.jpg" alt="Doug Skierski">
+          </div>
+          <span class="team-member-name">Doug Skierski</span>
+          <span class="team-member-title">Managing Partner</span>
+          <span class="team-member-focus">Business disputes, M&amp;A litigation, injunctions</span>
+        </div>
+        <div class="team-member" data-index="2">
+          <div class="team-member-photo">
+            <img src="images/ad.jpg" alt="Alex L. Davis">
+          </div>
+          <span class="team-member-name">Alex L. Davis</span>
+          <span class="team-member-title">Real Estate &amp; Litigation</span>
+        </div>
+        <div class="team-member" data-index="3">
+          <div class="team-member-photo">
+            <img src="images/jc.jpg" alt="Jennifer L. Culver">
+          </div>
+          <span class="team-member-name">Jennifer L. Culver</span>
+          <span class="team-member-title">Commercial Litigation</span>
+        </div>
+        <div class="team-member" data-index="4">
+          <div class="team-member-photo">
+            <img src="images/aj.jpg" alt="Attorney">
+          </div>
+          <span class="team-member-name">Attorney</span>
+          <span class="team-member-title">Litigation</span>
+        </div>
+        <div class="team-member" data-index="5">
+          <div class="team-member-photo">
+            <img src="images/gh.jpg" alt="Attorney">
+          </div>
+          <span class="team-member-name">Attorney</span>
+          <span class="team-member-title">Litigation</span>
+        </div>
+      </div>
+      <div class="team-detail" id="team-detail">
+        <div class="team-detail-content" id="team-detail-content">
+          <p>Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Results -->
+  <section class="case-results" id="case-results">
+    <div class="container">
+      <h2 class="reveal">Case Results</h2>
+      <hr class="case-results-rule reveal" data-delay="1">
+      <div class="results-grid">
+        <div class="results-grid-cell reveal" data-delay="1">
+          <div class="result-outcome">$682,000</div>
+          <div class="result-category">Mergers &amp; Acquisitions</div>
+        </div>
+        <div class="results-grid-cell reveal" data-delay="2">
+          <div class="result-outcome">$450,000</div>
+          <div class="result-category">Business Sale</div>
+        </div>
+        <div class="results-grid-cell reveal" data-delay="3">
+          <div class="result-outcome">$250,000+</div>
+          <div class="result-category">Construction Litigation</div>
+        </div>
+        <div class="results-grid-cell reveal" data-delay="3">
+          <div class="result-outcome">$200,000</div>
+          <div class="result-category">Breach of Contract</div>
+        </div>
+        <div class="results-grid-cell reveal" data-delay="4">
+          <div class="result-outcome">Full Recovery</div>
+          <div class="result-category">Partnership Dispute</div>
+        </div>
+        <div class="results-grid-cell reveal" data-delay="5">
+          <div class="result-outcome">TRO Dissolved</div>
+          <div class="result-category">Creditor Defense</div>
+        </div>
+      </div>
+      <a href="#" class="results-link reveal" data-delay="7">
+        View all case results
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Insights -->
+  <section class="insights" id="insights">
+    <div class="container">
+      <h2 class="reveal">Insights</h2>
+      <hr class="insights-rule reveal" data-delay="1">
+      <ul class="insights-list">
+        <li class="insight-row reveal" data-delay="1">
+          <div class="insight-category">Business Litigation</div>
+          <a href="#" class="insight-title">Understanding Breach of Fiduciary Duty Claims in Texas Business Partnerships</a>
+          <div class="insight-meta">
+            <span class="insight-date">March 2026</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="2">
+          <div class="insight-category">Contract Disputes</div>
+          <a href="#" class="insight-title">When a Business Partner Breaches Their Contract: Steps to Protect Your Interests</a>
+          <div class="insight-meta">
+            <span class="insight-date">February 2026</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="3">
+          <div class="insight-category">Real Estate</div>
+          <a href="#" class="insight-title">Commercial Lease Disputes in North Texas: What Landlords and Tenants Should Know</a>
+          <div class="insight-meta">
+            <span class="insight-date">January 2026</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="4">
+          <div class="insight-category">Injunctions</div>
+          <a href="#" class="insight-title">Emergency Relief in Texas Courts: When and How to Seek a TRO</a>
+          <div class="insight-meta">
+            <span class="insight-date">December 2025</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-bg">
+      <img src="images/testimonial-bg.jpg" alt="">
+    </div>
+    <div class="testimonials-inner">
+      <div class="testimonial-carousel" id="testimonial-carousel">
+        <div class="testimonial-slide active" data-slide="0">
+          <div class="testimonial-mark">&ldquo;</div>
+          <p class="testimonial-quote">The lawyers are incredibly responsive, acutely aware of the urgency of matters and never fail to deliver. They understand not only our business but also our culture and team dynamics.</p>
+          <p class="testimonial-attr">Client quotation as published in Chambers USA</p>
+        </div>
+        <div class="testimonial-slide" data-slide="1">
+          <div class="testimonial-mark">&ldquo;</div>
+          <p class="testimonial-quote">Roquemore Skierski combines rigorous legal strategy with a deep understanding of business operations. Their team approach means someone with full knowledge of our matter is always accessible.</p>
+          <p class="testimonial-attr">Client quotation as published in Chambers USA</p>
+        </div>
+        <div class="testimonial-slide" data-slide="2">
+          <div class="testimonial-mark">&ldquo;</div>
+          <p class="testimonial-quote">A firm that treats every matter as if their own business were at stake. Their courtroom preparation is thorough, their counsel is practical, and their results consistently speak for themselves.</p>
+          <p class="testimonial-attr">Client quotation as published in Chambers USA</p>
+        </div>
+      </div>
+      <div class="testimonial-dots" id="testimonial-dots">
+        <button class="testimonial-dot active" data-dot="0" aria-label="Testimonial 1"></button>
+        <button class="testimonial-dot" data-dot="1" aria-label="Testimonial 2"></button>
+        <button class="testimonial-dot" data-dot="2" aria-label="Testimonial 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="footer-cta reveal" id="contact">
+    <h2>How can we solve your problem?</h2>
+    <p class="footer-cta-contact">
+      Call <a href="tel:9723256591" class="phone">(972) 325-6591</a> or
+      <a href="#" class="cta-link">contact us</a>
+    </p>
+    <p class="footer-cta-locations">
+      McKinney<span>&middot;</span>Fort Worth<span>&middot;</span>Mansfield<span>&middot;</span>Dallas<span>&middot;</span>Houston<span>&middot;</span>Austin<span>&middot;</span>San Antonio
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/serif_logo.svg" alt="Roquemore Skierski PLLC">
+          <p>A Dallas-Fort Worth business litigation firm representing companies, entrepreneurs, and executives in commercial disputes across Texas.</p>
+          <div class="footer-available">
+            <span class="footer-available-dot"></span>
+            Available 24/7
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div>
+            <h4>Firm</h4>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Practice Areas</a></li>
+              <li><a href="#">Case Results</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Locations</h4>
+            <ul>
+              <li><a href="#">McKinney</a></li>
+              <li><a href="#">Fort Worth</a></li>
+              <li><a href="#">Mansfield</a></li>
+              <li><a href="#">Dallas</a></li>
+              <li><a href="#">Houston</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2026 Roquemore Skierski PLLC. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Disclaimer</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Communications Policy</a>
+          <a href="#">Text Messaging Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // ==========================================
+      // TEAM BIOS DATA
+      // ==========================================
+      var teamBios = [
+        "Kelvin co-founded the firm and leads its commercial litigation practice. He represents businesses and executives in complex disputes across Texas state and federal courts, with particular depth in breach of fiduciary duty and partnership matters.",
+        "Doug co-founded the firm and focuses on business disputes, transactional litigation, and M&A-related claims. He handles matters from initial demand through trial, including injunctions and emergency relief in North Texas courts.",
+        "Alex handles real estate disputes, construction litigation, and commercial property matters. His practice spans lease disputes, construction defect claims, and real estate transactional work across the DFW metroplex.",
+        "Jennifer focuses on commercial litigation, including contract disputes, fraud claims, and fiduciary duty matters. She works closely with clients on case strategy and represents businesses in state and federal courts.",
+        "A key member of the litigation team, supporting the firm\u2019s commercial and real estate practice across multiple Texas jurisdictions.",
+        "Supports the firm\u2019s commercial litigation practice with a focus on client communication, case management, and legal research."
+      ];
+
+      var defaultTeamText = "Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.";
+
+      // ==========================================
+      // NAVIGATION
+      // ==========================================
+      var nav = document.getElementById('nav');
+      window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      // Mobile nav
+      var mobileNav = document.getElementById('mobile-nav');
+      document.getElementById('nav-open').addEventListener('click', function() {
+        mobileNav.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+      document.getElementById('nav-close').addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // ==========================================
+      // HERO ANIMATION
+      // ==========================================
+      var heroText = document.getElementById('hero-text');
+      var heroYour = document.getElementById('hero-your');
+      var heroSlide = document.getElementById('hero-slide');
+      var heroCycling = document.getElementById('hero-cycling');
+
+      // Fade in hero text
+      setTimeout(function() {
+        heroText.classList.add('visible');
+      }, 200);
+
+      // FLIP animation: slide "business" right, fade in "your"
+      setTimeout(function() {
+        // First: record current position
+        var firstRect = heroSlide.getBoundingClientRect();
+
+        // Layout change: put "your" in flow
+        heroYour.classList.add('in-flow');
+
+        // Last: record new position
+        var lastRect = heroSlide.getBoundingClientRect();
+        var dx = firstRect.left - lastRect.left;
+        var dy = firstRect.top - lastRect.top;
+
+        // Invert: snap back visually
+        heroSlide.style.transition = 'none';
+        heroSlide.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+
+        // Play: animate to final position
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            heroSlide.style.transition = 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+            heroSlide.style.transform = '';
+            heroYour.classList.add('visible');
+          });
+        });
+      }, 1400);
+
+      // Start cycling practice areas
+      var cyclingWords = ['business', 'litigation', 'real estate', 'intellectual property', 'contracts', 'disputes'];
+      var cyclingIndex = 0;
+
+      function cycleWord() {
+        heroCycling.style.opacity = '0';
+        setTimeout(function() {
+          cyclingIndex = (cyclingIndex + 1) % cyclingWords.length;
+          heroCycling.textContent = cyclingWords[cyclingIndex];
+          heroCycling.style.opacity = '1';
+        }, 400);
+      }
+
+      // First change shortly after FLIP settles, then regular interval
+      setTimeout(function() {
+        cycleWord();
+        setInterval(cycleWord, 3500);
+      }, 2800);
+
+      // ==========================================
+      // SCROLL REVEAL
+      // ==========================================
+      var reveals = document.querySelectorAll('.reveal');
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      reveals.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+
+      // ==========================================
+      // TEAM INTERACTION
+      // ==========================================
+      var teamGrid = document.getElementById('team-grid');
+      var teamDetailContent = document.getElementById('team-detail-content');
+      var teamMembers = document.querySelectorAll('.team-member');
+
+      function showTeamBio(index) {
+        teamMembers.forEach(function(m) { m.classList.remove('active'); });
+        teamMembers[index].classList.add('active');
+        teamGrid.classList.add('has-active');
+
+        teamDetailContent.style.opacity = '0';
+        setTimeout(function() {
+          var p = document.createElement('p');
+          p.textContent = teamBios[index];
+          var link = document.createElement('a');
+          link.href = '#';
+          link.className = 'team-profile-link';
+          link.textContent = 'Full profile ';
+          var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.setAttribute('viewBox', '0 0 14 14');
+          svg.setAttribute('fill', 'none');
+          svg.setAttribute('width', '14');
+          svg.setAttribute('height', '14');
+          var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', 'M2 7h10M8 3l4 4-4 4');
+          path.setAttribute('stroke', 'currentColor');
+          path.setAttribute('stroke-width', '2');
+          svg.appendChild(path);
+          link.appendChild(svg);
+          teamDetailContent.replaceChildren(p, link);
+          teamDetailContent.style.opacity = '1';
+        }, 150);
+      }
+
+      function resetTeamBio() {
+        teamMembers.forEach(function(m) { m.classList.remove('active'); });
+        teamGrid.classList.remove('has-active');
+        teamDetailContent.style.opacity = '0';
+        setTimeout(function() {
+          var p = document.createElement('p');
+          p.textContent = defaultTeamText;
+          teamDetailContent.replaceChildren(p);
+          teamDetailContent.style.opacity = '1';
+        }, 150);
+      }
+
+      teamMembers.forEach(function(member, i) {
+        member.addEventListener('mouseenter', function() { showTeamBio(i); });
+        member.addEventListener('click', function() { showTeamBio(i); });
+      });
+
+      teamGrid.parentElement.addEventListener('mouseleave', resetTeamBio);
+
+      // ==========================================
+      // TESTIMONIAL CAROUSEL
+      // ==========================================
+      var slides = document.querySelectorAll('.testimonial-slide');
+      var dots = document.querySelectorAll('.testimonial-dot');
+      var currentSlide = 0;
+      var autoplayTimer;
+
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+
+      function nextSlide() {
+        goToSlide((currentSlide + 1) % slides.length);
+      }
+
+      function startAutoplay() {
+        autoplayTimer = setInterval(nextSlide, 6000);
+      }
+
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          clearInterval(autoplayTimer);
+          goToSlide(parseInt(dot.dataset.dot));
+          startAutoplay();
+        });
+      });
+
+      // Pause on hover
+      var carousel = document.getElementById('testimonial-carousel');
+      carousel.addEventListener('mouseenter', function() {
+        clearInterval(autoplayTimer);
+      });
+      carousel.addEventListener('mouseleave', function() {
+        startAutoplay();
+      });
+
+      startAutoplay();
+    })();
+  </script>
+</body>
+</html>
