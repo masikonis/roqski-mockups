@@ -588,6 +588,12 @@
       background: var(--teal);
       padding: 100px 0;
     }
+    .case-results-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
     .case-results h2 {
       font-family: var(--font-heading);
       font-size: clamp(28px, 3.5vw, 40px);
@@ -595,7 +601,6 @@
       line-height: 1.15;
       letter-spacing: -0.015em;
       color: var(--white);
-      margin-bottom: 12px;
     }
     .case-results-rule {
       border: none;
@@ -643,7 +648,6 @@
       font-size: 15px;
       font-weight: 600;
       color: var(--orange);
-      margin-top: 40px;
       transition: gap 200ms ease;
     }
     .results-link:hover { gap: 12px; }
@@ -1256,7 +1260,13 @@
   <!-- Case Results -->
   <section class="case-results" id="case-results">
     <div class="container">
-      <h2 class="reveal">Case Results</h2>
+      <div class="case-results-header reveal">
+        <h2>Case Results</h2>
+        <a href="#" class="results-link">
+          View all case results
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
       <hr class="case-results-rule reveal" data-delay="1">
       <div class="results-grid">
         <div class="results-grid-cell reveal" data-delay="1">
@@ -1284,10 +1294,6 @@
           <div class="result-category">Creditor Defense</div>
         </div>
       </div>
-      <a href="#" class="results-link reveal" data-delay="7">
-        View all case results
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
     </div>
   </section>
 
