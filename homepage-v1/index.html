@@ -18,8 +18,8 @@
     :root {
       --teal: #0B3030;
       --teal-90: rgba(11, 48, 48, 0.9);
-      --teal-60: rgba(11, 48, 48, 0.6);
-      --teal-30: rgba(11, 48, 48, 0.3);
+      --teal-60: rgba(11, 48, 48, 0.75);
+      --teal-30: rgba(11, 48, 48, 0.45);
       --teal-15: rgba(11, 48, 48, 0.15);
       --orange: #CD4A16;
       --orange-hover: #b5410f;
@@ -42,7 +42,7 @@
     body {
       font-family: var(--font-sans);
       font-weight: 400;
-      font-size: 17px;
+      font-size: 18px;
       line-height: 1.7;
       color: var(--teal);
       background: var(--white);
@@ -99,7 +99,7 @@
       gap: 28px;
     }
     .nav-links a {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       line-height: 1;
       color: var(--white);
@@ -146,7 +146,7 @@
     .nav-dropdown a {
       display: block;
       padding: 10px 24px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--teal) !important;
       opacity: 1 !important;
@@ -242,14 +242,14 @@
       padding: 0 48px;
       position: relative;
       z-index: 1;
-      min-height: 480px;
+      min-height: 600px;
       display: flex;
       align-items: center;
-      padding-top: 80px;
-      padding-bottom: 80px;
+      padding-top: 100px;
+      padding-bottom: 100px;
     }
     .hero-text {
-      max-width: 680px;
+      max-width: 820px;
     }
     .hero-text > * {
       opacity: 0;
@@ -266,7 +266,7 @@
     }
     .hero h1 {
       font-family: var(--font-heading);
-      font-size: clamp(36px, 4.2vw, 56px);
+      font-size: clamp(40px, 5vw, 68px);
       font-weight: 700;
       line-height: 1.12;
       letter-spacing: -0.02em;
@@ -293,11 +293,11 @@
       transition: opacity 0.4s ease;
     }
     .hero-sub {
-      font-size: 18px;
+      font-size: 20px;
       line-height: 1.65;
       color: rgba(255,255,255,0.7);
-      margin-top: 20px;
-      max-width: 520px;
+      margin-top: 24px;
+      max-width: 560px;
     }
     .hero-contact {
       display: flex;
@@ -359,16 +359,16 @@
        POSITIONING
        =========================================== */
     .positioning {
-      padding: 100px 48px;
+      padding: 120px 48px;
       text-align: center;
     }
     .positioning-inner {
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto;
     }
     .positioning h2 {
       font-family: var(--font-heading);
-      font-size: clamp(26px, 3vw, 36px);
+      font-size: clamp(28px, 3vw, 40px);
       font-weight: 600;
       line-height: 1.25;
       letter-spacing: -0.01em;
@@ -379,7 +379,7 @@
       height: 2px;
       background: var(--orange);
       border: none;
-      margin: 28px auto;
+      margin: 32px auto;
     }
     .positioning p {
       font-size: 18px;
@@ -392,16 +392,16 @@
        =========================================== */
     .practice-areas {
       background: var(--off-white);
-      padding: 100px 0;
+      padding: 120px 0;
     }
     .practice-areas h2 {
       font-family: var(--font-heading);
-      font-size: clamp(28px, 3.5vw, 40px);
+      font-size: clamp(30px, 3.5vw, 46px);
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.015em;
       color: var(--teal);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .practice-areas-rule {
       border: none;
@@ -414,7 +414,7 @@
       grid-template-columns: 1fr 1fr;
     }
     .practice-cell {
-      padding: 40px 48px;
+      padding: 48px 48px;
       transition: background 250ms ease;
     }
     .practice-cell:nth-child(odd) {
@@ -448,7 +448,7 @@
       transform: translateX(4px);
     }
     .practice-cell-desc {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.6;
       color: var(--teal-30);
       margin-top: 8px;
@@ -474,33 +474,33 @@
        TEAM
        =========================================== */
     .team {
-      padding: 100px 0;
+      padding: 120px 0;
     }
     .team h2 {
       font-family: var(--font-heading);
-      font-size: clamp(28px, 3.5vw, 40px);
+      font-size: clamp(30px, 3.5vw, 46px);
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.015em;
       color: var(--teal);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .team-rule {
       border: none;
       height: 1px;
       background: var(--teal-15);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .team-intro {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--teal-60);
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 56px;
     }
     .team-grid {
       display: flex;
       align-items: flex-start;
-      gap: 24px;
+      gap: 32px;
       justify-content: center;
     }
     .team-member {
@@ -534,19 +534,19 @@
       object-position: center 20%;
     }
     .team-member-name {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--teal);
       line-height: 1.3;
     }
     .team-member-title {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 400;
       color: var(--teal-60);
       margin-top: 2px;
     }
     .team-member-focus {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--teal-30);
       margin-top: 4px;
@@ -554,7 +554,7 @@
       line-height: 1.4;
     }
     .team-detail {
-      margin-top: 40px;
+      margin-top: 48px;
       min-height: 80px;
       text-align: center;
     }
@@ -564,7 +564,7 @@
       transition: opacity 200ms ease;
     }
     .team-detail-content p {
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.7;
       color: var(--teal-60);
     }
@@ -572,7 +572,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--orange);
       margin-top: 12px;
@@ -586,7 +586,7 @@
        =========================================== */
     .case-results {
       background: var(--teal);
-      padding: 100px 0;
+      padding: 120px 0;
     }
     .case-results-header {
       display: flex;
@@ -596,7 +596,7 @@
     }
     .case-results h2 {
       font-family: var(--font-heading);
-      font-size: clamp(28px, 3.5vw, 40px);
+      font-size: clamp(30px, 3.5vw, 46px);
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.015em;
@@ -613,7 +613,7 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
     .results-grid-cell {
-      padding: 36px 32px;
+      padding: 44px 40px;
     }
     /* Vertical lines: right border on columns 1 and 2 */
     .results-grid-cell:nth-child(3n+1),
@@ -636,7 +636,7 @@
       margin-bottom: 8px;
     }
     .result-category {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 400;
       color: rgba(255,255,255,0.5);
       line-height: 1.4;
@@ -645,7 +645,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--orange);
       transition: gap 200ms ease;
@@ -748,7 +748,7 @@
     }
     .testimonial-attr {
       margin-top: 28px;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -781,16 +781,16 @@
        INSIGHTS
        =========================================== */
     .insights {
-      padding: 100px 0;
+      padding: 120px 0;
     }
     .insights h2 {
       font-family: var(--font-heading);
-      font-size: clamp(28px, 3.5vw, 40px);
+      font-size: clamp(30px, 3.5vw, 46px);
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.015em;
       color: var(--teal);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .insights-rule {
       border: none;
@@ -802,13 +802,13 @@
       list-style: none;
     }
     .insight-row {
-      padding: 24px 0;
+      padding: 28px 0;
       border-bottom: 1px solid var(--teal-15);
       transition: padding-left 200ms ease;
     }
     .insight-row:hover { padding-left: 8px; }
     .insight-category {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -831,14 +831,14 @@
       margin-top: 6px;
     }
     .insight-date {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--teal-30);
     }
     .insight-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--orange);
       transition: gap 200ms ease;
@@ -861,10 +861,10 @@
       line-height: 1.15;
       letter-spacing: -0.015em;
       color: var(--teal);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .footer-cta-contact {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--teal-60);
       line-height: 1.7;
     }
@@ -880,7 +880,7 @@
     .footer-cta-contact a.cta-link:hover { color: var(--orange-hover); }
     .footer-cta-locations {
       margin-top: 24px;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--teal-30);
       letter-spacing: 0.02em;
     }
@@ -901,7 +901,7 @@
     }
     .footer-brand img { height: 30px; margin-bottom: 16px; }
     .footer-brand p {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.65;
       color: var(--teal-60);
       max-width: 360px;
@@ -911,7 +911,7 @@
       align-items: center;
       gap: 8px;
       margin-top: 12px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 500;
       color: var(--teal-60);
     }
@@ -927,7 +927,7 @@
       gap: 32px;
     }
     .footer-nav h4 {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -941,7 +941,7 @@
       gap: 10px;
     }
     .footer-nav a {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--teal-60);
       transition: color 200ms ease;
     }
@@ -956,7 +956,7 @@
       gap: 16px;
     }
     .footer-copyright {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--teal-30);
     }
     .footer-legal {
@@ -964,7 +964,7 @@
       gap: 20px;
     }
     .footer-legal a {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--teal-30);
       transition: color 200ms ease;
     }
@@ -1004,7 +1004,7 @@
       .nav { padding: 0 24px; }
 
       .hero-inner {
-        padding: 48px 24px;
+        padding: 96px 24px;
         min-height: 380px;
       }
       .hero { padding-bottom: 60px; }
@@ -1013,10 +1013,10 @@
       .awards-list { gap: 20px; }
       .award-logo { height: 32px; }
 
-      .positioning { padding: 64px 24px; }
+      .positioning { padding: 72px 24px; }
       .desktop-br { display: none; }
 
-      .practice-areas { padding: 64px 0; }
+      .practice-areas { padding: 72px 0; }
       .practice-areas .container { padding: 0 24px; }
       .practice-grid { grid-template-columns: 1fr; }
       .practice-cell:nth-child(odd) { border-right: none; }
@@ -1026,12 +1026,12 @@
 
       .image-break { height: 220px; }
 
-      .team { padding: 64px 0; }
+      .team { padding: 72px 0; }
       .team .container { padding: 0 24px; }
       .team-grid { flex-wrap: wrap; gap: 20px; }
-      .team-member-photo { width: 80px !important; height: 80px !important; }
+      .team-member-photo { width: 90px !important; height: 90px !important; }
 
-      .case-results { padding: 64px 0; }
+      .case-results { padding: 72px 0; }
       .case-results .container { padding: 0 24px; }
       .results-grid { grid-template-columns: 1fr; }
       .results-grid-cell:nth-child(3n+1),
@@ -1043,10 +1043,10 @@
       .testimonials { padding: 80px 0; }
       .testimonials-inner { padding: 0 24px; }
 
-      .insights { padding: 64px 0; }
+      .insights { padding: 72px 0; }
       .insights .container { padding: 0 24px; }
 
-      .footer-cta { padding: 64px 24px; }
+      .footer-cta { padding: 72px 24px; }
       .footer-cta-locations span { display: none; }
       .footer-cta-locations { line-height: 2; }
 
@@ -1510,7 +1510,10 @@
       }, 1400);
 
       // Start cycling practice areas
-      var cyclingWords = ['business', 'litigation', 'real estate', 'intellectual property', 'contracts', 'disputes'];
+      var isMobile = window.innerWidth <= 768;
+      var cyclingWords = isMobile
+        ? ['business', 'litigation', 'real estate', 'IP', 'contracts', 'disputes']
+        : ['business', 'litigation', 'real estate', 'intellectual property', 'contracts', 'disputes'];
       var cyclingIndex = 0;
 
       function cycleWord() {
