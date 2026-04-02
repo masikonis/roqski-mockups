@@ -117,45 +117,96 @@
     .nav-links .nav-contact:hover { color: var(--orange-hover); opacity: 1; }
     .nav.scrolled .nav-links .nav-contact { color: var(--orange); }
 
-    /* Nav dropdown */
+    /* Mega dropdown panels */
     .nav-dropdown-wrap {
-      position: relative;
+      position: static;
     }
-    .nav-dropdown {
+    .mega-panel {
       position: absolute;
       top: 100%;
-      left: -20px;
-      padding-top: 16px;
+      left: 0;
+      right: 0;
+      background: var(--teal);
+      overflow: hidden;
+      max-height: 0;
       opacity: 0;
-      visibility: hidden;
-      transform: translateY(-6px);
-      transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+      transition: max-height 0.4s var(--ease-out), opacity 0.3s ease;
+      z-index: 99;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
-    .nav-dropdown-wrap:hover .nav-dropdown {
+    .nav-dropdown-wrap:hover .mega-panel {
+      max-height: 400px;
       opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
     }
-    .nav-dropdown-inner {
-      background: var(--white);
-      min-width: 260px;
-      padding: 8px 0;
-      border-top: 2px solid var(--orange);
-      box-shadow: 0 8px 32px rgba(11, 48, 48, 0.12);
-    }
-    .nav-dropdown a {
-      display: block;
-      padding: 10px 24px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--teal) !important;
+    .nav-dropdown-wrap:hover > a {
       opacity: 1 !important;
-      line-height: 1.4;
-      transition: color 200ms ease, padding-left 200ms ease;
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 2px;
     }
-    .nav-dropdown a:hover {
+    .mega-panel-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .mega-panel-left { max-width: 520px; }
+    .mega-panel-right { flex-shrink: 0; }
+    .mega-panel-heading {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+    .mega-panel-text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+    }
+    .mega-panel-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mega-panel-links a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--white) !important;
+      opacity: 1 !important;
+      transition: color 200ms ease;
+    }
+    .mega-panel-links a:hover {
       color: var(--orange) !important;
-      padding-left: 28px;
+    }
+    .mega-panel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px 48px;
+      width: 100%;
+    }
+    .mega-panel-grid a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--white) !important;
+      opacity: 1 !important;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 200ms ease;
+    }
+    .mega-panel-grid a:hover { color: var(--orange) !important; }
+    .mega-panel-grid a::before {
+      content: '+';
+      color: var(--orange);
+      font-weight: 600;
+      font-size: 14px;
     }
     .nav.scrolled .nav-links .nav-contact:hover { color: var(--orange-hover); }
     .nav-hamburger {
@@ -179,9 +230,10 @@
       z-index: 200;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       gap: 24px;
+      padding: 100px 24px 48px;
+      overflow-y: auto;
       opacity: 0;
       pointer-events: none;
       transition: opacity 300ms ease;
@@ -202,6 +254,49 @@
       border: none;
     }
     .mobile-nav-close svg { width: 28px; height: 28px; color: var(--teal); }
+    .mobile-nav-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .mobile-nav-toggle {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--teal);
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 200ms ease;
+    }
+    .mobile-nav-toggle:hover { color: var(--orange); }
+    .mobile-nav-toggle .toggle-icon {
+      font-size: 14px;
+      color: var(--orange);
+      transition: transform 200ms ease;
+    }
+    .mobile-nav-group.open .toggle-icon {
+      transform: rotate(45deg);
+    }
+    .mobile-nav-sub {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .mobile-nav-group.open .mobile-nav-sub {
+      display: flex;
+    }
+    .mobile-nav-sub a {
+      font-size: 16px !important;
+      font-weight: 400 !important;
+      color: var(--teal-60) !important;
+    }
+    .mobile-nav-sub a:hover {
+      color: var(--orange) !important;
+    }
     .mobile-nav-contact {
       font-size: 16px;
       font-weight: 600;
@@ -266,7 +361,7 @@
     }
     .hero h1 {
       font-family: var(--font-heading);
-      font-size: clamp(40px, 5vw, 68px);
+      font-size: clamp(40px, 5.5vw, 76px);
       font-weight: 700;
       line-height: 1.12;
       letter-spacing: -0.02em;
@@ -331,28 +426,57 @@
     .awards-inner {
       max-width: var(--content-width);
       margin: 0 auto;
-      padding: 36px 48px;
+      padding: 36px 0;
       background: var(--off-white);
-      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .awards-inner::before,
+    .awards-inner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 48px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .awards-inner::before {
+      left: 0;
+      background: linear-gradient(to right, var(--off-white), transparent);
+    }
+    .awards-inner::after {
+      right: 0;
+      background: linear-gradient(to left, var(--off-white), transparent);
+    }
+    .awards-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .awards-track:hover {
+      animation-play-state: paused;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
     .awards-list {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 40px;
+      gap: 48px;
       list-style: none;
-      flex-wrap: wrap;
+      flex-shrink: 0;
+      padding: 0 24px;
     }
     .award-logo {
-      height: 40px;
+      height: 50px;
       width: auto;
-      filter: grayscale(1);
-      opacity: 0.45;
-      transition: opacity 200ms ease, filter 200ms ease;
+      opacity: 0.8;
+      transition: opacity 200ms ease;
     }
     .award-logo:hover {
-      opacity: 0.8;
-      filter: grayscale(0);
+      opacity: 1;
     }
 
     /* ===========================================
@@ -516,15 +640,14 @@
       opacity: 0.55;
     }
     .team-member-photo {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       overflow: hidden;
       margin-bottom: 12px;
       transition: transform 200ms ease, box-shadow 200ms ease;
     }
-.team-member.active .team-member-photo {
-      transform: scale(1.05);
+    .team-member.active .team-member-photo {
       box-shadow: 0 0 0 3px var(--orange);
     }
     .team-member-photo img {
@@ -532,6 +655,10 @@
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
+      transition: transform 0.5s var(--ease-out);
+    }
+    .team-member:hover .team-member-photo img {
+      transform: scale(1.15);
     }
     .team-member-name {
       font-size: 15px;
@@ -555,7 +682,7 @@
     }
     .team-detail {
       margin-top: 48px;
-      min-height: 80px;
+      min-height: 100px;
       text-align: center;
     }
     .team-detail-content {
@@ -586,7 +713,7 @@
        =========================================== */
     .case-results {
       background: var(--teal);
-      padding: 120px 0;
+      padding: 120px 0 100px;
     }
     .case-results-header {
       display: flex;
@@ -614,6 +741,8 @@
     }
     .results-grid-cell {
       padding: 44px 40px;
+      display: flex;
+      flex-direction: column;
     }
     /* Vertical lines: right border on columns 1 and 2 */
     .results-grid-cell:nth-child(3n+1),
@@ -628,18 +757,36 @@
     .results-grid-cell:last-child:nth-child(3n+1) {
       grid-column: 2;
     }
+    .result-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 12px;
+    }
     .result-outcome {
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 700;
-      color: var(--orange);
-      line-height: 1.2;
-      margin-bottom: 8px;
+      font-family: var(--font-heading);
+      font-size: clamp(17px, 1.8vw, 20px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 10px;
     }
     .result-category {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
       color: rgba(255,255,255,0.5);
       line-height: 1.4;
+      margin-top: auto;
+    }
+    .result-category a {
+      color: var(--orange);
+      font-weight: 600;
+      transition: color 200ms ease;
+    }
+    .result-category a:hover {
+      color: var(--orange-hover);
     }
     .results-link {
       display: inline-flex;
@@ -715,13 +862,13 @@
     }
     .testimonial-carousel {
       position: relative;
-      min-height: 200px;
+      min-height: 280px;
     }
     .testimonial-slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.8s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -729,7 +876,6 @@
     }
     .testimonial-slide.active {
       opacity: 1;
-      position: relative;
     }
     .testimonial-mark {
       font-family: var(--font-serif);
@@ -824,6 +970,28 @@
       display: block;
     }
     .insight-row:hover .insight-title { color: var(--orange); }
+    .insight-excerpt {
+      display: none;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--teal-60);
+      margin-top: 8px;
+      max-width: 640px;
+    }
+    .insight-row:first-child {
+      padding: 32px 0;
+      border-bottom-width: 2px;
+      border-bottom-color: var(--teal-30);
+    }
+    .insight-row:first-child .insight-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      font-family: var(--font-heading);
+    }
+    .insight-row:first-child .insight-excerpt {
+      display: block;
+    }
     .insight-meta {
       display: flex;
       align-items: center;
@@ -997,6 +1165,7 @@
       .nav-links { display: none; }
       .nav-contact { display: none; }
       .nav-hamburger { display: block; }
+      .mega-panel { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -1008,10 +1177,12 @@
         min-height: 380px;
       }
       .hero { padding-bottom: 60px; }
+      .hero h1 { font-size: clamp(28px, 8vw, 40px); }
       .awards { margin-top: -40px; }
-      .awards-inner { padding: 28px 24px; }
-      .awards-list { gap: 20px; }
-      .award-logo { height: 32px; }
+      .awards-inner { padding: 28px 0; }
+      .awards-list { gap: 32px; }
+      .award-logo { height: 40px; }
+      .awards-track { animation-duration: 20s; }
 
       .positioning { padding: 72px 24px; }
       .desktop-br { display: none; }
@@ -1029,10 +1200,12 @@
       .team { padding: 72px 0; }
       .team .container { padding: 0 24px; }
       .team-grid { flex-wrap: wrap; gap: 20px; }
-      .team-member-photo { width: 90px !important; height: 90px !important; }
+      .team-member { flex-shrink: 1; }
+      .team-member-photo { width: 88px !important; height: 88px !important; }
 
       .case-results { padding: 72px 0; }
       .case-results .container { padding: 0 24px; }
+      .case-results-header { flex-direction: column; gap: 12px; }
       .results-grid { grid-template-columns: 1fr; }
       .results-grid-cell:nth-child(3n+1),
       .results-grid-cell:nth-child(3n+2) { border-right: none; }
@@ -1042,6 +1215,7 @@
 
       .testimonials { padding: 80px 0; }
       .testimonials-inner { padding: 0 24px; }
+      .testimonial-carousel { min-height: 320px; }
 
       .insights { padding: 72px 0; }
       .insights .container { padding: 0 24px; }
@@ -1053,6 +1227,7 @@
       .site-footer .container { padding: 0 24px; }
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-legal { flex-wrap: wrap; gap: 12px; }
     }
   </style>
 </head>
@@ -1066,22 +1241,55 @@
     </a>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#">About</a></li>
+        <li class="nav-dropdown-wrap">
+          <a href="#">About</a>
+          <div class="mega-panel">
+            <div class="mega-panel-inner">
+              <div class="mega-panel-left">
+                <div class="mega-panel-heading">About the Firm</div>
+                <p class="mega-panel-text">Roquemore Skierski represents businesses, entrepreneurs, and executives in high-stakes commercial litigation across Texas. A dedicated legal team on every matter, from initial strategy through trial.</p>
+              </div>
+              <div class="mega-panel-right">
+                <ul class="mega-panel-links">
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Careers</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
         <li class="nav-dropdown-wrap">
           <a href="#">Practice Areas</a>
-          <div class="nav-dropdown">
-            <div class="nav-dropdown-inner">
-              <a href="#">Litigation</a>
-              <a href="#">Business Law</a>
-              <a href="#">Real Estate</a>
-              <a href="#">Intellectual Property</a>
-              <a href="#">Business Transactions</a>
-              <a href="#">Fraud &amp; Misrepresentation</a>
+          <div class="mega-panel">
+            <div class="mega-panel-inner">
+              <div class="mega-panel-left">
+                <div class="mega-panel-heading">Core Practice Areas</div>
+                <div class="mega-panel-grid">
+                  <a href="#">Litigation</a>
+                  <a href="#">Business Law</a>
+                  <a href="#">Real Estate</a>
+                  <a href="#">Intellectual Property</a>
+                  <a href="#">Business Transactions</a>
+                  <a href="#">Fraud &amp; Misrepresentation</a>
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li><a href="#">Case Results</a></li>
-        <li><a href="#">Locations</a></li>
+        <li class="nav-dropdown-wrap">
+          <a href="#">Locations</a>
+          <div class="mega-panel">
+            <div class="mega-panel-inner">
+              <div class="mega-panel-left">
+                <div class="mega-panel-heading">Service Areas</div>
+                <p class="mega-panel-text">Primary offices in McKinney, Fort Worth, Mansfield, and Dallas, with attorneys in Houston, Austin, and San Antonio. Experienced legal counsel across the state of Texas.</p>
+              </div>
+            </div>
+          </div>
+        </li>
         <li><a href="#">Resources</a></li>
         <li><a href="#contact" class="nav-contact">Contact</a></li>
       </ul>
@@ -1096,8 +1304,26 @@
     <button class="mobile-nav-close" id="nav-close" aria-label="Close menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
     </button>
-    <a href="#">About</a>
-    <a href="#">Practice Areas</a>
+    <div class="mobile-nav-group">
+      <button class="mobile-nav-toggle">About <span class="toggle-icon">+</span></button>
+      <div class="mobile-nav-sub">
+        <a href="#">About the Firm</a>
+        <a href="#">Our Team</a>
+        <a href="#">News</a>
+        <a href="#">Careers</a>
+      </div>
+    </div>
+    <div class="mobile-nav-group">
+      <button class="mobile-nav-toggle">Practice Areas <span class="toggle-icon">+</span></button>
+      <div class="mobile-nav-sub">
+        <a href="#">Litigation</a>
+        <a href="#">Business Law</a>
+        <a href="#">Real Estate</a>
+        <a href="#">Intellectual Property</a>
+        <a href="#">Business Transactions</a>
+        <a href="#">Fraud &amp; Misrepresentation</a>
+      </div>
+    </div>
     <a href="#">Case Results</a>
     <a href="#">Locations</a>
     <a href="#">Resources</a>
@@ -1120,14 +1346,24 @@
   <!-- Awards -->
   <section class="awards reveal">
     <div class="awards-inner">
-      <ul class="awards-list">
-        <li><img class="award-logo" src="images/awards/superlawyers.png" alt="Super Lawyers Rising Stars"></li>
-        <li><img class="award-logo" src="images/awards/av-rated.jpg" alt="AV Rated - Martindale-Hubbell"></li>
-        <li><img class="award-logo" src="images/awards/aba.png" alt="American Bar Association"></li>
-        <li><img class="award-logo" src="images/awards/state-bar-tx.jpg" alt="State Bar of Texas"></li>
-        <li><img class="award-logo" src="images/awards/dallas-bar.webp" alt="Dallas Bar Association"></li>
-        <li><img class="award-logo" src="images/awards/tx-bar-college.webp" alt="Texas Bar College"></li>
-      </ul>
+      <div class="awards-track">
+        <ul class="awards-list">
+          <li><img class="award-logo" src="images/awards/superlawyers.png" alt="Super Lawyers Rising Stars"></li>
+          <li><img class="award-logo" src="images/awards/av-rated.jpg" alt="AV Rated - Martindale-Hubbell"></li>
+          <li><img class="award-logo" src="images/awards/aba.png" alt="American Bar Association"></li>
+          <li><img class="award-logo" src="images/awards/state-bar-tx.jpg" alt="State Bar of Texas"></li>
+          <li><img class="award-logo" src="images/awards/dallas-bar.webp" alt="Dallas Bar Association"></li>
+          <li><img class="award-logo" src="images/awards/tx-bar-college.webp" alt="Texas Bar College"></li>
+        </ul>
+        <ul class="awards-list" aria-hidden="true">
+          <li><img class="award-logo" src="images/awards/superlawyers.png" alt=""></li>
+          <li><img class="award-logo" src="images/awards/av-rated.jpg" alt=""></li>
+          <li><img class="award-logo" src="images/awards/aba.png" alt=""></li>
+          <li><img class="award-logo" src="images/awards/state-bar-tx.jpg" alt=""></li>
+          <li><img class="award-logo" src="images/awards/dallas-bar.webp" alt=""></li>
+          <li><img class="award-logo" src="images/awards/tx-bar-college.webp" alt=""></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -1270,28 +1506,34 @@
       <hr class="case-results-rule reveal" data-delay="1">
       <div class="results-grid">
         <div class="results-grid-cell reveal" data-delay="1">
-          <div class="result-outcome">$682,000</div>
-          <div class="result-category">Mergers &amp; Acquisitions</div>
+          <div class="result-label">M&amp;A Default</div>
+          <div class="result-outcome">Enforced promissory note after buyer defaulted on medical practice acquisition. Recovered full damages under the transaction documents.</div>
+          <div class="result-category"><a href="#">Business Transactions</a></div>
         </div>
         <div class="results-grid-cell reveal" data-delay="2">
-          <div class="result-outcome">$450,000</div>
-          <div class="result-category">Business Sale</div>
+          <div class="result-label">Partner Fraud</div>
+          <div class="result-outcome">Recovered misused funds after partners excluded client from ownership and charged personal expenses to his account.</div>
+          <div class="result-category"><a href="#">Fraud &amp; Misrepresentation</a></div>
         </div>
         <div class="results-grid-cell reveal" data-delay="3">
-          <div class="result-outcome">$250,000+</div>
-          <div class="result-category">Construction Litigation</div>
+          <div class="result-label">Construction Dispute</div>
+          <div class="result-outcome">Pursued TROs and expedited discovery against custom homebuilder who took deposits but failed to complete construction on time.</div>
+          <div class="result-category"><a href="#">Litigation</a></div>
         </div>
         <div class="results-grid-cell reveal" data-delay="3">
-          <div class="result-outcome">$200,000</div>
-          <div class="result-category">Breach of Contract</div>
+          <div class="result-label">Breach of Fiduciary Duty</div>
+          <div class="result-outcome">Secured judgment against investment advisor for principal, promised returns, and fees after advisor ceased all client communication.</div>
+          <div class="result-category"><a href="#">Litigation</a></div>
         </div>
         <div class="results-grid-cell reveal" data-delay="4">
-          <div class="result-outcome">Full Recovery</div>
-          <div class="result-category">Partnership Dispute</div>
+          <div class="result-label">Lease Termination</div>
+          <div class="result-outcome">Defended commercial tenant after new landlord fabricated lease termination and destroyed the client's business. Pursued full breach of contract damages.</div>
+          <div class="result-category"><a href="#">Real Estate</a></div>
         </div>
         <div class="results-grid-cell reveal" data-delay="5">
-          <div class="result-outcome">TRO Dissolved</div>
-          <div class="result-category">Creditor Defense</div>
+          <div class="result-label">Foreclosure Defense</div>
+          <div class="result-outcome">Dissolved wrongful foreclosure TRO on first response for commercial lender who purchased a defaulted note and deed of trust.</div>
+          <div class="result-category"><a href="#">Real Estate</a></div>
         </div>
       </div>
     </div>
@@ -1304,34 +1546,35 @@
       <hr class="insights-rule reveal" data-delay="1">
       <ul class="insights-list">
         <li class="insight-row reveal" data-delay="1">
-          <div class="insight-category">Business Litigation</div>
-          <a href="#" class="insight-title">Understanding Breach of Fiduciary Duty Claims in Texas Business Partnerships</a>
-          <div class="insight-meta">
-            <span class="insight-date">March 2026</span>
-            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
-          </div>
-        </li>
-        <li class="insight-row reveal" data-delay="2">
-          <div class="insight-category">Contract Disputes</div>
-          <a href="#" class="insight-title">When a Business Partner Breaches Their Contract: Steps to Protect Your Interests</a>
+          <div class="insight-category">Real Estate</div>
+          <a href="#" class="insight-title">The Top 5 Real Estate Litigation Law Firms in Dallas Fort Worth</a>
+          <p class="insight-excerpt">Choosing the right real estate litigation law firm can affect the outcome of your dispute. Here's what to look for and who stands out in the DFW market.</p>
           <div class="insight-meta">
             <span class="insight-date">February 2026</span>
             <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
           </div>
         </li>
-        <li class="insight-row reveal" data-delay="3">
-          <div class="insight-category">Real Estate</div>
-          <a href="#" class="insight-title">Commercial Lease Disputes in North Texas: What Landlords and Tenants Should Know</a>
+        <li class="insight-row reveal" data-delay="2">
+          <div class="insight-category">Contract Law</div>
+          <a href="#" class="insight-title">An Oral Contract Is Generally Worth the Paper It Is Printed On</a>
           <div class="insight-meta">
-            <span class="insight-date">January 2026</span>
+            <span class="insight-date">December 2025</span>
+            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="3">
+          <div class="insight-category">Arbitration</div>
+          <a href="#" class="insight-title">Understanding Arbitration and When to Involve a Lawyer</a>
+          <div class="insight-meta">
+            <span class="insight-date">October 2025</span>
             <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
           </div>
         </li>
         <li class="insight-row reveal" data-delay="4">
           <div class="insight-category">Injunctions</div>
-          <a href="#" class="insight-title">Emergency Relief in Texas Courts: When and How to Seek a TRO</a>
+          <a href="#" class="insight-title">What Is a Temporary Restraining Order and How It Can Protect Your Company</a>
           <div class="insight-meta">
-            <span class="insight-date">December 2025</span>
+            <span class="insight-date">August 2025</span>
             <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
           </div>
         </li>
@@ -1466,6 +1709,18 @@
         link.addEventListener('click', function() {
           mobileNav.classList.remove('open');
           document.body.style.overflow = '';
+        });
+      });
+
+      // Mobile nav accordion
+      document.querySelectorAll('.mobile-nav-toggle').forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          var group = toggle.parentElement;
+          // Close others
+          document.querySelectorAll('.mobile-nav-group.open').forEach(function(g) {
+            if (g !== group) g.classList.remove('open');
+          });
+          group.classList.toggle('open');
         });
       });
 
