@@ -130,23 +130,27 @@
       overflow: hidden;
       max-height: 0;
       opacity: 0;
-      transition: max-height 0.4s var(--ease-out) 0.15s, opacity 0.3s ease 0.15s;
+      visibility: hidden;
+      pointer-events: none;
+      transition: max-height 0.35s var(--ease-out), opacity 0.25s ease;
       z-index: 99;
       border-top: 1px solid rgba(255,255,255,0.1);
       border-bottom: 2px solid var(--orange);
     }
-    .nav-dropdown-wrap:hover .mega-panel {
+    .mega-panel.open {
       max-height: 400px;
       opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
       box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-      transition-delay: 0s, 0s;
     }
     /* Reserve border space always to prevent layout shift */
     .nav-dropdown-wrap > a {
+      display: block;
+      padding: 14px 0 10px;
       border-bottom: 2px solid transparent;
-      padding-bottom: 2px;
     }
-    .nav-dropdown-wrap:hover > a {
+    .nav-dropdown-wrap.panel-active > a {
       opacity: 1 !important;
       border-bottom-color: var(--orange);
     }
@@ -1726,6 +1730,142 @@
       window.addEventListener('scroll', function() {
         nav.classList.toggle('scrolled', window.scrollY > 40);
       }, { passive: true });
+
+      // Mega panel hover (JS-managed with intent-aware switching)
+      var dropdownWraps = Array.prototype.slice.call(document.querySelectorAll('.nav-dropdown-wrap'));
+      var panelCloseTimer = null;
+      var panelSwitchTimer = null;
+      var pendingWrap = null;
+      var activeWrap = null;
+      var activePanel = null;
+      var mouseTrail = [];
+      var PANEL_CLOSE_DELAY = 180;
+      var PANEL_SWITCH_DELAY = 110;
+
+      document.addEventListener('mousemove', function(event) {
+        mouseTrail.push({ x: event.clientX, y: event.clientY });
+        if (mouseTrail.length > 6) mouseTrail.shift();
+      }, { passive: true });
+
+      function clearCloseTimer() {
+        clearTimeout(panelCloseTimer);
+        panelCloseTimer = null;
+      }
+
+      function clearSwitchTimer() {
+        clearTimeout(panelSwitchTimer);
+        panelSwitchTimer = null;
+        pendingWrap = null;
+      }
+
+      function closeActivePanel() {
+        clearCloseTimer();
+        clearSwitchTimer();
+        if (!activeWrap || !activePanel) return;
+        activePanel.classList.remove('open');
+        activeWrap.classList.remove('panel-active');
+        activeWrap = null;
+        activePanel = null;
+      }
+
+      function openPanelForWrap(wrap) {
+        var panel = wrap.querySelector('.mega-panel');
+        if (!panel) return;
+        clearCloseTimer();
+        clearSwitchTimer();
+        if (activeWrap === wrap) return;
+        if (activePanel && activePanel !== panel) {
+          activePanel.classList.remove('open');
+        }
+        if (activeWrap && activeWrap !== wrap) {
+          activeWrap.classList.remove('panel-active');
+        }
+        panel.classList.add('open');
+        wrap.classList.add('panel-active');
+        activeWrap = wrap;
+        activePanel = panel;
+      }
+
+      function pointerIsInside(rect, point) {
+        return point &&
+          point.x >= rect.left &&
+          point.x <= rect.right &&
+          point.y >= rect.top &&
+          point.y <= rect.bottom;
+      }
+
+      function pointerIsInsideActiveRegion() {
+        var point = mouseTrail[mouseTrail.length - 1];
+        if (!point || !activeWrap || !activePanel) return false;
+        return pointerIsInside(activeWrap.getBoundingClientRect(), point) ||
+          pointerIsInside(activePanel.getBoundingClientRect(), point);
+      }
+
+      function scheduleActiveClose() {
+        clearCloseTimer();
+        if (!activePanel) return;
+        panelCloseTimer = setTimeout(function() {
+          if (!pointerIsInsideActiveRegion()) {
+            closeActivePanel();
+          }
+        }, PANEL_CLOSE_DELAY);
+      }
+
+      function isMovingTowardActivePanel() {
+        if (!activePanel || mouseTrail.length < 2) return false;
+        var previousPoint = mouseTrail[mouseTrail.length - 2];
+        var currentPoint = mouseTrail[mouseTrail.length - 1];
+        var panelRect = activePanel.getBoundingClientRect();
+        var deltaY = currentPoint.y - previousPoint.y;
+        var deltaX = Math.abs(currentPoint.x - previousPoint.x);
+        return currentPoint.y < panelRect.top + 24 &&
+          deltaY > 2 &&
+          deltaY > deltaX * 0.35;
+      }
+
+      function queuePanelSwitch(wrap) {
+        clearSwitchTimer();
+        pendingWrap = wrap;
+        panelSwitchTimer = setTimeout(function() {
+          if (pendingWrap === wrap) {
+            openPanelForWrap(wrap);
+          }
+        }, PANEL_SWITCH_DELAY);
+      }
+
+      dropdownWraps.forEach(function(wrap) {
+        var panel = wrap.querySelector('.mega-panel');
+        if (!panel) return;
+
+        wrap.addEventListener('mouseenter', function() {
+          clearCloseTimer();
+          if (activeWrap && activeWrap !== wrap && isMovingTowardActivePanel()) {
+            queuePanelSwitch(wrap);
+            return;
+          }
+          openPanelForWrap(wrap);
+        });
+
+        wrap.addEventListener('mouseleave', function() {
+          if (pendingWrap === wrap) {
+            clearSwitchTimer();
+          }
+          if (activeWrap === wrap) {
+            scheduleActiveClose();
+          }
+        });
+
+        panel.addEventListener('mouseenter', function() {
+          clearCloseTimer();
+          clearSwitchTimer();
+        });
+
+        panel.addEventListener('mouseleave', function() {
+          if (activePanel === panel) {
+            scheduleActiveClose();
+          }
+        });
+      });
 
       // Mobile nav
       var mobileNav = document.getElementById('mobile-nav');
