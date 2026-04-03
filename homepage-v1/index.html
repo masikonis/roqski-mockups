@@ -126,69 +126,75 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: var(--teal);
+      background: linear-gradient(to bottom, #092828, #0d3535);
       overflow: hidden;
       max-height: 0;
       opacity: 0;
-      transition: max-height 0.4s var(--ease-out), opacity 0.3s ease;
+      transition: max-height 0.4s var(--ease-out) 0.15s, opacity 0.3s ease 0.15s;
       z-index: 99;
       border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 2px solid var(--orange);
     }
     .nav-dropdown-wrap:hover .mega-panel {
       max-height: 400px;
       opacity: 1;
       box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      transition-delay: 0s, 0s;
+    }
+    /* Reserve border space always to prevent layout shift */
+    .nav-dropdown-wrap > a {
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
     }
     .nav-dropdown-wrap:hover > a {
       opacity: 1 !important;
-      border-bottom: 2px solid var(--orange);
-      padding-bottom: 2px;
+      border-bottom-color: var(--orange);
     }
     .mega-panel-inner {
       max-width: var(--content-width);
       margin: 0 auto;
-      padding: 40px 48px;
+      padding: 44px 48px;
       display: flex;
       justify-content: space-between;
       gap: 48px;
     }
     .mega-panel-left { max-width: 520px; }
-    .mega-panel-right { flex-shrink: 0; }
+    .mega-panel-right {
+      flex-shrink: 0;
+    }
     .mega-panel-heading {
       font-family: var(--font-heading);
-      font-size: 13px;
+      font-size: 20px;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.85);
       margin-bottom: 16px;
     }
     .mega-panel-text {
       font-size: 15px;
       line-height: 1.65;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.55);
       max-width: 480px;
     }
     .mega-panel-links {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
     .mega-panel-links a {
       font-size: 16px;
       font-weight: 500;
       color: var(--white) !important;
       opacity: 1 !important;
-      transition: color 200ms ease;
+      transition: color 200ms ease, padding-left 200ms ease;
     }
     .mega-panel-links a:hover {
       color: var(--orange) !important;
+      padding-left: 4px;
     }
     .mega-panel-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 14px 48px;
       width: 100%;
     }
     .mega-panel-grid a {
@@ -199,9 +205,25 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: color 200ms ease;
+      padding: 12px 16px;
+      transition: color 200ms ease, background 200ms ease;
     }
-    .mega-panel-grid a:hover { color: var(--orange) !important; }
+    .mega-panel-grid a:hover {
+      color: var(--orange) !important;
+      background: rgba(255,255,255,0.04);
+    }
+    /* Hash grid dividers */
+    .mega-panel-grid a:nth-child(1),
+    .mega-panel-grid a:nth-child(2),
+    .mega-panel-grid a:nth-child(4),
+    .mega-panel-grid a:nth-child(5) {
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .mega-panel-grid a:nth-child(1),
+    .mega-panel-grid a:nth-child(2),
+    .mega-panel-grid a:nth-child(3) {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
     .mega-panel-grid a::before {
       content: '+';
       color: var(--orange);
@@ -1236,8 +1258,8 @@
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <a href="#" class="nav-logo">
-      <img class="logo-white" src="images/serif_logo_white.svg" alt="Roquemore Skierski PLLC">
-      <img class="logo-color" src="images/serif_logo.svg" alt="Roquemore Skierski PLLC">
+      <img class="logo-white" src="images/logo-white.svg" alt="Roquemore Skierski PLLC">
+      <img class="logo-color" src="images/logo.svg" alt="Roquemore Skierski PLLC">
     </a>
     <div class="nav-right">
       <ul class="nav-links">
@@ -1349,28 +1371,28 @@
       <div class="awards-track">
         <ul class="awards-list">
           <li><img class="award-logo" src="images/awards/superlawyers.png" alt="Super Lawyers Rising Stars"></li>
-          <li><img class="award-logo" src="images/awards/av-rated.jpg" alt="AV Rated - Martindale-Hubbell"></li>
+          <li><img class="award-logo" src="images/awards/av-rated.png" alt="AV Rated - Martindale-Hubbell"></li>
           <li><img class="award-logo" src="images/awards/aba.png" alt="American Bar Association"></li>
-          <li><img class="award-logo" src="images/awards/state-bar-tx.jpg" alt="State Bar of Texas"></li>
-          <li><img class="award-logo" src="images/awards/dallas-bar.webp" alt="Dallas Bar Association"></li>
-          <li><img class="award-logo" src="images/awards/tx-bar-college.webp" alt="Texas Bar College"></li>
+          <li><img class="award-logo" src="images/awards/state-bar-tx.png" alt="State Bar of Texas"></li>
+          <li><img class="award-logo" src="images/awards/dallas-bar.png" alt="Dallas Bar Association"></li>
+          <li><img class="award-logo" src="images/awards/tx-bar-college.png" alt="Texas Bar College"></li>
           <li><img class="award-logo" src="images/awards/metrocrest.png" alt="Metrocrest Area Chamber"></li>
-          <li><img class="award-logo" src="images/awards/litigation-section-sbt.webp" alt="Litigation Section - State Bar of Texas"></li>
-          <li><img class="award-logo" src="images/awards/rotary.webp" alt="Rotary"></li>
-          <li><img class="award-logo" src="images/awards/tarrant-county-bar.webp" alt="Tarrant County Bar"></li>
+          <li><img class="award-logo" src="images/awards/litigation-section-sbt.png" alt="Litigation Section - State Bar of Texas"></li>
+          <li><img class="award-logo" src="images/awards/rotary.png" alt="Rotary"></li>
+          <li><img class="award-logo" src="images/awards/tarrant-county-bar.png" alt="Tarrant County Bar"></li>
           <li><img class="award-logo" src="images/awards/dallas-bar-100.png" alt="Dallas Bar Association 100 Club"></li>
         </ul>
         <ul class="awards-list" aria-hidden="true">
           <li><img class="award-logo" src="images/awards/superlawyers.png" alt=""></li>
-          <li><img class="award-logo" src="images/awards/av-rated.jpg" alt=""></li>
+          <li><img class="award-logo" src="images/awards/av-rated.png" alt=""></li>
           <li><img class="award-logo" src="images/awards/aba.png" alt=""></li>
-          <li><img class="award-logo" src="images/awards/state-bar-tx.jpg" alt=""></li>
-          <li><img class="award-logo" src="images/awards/dallas-bar.webp" alt=""></li>
-          <li><img class="award-logo" src="images/awards/tx-bar-college.webp" alt=""></li>
+          <li><img class="award-logo" src="images/awards/state-bar-tx.png" alt=""></li>
+          <li><img class="award-logo" src="images/awards/dallas-bar.png" alt=""></li>
+          <li><img class="award-logo" src="images/awards/tx-bar-college.png" alt=""></li>
           <li><img class="award-logo" src="images/awards/metrocrest.png" alt=""></li>
-          <li><img class="award-logo" src="images/awards/litigation-section-sbt.webp" alt=""></li>
-          <li><img class="award-logo" src="images/awards/rotary.webp" alt=""></li>
-          <li><img class="award-logo" src="images/awards/tarrant-county-bar.webp" alt=""></li>
+          <li><img class="award-logo" src="images/awards/litigation-section-sbt.png" alt=""></li>
+          <li><img class="award-logo" src="images/awards/rotary.png" alt=""></li>
+          <li><img class="award-logo" src="images/awards/tarrant-county-bar.png" alt=""></li>
           <li><img class="award-logo" src="images/awards/dallas-bar-100.png" alt=""></li>
         </ul>
       </div>
@@ -1482,17 +1504,17 @@
         </div>
         <div class="team-member" data-index="4">
           <div class="team-member-photo">
-            <img src="images/aj.jpg" alt="Attorney">
+            <img src="images/aj.jpg" alt="Allison Jacobsen">
           </div>
-          <span class="team-member-name">Attorney</span>
-          <span class="team-member-title">Litigation</span>
+          <span class="team-member-name">Allison Jacobsen</span>
+          <span class="team-member-title">Attorney</span>
         </div>
         <div class="team-member" data-index="5">
           <div class="team-member-photo">
-            <img src="images/gh.jpg" alt="Attorney">
+            <img src="images/gh.jpg" alt="Gloria Hernandez">
           </div>
-          <span class="team-member-name">Attorney</span>
-          <span class="team-member-title">Litigation</span>
+          <span class="team-member-name">Gloria Hernandez</span>
+          <span class="team-member-title">Paralegal</span>
         </div>
       </div>
       <div class="team-detail" id="team-detail">
@@ -1640,7 +1662,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="images/serif_logo.svg" alt="Roquemore Skierski PLLC">
+          <img src="images/logo.svg" alt="Roquemore Skierski PLLC">
           <p>A Dallas-Fort Worth business litigation firm representing companies, entrepreneurs, and executives in commercial disputes across Texas.</p>
           <div class="footer-available">
             <span class="footer-available-dot"></span>
@@ -1691,8 +1713,8 @@
         "Doug co-founded the firm and focuses on business disputes, transactional litigation, and M&A-related claims. He handles matters from initial demand through trial, including injunctions and emergency relief in North Texas courts.",
         "Alex handles real estate disputes, construction litigation, and commercial property matters. His practice spans lease disputes, construction defect claims, and real estate transactional work across the DFW metroplex.",
         "Jennifer focuses on commercial litigation, including contract disputes, fraud claims, and fiduciary duty matters. She works closely with clients on case strategy and represents businesses in state and federal courts.",
-        "A key member of the litigation team, supporting the firm\u2019s commercial and real estate practice across multiple Texas jurisdictions.",
-        "Supports the firm\u2019s commercial litigation practice with a focus on client communication, case management, and legal research."
+        "Allison brings over 32 years of legal experience to the firm. She supports the commercial and real estate practice across multiple Texas jurisdictions.",
+        "Gloria supports the firm\u2019s commercial litigation practice with a focus on client communication, case management, and legal research."
       ];
 
       var defaultTeamText = "Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.";
