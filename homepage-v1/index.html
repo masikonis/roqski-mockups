@@ -538,6 +538,66 @@
     }
 
     /* ===========================================
+       PROCESS
+       =========================================== */
+    .process {
+      padding: 60px 0 120px;
+    }
+    .process h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .process-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin-bottom: 0;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 48px;
+    }
+    .process-cell {
+      padding: 48px 32px;
+    }
+    .process-cell + .process-cell {
+      border-left: 1px solid var(--teal-15);
+    }
+    .process-cell:first-child {
+      padding-left: 0;
+    }
+    .process-cell:last-child {
+      padding-right: 0;
+    }
+    .process-step {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .process-title {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .process-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--teal-60);
+    }
+
+    /* ===========================================
        PRACTICE AREAS
        =========================================== */
     .practice-areas {
@@ -666,8 +726,8 @@
       opacity: 0.55;
     }
     .team-member-photo {
-      width: 140px;
-      height: 140px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       overflow: hidden;
       margin-bottom: 12px;
@@ -703,7 +763,7 @@
       font-weight: 400;
       color: var(--teal-30);
       margin-top: 4px;
-      max-width: 160px;
+      max-width: 220px;
       line-height: 1.4;
     }
     .team-detail {
@@ -733,6 +793,22 @@
     }
     .team-profile-link:hover { gap: 10px; }
     .team-profile-link svg { width: 14px; height: 14px; }
+    .team-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .team-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--orange);
+      transition: gap 200ms ease;
+    }
+    .team-cta a:hover { gap: 10px; }
+    .team-cta a svg { width: 14px; height: 14px; }
 
     /* ===========================================
        CASE RESULTS
@@ -1215,6 +1291,13 @@
 
       .practice-areas { padding: 72px 0; }
       .practice-areas .container { padding: 0 24px; }
+      .process { padding: 72px 0; }
+      .process .container { padding: 0 24px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-cell + .process-cell { border-left: none; border-top: 1px solid var(--teal-15); }
+      .process-cell { padding: 32px 0; }
+      .process-cell:first-child { padding-left: 0; }
+      .process-cell:last-child { padding-right: 0; }
       .practice-grid { grid-template-columns: 1fr; }
       .practice-cell:nth-child(odd) { border-right: none; }
       .practice-cell:nth-child(-n+4) { border-bottom: 1px solid var(--teal-15); }
@@ -1227,7 +1310,7 @@
       .team .container { padding: 0 24px; }
       .team-grid { flex-wrap: wrap; gap: 20px; }
       .team-member { flex-shrink: 1; }
-      .team-member-photo { width: 88px !important; height: 88px !important; }
+      .team-member-photo { width: 110px !important; height: 110px !important; }
 
       .case-results { padding: 72px 0; }
       .case-results .container { padding: 0 24px; }
@@ -1412,6 +1495,36 @@
     </div>
   </section>
 
+  <!-- Process -->
+  <section class="process" id="process">
+    <div class="container">
+      <h2 class="reveal">Our Process</h2>
+      <hr class="process-rule reveal" data-delay="1">
+      <div class="process-grid">
+        <div class="process-cell reveal" data-delay="1">
+          <span class="process-step">01</span>
+          <div class="process-title">Case Assessment &amp; Strategy</div>
+          <p class="process-desc">We review the governing documents, build a factual timeline, gather key evidence, confirm deadlines, and align the legal approach with the client's business objectives.</p>
+        </div>
+        <div class="process-cell reveal" data-delay="2">
+          <span class="process-step">02</span>
+          <div class="process-title">Demand &amp; Early Protective Action</div>
+          <p class="process-desc">We send a strategic demand letter identifying the dispute, proposing solutions, and setting a deadline. When assets or trade secrets are at risk, we seek immediate court relief to prevent further harm.</p>
+        </div>
+        <div class="process-cell reveal" data-delay="2">
+          <span class="process-step">03</span>
+          <div class="process-title">Negotiation &amp; Case Development</div>
+          <p class="process-desc">We pursue negotiation or mediation where productive, while continuing to preserve evidence and develop the case so leverage remains intact if settlement efforts do not succeed.</p>
+        </div>
+        <div class="process-cell reveal" data-delay="3">
+          <span class="process-step">04</span>
+          <div class="process-title">Litigation, Trial &amp; Enforcement</div>
+          <p class="process-desc">If a resolution is not reached, we file suit, use focused motions and discovery to narrow the dispute, present the case at trial, and enforce any favorable judgment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Practice Areas -->
   <section class="practice-areas" id="practice-areas">
     <div class="container">
@@ -1472,59 +1585,37 @@
   <!-- Team -->
   <section class="team" id="team">
     <div class="container">
-      <h2 class="reveal">Our Team</h2>
+      <h2 class="reveal">Our Founders</h2>
       <hr class="team-rule reveal" data-delay="1">
-      <p class="team-intro reveal" data-delay="1">A partner, an attorney, and a paralegal on every matter.</p>
+      <p class="team-intro reveal" data-delay="1">Personally invested in every matter the firm takes on.</p>
       <div class="team-grid reveal" data-delay="2" id="team-grid">
         <div class="team-member" data-index="0">
           <div class="team-member-photo">
             <img src="images/kr.jpg" alt="Kelvin Roquemore">
           </div>
           <span class="team-member-name">Kelvin Roquemore</span>
-          <span class="team-member-title">Managing Partner</span>
-          <span class="team-member-focus">Commercial litigation, fiduciary duty, partnership disputes</span>
+          <span class="team-member-title">Co-Founder &amp; Managing Partner</span>
+          <span class="team-member-focus">Commercial litigation, fiduciary duty, partnership disputes. 25+ years in Texas courts.</span>
         </div>
         <div class="team-member" data-index="1">
           <div class="team-member-photo">
             <img src="images/ds.jpg" alt="Doug Skierski">
           </div>
           <span class="team-member-name">Doug Skierski</span>
-          <span class="team-member-title">Managing Partner</span>
-          <span class="team-member-focus">Business disputes, M&amp;A litigation, injunctions</span>
-        </div>
-        <div class="team-member" data-index="2">
-          <div class="team-member-photo">
-            <img src="images/ad.jpg" alt="Alex L. Davis">
-          </div>
-          <span class="team-member-name">Alex L. Davis</span>
-          <span class="team-member-title">Real Estate &amp; Litigation</span>
-        </div>
-        <div class="team-member" data-index="3">
-          <div class="team-member-photo">
-            <img src="images/jc.jpg" alt="Jennifer L. Culver">
-          </div>
-          <span class="team-member-name">Jennifer L. Culver</span>
-          <span class="team-member-title">Commercial Litigation</span>
-        </div>
-        <div class="team-member" data-index="4">
-          <div class="team-member-photo">
-            <img src="images/aj.jpg" alt="Allison Jacobsen">
-          </div>
-          <span class="team-member-name">Allison Jacobsen</span>
-          <span class="team-member-title">Attorney</span>
-        </div>
-        <div class="team-member" data-index="5">
-          <div class="team-member-photo">
-            <img src="images/gh.jpg" alt="Gloria Hernandez">
-          </div>
-          <span class="team-member-name">Gloria Hernandez</span>
-          <span class="team-member-title">Paralegal</span>
+          <span class="team-member-title">Co-Founder &amp; Managing Partner</span>
+          <span class="team-member-focus">Business disputes, M&amp;A litigation, injunctions. 20+ years, AV-rated, credentialed mediator.</span>
         </div>
       </div>
       <div class="team-detail" id="team-detail">
         <div class="team-detail-content" id="team-detail-content">
-          <p>Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.</p>
+          <p>Supported by a team of attorneys and paralegals on every matter. The people who build the strategy carry it through to resolution.</p>
         </div>
+      </div>
+      <div class="team-cta reveal" data-delay="3">
+        <a href="#">
+          Meet the full team
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1713,15 +1804,11 @@
       // TEAM BIOS DATA
       // ==========================================
       var teamBios = [
-        "Kelvin co-founded the firm and leads its commercial litigation practice. He represents businesses and executives in complex disputes across Texas state and federal courts, with particular depth in breach of fiduciary duty and partnership matters.",
-        "Doug co-founded the firm and focuses on business disputes, transactional litigation, and M&A-related claims. He handles matters from initial demand through trial, including injunctions and emergency relief in North Texas courts.",
-        "Alex handles real estate disputes, construction litigation, and commercial property matters. His practice spans lease disputes, construction defect claims, and real estate transactional work across the DFW metroplex.",
-        "Jennifer focuses on commercial litigation, including contract disputes, fraud claims, and fiduciary duty matters. She works closely with clients on case strategy and represents businesses in state and federal courts.",
-        "Allison brings over 32 years of legal experience to the firm. She supports the commercial and real estate practice across multiple Texas jurisdictions.",
-        "Gloria supports the firm\u2019s commercial litigation practice with a focus on client communication, case management, and legal research."
+        "Kelvin co-founded the firm and leads its commercial litigation practice. A veteran Dallas attorney with over 25 years of courtroom experience, he represents businesses and executives in high-stakes disputes, with particular depth in partnership conflicts, fiduciary duty claims, and emergency injunctive relief. Previously a litigator at an AM 200 firm, senior counsel for a Fortune 500 company, and a commercial lender.",
+        "Doug co-founded the firm and is an AV-rated attorney with more than 20 years of experience in commercial litigation, bankruptcy, and creditors\u2019 rights. He is also a Credentialed Distinguished Mediator and arbitrator. His practice focuses on breach of contract, partnership and shareholder disputes, and complex commercial restructuring for small and mid-sized enterprises."
       ];
 
-      var defaultTeamText = "Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.";
+      var defaultTeamText = "Supported by a team of attorneys and paralegals on every matter. The people who build the strategy carry it through to resolution.";
 
       // ==========================================
       // NAVIGATION
