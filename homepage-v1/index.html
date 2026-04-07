@@ -541,7 +541,7 @@
        PROCESS
        =========================================== */
     .process {
-      padding: 60px 0 120px;
+      padding: 120px 0;
     }
     .process h2 {
       font-family: var(--font-heading);
@@ -1051,9 +1051,7 @@
     .insight-row {
       padding: 28px 0;
       border-bottom: 1px solid var(--teal-15);
-      transition: padding-left 350ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .insight-row:hover { padding-left: 8px; }
     .insight-category {
       font-size: 13px;
       font-weight: 600;
@@ -1067,7 +1065,7 @@
       font-weight: 600;
       color: var(--teal);
       line-height: 1.4;
-      transition: color 350ms cubic-bezier(0.16, 1, 0.3, 1);
+      transition: color 200ms ease;
       display: block;
     }
     .insight-row:hover .insight-title { color: var(--orange); }
@@ -1252,8 +1250,8 @@
       display: flex;
       flex-direction: row;
       align-items: flex-start;
-      gap: 24px;
-      padding: 0 40px;
+      gap: 28px;
+      padding: 0 48px;
       text-align: left;
       cursor: default;
       min-width: 0;
@@ -1262,8 +1260,8 @@
       border-left: 1px solid var(--teal-15);
     }
     .team-split-mode .team-member-photo {
-      width: 200px !important;
-      height: 200px !important;
+      width: 180px !important;
+      height: 180px !important;
       flex-shrink: 0;
       margin-bottom: 0;
     }
@@ -1281,14 +1279,28 @@
       flex-direction: column;
       min-width: 0;
     }
+    .team-split-mode .team-member-name {
+      font-size: 17px;
+      margin-bottom: 2px;
+    }
+    .team-split-mode .team-member-title {
+      margin-top: 0;
+    }
     .team-split-mode .team-member-focus {
       max-width: none;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-30);
+      margin-top: 10px;
+      line-height: 1.5;
     }
     .team-split-mode .team-member-bio {
       font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--teal-60);
-      margin-top: 12px;
+      margin-top: 10px;
     }
     .team-split-mode .team-detail {
       display: none;
@@ -1392,19 +1404,19 @@
     .reveal {
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+      transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal[data-delay="1"] { transition-delay: 80ms; }
-    .reveal[data-delay="2"] { transition-delay: 160ms; }
-    .reveal[data-delay="3"] { transition-delay: 240ms; }
-    .reveal[data-delay="4"] { transition-delay: 320ms; }
-    .reveal[data-delay="5"] { transition-delay: 400ms; }
-    .reveal[data-delay="6"] { transition-delay: 480ms; }
-    .reveal[data-delay="7"] { transition-delay: 560ms; }
+    .reveal[data-delay="1"] { transition-delay: 120ms; }
+    .reveal[data-delay="2"] { transition-delay: 240ms; }
+    .reveal[data-delay="3"] { transition-delay: 360ms; }
+    .reveal[data-delay="4"] { transition-delay: 480ms; }
+    .reveal[data-delay="5"] { transition-delay: 600ms; }
+    .reveal[data-delay="6"] { transition-delay: 720ms; }
+    .reveal[data-delay="7"] { transition-delay: 840ms; }
 
     /* ===========================================
        RESPONSIVE
@@ -1487,7 +1499,7 @@
       .team-split-mode .team-grid { flex-direction: column; }
       .team-split-mode .team-member { padding: 24px 0; }
       .team-split-mode .team-member + .team-member { border-left: none; border-top: 1px solid var(--teal-15); }
-      .team-split-mode .team-member-photo { width: 120px !important; height: 120px !important; }
+      .team-split-mode .team-member-photo { width: 100px !important; height: 100px !important; }
     }
   </style>
 </head>
@@ -1976,6 +1988,11 @@
         "Doug co-founded the firm and is an AV-rated attorney with more than 20 years of experience in commercial litigation, bankruptcy, and creditors\u2019 rights. He is also a Credentialed Distinguished Mediator and arbitrator. His practice focuses on breach of contract, partnership and shareholder disputes, and complex commercial restructuring for small and mid-sized enterprises."
       ];
 
+      var teamBiosShort = [
+        "Kelvin co-founded the firm and leads its commercial litigation practice. A veteran Dallas attorney with over 25 years of courtroom experience, he represents businesses and executives in high-stakes disputes.",
+        "Doug co-founded the firm and is an AV-rated attorney with more than 20 years of experience in commercial litigation, bankruptcy, and creditors\u2019 rights. He is also a Credentialed Distinguished Mediator and arbitrator."
+      ];
+
       var defaultTeamText = "Supported by a team of attorneys and paralegals on every matter. The people who build the strategy carry it through to resolution.";
 
       // ==========================================
@@ -2370,7 +2387,7 @@
               // Add bio
               var bio = document.createElement('p');
               bio.className = 'team-member-bio';
-              bio.textContent = teamBios[i];
+              bio.textContent = teamBiosShort[i];
               info.appendChild(bio);
               member.appendChild(info);
             }
