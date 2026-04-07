@@ -1051,7 +1051,7 @@
     .insight-row {
       padding: 28px 0;
       border-bottom: 1px solid var(--teal-15);
-      transition: padding-left 200ms ease;
+      transition: padding-left 350ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .insight-row:hover { padding-left: 8px; }
     .insight-category {
@@ -1067,7 +1067,7 @@
       font-weight: 600;
       color: var(--teal);
       line-height: 1.4;
-      transition: color 200ms ease;
+      transition: color 350ms cubic-bezier(0.16, 1, 0.3, 1);
       display: block;
     }
     .insight-row:hover .insight-title { color: var(--orange); }
@@ -1240,6 +1240,153 @@
     .footer-legal a:hover { color: var(--teal-60); }
 
     /* ===========================================
+       TEAM SPLIT MODE
+       =========================================== */
+    .team-split-mode .team-grid {
+      display: flex;
+      gap: 0;
+      max-width: 100%;
+    }
+    .team-split-mode .team-member {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 0 40px;
+      text-align: left;
+      cursor: default;
+      min-width: 0;
+    }
+    .team-split-mode .team-member + .team-member {
+      border-left: 1px solid var(--teal-15);
+    }
+    .team-split-mode .team-member-photo {
+      width: 200px !important;
+      height: 200px !important;
+      flex-shrink: 0;
+      margin-bottom: 0;
+    }
+    .team-split-mode .team-member:hover .team-member-photo img {
+      transform: none;
+    }
+    .team-split-mode .team-grid.has-active .team-member:not(.active) {
+      opacity: 1;
+    }
+    .team-split-mode .team-member.active .team-member-photo {
+      box-shadow: none;
+    }
+    .team-split-mode .team-member-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .team-split-mode .team-member-focus {
+      max-width: none;
+    }
+    .team-split-mode .team-member-bio {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--teal-60);
+      margin-top: 12px;
+    }
+    .team-split-mode .team-detail {
+      display: none;
+    }
+    .team-split-mode .team-intro {
+      text-align: left;
+    }
+
+    /* Customize panel */
+    .customize-panel {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 10000;
+    }
+    .customize-toggle {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--teal-60);
+      background: var(--white);
+      border: 1px solid var(--teal-15);
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: all 150ms ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .customize-toggle:hover {
+      border-color: var(--teal-30);
+      color: var(--teal);
+    }
+    .customize-toggle .custom-indicator {
+      display: none;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .customize-panel.is-custom .customize-toggle .custom-indicator {
+      display: block;
+    }
+    .customize-drawer {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--teal-15);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      min-width: 180px;
+    }
+    .customize-panel.open .customize-drawer {
+      display: block;
+    }
+    .customize-section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-30);
+      margin-bottom: 8px;
+    }
+    .customize-options {
+      display: flex;
+      gap: 2px;
+      background: rgba(11,48,48,0.06);
+      border-radius: 5px;
+      padding: 2px;
+    }
+    .customize-options button {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--teal-60);
+      background: none;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all 150ms ease;
+      flex: 1;
+      text-align: center;
+    }
+    .customize-options button:hover {
+      color: var(--teal);
+    }
+    .customize-options button.active {
+      background: var(--white);
+      color: var(--teal);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* ===========================================
        SCROLL REVEAL
        =========================================== */
     .reveal {
@@ -1336,6 +1483,11 @@
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-legal { flex-wrap: wrap; gap: 12px; }
+
+      .team-split-mode .team-grid { flex-direction: column; }
+      .team-split-mode .team-member { padding: 24px 0; }
+      .team-split-mode .team-member + .team-member { border-left: none; border-top: 1px solid var(--teal-15); }
+      .team-split-mode .team-member-photo { width: 120px !important; height: 120px !important; }
     }
   </style>
 </head>
@@ -1445,7 +1597,7 @@
     </div>
     <div class="hero-inner">
       <div class="hero-text" id="hero-text">
-        <h1>We'll take care of<br><span class="hero-your" id="hero-your">your </span><span class="hero-slide" id="hero-slide"><span class="hero-cycling" id="hero-cycling">business</span>.</span></h1>
+        <h1>We'll take care of<br><span class="hero-your" id="hero-your">your </span><span class="hero-slide" id="hero-slide"><span class="hero-cycling" id="hero-cycling">business.</span></span></h1>
         <p class="hero-sub">A Dallas-Fort Worth firm built on modern infrastructure and decades of courtroom experience. Exclusively focused on business and commercial matters.</p>
       </div>
     </div>
@@ -1491,36 +1643,6 @@
       <h2 class="reveal">Strategic counsel for complex<br class="desktop-br"> commercial disputes</h2>
       <hr class="positioning-rule reveal" data-delay="1">
       <p class="reveal" data-delay="2">Recognized by Chambers USA and Super Lawyers, Roquemore Skierski represents businesses, entrepreneurs, and executives in high-stakes commercial litigation across Texas. The firm staffs a dedicated legal team on every matter, from initial strategy through trial. Business litigation is not a side practice here. It is the entire focus.</p>
-    </div>
-  </section>
-
-  <!-- Process -->
-  <section class="process" id="process">
-    <div class="container">
-      <h2 class="reveal">Our Process</h2>
-      <hr class="process-rule reveal" data-delay="1">
-      <div class="process-grid">
-        <div class="process-cell reveal" data-delay="1">
-          <span class="process-step">01</span>
-          <div class="process-title">Case Assessment &amp; Strategy</div>
-          <p class="process-desc">We review the governing documents, build a factual timeline, gather key evidence, confirm deadlines, and align the legal approach with the client's business objectives.</p>
-        </div>
-        <div class="process-cell reveal" data-delay="2">
-          <span class="process-step">02</span>
-          <div class="process-title">Demand &amp; Early Protective Action</div>
-          <p class="process-desc">We send a strategic demand letter identifying the dispute, proposing solutions, and setting a deadline. When assets or trade secrets are at risk, we seek immediate court relief to prevent further harm.</p>
-        </div>
-        <div class="process-cell reveal" data-delay="2">
-          <span class="process-step">03</span>
-          <div class="process-title">Negotiation &amp; Case Development</div>
-          <p class="process-desc">We pursue negotiation or mediation where productive, while continuing to preserve evidence and develop the case so leverage remains intact if settlement efforts do not succeed.</p>
-        </div>
-        <div class="process-cell reveal" data-delay="3">
-          <span class="process-step">04</span>
-          <div class="process-title">Litigation, Trial &amp; Enforcement</div>
-          <p class="process-desc">If a resolution is not reached, we file suit, use focused motions and discovery to narrow the dispute, present the case at trial, and enforce any favorable judgment.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1572,6 +1694,36 @@
           </div>
           <p class="practice-cell-desc">Business fraud, deceptive trade practices, and recovery actions</p>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process" id="process">
+    <div class="container">
+      <h2 class="reveal">Our Process</h2>
+      <hr class="process-rule reveal" data-delay="1">
+      <div class="process-grid">
+        <div class="process-cell reveal" data-delay="1">
+          <span class="process-step">01</span>
+          <div class="process-title">Case Assessment &amp; Strategy</div>
+          <p class="process-desc">We review the governing documents, build a factual timeline, gather key evidence, confirm deadlines, and align the legal approach with the client's business objectives.</p>
+        </div>
+        <div class="process-cell reveal" data-delay="2">
+          <span class="process-step">02</span>
+          <div class="process-title">Demand &amp; Early Protective Action</div>
+          <p class="process-desc">We send a strategic demand letter identifying the dispute, proposing solutions, and setting a deadline. When assets or trade secrets are at risk, we seek immediate court relief to prevent further harm.</p>
+        </div>
+        <div class="process-cell reveal" data-delay="2">
+          <span class="process-step">03</span>
+          <div class="process-title">Negotiation &amp; Case Development</div>
+          <p class="process-desc">We pursue negotiation or mediation where productive, while continuing to preserve evidence and develop the case so leverage remains intact if settlement efforts do not succeed.</p>
+        </div>
+        <div class="process-cell reveal" data-delay="3">
+          <span class="process-step">04</span>
+          <div class="process-title">Litigation, Trial &amp; Enforcement</div>
+          <p class="process-desc">If a resolution is not reached, we file suit, use focused motions and discovery to narrow the dispute, present the case at trial, and enforce any favorable judgment.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1796,6 +1948,23 @@
       </div>
     </div>
   </footer>
+
+  <!-- Customize panel -->
+  <div class="customize-panel" id="customize-panel">
+    <div class="customize-drawer">
+      <div class="customize-section">
+        <div class="customize-section-label">Founders</div>
+        <div class="customize-options" id="founders-toggles">
+          <button class="active" data-founders="circles">Circles</button>
+          <button data-founders="split">Split</button>
+        </div>
+      </div>
+    </div>
+    <button class="customize-toggle" id="customize-toggle">
+      <span class="custom-indicator"></span>
+      Customize
+    </button>
+  </div>
 
   <script>
     (function() {
@@ -2025,8 +2194,8 @@
       // Start cycling practice areas
       var isMobile = window.innerWidth <= 768;
       var cyclingWords = isMobile
-        ? ['business', 'litigation', 'real estate', 'IP', 'contracts', 'disputes']
-        : ['business', 'litigation', 'real estate', 'intellectual property', 'contracts', 'disputes'];
+        ? ['business.', 'litigation.', 'real estate.', 'IP.', 'contracts.', 'disputes.']
+        : ['business.', 'litigation.', 'real estate.', 'intellectual property.', 'contracts.', 'disputes.'];
       var cyclingIndex = 0;
 
       function cycleWord() {
@@ -2041,7 +2210,7 @@
       // First change shortly after FLIP settles, then regular interval
       setTimeout(function() {
         cycleWord();
-        setInterval(cycleWord, 3500);
+        setInterval(cycleWord, 5000);
       }, 2800);
 
       // ==========================================
@@ -2158,6 +2327,78 @@
       });
 
       startAutoplay();
+
+      // ==========================================
+      // CUSTOMIZE PANEL — FOUNDERS TOGGLE
+      // ==========================================
+      var customizePanel = document.getElementById('customize-panel');
+      var customizeToggleBtn = document.getElementById('customize-toggle');
+      var foundersToggles = document.getElementById('founders-toggles');
+
+      customizeToggleBtn.addEventListener('click', function() {
+        customizePanel.classList.toggle('open');
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!customizePanel.contains(e.target)) {
+          customizePanel.classList.remove('open');
+        }
+      });
+
+      function setFoundersMode(mode) {
+        foundersToggles.querySelectorAll('button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.founders === mode);
+        });
+
+        var isSplit = mode === 'split';
+        document.body.classList.toggle('team-split-mode', isSplit);
+        customizePanel.classList.toggle('is-custom', isSplit);
+
+        teamMembers.forEach(function(member, i) {
+          var existingInfo = member.querySelector('.team-member-info');
+          if (isSplit) {
+            if (!existingInfo) {
+              // Wrap name, title, focus in a container div
+              var info = document.createElement('div');
+              info.className = 'team-member-info';
+              var name = member.querySelector('.team-member-name');
+              var title = member.querySelector('.team-member-title');
+              var focus = member.querySelector('.team-member-focus');
+              info.appendChild(name);
+              info.appendChild(title);
+              info.appendChild(focus);
+              // Add bio
+              var bio = document.createElement('p');
+              bio.className = 'team-member-bio';
+              bio.textContent = teamBios[i];
+              info.appendChild(bio);
+              member.appendChild(info);
+            }
+          } else {
+            if (existingInfo) {
+              // Unwrap: move children back to member, remove wrapper
+              var photo = member.querySelector('.team-member-photo');
+              var name = existingInfo.querySelector('.team-member-name');
+              var title = existingInfo.querySelector('.team-member-title');
+              var focus = existingInfo.querySelector('.team-member-focus');
+              member.insertBefore(name, null);
+              member.insertBefore(title, null);
+              member.insertBefore(focus, null);
+              existingInfo.remove();
+            }
+          }
+        });
+
+        // Reset team interaction state
+        resetTeamBio();
+      }
+
+      foundersToggles.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        setFoundersMode(btn.dataset.founders);
+      });
+
     })();
   </script>
 </body>
