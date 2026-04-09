@@ -53,6 +53,39 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 100000;
+      padding: 8px 16px;
+      background: var(--teal);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    /* Focus indicators */
+    :focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
     /* ===========================================
        LAYOUT
        =========================================== */
@@ -126,7 +159,7 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: linear-gradient(to bottom, #092828, #0d3535);
+      background: linear-gradient(to bottom, #0e3838, #134242);
       overflow: hidden;
       max-height: 0;
       opacity: 0;
@@ -176,7 +209,7 @@
     .mega-panel-text {
       font-size: 15px;
       line-height: 1.65;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.75);
       max-width: 480px;
     }
     .mega-panel-links {
@@ -349,13 +382,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: saturate(0.4) brightness(0.35);
+      filter: saturate(0.4) brightness(0.5);
     }
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(11, 48, 48, 0.75) 0%, rgba(11, 48, 48, 0.45) 60%, rgba(11, 48, 48, 0.65) 100%);
+      background: linear-gradient(135deg, rgba(11, 48, 48, 0.65) 0%, rgba(11, 48, 48, 0.3) 60%, rgba(11, 48, 48, 0.55) 100%);
     }
     .hero-inner {
       max-width: var(--content-width);
@@ -478,7 +511,7 @@
     .awards-track {
       display: flex;
       width: max-content;
-      animation: marquee 30s linear infinite;
+      animation: marquee 45s linear infinite;
     }
     .awards-track:hover {
       animation-play-state: paused;
@@ -490,14 +523,17 @@
     .awards-list {
       display: flex;
       align-items: center;
-      gap: 48px;
+      gap: 64px;
       list-style: none;
       flex-shrink: 0;
-      padding: 0 24px;
+      padding: 0 32px;
     }
     .award-logo {
-      height: 50px;
+      max-height: 38px;
+      max-width: 140px;
       width: auto;
+      height: auto;
+      object-fit: contain;
       opacity: 0.8;
       transition: opacity 200ms ease;
     }
@@ -540,60 +576,52 @@
     /* ===========================================
        PROCESS
        =========================================== */
-    .process {
-      padding: 120px 0;
+    .mission {
+      padding: 120px 0 0;
     }
-    .process h2 {
-      font-family: var(--font-heading);
-      font-size: clamp(30px, 3.5vw, 46px);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.015em;
-      color: var(--teal);
-      margin-bottom: 16px;
+    .mission-block {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 72px;
+      overflow: hidden;
+      text-align: center;
     }
-    .process-rule {
-      border: none;
-      height: 1px;
-      background: var(--teal-15);
-      margin-bottom: 0;
+    .mission-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
     }
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+    .mission-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .process-cell {
-      padding: 48px 32px;
+    .mission-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 48, 48, 0.75);
     }
-    .process-cell + .process-cell {
-      border-left: 1px solid var(--teal-15);
+    .mission-content {
+      position: relative;
+      z-index: 1;
     }
-    .process-cell:first-child {
-      padding-left: 0;
-    }
-    .process-cell:last-child {
-      padding-right: 0;
-    }
-    .process-step {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: clamp(36px, 4vw, 52px);
-      font-weight: 700;
-      line-height: 1;
-      color: var(--orange);
-      margin-bottom: 16px;
-    }
-    .process-title {
-      font-size: 19px;
+    .mission-label {
+      font-size: 12px;
       font-weight: 600;
-      color: var(--teal);
-      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 24px;
     }
-    .process-desc {
-      font-size: 15px;
+    .mission-text {
+      font-family: var(--font-serif);
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-style: italic;
       line-height: 1.6;
-      color: var(--teal-60);
+      color: var(--white);
+      text-wrap: balance;
     }
 
     /* ===========================================
@@ -659,24 +687,8 @@
     .practice-cell-desc {
       font-size: 15px;
       line-height: 1.6;
-      color: var(--teal-30);
+      color: var(--teal-60);
       margin-top: 8px;
-    }
-
-    /* ===========================================
-       IMAGE BREAK
-       =========================================== */
-    .image-break {
-      width: 100%;
-      height: 360px;
-      overflow: hidden;
-      position: relative;
-    }
-    .image-break img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
     }
 
     /* ===========================================
@@ -703,95 +715,72 @@
     .team-intro {
       font-size: 18px;
       color: var(--teal-60);
-      text-align: center;
+      text-align: left;
       margin-bottom: 56px;
     }
     .team-grid {
       display: flex;
-      align-items: flex-start;
-      gap: 32px;
-      justify-content: center;
+      gap: 0;
+      max-width: 100%;
     }
     .team-member {
+      flex: 1;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      cursor: pointer;
-      transition: opacity 200ms ease;
-      flex-shrink: 0;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 0 48px;
+      text-align: left;
+      min-width: 0;
     }
-    .team-grid.has-active .team-member:not(.active) {
-      opacity: 0.55;
+    .team-member + .team-member {
+      border-left: 1px solid var(--teal-15);
     }
     .team-member-photo {
       width: 180px;
-      height: 180px;
-      border-radius: 50%;
+      height: 220px;
+      border-radius: 8px;
       overflow: hidden;
-      margin-bottom: 12px;
-      transition: transform 200ms ease, box-shadow 200ms ease;
-    }
-    .team-member.active .team-member-photo {
-      box-shadow: 0 0 0 3px var(--orange);
+      flex-shrink: 0;
     }
     .team-member-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
-      transition: transform 0.5s var(--ease-out);
     }
-    .team-member:hover .team-member-photo img {
-      transform: scale(1.15);
+    .team-member-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
     }
     .team-member-name {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--teal);
       line-height: 1.3;
+      margin-bottom: 2px;
     }
     .team-member-title {
       font-size: 14px;
       font-weight: 400;
       color: var(--teal-60);
-      margin-top: 2px;
     }
     .team-member-focus {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--teal-30);
-      margin-top: 4px;
-      max-width: 220px;
-      line-height: 1.4;
-    }
-    .team-detail {
-      margin-top: 48px;
-      min-height: 100px;
-      text-align: center;
-    }
-    .team-detail-content {
-      max-width: 600px;
-      margin: 0 auto;
-      transition: opacity 200ms ease;
-    }
-    .team-detail-content p {
-      font-size: 17px;
-      line-height: 1.7;
-      color: var(--teal-60);
-    }
-    .team-profile-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 15px;
+      font-size: 10px;
       font-weight: 600;
-      color: var(--orange);
-      margin-top: 12px;
-      transition: gap 200ms ease;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal-60);
+      margin-top: 10px;
+      line-height: 1.5;
     }
-    .team-profile-link:hover { gap: 10px; }
-    .team-profile-link svg { width: 14px; height: 14px; }
+    .team-member-bio {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--teal-60);
+      margin-top: 10px;
+    }
     .team-cta {
       display: flex;
       justify-content: center;
@@ -863,7 +852,7 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.75);
       margin-bottom: 12px;
     }
     .result-outcome {
@@ -877,7 +866,7 @@
     .result-category {
       font-size: 14px;
       font-weight: 400;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.7);
       line-height: 1.4;
       margin-top: auto;
     }
@@ -912,7 +901,7 @@
       flex-wrap: wrap;
     }
     .results-cta span {
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.7);
     }
     .results-cta a {
       color: var(--white);
@@ -1011,7 +1000,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.45);
       border: none;
       padding: 0;
       cursor: pointer;
@@ -1021,7 +1010,7 @@
       background: var(--orange);
     }
     .testimonial-dot:hover:not(.active) {
-      background: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.65);
     }
 
     /* ===========================================
@@ -1099,7 +1088,7 @@
     }
     .insight-date {
       font-size: 14px;
-      color: var(--teal-30);
+      color: var(--teal-60);
     }
     .insight-link {
       display: inline-flex;
@@ -1148,7 +1137,7 @@
     .footer-cta-locations {
       margin-top: 24px;
       font-size: 14px;
-      color: var(--teal-30);
+      color: var(--teal-60);
       letter-spacing: 0.02em;
     }
     .footer-cta-locations span { margin: 0 8px; }
@@ -1193,12 +1182,12 @@
       grid-template-columns: 1fr 1fr;
       gap: 32px;
     }
-    .footer-nav h4 {
+    .footer-nav h3 {
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--teal-30);
+      color: var(--teal-60);
       margin-bottom: 16px;
     }
     .footer-nav ul {
@@ -1224,7 +1213,7 @@
     }
     .footer-copyright {
       font-size: 13px;
-      color: var(--teal-30);
+      color: var(--teal-60);
     }
     .footer-legal {
       display: flex;
@@ -1232,171 +1221,12 @@
     }
     .footer-legal a {
       font-size: 13px;
-      color: var(--teal-30);
+      color: var(--teal-60);
       transition: color 200ms ease;
     }
     .footer-legal a:hover { color: var(--teal-60); }
 
-    /* ===========================================
-       TEAM SPLIT MODE
-       =========================================== */
-    .team-split-mode .team-grid {
-      display: flex;
-      gap: 0;
-      max-width: 100%;
-    }
-    .team-split-mode .team-member {
-      flex: 1;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 28px;
-      padding: 0 48px;
-      text-align: left;
-      cursor: default;
-      min-width: 0;
-    }
-    .team-split-mode .team-member + .team-member {
-      border-left: 1px solid var(--teal-15);
-    }
-    .team-split-mode .team-member-photo {
-      width: 180px !important;
-      height: 180px !important;
-      flex-shrink: 0;
-      margin-bottom: 0;
-    }
-    .team-split-mode .team-member:hover .team-member-photo img {
-      transform: none;
-    }
-    .team-split-mode .team-grid.has-active .team-member:not(.active) {
-      opacity: 1;
-    }
-    .team-split-mode .team-member.active .team-member-photo {
-      box-shadow: none;
-    }
-    .team-split-mode .team-member-info {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-    .team-split-mode .team-member-name {
-      font-size: 17px;
-      margin-bottom: 2px;
-    }
-    .team-split-mode .team-member-title {
-      margin-top: 0;
-    }
-    .team-split-mode .team-member-focus {
-      max-width: none;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--teal-30);
-      margin-top: 10px;
-      line-height: 1.5;
-    }
-    .team-split-mode .team-member-bio {
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--teal-60);
-      margin-top: 10px;
-    }
-    .team-split-mode .team-detail {
-      display: none;
-    }
-    .team-split-mode .team-intro {
-      text-align: left;
-    }
 
-    /* Customize panel */
-    .customize-panel {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 10000;
-    }
-    .customize-toggle {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--teal-60);
-      background: var(--white);
-      border: 1px solid var(--teal-15);
-      border-radius: 6px;
-      padding: 8px 14px;
-      cursor: pointer;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      transition: all 150ms ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .customize-toggle:hover {
-      border-color: var(--teal-30);
-      color: var(--teal);
-    }
-    .customize-toggle .custom-indicator {
-      display: none;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--orange);
-    }
-    .customize-panel.is-custom .customize-toggle .custom-indicator {
-      display: block;
-    }
-    .customize-drawer {
-      display: none;
-      position: absolute;
-      bottom: calc(100% + 8px);
-      right: 0;
-      background: var(--white);
-      border: 1px solid var(--teal-15);
-      border-radius: 8px;
-      padding: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-      min-width: 180px;
-    }
-    .customize-panel.open .customize-drawer {
-      display: block;
-    }
-    .customize-section-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--teal-30);
-      margin-bottom: 8px;
-    }
-    .customize-options {
-      display: flex;
-      gap: 2px;
-      background: rgba(11,48,48,0.06);
-      border-radius: 5px;
-      padding: 2px;
-    }
-    .customize-options button {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--teal-60);
-      background: none;
-      border: none;
-      border-radius: 4px;
-      padding: 5px 10px;
-      cursor: pointer;
-      transition: all 150ms ease;
-      flex: 1;
-      text-align: center;
-    }
-    .customize-options button:hover {
-      color: var(--teal);
-    }
-    .customize-options button.active {
-      background: var(--white);
-      color: var(--teal);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
 
     /* ===========================================
        SCROLL REVEAL
@@ -1440,35 +1270,30 @@
       .hero h1 { font-size: clamp(28px, 8vw, 40px); }
       .awards { margin-top: -40px; }
       .awards-inner { padding: 28px 0; }
-      .awards-list { gap: 32px; }
-      .award-logo { height: 40px; }
-      .awards-track { animation-duration: 20s; }
+      .awards-list { gap: 40px; }
+      .award-logo { max-height: 30px; max-width: 110px; }
+      .awards-track { animation-duration: 35s; }
 
       .positioning { padding: 72px 24px; }
       .desktop-br { display: none; }
 
       .practice-areas { padding: 72px 0; }
       .practice-areas .container { padding: 0 24px; }
-      .process { padding: 72px 0; }
-      .process .container { padding: 0 24px; }
-      .process-grid { grid-template-columns: 1fr; }
-      .process-cell + .process-cell { border-left: none; border-top: 1px solid var(--teal-15); }
-      .process-cell { padding: 32px 0; }
-      .process-cell:first-child { padding-left: 0; }
-      .process-cell:last-child { padding-right: 0; }
+      .mission { padding: 48px 0; }
+      .mission-block { padding: 56px 32px; margin: 0 24px; }
       .practice-grid { grid-template-columns: 1fr; }
       .practice-cell:nth-child(odd) { border-right: none; }
       .practice-cell:nth-child(-n+4) { border-bottom: 1px solid var(--teal-15); }
       .practice-cell:nth-child(5) { border-bottom: 1px solid var(--teal-15); }
       .practice-cell { padding: 28px 0; }
 
-      .image-break { height: 220px; }
 
       .team { padding: 72px 0; }
       .team .container { padding: 0 24px; }
-      .team-grid { flex-wrap: wrap; gap: 20px; }
-      .team-member { flex-shrink: 1; }
-      .team-member-photo { width: 110px !important; height: 110px !important; }
+      .team-grid { flex-direction: column; }
+      .team-member { padding: 24px 0; }
+      .team-member + .team-member { border-left: none; border-top: 1px solid var(--teal-15); }
+      .team-member-photo { width: 100px !important; height: 125px !important; }
 
       .case-results { padding: 72px 0; }
       .case-results .container { padding: 0 24px; }
@@ -1495,15 +1320,12 @@
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-legal { flex-wrap: wrap; gap: 12px; }
-
-      .team-split-mode .team-grid { flex-direction: column; }
-      .team-split-mode .team-member { padding: 24px 0; }
-      .team-split-mode .team-member + .team-member { border-left: none; border-top: 1px solid var(--teal-15); }
-      .team-split-mode .team-member-photo { width: 100px !important; height: 100px !important; }
     }
   </style>
 </head>
 <body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
@@ -1519,7 +1341,7 @@
             <div class="mega-panel-inner">
               <div class="mega-panel-left">
                 <div class="mega-panel-heading">About the Firm</div>
-                <p class="mega-panel-text">Roquemore Skierski represents businesses, entrepreneurs, and executives in high-stakes commercial litigation across Texas. A dedicated legal team on every matter, from initial strategy through trial.</p>
+                <p class="mega-panel-text">Roquemore Skierski represents businesses, entrepreneurs, and executives in business law and commercial litigation across Texas. A dedicated legal team on every matter, from initial strategy through trial.</p>
               </div>
               <div class="mega-panel-right">
                 <ul class="mega-panel-links">
@@ -1557,7 +1379,7 @@
             <div class="mega-panel-inner">
               <div class="mega-panel-left">
                 <div class="mega-panel-heading">Service Areas</div>
-                <p class="mega-panel-text">Primary offices in McKinney, Fort Worth, Mansfield, and Dallas, with attorneys in Houston, Austin, and San Antonio. Experienced legal counsel across the state of Texas.</p>
+                <p class="mega-panel-text">Primary offices in McKinney, Fort Worth, Mansfield, and Dallas. Experienced legal counsel serving all of Texas.</p>
               </div>
             </div>
           </div>
@@ -1602,15 +1424,17 @@
     <a href="#contact" class="mobile-nav-contact">Contact</a>
   </div>
 
+  <main id="main">
+
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <img src="images/hero-city.jpg" alt="">
+      <img src="images/hero-city.jpg" alt="Dallas cityscape at dusk">
     </div>
     <div class="hero-inner">
       <div class="hero-text" id="hero-text">
         <h1>We'll take care of<br><span class="hero-your" id="hero-your">your </span><span class="hero-slide" id="hero-slide"><span class="hero-cycling" id="hero-cycling">business.</span></span></h1>
-        <p class="hero-sub">A Dallas-Fort Worth firm built on modern infrastructure and decades of courtroom experience. Exclusively focused on business and commercial matters.</p>
+        <p class="hero-sub">A Dallas-Fort Worth firm built on modern infrastructure and decades of courtroom experience. Exclusively focused on business law and commercial litigation.</p>
       </div>
     </div>
   </section>
@@ -1654,7 +1478,7 @@
     <div class="positioning-inner">
       <h2 class="reveal">Strategic counsel for complex<br class="desktop-br"> commercial disputes</h2>
       <hr class="positioning-rule reveal" data-delay="1">
-      <p class="reveal" data-delay="2">Recognized by Chambers USA and Super Lawyers, Roquemore Skierski represents businesses, entrepreneurs, and executives in high-stakes commercial litigation across Texas. The firm staffs a dedicated legal team on every matter, from initial strategy through trial. Business litigation is not a side practice here. It is the entire focus.</p>
+      <p class="reveal" data-delay="2">Recognized by Chambers USA and Super Lawyers, Roquemore Skierski represents businesses, entrepreneurs, and executives in business law and commercial litigation across Texas. The firm staffs a dedicated legal team on every matter, from initial strategy through trial. Business litigation is not a side practice here. It is the entire focus.</p>
     </div>
   </section>
 
@@ -1710,40 +1534,18 @@
     </div>
   </section>
 
-  <!-- Process -->
-  <section class="process" id="process">
-    <div class="container">
-      <h2 class="reveal">Our Process</h2>
-      <hr class="process-rule reveal" data-delay="1">
-      <div class="process-grid">
-        <div class="process-cell reveal" data-delay="1">
-          <span class="process-step">01</span>
-          <div class="process-title">Case Assessment &amp; Strategy</div>
-          <p class="process-desc">We review the governing documents, build a factual timeline, gather key evidence, confirm deadlines, and align the legal approach with the client's business objectives.</p>
-        </div>
-        <div class="process-cell reveal" data-delay="2">
-          <span class="process-step">02</span>
-          <div class="process-title">Demand &amp; Early Protective Action</div>
-          <p class="process-desc">We send a strategic demand letter identifying the dispute, proposing solutions, and setting a deadline. When assets or trade secrets are at risk, we seek immediate court relief to prevent further harm.</p>
-        </div>
-        <div class="process-cell reveal" data-delay="2">
-          <span class="process-step">03</span>
-          <div class="process-title">Negotiation &amp; Case Development</div>
-          <p class="process-desc">We pursue negotiation or mediation where productive, while continuing to preserve evidence and develop the case so leverage remains intact if settlement efforts do not succeed.</p>
-        </div>
-        <div class="process-cell reveal" data-delay="3">
-          <span class="process-step">04</span>
-          <div class="process-title">Litigation, Trial &amp; Enforcement</div>
-          <p class="process-desc">If a resolution is not reached, we file suit, use focused motions and discovery to narrow the dispute, present the case at trial, and enforce any favorable judgment.</p>
-        </div>
+  <!-- Mission -->
+  <section class="mission reveal">
+    <div class="mission-block">
+      <div class="mission-bg">
+        <img src="images/section-break.jpg" alt="Conference table in a modern office">
+      </div>
+      <div class="mission-content">
+        <div class="mission-label">Our Mission</div>
+        <p class="mission-text">To help businesses navigate litigation risk and opportunity by providing exceptional legal counsel driven by seasoned judgement, strategic experience, and modern legal technology.</p>
       </div>
     </div>
   </section>
-
-  <!-- Image Break -->
-  <div class="image-break">
-    <img src="images/section-break.jpg" alt="">
-  </div>
 
   <!-- Team -->
   <section class="team" id="team">
@@ -1751,27 +1553,28 @@
       <h2 class="reveal">Our Founders</h2>
       <hr class="team-rule reveal" data-delay="1">
       <p class="team-intro reveal" data-delay="1">Personally invested in every matter the firm takes on.</p>
-      <div class="team-grid reveal" data-delay="2" id="team-grid">
-        <div class="team-member" data-index="0">
+      <div class="team-grid reveal" data-delay="2">
+        <div class="team-member">
           <div class="team-member-photo">
             <img src="images/kr.jpg" alt="Kelvin Roquemore">
           </div>
-          <span class="team-member-name">Kelvin Roquemore</span>
-          <span class="team-member-title">Co-Founder &amp; Managing Partner</span>
-          <span class="team-member-focus">Commercial litigation, fiduciary duty, partnership disputes. 25+ years in Texas courts.</span>
+          <div class="team-member-info">
+            <span class="team-member-name">Kelvin Roquemore</span>
+            <span class="team-member-title">Co-Founder &amp; Managing Partner</span>
+            <span class="team-member-focus">Commercial litigation, fiduciary duty, partnership disputes. 25+ years in Texas courts.</span>
+            <p class="team-member-bio">Kelvin co-founded the firm and leads its commercial litigation practice. A veteran Dallas attorney with over 25 years of courtroom experience, he represents businesses and executives in high-stakes disputes.</p>
+          </div>
         </div>
-        <div class="team-member" data-index="1">
+        <div class="team-member">
           <div class="team-member-photo">
             <img src="images/ds.jpg" alt="Doug Skierski">
           </div>
-          <span class="team-member-name">Doug Skierski</span>
-          <span class="team-member-title">Co-Founder &amp; Managing Partner</span>
-          <span class="team-member-focus">Business disputes, M&amp;A litigation, injunctions. 20+ years, AV-rated, credentialed mediator.</span>
-        </div>
-      </div>
-      <div class="team-detail" id="team-detail">
-        <div class="team-detail-content" id="team-detail-content">
-          <p>Supported by a team of attorneys and paralegals on every matter. The people who build the strategy carry it through to resolution.</p>
+          <div class="team-member-info">
+            <span class="team-member-name">Doug Skierski</span>
+            <span class="team-member-title">Co-Founder &amp; Managing Partner</span>
+            <span class="team-member-focus">Business disputes, M&amp;A litigation, injunctions. 20+ years, AV-rated, credentialed mediator.</span>
+            <p class="team-member-bio">Doug co-founded the firm and is an AV-rated attorney with more than 20 years of experience in commercial litigation, bankruptcy, and creditors' rights. He is also a Credentialed Distinguished Mediator and arbitrator.</p>
+          </div>
         </div>
       </div>
       <div class="team-cta reveal" data-delay="3">
@@ -1841,7 +1644,7 @@
           <p class="insight-excerpt">Choosing the right real estate litigation law firm can affect the outcome of your dispute. Here's what to look for and who stands out in the DFW market.</p>
           <div class="insight-meta">
             <span class="insight-date">February 2026</span>
-            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+            <a href="#" class="insight-link" aria-label="Read: The Top 5 Real Estate Litigation Law Firms in Dallas Fort Worth">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
           </div>
         </li>
         <li class="insight-row reveal" data-delay="2">
@@ -1849,7 +1652,7 @@
           <a href="#" class="insight-title">An Oral Contract Is Generally Worth the Paper It Is Printed On</a>
           <div class="insight-meta">
             <span class="insight-date">December 2025</span>
-            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+            <a href="#" class="insight-link" aria-label="Read: An Oral Contract Is Generally Worth the Paper It Is Printed On">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
           </div>
         </li>
         <li class="insight-row reveal" data-delay="3">
@@ -1857,7 +1660,7 @@
           <a href="#" class="insight-title">Understanding Arbitration and When to Involve a Lawyer</a>
           <div class="insight-meta">
             <span class="insight-date">October 2025</span>
-            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+            <a href="#" class="insight-link" aria-label="Read: Understanding Arbitration and When to Involve a Lawyer">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
           </div>
         </li>
         <li class="insight-row reveal" data-delay="4">
@@ -1865,7 +1668,7 @@
           <a href="#" class="insight-title">What Is a Temporary Restraining Order and How It Can Protect Your Company</a>
           <div class="insight-meta">
             <span class="insight-date">August 2025</span>
-            <a href="#" class="insight-link">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+            <a href="#" class="insight-link" aria-label="Read: What Is a Temporary Restraining Order and How It Can Protect Your Company">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
           </div>
         </li>
       </ul>
@@ -1875,7 +1678,7 @@
   <!-- Testimonials -->
   <section class="testimonials" id="testimonials">
     <div class="testimonials-bg">
-      <img src="images/testimonial-bg.jpg" alt="">
+      <img src="images/testimonial-bg.jpg" alt="Dallas skyline">
     </div>
     <div class="testimonials-inner">
       <div class="testimonial-carousel" id="testimonial-carousel">
@@ -1911,9 +1714,11 @@
       <a href="#" class="cta-link">contact us</a>
     </p>
     <p class="footer-cta-locations">
-      McKinney<span>&middot;</span>Fort Worth<span>&middot;</span>Mansfield<span>&middot;</span>Dallas<span>&middot;</span>Houston<span>&middot;</span>Austin<span>&middot;</span>San Antonio
+      McKinney<span>&middot;</span>Fort Worth<span>&middot;</span>Mansfield<span>&middot;</span>Dallas<span>&middot;</span>Serving all of Texas
     </p>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -1921,7 +1726,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <img src="images/logo.svg" alt="Roquemore Skierski PLLC">
-          <p>A Dallas-Fort Worth business litigation firm representing companies, entrepreneurs, and executives in commercial disputes across Texas.</p>
+          <p>A Dallas-Fort Worth business litigation firm representing companies, entrepreneurs, and executives in business transactions and commercial disputes across Texas.</p>
           <div class="footer-available">
             <span class="footer-available-dot"></span>
             Available 24/7
@@ -1929,7 +1734,7 @@
         </div>
         <div class="footer-nav">
           <div>
-            <h4>Firm</h4>
+            <h3>Firm</h3>
             <ul>
               <li><a href="#">About</a></li>
               <li><a href="#">Practice Areas</a></li>
@@ -1938,13 +1743,12 @@
             </ul>
           </div>
           <div>
-            <h4>Locations</h4>
+            <h3>Locations</h3>
             <ul>
               <li><a href="#">McKinney</a></li>
               <li><a href="#">Fort Worth</a></li>
               <li><a href="#">Mansfield</a></li>
               <li><a href="#">Dallas</a></li>
-              <li><a href="#">Houston</a></li>
             </ul>
           </div>
         </div>
@@ -1961,40 +1765,8 @@
     </div>
   </footer>
 
-  <!-- Customize panel -->
-  <div class="customize-panel" id="customize-panel">
-    <div class="customize-drawer">
-      <div class="customize-section">
-        <div class="customize-section-label">Founders</div>
-        <div class="customize-options" id="founders-toggles">
-          <button class="active" data-founders="circles">Circles</button>
-          <button data-founders="split">Split</button>
-        </div>
-      </div>
-    </div>
-    <button class="customize-toggle" id="customize-toggle">
-      <span class="custom-indicator"></span>
-      Customize
-    </button>
-  </div>
-
   <script>
     (function() {
-      // ==========================================
-      // TEAM BIOS DATA
-      // ==========================================
-      var teamBios = [
-        "Kelvin co-founded the firm and leads its commercial litigation practice. A veteran Dallas attorney with over 25 years of courtroom experience, he represents businesses and executives in high-stakes disputes, with particular depth in partnership conflicts, fiduciary duty claims, and emergency injunctive relief. Previously a litigator at an AM 200 firm, senior counsel for a Fortune 500 company, and a commercial lender.",
-        "Doug co-founded the firm and is an AV-rated attorney with more than 20 years of experience in commercial litigation, bankruptcy, and creditors\u2019 rights. He is also a Credentialed Distinguished Mediator and arbitrator. His practice focuses on breach of contract, partnership and shareholder disputes, and complex commercial restructuring for small and mid-sized enterprises."
-      ];
-
-      var teamBiosShort = [
-        "Kelvin co-founded the firm and leads its commercial litigation practice. A veteran Dallas attorney with over 25 years of courtroom experience, he represents businesses and executives in high-stakes disputes.",
-        "Doug co-founded the firm and is an AV-rated attorney with more than 20 years of experience in commercial litigation, bankruptcy, and creditors\u2019 rights. He is also a Credentialed Distinguished Mediator and arbitrator."
-      ];
-
-      var defaultTeamText = "Supported by a team of attorneys and paralegals on every matter. The people who build the strategy carry it through to resolution.";
-
       // ==========================================
       // NAVIGATION
       // ==========================================
@@ -2248,61 +2020,6 @@
       });
 
       // ==========================================
-      // TEAM INTERACTION
-      // ==========================================
-      var teamGrid = document.getElementById('team-grid');
-      var teamDetailContent = document.getElementById('team-detail-content');
-      var teamMembers = document.querySelectorAll('.team-member');
-
-      function showTeamBio(index) {
-        teamMembers.forEach(function(m) { m.classList.remove('active'); });
-        teamMembers[index].classList.add('active');
-        teamGrid.classList.add('has-active');
-
-        teamDetailContent.style.opacity = '0';
-        setTimeout(function() {
-          var p = document.createElement('p');
-          p.textContent = teamBios[index];
-          var link = document.createElement('a');
-          link.href = '#';
-          link.className = 'team-profile-link';
-          link.textContent = 'Full profile ';
-          var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-          svg.setAttribute('viewBox', '0 0 14 14');
-          svg.setAttribute('fill', 'none');
-          svg.setAttribute('width', '14');
-          svg.setAttribute('height', '14');
-          var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-          path.setAttribute('d', 'M2 7h10M8 3l4 4-4 4');
-          path.setAttribute('stroke', 'currentColor');
-          path.setAttribute('stroke-width', '2');
-          svg.appendChild(path);
-          link.appendChild(svg);
-          teamDetailContent.replaceChildren(p, link);
-          teamDetailContent.style.opacity = '1';
-        }, 150);
-      }
-
-      function resetTeamBio() {
-        teamMembers.forEach(function(m) { m.classList.remove('active'); });
-        teamGrid.classList.remove('has-active');
-        teamDetailContent.style.opacity = '0';
-        setTimeout(function() {
-          var p = document.createElement('p');
-          p.textContent = defaultTeamText;
-          teamDetailContent.replaceChildren(p);
-          teamDetailContent.style.opacity = '1';
-        }, 150);
-      }
-
-      teamMembers.forEach(function(member, i) {
-        member.addEventListener('mouseenter', function() { showTeamBio(i); });
-        member.addEventListener('click', function() { showTeamBio(i); });
-      });
-
-      teamGrid.parentElement.addEventListener('mouseleave', resetTeamBio);
-
-      // ==========================================
       // TESTIMONIAL CAROUSEL
       // ==========================================
       var slides = document.querySelectorAll('.testimonial-slide');
@@ -2345,76 +2062,6 @@
 
       startAutoplay();
 
-      // ==========================================
-      // CUSTOMIZE PANEL — FOUNDERS TOGGLE
-      // ==========================================
-      var customizePanel = document.getElementById('customize-panel');
-      var customizeToggleBtn = document.getElementById('customize-toggle');
-      var foundersToggles = document.getElementById('founders-toggles');
-
-      customizeToggleBtn.addEventListener('click', function() {
-        customizePanel.classList.toggle('open');
-      });
-
-      document.addEventListener('click', function(e) {
-        if (!customizePanel.contains(e.target)) {
-          customizePanel.classList.remove('open');
-        }
-      });
-
-      function setFoundersMode(mode) {
-        foundersToggles.querySelectorAll('button').forEach(function(b) {
-          b.classList.toggle('active', b.dataset.founders === mode);
-        });
-
-        var isSplit = mode === 'split';
-        document.body.classList.toggle('team-split-mode', isSplit);
-        customizePanel.classList.toggle('is-custom', isSplit);
-
-        teamMembers.forEach(function(member, i) {
-          var existingInfo = member.querySelector('.team-member-info');
-          if (isSplit) {
-            if (!existingInfo) {
-              // Wrap name, title, focus in a container div
-              var info = document.createElement('div');
-              info.className = 'team-member-info';
-              var name = member.querySelector('.team-member-name');
-              var title = member.querySelector('.team-member-title');
-              var focus = member.querySelector('.team-member-focus');
-              info.appendChild(name);
-              info.appendChild(title);
-              info.appendChild(focus);
-              // Add bio
-              var bio = document.createElement('p');
-              bio.className = 'team-member-bio';
-              bio.textContent = teamBiosShort[i];
-              info.appendChild(bio);
-              member.appendChild(info);
-            }
-          } else {
-            if (existingInfo) {
-              // Unwrap: move children back to member, remove wrapper
-              var photo = member.querySelector('.team-member-photo');
-              var name = existingInfo.querySelector('.team-member-name');
-              var title = existingInfo.querySelector('.team-member-title');
-              var focus = existingInfo.querySelector('.team-member-focus');
-              member.insertBefore(name, null);
-              member.insertBefore(title, null);
-              member.insertBefore(focus, null);
-              existingInfo.remove();
-            }
-          }
-        });
-
-        // Reset team interaction state
-        resetTeamBio();
-      }
-
-      foundersToggles.addEventListener('click', function(e) {
-        var btn = e.target.closest('button');
-        if (!btn) return;
-        setFoundersMode(btn.dataset.founders);
-      });
 
     })();
   </script>

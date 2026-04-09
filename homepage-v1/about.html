@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Roquemore Skierski PLLC</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #0B3030;
+      --teal-60: rgba(11, 48, 48, 0.75);
+      --teal-30: rgba(11, 48, 48, 0.45);
+      --teal-15: rgba(11, 48, 48, 0.15);
+      --orange: #CD4A16;
+      --white: #FFFFFF;
+      --off-white: #FAF9F7;
+      --content-width: 1200px;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, serif;
+      --font-heading: var(--font-serif);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--teal);
+      background: var(--white);
+    }
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .process {
+      padding: 120px 0;
+    }
+    .process h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .process-rule {
+      border: none;
+      height: 1px;
+      background: var(--teal-15);
+      margin-bottom: 0;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .process-cell {
+      padding: 48px 32px;
+    }
+    .process-cell + .process-cell {
+      border-left: 1px solid var(--teal-15);
+    }
+    .process-cell:first-child {
+      padding-left: 0;
+    }
+    .process-cell:last-child {
+      padding-right: 0;
+    }
+    .process-step {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .process-title {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .process-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--teal-60);
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      .process { padding: 72px 0; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-cell + .process-cell { border-left: none; border-top: 1px solid var(--teal-15); }
+      .process-cell { padding: 32px 0; }
+      .process-cell:first-child { padding-left: 0; }
+      .process-cell:last-child { padding-right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="process" id="process">
+    <div class="container">
+      <h2>Our Process</h2>
+      <hr class="process-rule">
+      <div class="process-grid">
+        <div class="process-cell">
+          <span class="process-step">01</span>
+          <div class="process-title">Case Assessment &amp; Strategy</div>
+          <p class="process-desc">We review the governing documents, build a factual timeline, gather key evidence, confirm deadlines, and align the legal approach with the client's business objectives.</p>
+        </div>
+        <div class="process-cell">
+          <span class="process-step">02</span>
+          <div class="process-title">Demand &amp; Early Protective Action</div>
+          <p class="process-desc">We send a strategic demand letter identifying the dispute, proposing solutions, and setting a deadline. When assets or trade secrets are at risk, we seek immediate court relief to prevent further harm.</p>
+        </div>
+        <div class="process-cell">
+          <span class="process-step">03</span>
+          <div class="process-title">Negotiation &amp; Case Development</div>
+          <p class="process-desc">We pursue negotiation or mediation where productive, while continuing to preserve evidence and develop the case so leverage remains intact if settlement efforts do not succeed.</p>
+        </div>
+        <div class="process-cell">
+          <span class="process-step">04</span>
+          <div class="process-title">Litigation, Trial &amp; Enforcement</div>
+          <p class="process-desc">If a resolution is not reached, we file suit, use focused motions and discovery to narrow the dispute, present the case at trial, and enforce any favorable judgment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
