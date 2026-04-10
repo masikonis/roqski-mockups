@@ -1,0 +1,57 @@
+/* ===========================================
+   MISSION
+   =========================================== */
+.mission {
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+.mission-block {
+  position: relative;
+  max-width: 900px;
+  margin: -48px auto 0;
+  padding: 80px 72px;
+  overflow: hidden;
+  text-align: center;
+}
+.mission-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.mission-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mission-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 48, 48, 0.75);
+}
+.mission-content {
+  position: relative;
+  z-index: 1;
+}
+.mission-label {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+.mission-text {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+  .mission { padding: 32px 0 0; }
+  .mission-block { padding: 48px 24px; margin: 0 16px; }
+}

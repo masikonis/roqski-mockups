@@ -1,0 +1,115 @@
+/* ===========================================
+   TEAM
+   =========================================== */
+.team {
+  padding: 120px 0;
+}
+.team h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+.team-rule {
+  border: none;
+  height: 1px;
+  background: var(--teal-15);
+  margin-bottom: 20px;
+}
+.team-intro {
+  font-size: 18px;
+  color: var(--teal-60);
+  text-align: left;
+  margin-bottom: 56px;
+}
+.team-grid {
+  display: flex;
+  gap: 0;
+  max-width: 100%;
+}
+.team-member {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 0 48px;
+  text-align: left;
+  min-width: 0;
+}
+.team-member + .team-member {
+  border-left: 1px solid var(--teal-15);
+}
+.team-member-photo {
+  width: 180px;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.team-member-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.team-member-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.team-member-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--teal);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+.team-member-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--teal-60);
+}
+.team-member-focus {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal-60);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.team-member-bio {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--teal-60);
+  margin-top: 10px;
+}
+.team-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.team-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--orange);
+  transition: gap 200ms ease;
+}
+.team-cta a:hover { gap: 10px; }
+.team-cta a svg { width: 14px; height: 14px; }
+
+@media (max-width: 768px) {
+  .team { padding: 72px 0; }
+  .team .container { padding: 0 24px; }
+  .team-grid { flex-direction: column; }
+  .team-member { padding: 24px 0; }
+  .team-member + .team-member { border-left: none; border-top: 1px solid var(--teal-15); }
+  .team-member-photo { width: 100px !important; height: 125px !important; }
+}

@@ -1,0 +1,36 @@
+/* ===========================================
+   POSITIONING
+   =========================================== */
+.positioning {
+  padding: 120px 48px;
+  text-align: center;
+}
+.positioning-inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.positioning h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--teal);
+}
+.positioning-rule {
+  width: 40px;
+  height: 2px;
+  background: var(--orange);
+  border: none;
+  margin: 32px auto;
+}
+.positioning p {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--teal-60);
+}
+
+@media (max-width: 768px) {
+  .positioning { padding: 72px 24px; }
+  .desktop-br { display: none; }
+}

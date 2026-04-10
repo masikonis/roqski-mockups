@@ -1,0 +1,68 @@
+/* ===========================================
+   PROCESS
+   =========================================== */
+.process {
+  padding: 120px 0;
+}
+.process h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+.process-rule {
+  border: none;
+  height: 1px;
+  background: var(--teal-15);
+  margin-bottom: 0;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.process-cell {
+  padding: 48px 32px;
+}
+.process-cell + .process-cell {
+  border-left: 1px solid var(--teal-15);
+}
+.process-cell:first-child {
+  padding-left: 0;
+}
+.process-cell:last-child {
+  padding-right: 0;
+}
+.process-step {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.process-title {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+.process-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--teal-60);
+}
+
+@media (max-width: 768px) {
+  .process { padding: 72px 0; }
+  .process .container { padding: 0 24px; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-cell + .process-cell { border-left: none; border-top: 1px solid var(--teal-15); }
+  .process-cell { padding: 32px 0; }
+  .process-cell:first-child { padding-left: 0; }
+  .process-cell:last-child { padding-right: 0; }
+}

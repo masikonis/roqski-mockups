@@ -1,0 +1,78 @@
+/* ===========================================
+   PRACTICE AREAS
+   =========================================== */
+.practice-areas {
+  background: var(--off-white);
+  padding: 120px 0;
+  position: relative;
+  z-index: 1;
+}
+.practice-areas h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+.practice-areas-rule {
+  border: none;
+  height: 1px;
+  background: var(--teal-15);
+  margin-bottom: 0;
+}
+.practice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.practice-cell {
+  padding: 48px 48px;
+  transition: background 250ms ease;
+}
+.practice-cell:nth-child(odd) {
+  border-right: 1px solid var(--teal-15);
+}
+.practice-cell:nth-child(-n+4) {
+  border-bottom: 1px solid var(--teal-15);
+}
+.practice-cell:hover {
+  background: rgba(11, 48, 48, 0.03);
+}
+.practice-cell-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--teal);
+  transition: color 200ms ease;
+}
+.practice-cell:hover .practice-cell-name { color: var(--orange); }
+.practice-cell-name svg {
+  width: 16px;
+  height: 16px;
+  color: var(--teal-15);
+  transition: color 200ms ease, transform 200ms ease;
+  flex-shrink: 0;
+}
+.practice-cell:hover .practice-cell-name svg {
+  color: var(--orange);
+  transform: translateX(4px);
+}
+.practice-cell-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--teal-60);
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .practice-areas { padding: 72px 0; }
+  .practice-areas .container { padding: 0 24px; }
+  .practice-grid { grid-template-columns: 1fr; }
+  .practice-cell:nth-child(odd) { border-right: none; }
+  .practice-cell:nth-child(-n+4) { border-bottom: 1px solid var(--teal-15); }
+  .practice-cell:nth-child(5) { border-bottom: 1px solid var(--teal-15); }
+  .practice-cell { padding: 28px 0; }
+}
