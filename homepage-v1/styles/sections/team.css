@@ -44,8 +44,8 @@
   border-left: 1px solid var(--teal-15);
 }
 .team-member-photo {
-  width: 180px;
-  height: 220px;
+  width: 200px;
+  height: 250px;
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
@@ -111,5 +111,5 @@
   .team-grid { flex-direction: column; }
   .team-member { padding: 24px 0; }
   .team-member + .team-member { border-left: none; border-top: 1px solid var(--teal-15); }
-  .team-member-photo { width: 100px !important; height: 125px !important; }
+  .team-member-photo { width: 110px !important; height: 138px !important; }
 }
