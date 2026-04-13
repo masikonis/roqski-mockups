@@ -103,7 +103,7 @@
   transition: gap 200ms ease;
 }
 .team-cta a:hover { gap: 10px; }
-.team-cta a svg { width: 14px; height: 14px; }
+.team-cta a svg { width: 14px; height: 14px; transform: translateY(1px); }
 
 @media (max-width: 768px) {
   .team { padding: 72px 0; }

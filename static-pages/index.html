@@ -682,10 +682,7 @@
       }, 1400);
 
       // Start cycling practice areas
-      var isMobile = window.innerWidth <= 768;
-      var cyclingWords = isMobile
-        ? ['business.', 'litigation.', 'real estate.', 'trademarks.', 'contracts.', 'disputes.']
-        : ['business.', 'litigation.', 'real estate.', 'intellectual property.', 'contracts.', 'disputes.'];
+      var cyclingWords = ['business.', 'litigation.', 'real estate.', 'contracts.', 'disputes.'];
       var cyclingIndex = 0;
 
       function cycleWord() {

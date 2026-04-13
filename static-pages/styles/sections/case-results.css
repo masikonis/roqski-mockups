@@ -85,7 +85,7 @@
   transition: gap 200ms ease;
 }
 .results-link:hover { gap: 12px; }
-.results-link svg { width: 16px; height: 16px; }
+.results-link svg { width: 16px; height: 16px; transform: translateY(1px); }
 .results-cta {
   margin-top: 48px;
   padding-top: 32px;

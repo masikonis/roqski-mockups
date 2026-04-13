@@ -126,7 +126,7 @@
   transition: gap 200ms ease;
 }
 .mega-panel-view-all:hover { gap: 10px; }
-.mega-panel-view-all svg { width: 12px; height: 12px; }
+.mega-panel-view-all svg { width: 12px; height: 12px; transform: translateY(1px); }
 .mega-panel-full { display: block; }
 .mega-panel-text {
   font-size: 15px;
