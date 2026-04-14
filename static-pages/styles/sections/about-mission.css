@@ -43,8 +43,14 @@
   overflow: hidden;
   transition: border-color 200ms ease;
 }
+.about-mission-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
 .about-mission-card[open] {
   border-color: rgba(255, 255, 255, 0.32);
+}
+.about-mission-card[open]:hover {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 .about-mission-card::before {
   content: '';
@@ -97,7 +103,10 @@
   justify-content: center;
   color: var(--white);
   flex-shrink: 0;
-  transition: transform 350ms var(--ease-out), border-color 200ms ease;
+  transition: transform 350ms var(--ease-out), border-color 200ms ease, color 200ms ease;
+}
+.about-mission-card:hover .about-mission-toggle {
+  color: var(--orange);
 }
 .about-mission-toggle svg { width: 16px; height: 16px; }
 .about-mission-card[open] .about-mission-toggle {
