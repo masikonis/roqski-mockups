@@ -1,0 +1,26 @@
+/* ===========================================
+   STORY
+   Narrow text column for page overviews, firm story,
+   location pages, etc. Designer owns all styling.
+   =========================================== */
+
+/* Functional only: a page with no hero needs the nav
+   to show in its solid state from the top. */
+body.no-hero { padding-top: var(--nav-height-scrolled); }
+body.no-hero .nav {
+  height: var(--nav-height-scrolled);
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 1px 0 var(--teal-15);
+}
+body.no-hero .nav .logo-white { display: none; }
+body.no-hero .nav .logo-color { display: block; }
+body.no-hero .nav-links a { color: var(--teal); }
+body.no-hero .nav-links a:hover { color: var(--orange); opacity: 1; }
+body.no-hero .nav-links .nav-contact { color: var(--orange); }
+
+.story { padding: 80px 0; }
+.story-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}

@@ -3,16 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>About - Roquemore Skierski PLLC</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/nav.css">
+  <link rel="stylesheet" href="styles/sections/story.css">
+  <link rel="stylesheet" href="styles/sections/mission.css">
   <link rel="stylesheet" href="styles/sections/process.css">
+  <link rel="stylesheet" href="styles/sections/team-roster.css">
+  <link rel="stylesheet" href="styles/sections/community.css">
+  <link rel="stylesheet" href="styles/sections/testimonials.css">
+  <link rel="stylesheet" href="styles/footer.css">
 </head>
-<body>
+<body class="no-hero">
 
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <img class="logo-white" src="images/logo-white.svg" alt="Roquemore Skierski PLLC">
+      <img class="logo-color" src="images/logo.svg" alt="Roquemore Skierski PLLC">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li class="nav-dropdown-wrap">
+          <a href="#">About</a>
+          <div class="mega-panel">
+            <div class="mega-panel-inner">
+              <div class="mega-panel-left">
+                <div class="mega-panel-heading">About the Firm</div>
+                <p class="mega-panel-text">Roquemore Skierski represents businesses, entrepreneurs, and executives in business law and commercial litigation across Texas. A dedicated legal team on every matter, from initial strategy through trial.</p>
+              </div>
+              <div class="mega-panel-right">
+                <ul class="mega-panel-links">
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Careers</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-dropdown-wrap">
+          <a href="#">Practice Areas</a>
+          <div class="mega-panel">
+            <div class="mega-panel-inner mega-panel-full">
+              <div class="mega-panel-header">
+                <div class="mega-panel-heading">Core Practice Areas</div>
+                <a href="#" class="mega-panel-view-all">View all practice areas <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+              </div>
+              <div class="mega-panel-grid">
+                <a href="#">Litigation</a>
+                <a href="#">Business Law</a>
+                <a href="#">Real Estate</a>
+                <a href="#">Intellectual Property</a>
+                <a href="#">Business Transactions</a>
+                <a href="#">Fraud &amp; Misrepresentation</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">Case Results</a></li>
+        <li class="nav-dropdown-wrap">
+          <a href="#">Locations</a>
+          <div class="mega-panel">
+            <div class="mega-panel-inner">
+              <div class="mega-panel-left">
+                <div class="mega-panel-heading">Service Areas</div>
+                <p class="mega-panel-text">Primary offices in McKinney, Fort Worth, Mansfield, and Dallas. Experienced legal counsel serving all of Texas.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#contact" class="nav-contact">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-open" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="nav-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+    <div class="mobile-nav-group">
+      <button class="mobile-nav-toggle">About <span class="toggle-icon">+</span></button>
+      <div class="mobile-nav-sub">
+        <a href="about.html">About the Firm</a>
+        <a href="#">Our Team</a>
+        <a href="#">News</a>
+        <a href="#">Careers</a>
+      </div>
+    </div>
+    <div class="mobile-nav-group">
+      <button class="mobile-nav-toggle">Practice Areas <span class="toggle-icon">+</span></button>
+      <div class="mobile-nav-sub">
+        <a href="#">Litigation</a>
+        <a href="#">Business Law</a>
+        <a href="#">Real Estate</a>
+        <a href="#">Intellectual Property</a>
+        <a href="#">Business Transactions</a>
+        <a href="#">Fraud &amp; Misrepresentation</a>
+      </div>
+    </div>
+    <a href="#">Case Results</a>
+    <a href="#">Locations</a>
+    <a href="#">Resources</a>
+    <a href="#contact" class="mobile-nav-contact">Contact</a>
+  </div>
+
+  <main id="main">
+
+  <!-- Firm Overview & Story -->
+  <section class="story">
+    <div class="story-inner">
+      <div class="story-eyebrow">About Roquemore Skierski</div>
+      <h1>Business and commercial litigation lawyers serving all of Texas.</h1>
+
+      <ul class="story-features">
+        <li>Decades in DFW courts</li>
+        <li>100+ years combined experience</li>
+        <li>Available 24/7</li>
+      </ul>
+
+      <p class="story-lede">Founders Kelvin Roquemore and Doug Skierski have decades of trial experience in business and commercial litigation across Texas state and federal courts.</p>
+
+      <p class="story-body">The firm advises clients on structuring transactions, buying and selling businesses or real estate, business formation, corporate governance, and conducting due diligence. We also represent clients in partnership and shareholder disputes, contract breaches, and business torts — big-law expertise with boutique care. We serve clients in and around Dallas, Fort Worth, Frisco, McKinney, Plano, and the surrounding area.</p>
+
+      <div class="service-list">
+        <div class="service-list-label">Our Practice</div>
+        <ul class="service-list-items">
+          <li>Business Litigation</li>
+          <li>Breach of Contract</li>
+          <li>Breach of Fiduciary Duty</li>
+          <li>Business Fraud Litigation</li>
+          <li>Contract Review</li>
+          <li>Injunctions &amp; TROs</li>
+          <li>Partnership Disputes</li>
+          <li>Shareholder Disputes</li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">Our Positioning</div>
+        <h2>Small firm advantage, big firm resources.</h2>
+        <p>As a boutique firm with a specialized team, we devote big-firm resources to our cases while giving clients the care and attention they deserve. We use modern technology in the courtroom and commit resources on par with our largest competitors.</p>
+        <p>Our business and real estate attorneys guide clients through structuring deals, resolving disputes, and closing transactions across Texas.</p>
+      </div>
+
+      <details class="disclosure">
+        <summary>Handling cases throughout Texas</summary>
+        <div class="disclosure-body">
+          <p>We work closely with our clients to protect value, resolve high-stakes disputes, and position them for success. Our track record shows we are not afraid to take a challenging case.</p>
+          <p>If your business is at risk, Roquemore Skierski is here to help.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Mission + Vision -->
+  <section class="mission reveal">
+    <div class="mission-block">
+      <div class="mission-bg">
+        <img src="images/section-break.jpg" alt="Conference table in a modern office">
+      </div>
+      <div class="mission-content">
+        <div class="mission-label">Our Mission</div>
+        <p class="mission-text">To help businesses navigate litigation risk and opportunity by providing exceptional legal counsel driven by seasoned judgement, strategic experience, and modern legal technology.</p>
+      </div>
+    </div>
+    <div class="mission-block">
+      <div class="mission-bg">
+        <img src="images/section-break.jpg" alt="">
+      </div>
+      <div class="mission-content">
+        <div class="mission-label">Our Vision</div>
+        <p class="mission-text">If we do not believe we can create value for our clients in providing legal services, we will not take the matter. If we feel a client can be better served by another attorney — or if some of what they need can be better provided by a non-attorney — we will tell them.</p>
+        <p class="mission-text">Whether the work is resolving a dispute, building a business, or protecting a family or business legacy, the principal aim of our services is to add value.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
   <section class="process" id="process">
     <div class="container">
       <h2>Our Process</h2>
@@ -42,5 +225,487 @@
     </div>
   </section>
 
+  <!-- Team roster (restored from earlier homepage design; full team with hover bio reveal) -->
+  <section class="team-roster" id="team">
+    <div class="container">
+      <h2 class="reveal">Our Litigation Team</h2>
+      <hr class="team-roster-rule reveal" data-delay="1">
+      <p class="team-roster-intro reveal" data-delay="1">A reputation for hard work and integrity. Since the firm's inception, we have built a track record of big results for our clients — and of getting them with honesty and professionalism.</p>
+      <div class="team-roster-grid reveal" data-delay="2" id="team-roster-grid">
+        <div class="team-roster-member" data-index="0">
+          <div class="team-roster-photo">
+            <img src="images/kelvin.webp" alt="Kelvin Roquemore">
+          </div>
+          <span class="team-roster-name">Kelvin Roquemore</span>
+          <span class="team-roster-title">Managing Partner</span>
+          <span class="team-roster-focus">Commercial litigation, fiduciary duty, partnership disputes</span>
+        </div>
+        <div class="team-roster-member" data-index="1">
+          <div class="team-roster-photo">
+            <img src="images/doug.webp" alt="Doug Skierski">
+          </div>
+          <span class="team-roster-name">Doug Skierski</span>
+          <span class="team-roster-title">Managing Partner</span>
+          <span class="team-roster-focus">Business disputes, M&amp;A litigation, injunctions</span>
+        </div>
+        <div class="team-roster-member" data-index="2">
+          <div class="team-roster-photo">
+            <img src="images/ad.jpg" alt="Alex L. Davis">
+          </div>
+          <span class="team-roster-name">Alex L. Davis</span>
+          <span class="team-roster-title">Real Estate &amp; Litigation</span>
+        </div>
+        <div class="team-roster-member" data-index="3">
+          <div class="team-roster-photo">
+            <img src="images/jc.jpg" alt="Jennifer L. Culver">
+          </div>
+          <span class="team-roster-name">Jennifer L. Culver</span>
+          <span class="team-roster-title">Commercial Litigation</span>
+        </div>
+        <div class="team-roster-member" data-index="4">
+          <div class="team-roster-photo">
+            <img src="images/aj.jpg" alt="Allison Jacobsen">
+          </div>
+          <span class="team-roster-name">Allison Jacobsen</span>
+          <span class="team-roster-title">Attorney</span>
+        </div>
+        <div class="team-roster-member" data-index="5">
+          <div class="team-roster-photo">
+            <img src="images/gh.jpg" alt="Gloria Hernandez">
+          </div>
+          <span class="team-roster-name">Gloria Hernandez</span>
+          <span class="team-roster-title">Paralegal</span>
+        </div>
+      </div>
+      <div class="team-roster-detail" id="team-roster-detail">
+        <div class="team-roster-detail-content" id="team-roster-detail-content">
+          <p>Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Involvement (rough placeholder — copy pending from Michael) -->
+  <section class="community">
+    <div class="community-inner">
+      <h2>In our community</h2>
+      <p class="community-lede">Our attorneys are actively involved in the communities we serve, and the firm sponsors several local chambers of commerce across North Texas.</p>
+
+      <!-- TODO(Michael): list the specific chambers of commerce the firm sponsors. -->
+      <details class="disclosure">
+        <summary>Chamber sponsorships</summary>
+        <div class="disclosure-body">
+          <p>Roquemore Skierski is a proud sponsor of chambers of commerce throughout North Texas, supporting the business communities we work alongside every day.</p>
+          <ul>
+            <li>[Chamber name placeholder]</li>
+            <li>[Chamber name placeholder]</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- TODO(Michael): community involvement, board memberships, pro bono work, civic roles. -->
+      <details class="disclosure">
+        <summary>Community involvement</summary>
+        <div class="disclosure-body">
+          <p>Our attorneys serve on boards, contribute pro bono legal services, and participate in civic organizations across the Dallas-Fort Worth area.</p>
+          <p>[Specifics to be provided by Michael.]</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-bg">
+      <img src="images/testimonial-bg.jpg" alt="Dallas skyline">
+    </div>
+    <div class="testimonials-inner">
+      <div class="testimonial-carousel" id="testimonial-carousel">
+        <div class="testimonial-slide active" data-slide="0">
+          <div class="testimonial-mark">&ldquo;</div>
+          <p class="testimonial-quote">The lawyers are incredibly responsive, acutely aware of the urgency of matters and never fail to deliver. They understand not only our business but also our culture and team dynamics.</p>
+          <p class="testimonial-attr">Client quotation as published in Chambers USA</p>
+        </div>
+        <div class="testimonial-slide" data-slide="1">
+          <div class="testimonial-mark">&ldquo;</div>
+          <p class="testimonial-quote">Roquemore Skierski combines rigorous legal strategy with a deep understanding of business operations. Their team approach means someone with full knowledge of our matter is always accessible.</p>
+          <p class="testimonial-attr">Client quotation as published in Chambers USA</p>
+        </div>
+        <div class="testimonial-slide" data-slide="2">
+          <div class="testimonial-mark">&ldquo;</div>
+          <p class="testimonial-quote">A firm that treats every matter as if their own business were at stake. Their courtroom preparation is thorough, their counsel is practical, and their results consistently speak for themselves.</p>
+          <p class="testimonial-attr">Client quotation as published in Chambers USA</p>
+        </div>
+      </div>
+      <div class="testimonial-dots" id="testimonial-dots">
+        <button class="testimonial-dot active" data-dot="0" aria-label="Testimonial 1"></button>
+        <button class="testimonial-dot" data-dot="1" aria-label="Testimonial 2"></button>
+        <button class="testimonial-dot" data-dot="2" aria-label="Testimonial 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="footer-cta reveal" id="contact">
+    <h2>How can we solve your problem?</h2>
+    <p class="footer-cta-contact">
+      Call <a href="tel:9723256591" class="phone">(972) 325-6591</a> or
+      <a href="#" class="cta-link">contact us</a>
+    </p>
+    <p class="footer-cta-locations">
+      McKinney<span>&middot;</span>Fort Worth<span>&middot;</span>Mansfield<span>&middot;</span>Dallas<span>&middot;</span>Serving all of Texas
+    </p>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo.svg" alt="Roquemore Skierski PLLC">
+          <p>A Dallas-Fort Worth business litigation firm representing companies, entrepreneurs, and executives in business transactions and commercial disputes across Texas.</p>
+          <div class="footer-available">
+            <span class="footer-available-dot"></span>
+            Available 24/7
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div>
+            <h3>Firm</h3>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="#">Practice Areas</a></li>
+              <li><a href="#">Case Results</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Locations</h3>
+            <ul>
+              <li><a href="#">McKinney</a></li>
+              <li><a href="#">Fort Worth</a></li>
+              <li><a href="#">Mansfield</a></li>
+              <li><a href="#">Dallas</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2026 Roquemore Skierski PLLC. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Disclaimer</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Communications Policy</a>
+          <a href="#">Text Messaging Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // ==========================================
+      // NAVIGATION
+      // ==========================================
+      var nav = document.getElementById('nav');
+      window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      // Mega panel hover (JS-managed with intent-aware switching)
+      var dropdownWraps = Array.prototype.slice.call(document.querySelectorAll('.nav-dropdown-wrap'));
+      var panelCloseTimer = null;
+      var panelSwitchTimer = null;
+      var pendingWrap = null;
+      var activeWrap = null;
+      var activePanel = null;
+      var mouseTrail = [];
+      var PANEL_CLOSE_DELAY = 180;
+      var PANEL_SWITCH_DELAY = 110;
+
+      document.addEventListener('mousemove', function(event) {
+        mouseTrail.push({ x: event.clientX, y: event.clientY });
+        if (mouseTrail.length > 6) mouseTrail.shift();
+      }, { passive: true });
+
+      function clearCloseTimer() {
+        clearTimeout(panelCloseTimer);
+        panelCloseTimer = null;
+      }
+
+      function clearSwitchTimer() {
+        clearTimeout(panelSwitchTimer);
+        panelSwitchTimer = null;
+        pendingWrap = null;
+      }
+
+      function closeActivePanel() {
+        clearCloseTimer();
+        clearSwitchTimer();
+        if (!activeWrap || !activePanel) return;
+        activePanel.classList.remove('open');
+        activeWrap.classList.remove('panel-active');
+        activeWrap = null;
+        activePanel = null;
+      }
+
+      function openPanelForWrap(wrap) {
+        var panel = wrap.querySelector('.mega-panel');
+        if (!panel) return;
+        clearCloseTimer();
+        clearSwitchTimer();
+        if (activeWrap === wrap) return;
+        if (activePanel && activePanel !== panel) {
+          activePanel.classList.remove('open');
+        }
+        if (activeWrap && activeWrap !== wrap) {
+          activeWrap.classList.remove('panel-active');
+        }
+        panel.classList.add('open');
+        wrap.classList.add('panel-active');
+        activeWrap = wrap;
+        activePanel = panel;
+      }
+
+      function pointerIsInside(rect, point) {
+        return point &&
+          point.x >= rect.left &&
+          point.x <= rect.right &&
+          point.y >= rect.top &&
+          point.y <= rect.bottom;
+      }
+
+      function pointerIsInsideActiveRegion() {
+        var point = mouseTrail[mouseTrail.length - 1];
+        if (!point || !activeWrap || !activePanel) return false;
+        return pointerIsInside(activeWrap.getBoundingClientRect(), point) ||
+          pointerIsInside(activePanel.getBoundingClientRect(), point);
+      }
+
+      function scheduleActiveClose() {
+        clearCloseTimer();
+        if (!activePanel) return;
+        panelCloseTimer = setTimeout(function() {
+          if (!pointerIsInsideActiveRegion()) {
+            closeActivePanel();
+          }
+        }, PANEL_CLOSE_DELAY);
+      }
+
+      function isMovingTowardActivePanel() {
+        if (!activePanel || mouseTrail.length < 2) return false;
+        var previousPoint = mouseTrail[mouseTrail.length - 2];
+        var currentPoint = mouseTrail[mouseTrail.length - 1];
+        var panelRect = activePanel.getBoundingClientRect();
+        var deltaY = currentPoint.y - previousPoint.y;
+        var deltaX = Math.abs(currentPoint.x - previousPoint.x);
+        return currentPoint.y < panelRect.top + 24 &&
+          deltaY > 2 &&
+          deltaY > deltaX * 0.35;
+      }
+
+      function queuePanelSwitch(wrap) {
+        clearSwitchTimer();
+        pendingWrap = wrap;
+        panelSwitchTimer = setTimeout(function() {
+          if (pendingWrap === wrap) {
+            openPanelForWrap(wrap);
+          }
+        }, PANEL_SWITCH_DELAY);
+      }
+
+      dropdownWraps.forEach(function(wrap) {
+        var panel = wrap.querySelector('.mega-panel');
+        if (!panel) return;
+
+        wrap.addEventListener('mouseenter', function() {
+          clearCloseTimer();
+          if (activeWrap && activeWrap !== wrap && isMovingTowardActivePanel()) {
+            queuePanelSwitch(wrap);
+            return;
+          }
+          openPanelForWrap(wrap);
+        });
+
+        wrap.addEventListener('mouseleave', function() {
+          if (pendingWrap === wrap) {
+            clearSwitchTimer();
+          }
+          if (activeWrap === wrap) {
+            scheduleActiveClose();
+          }
+        });
+
+        panel.addEventListener('mouseenter', function() {
+          clearCloseTimer();
+          clearSwitchTimer();
+        });
+
+        panel.addEventListener('mouseleave', function() {
+          if (activePanel === panel) {
+            scheduleActiveClose();
+          }
+        });
+      });
+
+      // Mobile nav
+      var mobileNav = document.getElementById('mobile-nav');
+      document.getElementById('nav-open').addEventListener('click', function() {
+        mobileNav.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+      document.getElementById('nav-close').addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Mobile nav accordion
+      document.querySelectorAll('.mobile-nav-toggle').forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          var group = toggle.parentElement;
+          // Close others
+          document.querySelectorAll('.mobile-nav-group.open').forEach(function(g) {
+            if (g !== group) g.classList.remove('open');
+          });
+          group.classList.toggle('open');
+        });
+      });
+
+      // ==========================================
+      // SCROLL REVEAL
+      // ==========================================
+      var reveals = document.querySelectorAll('.reveal');
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      reveals.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+
+      // ==========================================
+      // TEAM ROSTER — hover bio reveal
+      // ==========================================
+      var teamRosterGrid = document.getElementById('team-roster-grid');
+      if (teamRosterGrid) {
+        var teamBios = [
+          "Kelvin co-founded the firm and leads its commercial litigation practice. He represents businesses and executives in complex disputes across Texas state and federal courts, with particular depth in breach of fiduciary duty and partnership matters.",
+          "Doug co-founded the firm and focuses on business disputes, transactional litigation, and M&A-related claims. He handles matters from initial demand through trial, including injunctions and emergency relief in North Texas courts.",
+          "Alex handles real estate disputes, construction litigation, and commercial property matters. His practice spans lease disputes, construction defect claims, and real estate transactional work across the DFW metroplex.",
+          "Jennifer focuses on commercial litigation, including contract disputes, fraud claims, and fiduciary duty matters. She works closely with clients on case strategy and represents businesses in state and federal courts.",
+          "Allison brings over 32 years of legal experience to the firm. She supports the commercial and real estate practice across multiple Texas jurisdictions.",
+          "Gloria supports the firm\u2019s commercial litigation practice with a focus on client communication, case management, and legal research."
+        ];
+        var defaultTeamText = "Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.";
+        var teamRosterDetail = document.getElementById('team-roster-detail-content');
+        var teamMembers = document.querySelectorAll('.team-roster-member');
+
+        function showTeamBio(index) {
+          teamMembers.forEach(function(m) { m.classList.remove('active'); });
+          teamMembers[index].classList.add('active');
+          teamRosterGrid.classList.add('has-active');
+
+          teamRosterDetail.style.opacity = '0';
+          setTimeout(function() {
+            var p = document.createElement('p');
+            p.textContent = teamBios[index];
+            var link = document.createElement('a');
+            link.href = '#';
+            link.className = 'team-roster-profile-link';
+            link.textContent = 'Full profile ';
+            var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('viewBox', '0 0 14 14');
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('width', '14');
+            svg.setAttribute('height', '14');
+            var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', 'M2 7h10M8 3l4 4-4 4');
+            path.setAttribute('stroke', 'currentColor');
+            path.setAttribute('stroke-width', '2');
+            svg.appendChild(path);
+            link.appendChild(svg);
+            teamRosterDetail.replaceChildren(p, link);
+            teamRosterDetail.style.opacity = '1';
+          }, 150);
+        }
+
+        function resetTeamBio() {
+          teamMembers.forEach(function(m) { m.classList.remove('active'); });
+          teamRosterGrid.classList.remove('has-active');
+          teamRosterDetail.style.opacity = '0';
+          setTimeout(function() {
+            var p = document.createElement('p');
+            p.textContent = defaultTeamText;
+            teamRosterDetail.replaceChildren(p);
+            teamRosterDetail.style.opacity = '1';
+          }, 150);
+        }
+
+        teamMembers.forEach(function(member, i) {
+          member.addEventListener('mouseenter', function() { showTeamBio(i); });
+          member.addEventListener('click', function() { showTeamBio(i); });
+        });
+
+        teamRosterGrid.parentElement.addEventListener('mouseleave', resetTeamBio);
+      }
+
+      // ==========================================
+      // TESTIMONIAL CAROUSEL
+      // ==========================================
+      var slides = document.querySelectorAll('.testimonial-slide');
+      var dots = document.querySelectorAll('.testimonial-dot');
+      var currentSlide = 0;
+      var autoplayTimer;
+
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+
+      function nextSlide() {
+        goToSlide((currentSlide + 1) % slides.length);
+      }
+
+      function startAutoplay() {
+        autoplayTimer = setInterval(nextSlide, 6000);
+      }
+
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          clearInterval(autoplayTimer);
+          goToSlide(parseInt(dot.dataset.dot));
+          startAutoplay();
+        });
+      });
+
+      // Pause on hover
+      var carousel = document.getElementById('testimonial-carousel');
+      carousel.addEventListener('mouseenter', function() {
+        clearInterval(autoplayTimer);
+      });
+      carousel.addEventListener('mouseleave', function() {
+        startAutoplay();
+      });
+
+      startAutoplay();
+
+    })();
+  </script>
 </body>
 </html>

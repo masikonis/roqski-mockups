@@ -14,6 +14,9 @@
   overflow: hidden;
   text-align: center;
 }
+.mission-block + .mission-block {
+  margin-top: 24px;
+}
 .mission-bg {
   position: absolute;
   inset: 0;
@@ -49,6 +52,9 @@
   line-height: 1.6;
   color: var(--white);
   text-wrap: balance;
+}
+.mission-text + .mission-text {
+  margin-top: 18px;
 }
 
 @media (max-width: 768px) {

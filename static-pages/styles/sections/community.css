@@ -1,0 +1,11 @@
+/* ===========================================
+   COMMUNITY
+   Narrow text column for community involvement and
+   similar topical sections. Designer owns all styling.
+   =========================================== */
+.community { padding: 80px 0; }
+.community-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
