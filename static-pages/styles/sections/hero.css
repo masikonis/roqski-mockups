@@ -88,27 +88,6 @@
   margin-top: 24px;
   max-width: 560px;
 }
-.hero-contact {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 28px;
-  font-size: 15px;
-}
-.hero-phone {
-  color: rgba(255,255,255,0.7);
-  font-weight: 500;
-  transition: color 200ms ease;
-}
-.hero-phone:hover { color: var(--white); }
-.hero-contact-sep { color: rgba(255,255,255,0.25); }
-.hero-contact-link {
-  color: var(--orange);
-  font-weight: 600;
-  transition: color 200ms ease;
-}
-.hero-contact-link:hover { color: var(--orange-hover); }
-
 /* ===========================================
    AWARDS
    =========================================== */
