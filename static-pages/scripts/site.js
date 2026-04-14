@@ -385,4 +385,21 @@
     startAutoplay();
   })();
 
+  // ==========================================
+  // ABOUT MISSION — exclusive accordion
+  // (fallback for browsers without <details name="">)
+  // ==========================================
+  (function initMissionAccordion() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.about-mission-card'));
+    if (!cards.length) return;
+    cards.forEach(function (card) {
+      card.addEventListener('toggle', function () {
+        if (!card.open) return;
+        cards.forEach(function (other) {
+          if (other !== card && other.open) other.open = false;
+        });
+      });
+    });
+  })();
+
 })();

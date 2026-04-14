@@ -13,15 +13,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/common.css">
   <link rel="stylesheet" href="styles/nav.css">
+  <link rel="stylesheet" href="styles/sections/about-hero.css">
+  <link rel="stylesheet" href="styles/sections/about-features.css">
+  <link rel="stylesheet" href="styles/sections/about-founders.css">
+  <link rel="stylesheet" href="styles/sections/practice-areas.css">
+  <link rel="stylesheet" href="styles/sections/about-practice.css">
   <link rel="stylesheet" href="styles/sections/story.css">
-  <link rel="stylesheet" href="styles/sections/mission.css">
+  <link rel="stylesheet" href="styles/sections/about-mission.css">
   <link rel="stylesheet" href="styles/sections/process.css">
   <link rel="stylesheet" href="styles/sections/team-roster.css">
   <link rel="stylesheet" href="styles/sections/community.css">
+  <link rel="stylesheet" href="styles/sections/insights.css">
+  <link rel="stylesheet" href="styles/sections/about-overrides.css">
   <link rel="stylesheet" href="styles/sections/testimonials.css">
   <link rel="stylesheet" href="styles/footer.css">
 </head>
-<body class="no-hero">
+<body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -125,72 +132,138 @@
 
   <main id="main">
 
-  <!-- Firm Overview & Story -->
-  <section class="story">
-    <div class="story-inner">
-      <div class="story-eyebrow">About Roquemore Skierski</div>
-      <h1>Business and commercial litigation lawyers serving all of Texas.</h1>
-
-      <ul class="story-features">
-        <li>Decades in DFW courts</li>
-        <li>100+ years combined experience</li>
-        <li>Available 24/7</li>
-      </ul>
-
-      <p class="story-lede">Founders Kelvin Roquemore and Doug Skierski have decades of trial experience in business and commercial litigation across Texas state and federal courts.</p>
-
-      <p class="story-body">The firm advises clients on structuring transactions, buying and selling businesses or real estate, business formation, corporate governance, and conducting due diligence. We also represent clients in partnership and shareholder disputes, contract breaches, and business torts — big-law expertise with boutique care. We serve clients in and around Dallas, Fort Worth, Frisco, McKinney, Plano, and the surrounding area.</p>
-
-      <div class="service-list">
-        <div class="service-list-label">Our Practice</div>
-        <ul class="service-list-items">
-          <li>Business Litigation</li>
-          <li>Breach of Contract</li>
-          <li>Breach of Fiduciary Duty</li>
-          <li>Business Fraud Litigation</li>
-          <li>Contract Review</li>
-          <li>Injunctions &amp; TROs</li>
-          <li>Partnership Disputes</li>
-          <li>Shareholder Disputes</li>
-        </ul>
+  <!-- About Hero -->
+  <section class="about-hero" id="about-hero">
+    <div class="about-hero-bg">
+      <img src="images/hero-city.jpg" alt="Dallas cityscape at dusk">
+    </div>
+    <div class="about-hero-inner">
+      <div class="about-hero-text">
+        <div class="about-hero-eyebrow">About Roquemore Skierski</div>
+        <h1>Business and commercial litigation lawyers <span class="about-hero-accent">serving all of Texas.</span></h1>
       </div>
-
-      <div class="callout">
-        <div class="callout-label">Our Positioning</div>
-        <h2>Small firm advantage, big firm resources.</h2>
-        <p>As a boutique firm with a specialized team, we devote big-firm resources to our cases while giving clients the care and attention they deserve. We use modern technology in the courtroom and commit resources on par with our largest competitors.</p>
-        <p>Our business and real estate attorneys guide clients through structuring deals, resolving disputes, and closing transactions across Texas.</p>
-      </div>
-
-      <details class="disclosure">
-        <summary>Handling cases throughout Texas</summary>
-        <div class="disclosure-body">
-          <p>We work closely with our clients to protect value, resolve high-stakes disputes, and position them for success. Our track record shows we are not afraid to take a challenging case.</p>
-          <p>If your business is at risk, Roquemore Skierski is here to help.</p>
-        </div>
-      </details>
     </div>
   </section>
 
-  <!-- Mission + Vision -->
-  <section class="mission reveal">
-    <div class="mission-block">
-      <div class="mission-bg">
-        <img src="images/section-break.jpg" alt="Conference table in a modern office">
+  <!-- Features strip -->
+  <section class="about-features">
+    <div class="about-features-inner">
+      <span class="about-features-item">Decades in DFW courts</span>
+      <span class="about-features-item">100+ years combined experience</span>
+      <span class="about-features-item">Available 24/7</span>
+    </div>
+  </section>
+
+  <!-- Founders story -->
+  <section class="about-founders">
+    <div class="about-founders-inner">
+      <div class="about-founders-image reveal">
+        <img src="images/section-break.jpg" alt="Roquemore Skierski founders">
       </div>
-      <div class="mission-content">
-        <div class="mission-label">Our Mission</div>
-        <p class="mission-text">To help businesses navigate litigation risk and opportunity by providing exceptional legal counsel driven by seasoned judgement, strategic experience, and modern legal technology.</p>
+      <div class="about-founders-content reveal" data-delay="1">
+        <h2>Founders Kelvin Roquemore and Doug Skierski have decades of trial experience in business and commercial litigation across Texas state and federal courts.</h2>
+        <p>The firm advises clients on structuring transactions, buying and selling businesses or real estate, business formation, corporate governance, and conducting due diligence. We also represent clients in partnership and shareholder disputes, contract breaches, and business torts — big-law expertise with boutique care. We serve clients in and around Dallas, Fort Worth, Frisco, McKinney, Plano, and the surrounding area.</p>
       </div>
     </div>
-    <div class="mission-block">
-      <div class="mission-bg">
-        <img src="images/section-break.jpg" alt="">
+  </section>
+
+  <!-- Practice Areas -->
+  <section class="practice-areas practice-areas-about" id="practice-areas">
+    <div class="container">
+      <h2 class="reveal">Our Practice</h2>
+      <hr class="practice-areas-rule reveal" data-delay="1">
+      <div class="practice-grid">
+        <a href="#" class="practice-cell reveal" data-delay="1">
+          <div class="practice-cell-name">
+            Business Litigation
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">High-stakes commercial disputes handled from investigation through trial in Texas state and federal courts.</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="2">
+          <div class="practice-cell-name">
+            Breach of Contract
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Enforcing agreements and recovering damages when the other side fails to perform.</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="2">
+          <div class="practice-cell-name">
+            Breach of Fiduciary Duty
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Holding officers, directors, and partners accountable when loyalty and care obligations are broken.</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="3">
+          <div class="practice-cell-name">
+            Business Fraud Litigation
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Pursuing deceptive practices, misrepresentation, and concealment claims to recover client losses.</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="3">
+          <div class="practice-cell-name">
+            Contract Review
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Careful review and negotiation of commercial agreements to protect clients before disputes arise.</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="4">
+          <div class="practice-cell-name">
+            Injunctions &amp; TROs
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Moving fast for emergency court relief when assets, trade secrets, or relationships are at immediate risk.</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="4">
+          <div class="practice-cell-name">
+            Partnership Disputes
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Resolving deadlock, buyout, and exit conflicts between partners and closely held business owners.</p>
+        </a>
+        <a href="#" class="practice-cell reveal" data-delay="5">
+          <div class="practice-cell-name">
+            Shareholder Disputes
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+          <p class="practice-cell-desc">Protecting minority and majority shareholders in governance, valuation, and oppression claims.</p>
+        </a>
       </div>
-      <div class="mission-content">
-        <div class="mission-label">Our Vision</div>
-        <p class="mission-text">If we do not believe we can create value for our clients in providing legal services, we will not take the matter. If we feel a client can be better served by another attorney — or if some of what they need can be better provided by a non-attorney — we will tell them.</p>
-        <p class="mission-text">Whether the work is resolving a dispute, building a business, or protecting a family or business legacy, the principal aim of our services is to add value.</p>
+    </div>
+  </section>
+
+  <!-- Mission + Vision (accordion) -->
+  <section class="about-mission reveal">
+    <div class="about-mission-inner">
+      <div class="about-mission-header">
+        <h2>What drives us</h2>
+        <hr class="about-mission-rule">
+      </div>
+      <div class="about-mission-cards">
+      <details class="about-mission-card" name="about-mission" open>
+        <summary class="about-mission-head">
+          <span class="about-mission-label">Our Mission</span>
+          <span class="about-mission-toggle" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+          </span>
+        </summary>
+        <div class="about-mission-body">
+          <p>To help businesses navigate litigation risk and opportunity by providing exceptional legal counsel driven by seasoned judgement, strategic experience, and modern legal technology.</p>
+        </div>
+      </details>
+      <details class="about-mission-card" name="about-mission">
+        <summary class="about-mission-head">
+          <span class="about-mission-label">Our Vision</span>
+          <span class="about-mission-toggle" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+          </span>
+        </summary>
+        <div class="about-mission-body">
+          <p>If we do not believe we can create value for our clients in providing legal services, we will not take the matter. If we feel a client can be better served by another attorney — or if some of what they need can be better provided by a non-attorney — we will tell them.</p>
+          <p>Whether the work is resolving a dispute, building a business, or protecting a family or business legacy, the principal aim of our services is to add value.</p>
+        </div>
+      </details>
       </div>
     </div>
   </section>
@@ -226,7 +299,7 @@
   </section>
 
   <!-- Team roster (restored from earlier homepage design; full team with hover bio reveal) -->
-  <section class="team-roster" id="team">
+  <section class="team-roster team-roster--beige" id="team">
     <div class="container">
       <h2 class="reveal">Our Litigation Team</h2>
       <hr class="team-roster-rule reveal" data-delay="1">
@@ -285,32 +358,46 @@
     </div>
   </section>
 
-  <!-- Community Involvement (rough placeholder — copy pending from Michael) -->
-  <section class="community">
-    <div class="community-inner">
-      <h2>In our community</h2>
-      <p class="community-lede">Our attorneys are actively involved in the communities we serve, and the firm sponsors several local chambers of commerce across North Texas.</p>
-
-      <!-- TODO(Michael): list the specific chambers of commerce the firm sponsors. -->
-      <details class="disclosure">
-        <summary>Chamber sponsorships</summary>
-        <div class="disclosure-body">
-          <p>Roquemore Skierski is a proud sponsor of chambers of commerce throughout North Texas, supporting the business communities we work alongside every day.</p>
-          <ul>
-            <li>[Chamber name placeholder]</li>
-            <li>[Chamber name placeholder]</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- TODO(Michael): community involvement, board memberships, pro bono work, civic roles. -->
-      <details class="disclosure">
-        <summary>Community involvement</summary>
-        <div class="disclosure-body">
-          <p>Our attorneys serve on boards, contribute pro bono legal services, and participate in civic organizations across the Dallas-Fort Worth area.</p>
-          <p>[Specifics to be provided by Michael.]</p>
-        </div>
-      </details>
+  <!-- Community Involvement (insights-style layout) -->
+  <section class="insights" id="community">
+    <div class="container">
+      <h2 class="reveal">In our community</h2>
+      <hr class="insights-rule reveal" data-delay="1">
+      <ul class="insights-list">
+        <li class="insight-row reveal" data-delay="1">
+          <div class="insight-category">Chambers of Commerce</div>
+          <a href="#" class="insight-title">Proud sponsor of chambers of commerce across North Texas</a>
+          <p class="insight-excerpt">Roquemore Skierski supports local chambers throughout the DFW region, backing the small businesses, entrepreneurs, and civic leaders who power North Texas — the same communities our firm calls home and represents in court every day.</p>
+          <div class="insight-meta">
+            <span class="insight-date">Ongoing</span>
+            <a href="#" class="insight-link" aria-label="Learn more about chamber sponsorships">Learn more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="2">
+          <div class="insight-category">Boards &amp; Committees</div>
+          <a href="#" class="insight-title">Attorneys serving on nonprofit and civic boards across DFW</a>
+          <div class="insight-meta">
+            <span class="insight-date">Ongoing</span>
+            <a href="#" class="insight-link" aria-label="Learn more about board service">Learn more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="3">
+          <div class="insight-category">Pro Bono</div>
+          <a href="#" class="insight-title">Pro bono counsel for small businesses and local nonprofits</a>
+          <div class="insight-meta">
+            <span class="insight-date">Ongoing</span>
+            <a href="#" class="insight-link" aria-label="Learn more about pro bono work">Learn more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+        <li class="insight-row reveal" data-delay="4">
+          <div class="insight-category">Civic Engagement</div>
+          <a href="#" class="insight-title">Active in Rotary, bar associations, and local business groups</a>
+          <div class="insight-meta">
+            <span class="insight-date">Ongoing</span>
+            <a href="#" class="insight-link" aria-label="Learn more about civic engagement">Learn more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 

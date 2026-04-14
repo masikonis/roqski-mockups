@@ -1,0 +1,52 @@
+/* ===========================================
+   ABOUT FOUNDERS
+   Two-column block: photo on the left, founder
+   story copy on the right.
+   =========================================== */
+.about-founders {
+  padding: 120px 0;
+  background: var(--white);
+}
+.about-founders-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-founders-image {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--teal-15);
+}
+.about-founders-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-founders-content h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 28px;
+}
+.about-founders-content p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--teal-60);
+}
+
+@media (max-width: 768px) {
+  .about-founders { padding: 72px 0; }
+  .about-founders-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 24px;
+  }
+  .about-founders-image { aspect-ratio: 4 / 3; }
+}

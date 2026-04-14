@@ -1,0 +1,41 @@
+/* ===========================================
+   ABOUT FEATURES STRIP
+   Full-width gray strip bar with three key
+   credentials in a single centered row.
+   =========================================== */
+.about-features {
+  background: var(--off-white);
+  padding: 27px 48px;
+}
+.about-features-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 88px;
+  flex-wrap: wrap;
+}
+.about-features-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 0.005em;
+}
+.about-features-item::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .about-features { padding: 21px 24px; }
+  .about-features-inner { gap: 18px; flex-direction: column; }
+  .about-features-item { font-size: 17px; }
+}

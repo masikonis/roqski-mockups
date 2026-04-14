@@ -1,0 +1,10 @@
+/* ===========================================
+   ABOUT PRACTICE AREAS
+   Small overrides for the shared practice-areas
+   grid when used on the about page with 8 cells
+   instead of 6.
+   =========================================== */
+.practice-areas-about .practice-cell:nth-child(5),
+.practice-areas-about .practice-cell:nth-child(6) {
+  border-bottom: 1px solid var(--teal-15);
+}

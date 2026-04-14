@@ -1,0 +1,10 @@
+/* ===========================================
+   ABOUT PAGE OVERRIDES
+   Small tweaks to shared sections when used on
+   the about page (spacing, backgrounds, etc).
+   =========================================== */
+
+/* Team roster: light beige background so the
+   section is visually separated from the bands
+   above and below it. */
+.team-roster--beige { background: #F5F2EA; }
