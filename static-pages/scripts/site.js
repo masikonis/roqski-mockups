@@ -1,0 +1,388 @@
+/* ===========================================
+   SITE SCRIPTS
+   One file, linked from every page. Each module
+   feature-detects its own target elements, so it is
+   safe to include this on pages that don't use a
+   given module (nothing runs if the element is absent).
+   =========================================== */
+(function () {
+  'use strict';
+
+  // ==========================================
+  // NAV — scrolled state on scroll
+  // ==========================================
+  (function initNavScroll() {
+    var nav = document.getElementById('nav');
+    if (!nav) return;
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  })();
+
+  // ==========================================
+  // NAV — mega panel hover with intent-aware switching
+  // ==========================================
+  (function initMegaPanels() {
+    var dropdownWraps = Array.prototype.slice.call(document.querySelectorAll('.nav-dropdown-wrap'));
+    if (!dropdownWraps.length) return;
+
+    var panelCloseTimer = null;
+    var panelSwitchTimer = null;
+    var pendingWrap = null;
+    var activeWrap = null;
+    var activePanel = null;
+    var mouseTrail = [];
+    var PANEL_CLOSE_DELAY = 180;
+    var PANEL_SWITCH_DELAY = 110;
+
+    document.addEventListener('mousemove', function (event) {
+      mouseTrail.push({ x: event.clientX, y: event.clientY });
+      if (mouseTrail.length > 6) mouseTrail.shift();
+    }, { passive: true });
+
+    function clearCloseTimer() {
+      clearTimeout(panelCloseTimer);
+      panelCloseTimer = null;
+    }
+
+    function clearSwitchTimer() {
+      clearTimeout(panelSwitchTimer);
+      panelSwitchTimer = null;
+      pendingWrap = null;
+    }
+
+    function closeActivePanel() {
+      clearCloseTimer();
+      clearSwitchTimer();
+      if (!activeWrap || !activePanel) return;
+      activePanel.classList.remove('open');
+      activeWrap.classList.remove('panel-active');
+      activeWrap = null;
+      activePanel = null;
+    }
+
+    function openPanelForWrap(wrap) {
+      var panel = wrap.querySelector('.mega-panel');
+      if (!panel) return;
+      clearCloseTimer();
+      clearSwitchTimer();
+      if (activeWrap === wrap) return;
+      if (activePanel && activePanel !== panel) {
+        activePanel.classList.remove('open');
+      }
+      if (activeWrap && activeWrap !== wrap) {
+        activeWrap.classList.remove('panel-active');
+      }
+      panel.classList.add('open');
+      wrap.classList.add('panel-active');
+      activeWrap = wrap;
+      activePanel = panel;
+    }
+
+    function pointerIsInside(rect, point) {
+      return point &&
+        point.x >= rect.left &&
+        point.x <= rect.right &&
+        point.y >= rect.top &&
+        point.y <= rect.bottom;
+    }
+
+    function pointerIsInsideActiveRegion() {
+      var point = mouseTrail[mouseTrail.length - 1];
+      if (!point || !activeWrap || !activePanel) return false;
+      return pointerIsInside(activeWrap.getBoundingClientRect(), point) ||
+        pointerIsInside(activePanel.getBoundingClientRect(), point);
+    }
+
+    function scheduleActiveClose() {
+      clearCloseTimer();
+      if (!activePanel) return;
+      panelCloseTimer = setTimeout(function () {
+        if (!pointerIsInsideActiveRegion()) {
+          closeActivePanel();
+        }
+      }, PANEL_CLOSE_DELAY);
+    }
+
+    function isMovingTowardActivePanel() {
+      if (!activePanel || mouseTrail.length < 2) return false;
+      var previousPoint = mouseTrail[mouseTrail.length - 2];
+      var currentPoint = mouseTrail[mouseTrail.length - 1];
+      var panelRect = activePanel.getBoundingClientRect();
+      var deltaY = currentPoint.y - previousPoint.y;
+      var deltaX = Math.abs(currentPoint.x - previousPoint.x);
+      return currentPoint.y < panelRect.top + 24 &&
+        deltaY > 2 &&
+        deltaY > deltaX * 0.35;
+    }
+
+    function queuePanelSwitch(wrap) {
+      clearSwitchTimer();
+      pendingWrap = wrap;
+      panelSwitchTimer = setTimeout(function () {
+        if (pendingWrap === wrap) {
+          openPanelForWrap(wrap);
+        }
+      }, PANEL_SWITCH_DELAY);
+    }
+
+    dropdownWraps.forEach(function (wrap) {
+      var panel = wrap.querySelector('.mega-panel');
+      if (!panel) return;
+
+      wrap.addEventListener('mouseenter', function () {
+        clearCloseTimer();
+        if (activeWrap && activeWrap !== wrap && isMovingTowardActivePanel()) {
+          queuePanelSwitch(wrap);
+          return;
+        }
+        openPanelForWrap(wrap);
+      });
+
+      wrap.addEventListener('mouseleave', function () {
+        if (pendingWrap === wrap) {
+          clearSwitchTimer();
+        }
+        if (activeWrap === wrap) {
+          scheduleActiveClose();
+        }
+      });
+
+      panel.addEventListener('mouseenter', function () {
+        clearCloseTimer();
+        clearSwitchTimer();
+      });
+
+      panel.addEventListener('mouseleave', function () {
+        if (activePanel === panel) {
+          scheduleActiveClose();
+        }
+      });
+    });
+  })();
+
+  // ==========================================
+  // NAV — mobile overlay + accordion
+  // ==========================================
+  (function initMobileNav() {
+    var mobileNav = document.getElementById('mobile-nav');
+    var navOpen = document.getElementById('nav-open');
+    var navClose = document.getElementById('nav-close');
+    if (!mobileNav || !navOpen || !navClose) return;
+
+    navOpen.addEventListener('click', function () {
+      mobileNav.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    navClose.addEventListener('click', function () {
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    document.querySelectorAll('.mobile-nav-toggle').forEach(function (toggle) {
+      toggle.addEventListener('click', function () {
+        var group = toggle.parentElement;
+        document.querySelectorAll('.mobile-nav-group.open').forEach(function (g) {
+          if (g !== group) g.classList.remove('open');
+        });
+        group.classList.toggle('open');
+      });
+    });
+  })();
+
+  // ==========================================
+  // HERO — FLIP intro + cycling words (homepage only)
+  // ==========================================
+  (function initHero() {
+    var heroText = document.getElementById('hero-text');
+    var heroYour = document.getElementById('hero-your');
+    var heroSlide = document.getElementById('hero-slide');
+    var heroCycling = document.getElementById('hero-cycling');
+    if (!heroText || !heroYour || !heroSlide || !heroCycling) return;
+
+    // Fade in hero text
+    setTimeout(function () {
+      heroText.classList.add('visible');
+    }, 200);
+
+    // FLIP animation: slide "business" right, fade in "your"
+    setTimeout(function () {
+      var firstRect = heroSlide.getBoundingClientRect();
+      heroYour.classList.add('in-flow');
+      var lastRect = heroSlide.getBoundingClientRect();
+      var dx = firstRect.left - lastRect.left;
+      var dy = firstRect.top - lastRect.top;
+
+      heroSlide.style.transition = 'none';
+      heroSlide.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          heroSlide.style.transition = 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+          heroSlide.style.transform = '';
+          heroYour.classList.add('visible');
+        });
+      });
+    }, 1400);
+
+    // Cycle practice-area words
+    var cyclingWords = ['business.', 'litigation.', 'real estate.', 'contracts.', 'disputes.'];
+    var cyclingIndex = 0;
+
+    function cycleWord() {
+      heroCycling.style.opacity = '0';
+      setTimeout(function () {
+        cyclingIndex = (cyclingIndex + 1) % cyclingWords.length;
+        heroCycling.textContent = cyclingWords[cyclingIndex];
+        heroCycling.style.opacity = '1';
+      }, 400);
+    }
+
+    setTimeout(function () {
+      cycleWord();
+      setInterval(cycleWord, 5000);
+    }, 2800);
+  })();
+
+  // ==========================================
+  // SCROLL REVEAL
+  // ==========================================
+  (function initScrollReveal() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  })();
+
+  // ==========================================
+  // TEAM ROSTER — hover bio reveal
+  // ==========================================
+  (function initTeamRoster() {
+    var teamRosterGrid = document.getElementById('team-roster-grid');
+    var teamRosterDetail = document.getElementById('team-roster-detail-content');
+    if (!teamRosterGrid || !teamRosterDetail) return;
+
+    var teamBios = [
+      "Kelvin co-founded the firm and leads its commercial litigation practice. He represents businesses and executives in complex disputes across Texas state and federal courts, with particular depth in breach of fiduciary duty and partnership matters.",
+      "Doug co-founded the firm and focuses on business disputes, transactional litigation, and M&A-related claims. He handles matters from initial demand through trial, including injunctions and emergency relief in North Texas courts.",
+      "Alex handles real estate disputes, construction litigation, and commercial property matters. His practice spans lease disputes, construction defect claims, and real estate transactional work across the DFW metroplex.",
+      "Jennifer focuses on commercial litigation, including contract disputes, fraud claims, and fiduciary duty matters. She works closely with clients on case strategy and represents businesses in state and federal courts.",
+      "Allison brings over 32 years of legal experience to the firm. She supports the commercial and real estate practice across multiple Texas jurisdictions.",
+      "Gloria supports the firm\u2019s commercial litigation practice with a focus on client communication, case management, and legal research."
+    ];
+    var defaultTeamText = "Every matter is staffed with a lead attorney, supporting counsel, and a paralegal. The people who build the strategy carry it through to resolution.";
+    var teamMembers = document.querySelectorAll('.team-roster-member');
+
+    function showTeamBio(index) {
+      teamMembers.forEach(function (m) { m.classList.remove('active'); });
+      teamMembers[index].classList.add('active');
+      teamRosterGrid.classList.add('has-active');
+
+      teamRosterDetail.style.opacity = '0';
+      setTimeout(function () {
+        var p = document.createElement('p');
+        p.textContent = teamBios[index];
+        var link = document.createElement('a');
+        link.href = '#';
+        link.className = 'team-roster-profile-link';
+        link.textContent = 'Full profile ';
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 14 14');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('width', '14');
+        svg.setAttribute('height', '14');
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M2 7h10M8 3l4 4-4 4');
+        path.setAttribute('stroke', 'currentColor');
+        path.setAttribute('stroke-width', '2');
+        svg.appendChild(path);
+        link.appendChild(svg);
+        teamRosterDetail.replaceChildren(p, link);
+        teamRosterDetail.style.opacity = '1';
+      }, 150);
+    }
+
+    function resetTeamBio() {
+      teamMembers.forEach(function (m) { m.classList.remove('active'); });
+      teamRosterGrid.classList.remove('has-active');
+      teamRosterDetail.style.opacity = '0';
+      setTimeout(function () {
+        var p = document.createElement('p');
+        p.textContent = defaultTeamText;
+        teamRosterDetail.replaceChildren(p);
+        teamRosterDetail.style.opacity = '1';
+      }, 150);
+    }
+
+    teamMembers.forEach(function (member, i) {
+      member.addEventListener('mouseenter', function () { showTeamBio(i); });
+      member.addEventListener('click', function () { showTeamBio(i); });
+    });
+
+    teamRosterGrid.parentElement.addEventListener('mouseleave', resetTeamBio);
+  })();
+
+  // ==========================================
+  // TESTIMONIAL CAROUSEL
+  // ==========================================
+  (function initTestimonials() {
+    var slides = document.querySelectorAll('.testimonial-slide');
+    var dots = document.querySelectorAll('.testimonial-dot');
+    var carousel = document.getElementById('testimonial-carousel');
+    if (!slides.length || !dots.length || !carousel) return;
+
+    var currentSlide = 0;
+    var autoplayTimer;
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+      goToSlide((currentSlide + 1) % slides.length);
+    }
+
+    function startAutoplay() {
+      autoplayTimer = setInterval(nextSlide, 6000);
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        clearInterval(autoplayTimer);
+        goToSlide(parseInt(dot.dataset.dot, 10));
+        startAutoplay();
+      });
+    });
+
+    carousel.addEventListener('mouseenter', function () {
+      clearInterval(autoplayTimer);
+    });
+    carousel.addEventListener('mouseleave', function () {
+      startAutoplay();
+    });
+
+    startAutoplay();
+  })();
+
+})();

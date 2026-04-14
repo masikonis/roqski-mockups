@@ -26,6 +26,8 @@ static-pages/
 ├── index.html                ← homepage
 ├── about.html                ← about page (being built)
 ├── images/                   ← photos, logos, icons
+├── scripts/
+│   └── site.js               ← all site-wide JS (nav, carousels, scroll reveal, etc.)
 └── styles/
     ├── common.css            ← site-wide tokens: colors, fonts, base spacing, resets
     ├── nav.css               ← header / navigation (shared across pages)
@@ -36,6 +38,8 @@ static-pages/
         ├── team.css
         └── ...
 ```
+
+**About `scripts/site.js`:** every page links this one file before `</body>`. Each behavior inside (nav dropdowns, mobile menu, scroll reveals, hero animation, team roster bios, testimonial carousel) checks for its own elements before running, so the file is safe to include on every page even if the page doesn't use every behavior. When a new page needs a new interactive behavior, add it to `site.js` using the same pattern.
 
 **Rules:**
 
@@ -94,7 +98,7 @@ Every page is its own `.html` file. For Team, that's `static-pages/team.html`.
 
 ### 2. Reuse what already exists
 
-Every page shares the **header** and **footer**, and uses **common.css**. The new file should pull those in exactly like `index.html` does:
+Every page shares the **header**, **footer**, **common.css**, and **scripts/site.js**. The new file should pull those in exactly like `index.html` does:
 
 ```html
 <link rel="stylesheet" href="styles/common.css">
@@ -103,9 +107,15 @@ Every page shares the **header** and **footer**, and uses **common.css**. The ne
 <link rel="stylesheet" href="styles/footer.css">
 ```
 
+And just before `</body>`:
+
+```html
+<script src="scripts/site.js"></script>
+```
+
 Then **copy the `<nav>` and `<footer>` markup** from `index.html` into the new page. Same HTML, same CSS, identical look, consistent across the site.
 
-> **Rule of thumb:** if something appears on more than one page (header, footer, a button style, a card layout), its CSS stays in `styles/sections/` (or directly in `styles/` if it's a site-wide component like nav) and its markup gets copied between pages. Never copy-paste CSS into two places. That's how things drift out of sync.
+> **Rule of thumb:** if something appears on more than one page (header, footer, a button style, a card layout), its CSS stays in `styles/sections/` (or directly in `styles/` if it's a site-wide component like nav) and its markup gets copied between pages. Never copy-paste CSS into two places. That's how things drift out of sync. Same for JS: new interactive behavior goes into `scripts/site.js`, not inline in the HTML.
 
 ### 3. Link the section styles
 

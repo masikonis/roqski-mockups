@@ -36,7 +36,7 @@
     <div class="nav-right">
       <ul class="nav-links">
         <li class="nav-dropdown-wrap">
-          <a href="#">About</a>
+          <a href="about.html">About</a>
           <div class="mega-panel">
             <div class="mega-panel-inner">
               <div class="mega-panel-left">
@@ -45,7 +45,7 @@
               </div>
               <div class="mega-panel-right">
                 <ul class="mega-panel-links">
-                  <li><a href="#">About</a></li>
+                  <li><a href="about.html">About</a></li>
                   <li><a href="#">Our Team</a></li>
                   <li><a href="#">News</a></li>
                   <li><a href="#">Careers</a></li>
@@ -102,7 +102,7 @@
     <div class="mobile-nav-group">
       <button class="mobile-nav-toggle">About <span class="toggle-icon">+</span></button>
       <div class="mobile-nav-sub">
-        <a href="#">About the Firm</a>
+        <a href="about.html">About the Firm</a>
         <a href="#">Our Team</a>
         <a href="#">News</a>
         <a href="#">Careers</a>
@@ -439,7 +439,7 @@
           <div>
             <h3>Firm</h3>
             <ul>
-              <li><a href="#">About</a></li>
+              <li><a href="about.html">About</a></li>
               <li><a href="#">Practice Areas</a></li>
               <li><a href="#">Case Results</a></li>
               <li><a href="#">Careers</a></li>
@@ -468,302 +468,6 @@
     </div>
   </footer>
 
-  <script>
-    (function() {
-      // ==========================================
-      // NAVIGATION
-      // ==========================================
-      var nav = document.getElementById('nav');
-      window.addEventListener('scroll', function() {
-        nav.classList.toggle('scrolled', window.scrollY > 40);
-      }, { passive: true });
-
-      // Mega panel hover (JS-managed with intent-aware switching)
-      var dropdownWraps = Array.prototype.slice.call(document.querySelectorAll('.nav-dropdown-wrap'));
-      var panelCloseTimer = null;
-      var panelSwitchTimer = null;
-      var pendingWrap = null;
-      var activeWrap = null;
-      var activePanel = null;
-      var mouseTrail = [];
-      var PANEL_CLOSE_DELAY = 180;
-      var PANEL_SWITCH_DELAY = 110;
-
-      document.addEventListener('mousemove', function(event) {
-        mouseTrail.push({ x: event.clientX, y: event.clientY });
-        if (mouseTrail.length > 6) mouseTrail.shift();
-      }, { passive: true });
-
-      function clearCloseTimer() {
-        clearTimeout(panelCloseTimer);
-        panelCloseTimer = null;
-      }
-
-      function clearSwitchTimer() {
-        clearTimeout(panelSwitchTimer);
-        panelSwitchTimer = null;
-        pendingWrap = null;
-      }
-
-      function closeActivePanel() {
-        clearCloseTimer();
-        clearSwitchTimer();
-        if (!activeWrap || !activePanel) return;
-        activePanel.classList.remove('open');
-        activeWrap.classList.remove('panel-active');
-        activeWrap = null;
-        activePanel = null;
-      }
-
-      function openPanelForWrap(wrap) {
-        var panel = wrap.querySelector('.mega-panel');
-        if (!panel) return;
-        clearCloseTimer();
-        clearSwitchTimer();
-        if (activeWrap === wrap) return;
-        if (activePanel && activePanel !== panel) {
-          activePanel.classList.remove('open');
-        }
-        if (activeWrap && activeWrap !== wrap) {
-          activeWrap.classList.remove('panel-active');
-        }
-        panel.classList.add('open');
-        wrap.classList.add('panel-active');
-        activeWrap = wrap;
-        activePanel = panel;
-      }
-
-      function pointerIsInside(rect, point) {
-        return point &&
-          point.x >= rect.left &&
-          point.x <= rect.right &&
-          point.y >= rect.top &&
-          point.y <= rect.bottom;
-      }
-
-      function pointerIsInsideActiveRegion() {
-        var point = mouseTrail[mouseTrail.length - 1];
-        if (!point || !activeWrap || !activePanel) return false;
-        return pointerIsInside(activeWrap.getBoundingClientRect(), point) ||
-          pointerIsInside(activePanel.getBoundingClientRect(), point);
-      }
-
-      function scheduleActiveClose() {
-        clearCloseTimer();
-        if (!activePanel) return;
-        panelCloseTimer = setTimeout(function() {
-          if (!pointerIsInsideActiveRegion()) {
-            closeActivePanel();
-          }
-        }, PANEL_CLOSE_DELAY);
-      }
-
-      function isMovingTowardActivePanel() {
-        if (!activePanel || mouseTrail.length < 2) return false;
-        var previousPoint = mouseTrail[mouseTrail.length - 2];
-        var currentPoint = mouseTrail[mouseTrail.length - 1];
-        var panelRect = activePanel.getBoundingClientRect();
-        var deltaY = currentPoint.y - previousPoint.y;
-        var deltaX = Math.abs(currentPoint.x - previousPoint.x);
-        return currentPoint.y < panelRect.top + 24 &&
-          deltaY > 2 &&
-          deltaY > deltaX * 0.35;
-      }
-
-      function queuePanelSwitch(wrap) {
-        clearSwitchTimer();
-        pendingWrap = wrap;
-        panelSwitchTimer = setTimeout(function() {
-          if (pendingWrap === wrap) {
-            openPanelForWrap(wrap);
-          }
-        }, PANEL_SWITCH_DELAY);
-      }
-
-      dropdownWraps.forEach(function(wrap) {
-        var panel = wrap.querySelector('.mega-panel');
-        if (!panel) return;
-
-        wrap.addEventListener('mouseenter', function() {
-          clearCloseTimer();
-          if (activeWrap && activeWrap !== wrap && isMovingTowardActivePanel()) {
-            queuePanelSwitch(wrap);
-            return;
-          }
-          openPanelForWrap(wrap);
-        });
-
-        wrap.addEventListener('mouseleave', function() {
-          if (pendingWrap === wrap) {
-            clearSwitchTimer();
-          }
-          if (activeWrap === wrap) {
-            scheduleActiveClose();
-          }
-        });
-
-        panel.addEventListener('mouseenter', function() {
-          clearCloseTimer();
-          clearSwitchTimer();
-        });
-
-        panel.addEventListener('mouseleave', function() {
-          if (activePanel === panel) {
-            scheduleActiveClose();
-          }
-        });
-      });
-
-      // Mobile nav
-      var mobileNav = document.getElementById('mobile-nav');
-      document.getElementById('nav-open').addEventListener('click', function() {
-        mobileNav.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-      document.getElementById('nav-close').addEventListener('click', function() {
-        mobileNav.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-      mobileNav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          mobileNav.classList.remove('open');
-          document.body.style.overflow = '';
-        });
-      });
-
-      // Mobile nav accordion
-      document.querySelectorAll('.mobile-nav-toggle').forEach(function(toggle) {
-        toggle.addEventListener('click', function() {
-          var group = toggle.parentElement;
-          // Close others
-          document.querySelectorAll('.mobile-nav-group.open').forEach(function(g) {
-            if (g !== group) g.classList.remove('open');
-          });
-          group.classList.toggle('open');
-        });
-      });
-
-      // ==========================================
-      // HERO ANIMATION
-      // ==========================================
-      var heroText = document.getElementById('hero-text');
-      var heroYour = document.getElementById('hero-your');
-      var heroSlide = document.getElementById('hero-slide');
-      var heroCycling = document.getElementById('hero-cycling');
-
-      // Fade in hero text
-      setTimeout(function() {
-        heroText.classList.add('visible');
-      }, 200);
-
-      // FLIP animation: slide "business" right, fade in "your"
-      setTimeout(function() {
-        // First: record current position
-        var firstRect = heroSlide.getBoundingClientRect();
-
-        // Layout change: put "your" in flow
-        heroYour.classList.add('in-flow');
-
-        // Last: record new position
-        var lastRect = heroSlide.getBoundingClientRect();
-        var dx = firstRect.left - lastRect.left;
-        var dy = firstRect.top - lastRect.top;
-
-        // Invert: snap back visually
-        heroSlide.style.transition = 'none';
-        heroSlide.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
-
-        // Play: animate to final position
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            heroSlide.style.transition = 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-            heroSlide.style.transform = '';
-            heroYour.classList.add('visible');
-          });
-        });
-      }, 1400);
-
-      // Start cycling practice areas
-      var cyclingWords = ['business.', 'litigation.', 'real estate.', 'contracts.', 'disputes.'];
-      var cyclingIndex = 0;
-
-      function cycleWord() {
-        heroCycling.style.opacity = '0';
-        setTimeout(function() {
-          cyclingIndex = (cyclingIndex + 1) % cyclingWords.length;
-          heroCycling.textContent = cyclingWords[cyclingIndex];
-          heroCycling.style.opacity = '1';
-        }, 400);
-      }
-
-      // First change shortly after FLIP settles, then regular interval
-      setTimeout(function() {
-        cycleWord();
-        setInterval(cycleWord, 5000);
-      }, 2800);
-
-      // ==========================================
-      // SCROLL REVEAL
-      // ==========================================
-      var reveals = document.querySelectorAll('.reveal');
-      var revealObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      reveals.forEach(function(el) {
-        revealObserver.observe(el);
-      });
-
-      // ==========================================
-      // TESTIMONIAL CAROUSEL
-      // ==========================================
-      var slides = document.querySelectorAll('.testimonial-slide');
-      var dots = document.querySelectorAll('.testimonial-dot');
-      var currentSlide = 0;
-      var autoplayTimer;
-
-      function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        dots[currentSlide].classList.remove('active');
-        currentSlide = index;
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
-      }
-
-      function nextSlide() {
-        goToSlide((currentSlide + 1) % slides.length);
-      }
-
-      function startAutoplay() {
-        autoplayTimer = setInterval(nextSlide, 6000);
-      }
-
-      dots.forEach(function(dot) {
-        dot.addEventListener('click', function() {
-          clearInterval(autoplayTimer);
-          goToSlide(parseInt(dot.dataset.dot));
-          startAutoplay();
-        });
-      });
-
-      // Pause on hover
-      var carousel = document.getElementById('testimonial-carousel');
-      carousel.addEventListener('mouseenter', function() {
-        clearInterval(autoplayTimer);
-      });
-      carousel.addEventListener('mouseleave', function() {
-        startAutoplay();
-      });
-
-      startAutoplay();
-
-
-    })();
-  </script>
+  <script src="scripts/site.js"></script>
 </body>
 </html>
