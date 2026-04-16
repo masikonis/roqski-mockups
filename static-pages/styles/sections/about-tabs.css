@@ -1,0 +1,558 @@
+/* ===========================================
+   ABOUT TABS (sub-navigation variant)
+   Tab strip that replaces the old features bar,
+   plus the panel switcher and the contact modal.
+   =========================================== */
+
+/* --- Hero: taller variant for the tabbed about page --- */
+.about-hero--tall .about-hero-inner {
+  min-height: 560px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.about-hero--tall h1 {
+  font-size: clamp(36px, 5vw, 68px);
+}
+@media (max-width: 768px) {
+  .about-hero--tall .about-hero-inner {
+    min-height: 380px;
+    padding: 96px 24px;
+  }
+  .about-hero--tall h1 { font-size: clamp(28px, 8vw, 38px); }
+}
+
+/* --- Sticky sub-navigation strip --- */
+.about-tabs {
+  position: sticky;
+  top: var(--nav-height-scrolled);
+  z-index: 50;
+  background: var(--off-white);
+}
+.about-tabs-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.about-tab {
+  position: relative;
+  background: transparent;
+  border: 0;
+  padding: 22px 22px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--teal-60);
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+.about-tab::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 0;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 200ms var(--ease-out);
+}
+.about-tab:hover {
+  color: var(--teal);
+}
+.about-tab:hover::after {
+  transform: scaleX(1);
+}
+.about-tab.is-active {
+  color: var(--orange);
+}
+.about-tab.is-active::after {
+  transform: scaleX(1);
+}
+.about-tab:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: -4px;
+}
+
+@media (max-width: 900px) {
+  .about-tabs-inner {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 16px;
+  }
+  .about-tabs-inner::-webkit-scrollbar { display: none; }
+  .about-tab {
+    padding: 18px 14px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+  .about-tab::after { left: 14px; right: 14px; }
+}
+
+/* --- Panel switcher --- */
+.about-tab-panels {
+  position: relative;
+}
+.about-tab-panel {
+  display: none;
+  animation: aboutTabFadeIn 320ms var(--ease-out);
+}
+.about-tab-panel.is-active {
+  display: block;
+}
+@keyframes aboutTabFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Simple statement panels (Mission / Vision) --- */
+.about-statement {
+  padding: 120px 0;
+  background: var(--white);
+}
+.about-statement-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 48px;
+  text-align: center;
+}
+.about-statement-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 28px;
+}
+.about-statement h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+}
+.about-statement p {
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--teal-60);
+}
+@media (max-width: 768px) {
+  .about-statement { padding: 72px 0; }
+  .about-statement-inner { padding: 0 24px; }
+}
+
+/* --- Team roster, wide variant: bigger photos, more spread --- */
+.team-roster--wide .team-roster-grid {
+  gap: 40px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+.team-roster--wide .team-roster-photo {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 18px;
+}
+.team-roster--wide .team-roster-name {
+  font-size: 16px;
+}
+.team-roster--wide .team-roster-title {
+  font-size: 14px;
+  margin-top: 4px;
+}
+.team-roster--wide .team-roster-focus {
+  max-width: 180px;
+  margin-top: 6px;
+}
+@media (max-width: 900px) {
+  .team-roster--wide .team-roster-grid {
+    gap: 28px;
+    justify-content: center;
+  }
+  .team-roster--wide .team-roster-photo {
+    width: 140px;
+    height: 140px;
+  }
+}
+@media (max-width: 600px) {
+  .team-roster--wide .team-roster-photo {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* --- Contact modal --- */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.contact-modal.is-open {
+  display: flex;
+}
+.contact-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 48, 48, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: modalBackdropIn 220ms var(--ease-out);
+}
+.contact-modal-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background: var(--white);
+  padding: 56px 56px 48px;
+  box-shadow: 0 30px 80px rgba(11, 48, 48, 0.25);
+  animation: modalDialogIn 260ms var(--ease-out);
+}
+@keyframes modalBackdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modalDialogIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.contact-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  color: var(--teal-60);
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease;
+  border-radius: 50%;
+}
+.contact-modal-close:hover {
+  color: var(--teal);
+  background: var(--off-white);
+}
+.contact-modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+.contact-modal-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.contact-modal-dialog h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 32px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.contact-modal-intro {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--teal-60);
+  margin-bottom: 28px;
+}
+.contact-modal-intro a {
+  color: var(--orange);
+  font-weight: 600;
+}
+.contact-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact-modal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.contact-modal-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.contact-modal-form label em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--teal-30);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.contact-modal-form input,
+.contact-modal-form textarea {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--teal);
+  background: var(--off-white);
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--teal-15);
+  padding: 12px 14px;
+  transition: border-color 160ms ease, background 160ms ease;
+  width: 100%;
+}
+.contact-modal-form input:focus,
+.contact-modal-form textarea:focus {
+  outline: none;
+  border-bottom-color: var(--orange);
+  background: var(--white);
+  border-color: var(--teal-15);
+}
+.contact-modal-form textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+.contact-modal-submit {
+  align-self: flex-start;
+  margin-top: 8px;
+  background: var(--orange);
+  color: var(--white);
+  border: 0;
+  padding: 14px 28px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+.contact-modal-submit:hover {
+  background: var(--orange-hover);
+}
+body.modal-open {
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .contact-modal-dialog { padding: 48px 24px 32px; }
+  .contact-modal-row { grid-template-columns: 1fr; }
+}
+
+/* --- History tab: slightly shorter founders image --- */
+.about-tab-panel[data-panel="history"] .about-founders-image {
+  aspect-ratio: 4 / 4.25;
+}
+
+/* --- Approach tab: split backgrounds for visual segmentation --- */
+.about-tab-panel[data-panel="approach"] .practice-areas {
+  background: var(--white);
+}
+.about-tab-panel[data-panel="approach"] .process {
+  background: var(--off-white);
+}
+
+/* --- Closing divider between a tab panel and the community block --- */
+.about-tab-divider {
+  background: var(--white);
+  padding-bottom: 0;
+}
+.about-tab-divider .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.about-tab-divider hr {
+  border: 0;
+  height: 1px;
+  background: var(--teal-15);
+  margin: 0;
+}
+
+/* ===========================================
+   HIGHLIGHTS CAROUSEL
+   Horizontal card slider with right-aligned arrows,
+   inspired by firm-highlights patterns.
+   =========================================== */
+.highlights {
+  padding: 120px 0;
+  background: var(--white);
+}
+.highlights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 20px;
+}
+.highlights-header-text {
+  flex: 1;
+  min-width: 0;
+}
+.highlights h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+}
+.highlights-subtitle {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--teal-60);
+  margin-top: 12px;
+  max-width: 560px;
+}
+.highlights-rule {
+  border: 0;
+  height: 1px;
+  background: var(--teal-15);
+  margin: 0 0 40px;
+}
+.highlights-nav {
+  display: inline-flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.highlights-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--teal-15);
+  color: var(--teal-60);
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+.highlights-btn svg {
+  width: 18px;
+  height: 18px;
+}
+.highlights-btn:hover {
+  color: var(--orange);
+}
+.highlights-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.highlights-btn:disabled:hover {
+  color: var(--teal-60);
+  border-color: var(--teal-15);
+}
+.highlights-viewport {
+  overflow: hidden;
+  margin: 0 -4px;
+}
+.highlights-track {
+  display: flex;
+  gap: 24px;
+  padding: 4px;
+  transition: transform 500ms var(--ease-out);
+  will-change: transform;
+}
+.highlight-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  background: var(--off-white);
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  transition: background 200ms ease, transform 200ms ease;
+}
+.highlight-card:hover {
+  background: #F2EEE4;
+}
+.highlight-category {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.highlight-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--teal);
+  margin-bottom: 14px;
+}
+.highlight-excerpt {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--teal-60);
+  margin-bottom: 24px;
+}
+.highlight-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  transition: gap 200ms ease;
+}
+.highlight-link:hover { gap: 10px; }
+.highlight-link svg { width: 12px; height: 12px; }
+
+@media (max-width: 1000px) {
+  .highlight-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+}
+@media (max-width: 700px) {
+  .highlights { padding: 72px 0; }
+  .highlights-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .highlights-rule { margin-bottom: 28px; }
+  .highlight-card {
+    flex: 0 0 85%;
+    min-height: 240px;
+    padding: 28px 24px;
+  }
+  .highlight-title { font-size: 19px; }
+  .highlights-btn { width: 42px; height: 42px; }
+}

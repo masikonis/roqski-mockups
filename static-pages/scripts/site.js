@@ -402,4 +402,143 @@
     });
   })();
 
+  // ==========================================
+  // ABOUT TABS — sub-navigation panel switcher
+  // ==========================================
+  (function initAboutTabs() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.about-tab[data-tab]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.about-tab-panel[data-panel]'));
+    if (!tabs.length || !panels.length) return;
+
+    function activate(tabId) {
+      tabs.forEach(function (tab) {
+        tab.classList.toggle('is-active', tab.dataset.tab === tabId);
+      });
+      panels.forEach(function (panel) {
+        var isActive = panel.dataset.panel === tabId;
+        panel.classList.toggle('is-active', isActive);
+        if (isActive) {
+          panel.querySelectorAll('.reveal').forEach(function (el) {
+            el.classList.add('visible');
+          });
+        }
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activate(tab.dataset.tab);
+      });
+    });
+  })();
+
+  // ==========================================
+  // HIGHLIGHTS CAROUSEL — horizontal card slider
+  // with prev/next arrows, snaps to card width.
+  // ==========================================
+  (function initHighlights() {
+    var track = document.getElementById('highlights-track');
+    var prev = document.getElementById('highlights-prev');
+    var next = document.getElementById('highlights-next');
+    if (!track || !prev || !next) return;
+
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.highlight-card'));
+    if (!cards.length) return;
+
+    var currentIndex = 0;
+
+    function cardStep() {
+      if (cards.length < 2) return 0;
+      return cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+    }
+
+    function maxIndex() {
+      var viewport = track.parentElement;
+      if (!viewport) return 0;
+      var step = cardStep();
+      if (step <= 0) return 0;
+      var visible = Math.max(1, Math.round(viewport.clientWidth / step));
+      return Math.max(0, cards.length - visible);
+    }
+
+    function update() {
+      var step = cardStep();
+      track.style.transform = 'translateX(' + (-currentIndex * step) + 'px)';
+      prev.disabled = currentIndex <= 0;
+      next.disabled = currentIndex >= maxIndex();
+    }
+
+    prev.addEventListener('click', function () {
+      if (currentIndex > 0) {
+        currentIndex -= 1;
+        update();
+      }
+    });
+    next.addEventListener('click', function () {
+      if (currentIndex < maxIndex()) {
+        currentIndex += 1;
+        update();
+      }
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        currentIndex = Math.min(currentIndex, maxIndex());
+        update();
+      }, 120);
+    });
+
+    update();
+  })();
+
+  // ==========================================
+  // CONTACT MODAL — open/close with backdrop + ESC
+  // ==========================================
+  (function initContactModal() {
+    var openers = Array.prototype.slice.call(document.querySelectorAll('[data-modal-open]'));
+    if (!openers.length) return;
+    var lastTrigger = null;
+
+    function openModal(id) {
+      var modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      var firstInput = modal.querySelector('input, textarea, button');
+      if (firstInput) setTimeout(function () { firstInput.focus(); }, 50);
+    }
+
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      if (lastTrigger) lastTrigger.focus();
+    }
+
+    openers.forEach(function (opener) {
+      opener.addEventListener('click', function (e) {
+        e.preventDefault();
+        lastTrigger = opener;
+        openModal(opener.dataset.modalOpen);
+      });
+    });
+
+    document.querySelectorAll('[data-modal-close]').forEach(function (closer) {
+      closer.addEventListener('click', function () {
+        var modal = closer.closest('.contact-modal');
+        closeModal(modal);
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var openModalEl = document.querySelector('.contact-modal.is-open');
+      if (openModalEl) closeModal(openModalEl);
+    });
+  })();
+
 })();
