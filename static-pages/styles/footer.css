@@ -76,14 +76,15 @@
 .footer-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 96px;
+  justify-self: end;
 }
 .footer-nav h3 {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--teal-60);
+  color: var(--orange);
   margin-bottom: 16px;
 }
 .footer-nav ul {
