@@ -541,4 +541,39 @@
     });
   })();
 
+  // ==========================================
+  // BIO ACCORDION — expand/collapse credentials
+  // ==========================================
+  (function initBioAccordion() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.bio-accordion-item'));
+    if (!items.length) return;
+
+    items.forEach(function (item) {
+      var toggle = item.querySelector('.bio-accordion-toggle');
+      var body = item.querySelector('.bio-accordion-body');
+      if (!toggle || !body) return;
+
+      toggle.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+
+        // Close all others
+        items.forEach(function (other) {
+          if (other !== item && other.classList.contains('is-open')) {
+            other.classList.remove('is-open');
+            other.querySelector('.bio-accordion-body').style.maxHeight = '0';
+          }
+        });
+
+        // Toggle current
+        if (isOpen) {
+          item.classList.remove('is-open');
+          body.style.maxHeight = '0';
+        } else {
+          item.classList.add('is-open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  })();
+
 })();

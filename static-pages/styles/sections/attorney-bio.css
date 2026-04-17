@@ -1,0 +1,405 @@
+/* ===========================================
+   ATTORNEY BIO
+   Hero with solid teal background, photo + info
+   side by side. Reuses about-tabs for sub-nav.
+   =========================================== */
+
+/* --- Bio hero: solid teal background, two-column layout --- */
+.bio-hero {
+  position: relative;
+  background: var(--teal);
+  padding-top: var(--nav-height);
+  overflow: hidden;
+}
+.bio-hero-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 480px;
+}
+
+/* Left column: text content */
+.bio-hero-text {
+  flex: 1;
+  padding: 72px 0;
+  min-width: 0;
+}
+.bio-hero-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 15px;
+}
+.bio-hero-name {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.bio-hero-title {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 32px;
+}
+.bio-hero-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bio-hero-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 180ms ease;
+}
+.bio-hero-contact a:hover {
+  color: var(--orange);
+}
+.bio-hero-contact-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 180ms ease;
+}
+.bio-hero-contact a:hover .bio-hero-contact-icon {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.bio-hero-contact-icon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--white);
+  transition: color 180ms ease;
+}
+.bio-hero-contact a:hover .bio-hero-contact-icon svg {
+  color: var(--orange);
+}
+
+/* Right column: photo, bottom-aligned flush with tab bar */
+.bio-hero-photo {
+  flex: 0 0 510px;
+  align-self: flex-end;
+  position: relative;
+  margin-right: 40px;
+}
+.bio-hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .bio-hero-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    min-height: auto;
+  }
+  .bio-hero-text {
+    padding: 56px 0 40px;
+    order: 1;
+  }
+  .bio-hero-photo {
+    flex: none;
+    order: 2;
+    max-width: 300px;
+    align-self: center;
+    margin-right: 0;
+  }
+  .bio-hero-name {
+    font-size: clamp(30px, 7vw, 42px);
+  }
+}
+@media (max-width: 600px) {
+  .bio-hero-inner {
+    padding: 0 24px;
+  }
+  .bio-hero-photo {
+    max-width: 260px;
+  }
+}
+
+/* --- Biography panel content --- */
+.bio-content {
+  padding: 80px 0;
+  background: var(--white);
+}
+.bio-content-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.bio-content h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 28px;
+}
+.bio-lead {
+  font-family: var(--font-sans);
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--teal);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+.bio-content p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--teal-60);
+  margin-bottom: 20px;
+}
+.bio-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* --- Credentials accordion --- */
+.bio-accordion {
+  margin-top: 56px;
+}
+.bio-accordion-item {
+  border-top: 1px solid var(--teal-15);
+}
+.bio-accordion-item:last-child {
+  border-bottom: 1px solid var(--teal-15);
+}
+.bio-accordion-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--teal);
+  transition: color 180ms ease;
+}
+.bio-accordion-toggle:hover {
+  color: var(--orange);
+}
+.bio-accordion-toggle svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--teal-30);
+  transition: color 180ms ease, transform 280ms var(--ease-out);
+}
+.bio-accordion-toggle:hover svg {
+  color: var(--orange);
+}
+.bio-accordion-item.is-open .bio-accordion-toggle svg {
+  transform: rotate(180deg);
+}
+.bio-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 320ms var(--ease-out);
+}
+.bio-accordion-body-inner {
+  padding: 0 0 28px;
+}
+.bio-accordion-body ul {
+  list-style: none;
+  padding: 0;
+}
+.bio-accordion-body li {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--teal-60);
+  padding: 4px 0;
+}
+
+/* --- Case results panel --- */
+.bio-cases {
+  padding: 80px 0;
+  background: var(--white);
+}
+.bio-cases-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.bio-cases h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.bio-cases > .bio-cases-inner > p:first-of-type {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--teal-60);
+  margin-bottom: 48px;
+}
+.bio-case-item {
+  padding: 32px 0;
+  border-top: 1px solid var(--teal-15);
+}
+.bio-case-item:last-child {
+  border-bottom: 1px solid var(--teal-15);
+}
+.bio-case-category {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.bio-case-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+.bio-case-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--teal-60);
+}
+
+/* --- Focus areas panel --- */
+.bio-focus {
+  padding: 80px 0;
+  background: var(--white);
+}
+.bio-focus-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.bio-focus h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 40px;
+}
+.bio-focus-list {
+  list-style: none;
+  padding: 0;
+}
+.bio-focus-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-top: 1px solid var(--teal-15);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--teal);
+  transition: color 180ms ease;
+  cursor: pointer;
+}
+.bio-focus-item:last-child {
+  border-bottom: 1px solid var(--teal-15);
+}
+.bio-focus-item:hover {
+  color: var(--orange);
+}
+.bio-focus-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--teal-30);
+  transition: color 180ms ease, transform 180ms ease;
+}
+.bio-focus-item:hover svg {
+  color: var(--orange);
+  transform: translateX(4px);
+}
+
+/* --- Bio-specific contact modal header with avatar --- */
+.contact-modal-header-bio {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+.contact-modal-header-bio .contact-modal-eyebrow {
+  margin-bottom: 4px;
+}
+.contact-modal-header-bio h2 {
+  margin-bottom: 0;
+}
+.contact-modal-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--off-white);
+}
+.contact-modal-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Tab divider: full width on bio page --- */
+.bio-page .about-tab-divider .container {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* --- Responsive for inner panels --- */
+@media (max-width: 768px) {
+  .bio-content,
+  .bio-cases,
+  .bio-focus {
+    padding: 56px 0;
+  }
+  .bio-content-inner,
+  .bio-cases-inner,
+  .bio-focus-inner {
+    padding: 0 24px;
+  }
+  .bio-accordion-toggle {
+    font-size: 18px;
+    padding: 18px 0;
+  }
+  .bio-lead {
+    font-size: 19px;
+  }
+}
