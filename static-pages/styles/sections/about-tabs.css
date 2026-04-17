@@ -4,11 +4,14 @@
    plus the panel switcher and the contact modal.
    =========================================== */
 
-/* --- Hero: taller variant for the tabbed about page --- */
+/* --- Hero: full-size variant matching the homepage hero --- */
+.about-hero.about-hero--tall {
+  padding-bottom: 80px;
+}
 .about-hero--tall .about-hero-inner {
-  min-height: 560px;
-  padding-top: 120px;
-  padding-bottom: 120px;
+  min-height: 600px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .about-hero--tall h1 {
   font-size: clamp(36px, 5vw, 68px);
@@ -21,28 +24,52 @@
   .about-hero--tall h1 { font-size: clamp(28px, 8vw, 38px); }
 }
 
-/* --- Sticky sub-navigation strip --- */
+/* --- Sub-navigation strip: mirrors the homepage trust logos bar --- */
 .about-tabs {
-  position: sticky;
-  top: var(--nav-height-scrolled);
-  z-index: 50;
-  background: var(--off-white);
+  position: relative;
+  z-index: 2;
+  margin-top: -56px;
 }
 .about-tabs-inner {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 36px 0;
+  background: var(--off-white);
+  overflow: hidden;
+  position: relative;
+}
+.about-tabs-inner::before,
+.about-tabs-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  z-index: 1;
+  pointer-events: none;
+}
+.about-tabs-inner::before {
+  left: 0;
+  background: linear-gradient(to right, var(--off-white), transparent);
+}
+.about-tabs-inner::after {
+  right: 0;
+  background: linear-gradient(to left, var(--off-white), transparent);
+}
+.about-tabs-list {
   display: flex;
   justify-content: center;
-  align-items: stretch;
-  gap: 8px;
+  align-items: center;
   flex-wrap: wrap;
 }
 .about-tab {
   position: relative;
   background: transparent;
   border: 0;
-  padding: 22px 22px;
+  padding: 0 22px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 600;
@@ -82,17 +109,19 @@
 }
 
 @media (max-width: 900px) {
-  .about-tabs-inner {
+  .about-tabs { margin-top: -40px; }
+  .about-tabs-inner { padding: 28px 0; }
+  .about-tabs-list {
     justify-content: flex-start;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 0 16px;
   }
-  .about-tabs-inner::-webkit-scrollbar { display: none; }
+  .about-tabs-list::-webkit-scrollbar { display: none; }
   .about-tab {
-    padding: 18px 14px;
+    padding: 0 14px;
+    height: 30px;
     font-size: 12px;
     letter-spacing: 0.14em;
     white-space: nowrap;
@@ -156,13 +185,16 @@
   .about-statement-inner { padding: 0 24px; }
 }
 
-/* --- Team roster, wide variant: bigger photos, more spread --- */
+/* --- Team roster, wide variant: 4 per row, last row centers --- */
 .team-roster--wide .team-roster-grid {
-  gap: 40px;
-  max-width: 1100px;
+  gap: 48px 40px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  justify-content: space-between;
+  justify-content: center;
+}
+.team-roster--wide .team-roster-member {
+  flex: 0 0 200px;
 }
 .team-roster--wide .team-roster-photo {
   width: 180px;
@@ -176,14 +208,12 @@
   font-size: 14px;
   margin-top: 4px;
 }
-.team-roster--wide .team-roster-focus {
-  max-width: 180px;
-  margin-top: 6px;
-}
 @media (max-width: 900px) {
   .team-roster--wide .team-roster-grid {
-    gap: 28px;
-    justify-content: center;
+    gap: 32px 24px;
+  }
+  .team-roster--wide .team-roster-member {
+    flex: 0 0 calc(50% - 24px);
   }
   .team-roster--wide .team-roster-photo {
     width: 140px;
