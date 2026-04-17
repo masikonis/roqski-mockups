@@ -5,6 +5,8 @@
   background: var(--off-white);
   padding: 120px 48px;
   text-align: center;
+  border-top: 1px solid var(--teal-15);
+  border-bottom: 1px solid var(--teal-15);
 }
 .footer-cta h2 {
   font-family: var(--font-heading);
@@ -42,7 +44,6 @@
    FOOTER
    =========================================== */
 .site-footer {
-  border-top: 1px solid var(--teal-15);
   padding: 56px 0 40px;
 }
 .footer-top {
