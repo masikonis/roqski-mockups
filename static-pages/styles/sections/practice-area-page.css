@@ -1,0 +1,265 @@
+/* ===========================================
+   PRACTICE AREA PAGE
+   Content panels for the tabbed PA template.
+   Reuses about-tabs for tab strip + panel switcher.
+   =========================================== */
+
+/* --- Hero description text --- */
+.pa-hero-desc {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 20px;
+  max-width: 640px;
+}
+
+/* --- Accordion body paragraphs inside PA panels --- */
+.bio-accordion-body-inner p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--teal-60);
+  margin-bottom: 16px;
+}
+.bio-accordion-body-inner p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Approach tab: white background --- */
+.pa-page .about-tab-panel[data-panel="approach"] .process {
+  background: var(--white);
+}
+
+/* --- Related practices & focus areas: white bg practice grid --- */
+.pa-page .about-tab-panel[data-panel="related-practices"] .practice-areas,
+.bio-page .about-tab-panel[data-panel="focus-areas"] .practice-areas {
+  background: var(--white);
+}
+
+/* --- Overview panel --- */
+.pa-overview {
+  padding: 80px 0;
+  background: var(--white);
+}
+.pa-overview-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.pa-overview h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 28px;
+}
+.pa-overview-lead {
+  font-family: var(--font-sans);
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--teal);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+.pa-overview p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--teal-60);
+  margin-bottom: 20px;
+}
+.pa-overview p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* --- Overview sub-sections --- */
+.pa-subsection {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--teal-15);
+}
+.pa-subsection h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+.pa-subsection p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--teal-60);
+  margin-bottom: 20px;
+}
+.pa-subsection p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* --- Representative work list in overview --- */
+.pa-services-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+  columns: 2;
+  column-gap: 40px;
+}
+.pa-services-list li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--teal-60);
+  padding: 6px 0;
+  break-inside: avoid;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.pa-services-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+}
+
+/* --- Case results panel --- */
+.pa-cases {
+  padding: 80px 0;
+  background: var(--white);
+}
+.pa-cases-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.pa-cases h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.pa-cases-intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--teal-60);
+  margin-bottom: 48px;
+}
+.pa-case-item {
+  padding: 32px 0;
+  border-top: 1px solid var(--teal-15);
+}
+.pa-case-item:last-child {
+  border-bottom: 1px solid var(--teal-15);
+}
+.pa-case-category {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.pa-case-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+.pa-case-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--teal-60);
+}
+
+/* --- Related practices panel --- */
+.pa-related {
+  padding: 80px 0;
+  background: var(--white);
+}
+.pa-related-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.pa-related h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin-bottom: 40px;
+}
+.pa-related-list {
+  list-style: none;
+  padding: 0;
+}
+.pa-related-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-top: 1px solid var(--teal-15);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--teal);
+  transition: color 180ms ease;
+  cursor: pointer;
+}
+.pa-related-item:last-child {
+  border-bottom: 1px solid var(--teal-15);
+}
+.pa-related-item:hover {
+  color: var(--orange);
+}
+.pa-related-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--teal-30);
+  transition: color 180ms ease, transform 180ms ease;
+}
+.pa-related-item:hover svg {
+  color: var(--orange);
+  transform: translateX(4px);
+}
+
+/* --- Full-width tab divider on PA page --- */
+.pa-page .about-tab-divider .container {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .pa-overview,
+  .pa-cases,
+  .pa-related {
+    padding: 56px 0;
+  }
+  .pa-overview-inner,
+  .pa-cases-inner,
+  .pa-related-inner {
+    padding: 0 24px;
+  }
+  .pa-overview-lead {
+    font-size: 19px;
+  }
+  .pa-services-list {
+    columns: 1;
+  }
+}

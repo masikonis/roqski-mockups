@@ -33,8 +33,11 @@
 .practice-cell:nth-child(odd) {
   border-right: 1px solid var(--teal-15);
 }
-.practice-cell:nth-child(-n+4) {
+.practice-cell {
   border-bottom: 1px solid var(--teal-15);
+}
+.practice-cell:nth-last-child(-n+2) {
+  border-bottom: none;
 }
 .practice-cell:hover {
   background: rgba(11, 48, 48, 0.03);
@@ -72,7 +75,7 @@
   .practice-areas .container { padding: 0 24px; }
   .practice-grid { grid-template-columns: 1fr; }
   .practice-cell:nth-child(odd) { border-right: none; }
-  .practice-cell:nth-child(-n+4) { border-bottom: 1px solid var(--teal-15); }
-  .practice-cell:nth-child(5) { border-bottom: 1px solid var(--teal-15); }
+  .practice-cell { border-bottom: 1px solid var(--teal-15); }
+  .practice-cell:last-child { border-bottom: none; }
   .practice-cell { padding: 28px 0; }
 }
