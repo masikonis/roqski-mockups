@@ -254,9 +254,6 @@
   // SCROLL REVEAL
   // ==========================================
   (function initScrollReveal() {
-    var reveals = document.querySelectorAll('.reveal');
-    if (!reveals.length) return;
-
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -266,9 +263,18 @@
       });
     }, { threshold: 0.1 });
 
-    reveals.forEach(function (el) {
+    document.querySelectorAll('.reveal').forEach(function (el) {
       revealObserver.observe(el);
     });
+
+    // Exposed so tab switcher can re-trigger fade-in when a panel activates.
+    window.__rsRefreshReveals = function (root) {
+      (root || document).querySelectorAll('.reveal').forEach(function (el) {
+        el.classList.remove('visible');
+        revealObserver.unobserve(el);
+        revealObserver.observe(el);
+      });
+    };
   })();
 
   // ==========================================
@@ -417,10 +423,8 @@
       panels.forEach(function (panel) {
         var isActive = panel.dataset.panel === tabId;
         panel.classList.toggle('is-active', isActive);
-        if (isActive) {
-          panel.querySelectorAll('.reveal').forEach(function (el) {
-            el.classList.add('visible');
-          });
+        if (isActive && window.__rsRefreshReveals) {
+          window.__rsRefreshReveals(panel);
         }
       });
     }

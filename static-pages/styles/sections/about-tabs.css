@@ -145,6 +145,16 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Standardize main headings across all tab panels */
+.about-tab-panel h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+}
+
 /* --- Simple statement panels (Mission / Vision) --- */
 .about-statement {
   padding: 120px 0;
