@@ -26,11 +26,6 @@
   margin-bottom: 0;
 }
 
-/* --- Approach tab: white background --- */
-.pa-page .about-tab-panel[data-panel="approach"] .process {
-  background: var(--white);
-}
-
 /* --- Related practices & focus areas: white bg practice grid --- */
 .pa-page .about-tab-panel[data-panel="related-practices"] .practice-areas,
 .bio-page .about-tab-panel[data-panel="focus-areas"] .practice-areas {
@@ -126,6 +121,107 @@
   flex-shrink: 0;
   position: relative;
   top: -1px;
+}
+
+/* --- Overview "Read more" expandable section --- */
+.pa-readmore-block--visible {
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid var(--teal-15);
+}
+.pa-readmore-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 400ms var(--ease-out);
+}
+.pa-readmore-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.pa-readmore.is-open .pa-readmore-content {
+  grid-template-rows: 1fr;
+}
+.pa-readmore.is-open .pa-readmore-inner {
+  overflow: visible;
+}
+.pa-readmore-inner .pa-readmore-block {
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid var(--teal-15);
+}
+.pa-readmore-block h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--teal);
+  margin: 0 0 16px;
+}
+.pa-readmore-block p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--teal-60);
+  margin-bottom: 16px;
+}
+.pa-readmore-block p:last-child { margin-bottom: 0; }
+.pa-readmore-btn-row {
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid var(--teal-15);
+}
+.pa-readmore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--orange);
+  border: 0;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+.pa-readmore-btn:hover {
+  background: var(--orange-hover);
+}
+.pa-readmore-btn svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 280ms var(--ease-out);
+}
+.pa-readmore.is-open .pa-readmore-btn svg {
+  transform: rotate(180deg);
+}
+
+/* --- FAQ list (no accordion variant) --- */
+.pa-faq {
+  margin-top: 32px;
+}
+.pa-faq-item {
+  padding: 32px 0;
+  border-top: 1px solid var(--teal-15);
+}
+.pa-faq-item:last-child {
+  border-bottom: 1px solid var(--teal-15);
+}
+.pa-faq-question {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--teal);
+  margin: 0 0 12px;
+}
+.pa-faq-answer {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--teal-60);
+  margin: 0;
 }
 
 /* --- Case results panel --- */

@@ -546,6 +546,28 @@
   })();
 
   // ==========================================
+  // PA OVERVIEW — "Read more" toggle
+  // Expands a block of supplementary body text under
+  // the first intro paragraphs on practice-area overview.
+  // ==========================================
+  (function initPaReadMore() {
+    var groups = Array.prototype.slice.call(document.querySelectorAll('.pa-readmore'));
+    if (!groups.length) return;
+
+    groups.forEach(function (group) {
+      var toggle = group.querySelector('.pa-readmore-btn');
+      var label = group.querySelector('.pa-readmore-label');
+      if (!toggle || !label) return;
+
+      toggle.addEventListener('click', function () {
+        var isOpen = group.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        label.textContent = isOpen ? 'Show less' : 'Read more';
+      });
+    });
+  })();
+
+  // ==========================================
   // BIO ACCORDION — expand/collapse credentials
   // ==========================================
   (function initBioAccordion() {

@@ -145,14 +145,54 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Standardize main headings across all tab panels */
-.about-tab-panel h2 {
+/* Standardize main headings across all tab panels. Using descendant selector
+   with higher specificity so section-level rules (practice-areas, process,
+   team-roster, etc.) don't override when those sections sit inside a tab. */
+.about-tab-panel h2,
+.about-tab-panel .practice-areas h2,
+.about-tab-panel .process h2,
+.about-tab-panel .team-roster h2,
+.about-tab-panel .about-statement h2,
+.about-tab-panel .about-mission h2,
+.about-tab-panel .about-founders-content h2,
+.about-tab-panel .bio-content h2,
+.about-tab-panel .bio-cases h2,
+.about-tab-panel .pa-overview h2,
+.about-tab-panel .pa-cases h2 {
   font-family: var(--font-heading);
   font-size: clamp(26px, 3vw, 36px);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.015em;
   color: var(--teal);
+}
+
+/* ---- Space between the tab strip and each panel's first section ----
+   Unified across all tabbed pages so every first-section gap matches. */
+body:not(.bio-page):not(.pa-page) .about-tab-panel > .about-founders,
+body:not(.bio-page):not(.pa-page) .about-tab-panel > .about-statement,
+body:not(.bio-page):not(.pa-page) .about-tab-panel > .practice-areas:first-child,
+body:not(.bio-page):not(.pa-page) .about-tab-panel > .team-roster:first-child,
+.bio-page .about-tab-panel > .bio-content,
+.bio-page .about-tab-panel > .bio-cases,
+.bio-page .about-tab-panel > .practice-areas:first-child,
+.pa-page .about-tab-panel > .pa-overview,
+.pa-page .about-tab-panel > .pa-cases,
+.pa-page .about-tab-panel > .process:first-child,
+.pa-page .about-tab-panel > .practice-areas:first-child { padding-top: 52px; }
+
+@media (max-width: 768px) {
+  body:not(.bio-page):not(.pa-page) .about-tab-panel > .about-founders,
+  body:not(.bio-page):not(.pa-page) .about-tab-panel > .about-statement,
+  body:not(.bio-page):not(.pa-page) .about-tab-panel > .practice-areas:first-child,
+  body:not(.bio-page):not(.pa-page) .about-tab-panel > .team-roster:first-child,
+  .bio-page .about-tab-panel > .bio-content,
+  .bio-page .about-tab-panel > .bio-cases,
+  .bio-page .about-tab-panel > .practice-areas:first-child,
+  .pa-page .about-tab-panel > .pa-overview,
+  .pa-page .about-tab-panel > .pa-cases,
+  .pa-page .about-tab-panel > .process:first-child,
+  .pa-page .about-tab-panel > .practice-areas:first-child { padding-top: 36px; }
 }
 
 /* --- Simple statement panels (Mission / Vision) --- */
