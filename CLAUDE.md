@@ -4,6 +4,20 @@ This repo holds static HTML/CSS mockups for the **Roquemore Skierski** marketing
 
 The person you're collaborating with in this repo is a **designer, not a developer**. This might be their first time using Claude Code. Keep that front of mind.
 
+## Brand direction (read first)
+
+@brand-direction.md
+
+This document is the north star for every visual and copy decision in this repo. The partners signed off on it — it captures voice, tone, the "we are / we aren't" rules, color, typography direction, imagery guardrails, and the reference sites the firm wants to emulate or avoid.
+
+Before you make any change that affects how the page looks, reads, or feels, quietly check it against the brand direction. If the designer asks for something that clashes with it, flag the tension in plain English and suggest an alternative that lines up. Don't override the designer — just make the conflict visible so they can decide. Examples:
+
+- Adding boxes/rectangles to group content → brand direction is explicit: no boxes, use lines and spacing.
+- Copy that drifts toward PI-firm clichés ("fight for you", urgency pressure) → steer toward the confident, measured voice the doc describes.
+- New imagery that feels stock-y or generic → reference the imagery direction before generating or placing it.
+
+Keep the brand direction in mind as the default, not as a checklist you read through out loud.
+
 ## How to talk to them
 
 - Plain English. No jargon. If you must use a technical term, explain it in one short sentence.
