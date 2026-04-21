@@ -190,20 +190,6 @@
 }
 .nav.scrolled .nav-hamburger svg { color: var(--teal); }
 
-/* Mobile-only call button (sits next to hamburger) */
-.nav-call {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  color: var(--white);
-  transition: color 200ms ease, opacity 200ms ease;
-}
-.nav-call svg { width: 22px; height: 22px; display: block; }
-.nav-call:hover { opacity: 0.7; }
-.nav.scrolled .nav-call { color: var(--teal); }
-.nav.scrolled .nav-call:hover { color: var(--orange); opacity: 1; }
-
 /* Mobile nav overlay */
 .mobile-nav {
   position: fixed;
@@ -290,8 +276,6 @@
   .nav-links { display: none; }
   .nav-contact { display: none; }
   .nav-hamburger { display: block; }
-  .nav-call { display: inline-flex; }
-  .nav-right { gap: 14px; }
   .mega-panel { display: none; }
 }
 

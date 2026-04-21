@@ -18,13 +18,13 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  min-height: 480px;
+  min-height: 336px;
 }
 
 /* Left column: text content */
 .bio-hero-text {
   flex: 1;
-  padding: 72px 0;
+  padding: 50px 0;
   min-width: 0;
 }
 .bio-hero-eyebrow {
@@ -97,7 +97,7 @@
 
 /* Right column: photo, bottom-aligned flush with tab bar */
 .bio-hero-photo {
-  flex: 0 0 510px;
+  flex: 0 0 340px;
   align-self: flex-end;
   position: relative;
   margin-right: 40px;
@@ -119,7 +119,7 @@
     min-height: auto;
   }
   .bio-hero-text {
-    padding: 56px 0 40px;
+    padding: 39px 0 28px;
     order: 1;
   }
   .bio-hero-photo {
