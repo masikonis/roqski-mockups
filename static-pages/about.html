@@ -90,6 +90,9 @@
         <li><a href="#">Resources</a></li>
         <li><a href="#contact" class="nav-contact">Contact</a></li>
       </ul>
+      <a href="tel:9723256591" class="nav-call" aria-label="Call (972) 325-6591">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg>
+      </a>
       <button class="nav-hamburger" id="nav-open" aria-label="Open menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -176,71 +179,6 @@
 
     <!-- APPROACH -->
     <section class="about-tab-panel" data-panel="approach">
-      <section class="practice-areas practice-areas-about" id="practice-areas">
-        <div class="container">
-          <h2 class="reveal">Our Practice</h2>
-          <hr class="practice-areas-rule reveal" data-delay="1">
-          <div class="practice-grid">
-            <a href="#" class="practice-cell reveal" data-delay="1">
-              <div class="practice-cell-name">
-                Business Litigation
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-              </div>
-              <p class="practice-cell-desc">High-stakes commercial disputes handled from investigation through trial in Texas state and federal courts.</p>
-            </a>
-            <a href="#" class="practice-cell reveal" data-delay="2">
-              <div class="practice-cell-name">
-                Breach of Contract
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-              </div>
-              <p class="practice-cell-desc">Enforcing agreements and recovering damages when the other side fails to perform.</p>
-            </a>
-            <a href="#" class="practice-cell reveal" data-delay="2">
-              <div class="practice-cell-name">
-                Breach of Fiduciary Duty
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-              </div>
-              <p class="practice-cell-desc">Holding officers, directors, and partners accountable when loyalty and care obligations are broken.</p>
-            </a>
-            <a href="#" class="practice-cell reveal" data-delay="3">
-              <div class="practice-cell-name">
-                Business Fraud Litigation
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-              </div>
-              <p class="practice-cell-desc">Pursuing deceptive practices, misrepresentation, and concealment claims to recover client losses.</p>
-            </a>
-            <a href="#" class="practice-cell reveal" data-delay="3">
-              <div class="practice-cell-name">
-                Contract Review
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-              </div>
-              <p class="practice-cell-desc">Careful review and negotiation of commercial agreements to protect clients before disputes arise.</p>
-            </a>
-            <a href="#" class="practice-cell reveal" data-delay="4">
-              <div class="practice-cell-name">
-                Injunctions &amp; TROs
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-              </div>
-              <p class="practice-cell-desc">Moving fast for emergency court relief when assets, trade secrets, or relationships are at immediate risk.</p>
-            </a>
-            <a href="#" class="practice-cell reveal" data-delay="4">
-              <div class="practice-cell-name">
-                Partnership Disputes
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-              </div>
-              <p class="practice-cell-desc">Resolving deadlock, buyout, and exit conflicts between partners and closely held business owners.</p>
-            </a>
-            <a href="#" class="practice-cell reveal" data-delay="5">
-              <div class="practice-cell-name">
-                Shareholder Disputes
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-              </div>
-              <p class="practice-cell-desc">Protecting minority and majority shareholders in governance, valuation, and oppression claims.</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section class="process" id="process">
         <div class="container">
           <h2>Our Process</h2>
@@ -419,21 +357,31 @@
       <form class="contact-modal-form" onsubmit="event.preventDefault();">
         <div class="contact-modal-row">
           <label>
-            <span>Name</span>
-            <input type="text" name="name" autocomplete="name" required>
+            <span>First name</span>
+            <input type="text" name="first-name" autocomplete="given-name" required>
           </label>
+          <label>
+            <span>Last name</span>
+            <input type="text" name="last-name" autocomplete="family-name" required>
+          </label>
+        </div>
+        <div class="contact-modal-row">
           <label>
             <span>Email</span>
             <input type="email" name="email" autocomplete="email" required>
           </label>
+          <label>
+            <span>Phone number</span>
+            <input type="tel" name="phone" autocomplete="tel" required>
+          </label>
         </div>
         <label>
-          <span>Phone <em>(optional)</em></span>
-          <input type="tel" name="phone" autocomplete="tel">
+          <span>Business name <em>(optional)</em></span>
+          <input type="text" name="business-name" autocomplete="organization">
         </label>
         <label>
-          <span>How can we help?</span>
-          <textarea name="message" rows="5" required></textarea>
+          <span>Describe your situation</span>
+          <textarea name="situation" rows="5" required></textarea>
         </label>
         <button type="submit" class="contact-modal-submit">Send message</button>
       </form>
