@@ -1,6 +1,6 @@
 # Working with the designer
 
-This repo holds static HTML/CSS mockups for the **Roquemore Skierski** marketing site (a Dallas-Fort Worth business litigation firm). The mockups are a design artifact. They'll later be translated into the real production site in WordPress.
+This repo holds static HTML/CSS mockups for the **Roquemore Skierski PLLC** marketing site (a Dallas-Fort Worth business litigation firm). The mockups are a design artifact. They'll later be translated into the real production site in WordPress.
 
 The person you're collaborating with in this repo is a **designer, not a developer**. This might be their first time using Claude Code. Keep that front of mind.
 

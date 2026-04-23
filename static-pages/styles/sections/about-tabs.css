@@ -9,7 +9,7 @@
   padding-bottom: 56px;
 }
 .about-hero--tall .about-hero-inner {
-  min-height: 420px;
+  min-height: 440px;
   padding-top: 70px;
   padding-bottom: 70px;
 }
@@ -444,6 +444,57 @@ body:not(.bio-page):not(.pa-page) .about-tab-panel > .team-roster:first-child,
 .contact-modal-submit:hover {
   background: var(--orange-hover);
 }
+.contact-modal-consent {
+  border: 0;
+  margin: 4px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--teal-15);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact-modal-consent legend {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  padding: 0;
+  margin-bottom: 4px;
+}
+.contact-modal-form .contact-modal-consent-check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--teal);
+  cursor: pointer;
+}
+.contact-modal-consent-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  accent-color: var(--orange);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.contact-modal-consent-check a {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color 160ms ease;
+}
+.contact-modal-consent-check a:hover {
+  color: var(--orange-hover);
+}
 body.modal-open {
   overflow: hidden;
 }
@@ -455,14 +506,6 @@ body.modal-open {
 /* --- History tab: slightly shorter founders image --- */
 .about-tab-panel[data-panel="history"] .about-founders-image {
   aspect-ratio: 4 / 4.25;
-}
-
-/* --- Approach tab: split backgrounds for visual segmentation --- */
-.about-tab-panel[data-panel="approach"] .practice-areas {
-  background: var(--white);
-}
-.about-tab-panel[data-panel="approach"] .process {
-  background: var(--off-white);
 }
 
 /* --- Closing divider between a tab panel and the community block --- */

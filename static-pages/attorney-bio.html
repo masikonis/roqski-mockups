@@ -37,7 +37,7 @@
             <div class="mega-panel-inner">
               <div class="mega-panel-left">
                 <div class="mega-panel-heading">About the Firm</div>
-                <p class="mega-panel-text">Roquemore Skierski represents businesses, entrepreneurs, and executives in business law and commercial litigation across Texas. A dedicated legal team on every matter, from initial strategy through trial.</p>
+                <p class="mega-panel-text">Roquemore Skierski PLLC represents businesses, entrepreneurs, and executives in business law and commercial litigation across Texas. A dedicated legal team on every matter, from initial strategy through trial.</p>
               </div>
               <div class="mega-panel-right">
                 <ul class="mega-panel-links">
@@ -145,8 +145,15 @@
           </a>
         </div>
       </div>
-      <div class="bio-hero-photo">
-        <img src="images/kelvin-bio-new.png" alt="Kelvin L. Roquemore">
+      <div class="bio-hero-photo is-framed" id="bio-hero-photo">
+        <img src="images/kelvin.webp" alt="Kelvin L. Roquemore" width="560" height="560">
+      </div>
+    </div>
+    <div class="bio-photo-style" data-photo-style>
+      <div class="bio-photo-style-label">Photo style</div>
+      <div class="bio-photo-style-pills" role="radiogroup" aria-label="Attorney photo style">
+        <button type="button" role="radio" aria-checked="true" class="bio-photo-style-pill is-active" data-photo-mode="framed">Framed</button>
+        <button type="button" role="radio" aria-checked="false" tabindex="-1" class="bio-photo-style-pill" data-photo-mode="round">Round</button>
       </div>
     </div>
   </section>
@@ -157,7 +164,7 @@
       <div class="about-tabs-list">
         <button class="about-tab is-active" data-tab="biography" type="button">Biography</button>
         <button class="about-tab" data-tab="case-results" type="button">Case Results</button>
-        <button class="about-tab" data-tab="focus-areas" type="button">Focus Areas</button>
+        <button class="about-tab" data-tab="practice-areas" type="button">Practice Areas</button>
         <button class="about-tab about-tab--modal" data-modal-open="contact-modal" type="button">Contact</button>
       </div>
     </div>
@@ -284,10 +291,10 @@
     </section>
 
     <!-- FOCUS AREAS -->
-    <section class="about-tab-panel" data-panel="focus-areas">
+    <section class="about-tab-panel" data-panel="practice-areas">
       <section class="practice-areas">
         <div class="container">
-          <h2 class="reveal">Focus Areas</h2>
+          <h2 class="reveal">Practice Areas</h2>
           <hr class="practice-areas-rule reveal" data-delay="1">
           <div class="practice-grid">
             <a href="#" class="practice-cell reveal" data-delay="1">
@@ -407,6 +414,17 @@
           <span>Describe your situation</span>
           <textarea name="situation" rows="5" required></textarea>
         </label>
+        <fieldset class="contact-modal-consent">
+          <legend>Consent</legend>
+          <label class="contact-modal-consent-check">
+            <input type="checkbox" name="consent-disclaimer" required>
+            <span>I have read and agree to the <a href="https://www.roqski.com/disclaimer" target="_blank" rel="noopener noreferrer">Disclaimer</a> and <a href="https://www.roqski.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
+          </label>
+          <label class="contact-modal-consent-check">
+            <input type="checkbox" name="consent-sms" required>
+            <span>I have read and agree to the <a href="https://www.roqski.com/messaging-policy" target="_blank" rel="noopener noreferrer">Text (SMS) Messaging Policy</a>.</span>
+          </label>
+        </fieldset>
         <button type="submit" class="contact-modal-submit">Send message</button>
       </form>
     </div>
@@ -448,10 +466,12 @@
       <div class="footer-bottom">
         <span class="footer-copyright">&copy; 2026 Roquemore Skierski PLLC. All rights reserved.</span>
         <div class="footer-legal">
-          <a href="#">Disclaimer</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Communications Policy</a>
-          <a href="#">Text Messaging Policy</a>
+          <a href="https://www.roqski.com/privacy-policy">Privacy Policy</a>
+          <a href="https://www.roqski.com/disclaimer">Disclaimer</a>
+          <a href="https://www.roqski.com/communications-policy">Communications Policy</a>
+          <a href="https://www.roqski.com/messaging-policy">Text Messaging Policy</a>
+          <a href="https://www.roqski.com/ai-use-disclosure">AI Use Disclosure</a>
+          <a href="https://www.roqski.com/accessibility-statement">Accessibility Statement</a>
         </div>
       </div>
     </div>

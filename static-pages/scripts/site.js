@@ -602,4 +602,42 @@
     });
   })();
 
+  // ==========================================
+  // BIO PHOTO STYLE — framed vs round selector (mockup-only)
+  // ==========================================
+  (function initBioPhotoStyle() {
+    var selector = document.querySelector('[data-photo-style]');
+    var photo = document.getElementById('bio-hero-photo');
+    if (!selector || !photo) return;
+
+    var pills = Array.prototype.slice.call(selector.querySelectorAll('[data-photo-mode]'));
+
+    function setMode(mode) {
+      photo.classList.toggle('is-framed', mode === 'framed');
+      photo.classList.toggle('is-round', mode === 'round');
+      pills.forEach(function (pill) {
+        var on = pill.dataset.photoMode === mode;
+        pill.classList.toggle('is-active', on);
+        pill.setAttribute('aria-checked', on ? 'true' : 'false');
+        pill.tabIndex = on ? 0 : -1;
+      });
+    }
+
+    selector.addEventListener('click', function (e) {
+      var pill = e.target.closest('[data-photo-mode]');
+      if (!pill) return;
+      setMode(pill.dataset.photoMode);
+    });
+
+    selector.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      var idx = pills.indexOf(document.activeElement);
+      if (idx < 0) return;
+      var next = pills[(idx + (e.key === 'ArrowRight' ? 1 : pills.length - 1)) % pills.length];
+      next.focus();
+      setMode(next.dataset.photoMode);
+      e.preventDefault();
+    });
+  })();
+
 })();

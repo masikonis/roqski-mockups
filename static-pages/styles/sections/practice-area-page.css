@@ -26,9 +26,9 @@
   margin-bottom: 0;
 }
 
-/* --- Related practices & focus areas: white bg practice grid --- */
+/* --- Related practices & practice areas: white bg practice grid --- */
 .pa-page .about-tab-panel[data-panel="related-practices"] .practice-areas,
-.bio-page .about-tab-panel[data-panel="focus-areas"] .practice-areas {
+.bio-page .about-tab-panel[data-panel="practice-areas"] .practice-areas {
   background: var(--white);
 }
 
@@ -124,11 +124,6 @@
 }
 
 /* --- Overview "Read more" expandable section --- */
-.pa-readmore-block--visible {
-  margin-top: 48px;
-  padding-top: 48px;
-  border-top: 1px solid var(--teal-15);
-}
 .pa-readmore-content {
   display: grid;
   grid-template-rows: 0fr;
@@ -338,6 +333,12 @@
 .pa-page .about-tab-divider .container {
   max-width: 100%;
   padding: 0;
+}
+
+/* --- Align Approach + Related Practices panels to the 960px reading frame --- */
+.pa-page .about-tab-panel .process > .container,
+.pa-page .about-tab-panel .practice-areas > .container {
+  max-width: 960px;
 }
 
 /* --- Responsive --- */

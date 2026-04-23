@@ -60,11 +60,20 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 10%;
   transition: transform 0.5s var(--ease-out);
 }
 .team-roster-member:hover .team-roster-photo img {
   transform: scale(1.15);
+}
+
+/* Mark's source frames wider than the others; zoom in to match head size */
+.team-roster-member[data-person="mi"] .team-roster-photo img {
+  transform: scale(1.22);
+  object-position: center 28%;
+}
+.team-roster-member[data-person="mi"]:hover .team-roster-photo img {
+  transform: scale(1.37);
 }
 .team-roster-name {
   font-size: 15px;
@@ -114,10 +123,47 @@
 .team-roster-profile-link:hover { gap: 10px; }
 .team-roster-profile-link svg { width: 14px; height: 14px; }
 
+/* Two labeled sub-groups inside one roster (e.g. "Legal team" + "Professional staff"). */
+.team-roster-group + .team-roster-group { margin-top: 80px; }
+.team-roster-group-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* Placeholder avatar for team members whose photo is still pending. */
+.team-roster-photo--initials {
+  background: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--teal-60);
+}
+
+.team-roster-title--tbd { color: var(--teal-30); }
+
+@media (max-width: 900px) {
+  .team-roster-photo--initials { font-size: 36px; }
+}
+
 @media (max-width: 768px) {
   .team-roster { padding: 72px 0; }
   .team-roster .container { padding: 0 24px; }
   .team-roster-grid { flex-wrap: wrap; gap: 20px; }
   .team-roster-member { flex-shrink: 1; }
   .team-roster-photo { width: 88px; height: 88px; }
+  .team-roster-group + .team-roster-group { margin-top: 60px; }
+}
+
+@media (max-width: 600px) {
+  .team-roster-photo--initials { font-size: 28px; }
 }

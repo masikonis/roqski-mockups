@@ -114,7 +114,9 @@
 }
 .footer-legal {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  justify-content: flex-end;
 }
 .footer-legal a {
   font-size: 13px;

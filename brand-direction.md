@@ -1,6 +1,6 @@
 # Brand direction
 
-## Roquemore Skierski
+## Roquemore Skierski PLLC
 
 ---
 
@@ -59,6 +59,27 @@ The homepage must establish credibility for a visitor evaluating multiple firms.
 - **Case results.** Evidence of capability in specific, named matters.
 - **Testimonials.** Curated, editorially controlled (not Google review embeds). Reference: Smith Law's testimonial block. Presentation is a fading carousel with dot navigation, not static quotes or review widgets.
 - **Team depth.** The team approach (partner + attorney + paralegal on every matter) is a key differentiator. The team section should make the firm feel resourced, not small.
+
+---
+
+## Firm name
+
+**Rule: the firm is always written as Roquemore Skierski PLLC. Never drop the PLLC.**
+
+This is non-negotiable. The partners consider the PLLC suffix part of the firm's identity, not a legal footnote to be trimmed for readability.
+
+Applies everywhere without exception:
+- Headings and hero eyebrows
+- Body copy and testimonials (including placeholder mockup copy)
+- Image alt text
+- Page `<title>` tags and meta descriptions
+- Footer and copyright lines
+- Nav labels, CTAs, and captions
+- Any new surface or section added later
+
+Before shipping any new copy, image, or page, check the firm reference. If it says "Roquemore Skierski" without the PLLC, it's wrong.
+
+Exception: individual people's names. "Kelvin Roquemore" and "Doug Skierski" are founders, not the firm. Person references stand on their own.
 
 ---
 
