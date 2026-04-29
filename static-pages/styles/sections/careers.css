@@ -1,0 +1,261 @@
+/* ===========================================
+   CAREERS
+   Single-page layout: intro, values, benefits, roles.
+   Hairline grids on a single ground. No boxes.
+   =========================================== */
+
+/* Shared content wrapper */
+.careers-section {
+  padding: 120px 0;
+}
+.careers-section-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* Section header: eyebrow + h2 stacked, lede below */
+.careers-section-header {
+  margin-bottom: 56px;
+}
+.careers-section-header > div {
+  margin-bottom: 28px;
+}
+.careers-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 18px;
+}
+.careers-section-header h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+}
+.careers-section-lede {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--teal-60);
+  max-width: 760px;
+}
+
+/* Override the mission block on careers — overlaps DOWN into the next section
+   AND tightens the gap above so it sits closer to the positioning paragraph. */
+.mission.careers-standard .mission-block {
+  margin: -40px auto -48px;
+}
+
+/* Wider positioning variant — used for the careers intro so the long
+   firm-description headline doesn't orphan a single word on the last line. */
+.positioning--wide .positioning-inner {
+  max-width: 1000px;
+}
+.positioning--wide h2 {
+  text-wrap: balance;
+}
+
+/* Values grid — same card pattern as the Approach process cells on About */
+.careers-values {
+  background: var(--off-white);
+  padding-top: 168px; /* extra space because the mission block overlaps 48px into the top */
+}
+.careers-values-rule {
+  border: none;
+  height: 1px;
+  background: var(--teal-15);
+  margin: 0 0 0;
+}
+.careers-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.careers-value {
+  padding: 48px 32px;
+}
+.careers-value + .careers-value {
+  border-left: 1px solid var(--teal-15);
+}
+.careers-value:first-child { padding-left: 0; }
+.careers-value:last-child { padding-right: 0; }
+.careers-value-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--orange);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.careers-value h3 {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+.careers-value p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--teal-60);
+}
+
+/* Benefits — hairline 3-up grid */
+.careers-benefits {
+  background: var(--white);
+}
+.careers-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.careers-benefit {
+  padding: 32px 32px 32px 0;
+  border-top: 1px solid var(--teal-15);
+  border-right: 1px solid var(--teal-15);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.careers-benefit:nth-child(3n) {
+  border-right: none;
+  padding-right: 0;
+}
+.careers-benefit:nth-child(3n+2),
+.careers-benefit:nth-child(3n) {
+  padding-left: 32px;
+}
+.careers-benefit:nth-last-child(-n+3) {
+  border-bottom: 1px solid var(--teal-15);
+}
+.careers-benefit-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--orange);
+}
+.careers-benefit-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.careers-benefit-text {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--teal);
+  white-space: nowrap;
+}
+
+/* Open positions — dark teal block, matching the Case Results pattern */
+.careers-positions {
+  background: var(--teal);
+}
+.careers-positions .careers-eyebrow {
+  color: var(--orange);
+}
+.careers-positions .careers-section-header h2 {
+  color: var(--white);
+}
+.careers-positions .careers-section-lede {
+  color: rgba(255,255,255,0.7);
+}
+.careers-positions .careers-section-lede a {
+  color: var(--orange);
+  font-weight: 600;
+}
+.careers-positions .careers-section-lede a:hover { color: var(--orange-hover); }
+.careers-positions-list {
+  list-style: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.careers-position {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.careers-position a {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 32px;
+  align-items: center;
+  padding: 32px 0;
+  color: var(--white);
+  transition: color 180ms ease;
+}
+.careers-position a:hover { color: var(--orange); }
+.careers-position-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.careers-position-meta {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.02em;
+}
+.careers-position-arrow {
+  width: 18px;
+  height: 18px;
+  color: rgba(255,255,255,0.4);
+  transition: color 180ms ease, transform 180ms ease;
+}
+.careers-position a:hover .careers-position-arrow {
+  color: var(--orange);
+  transform: translateX(4px);
+}
+.careers-positions-empty {
+  padding: 32px 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .careers-section { padding: 72px 0; }
+  .careers-section-inner { padding: 0 24px; }
+  .careers-section-header {
+    margin-bottom: 40px;
+  }
+  .careers-section-header > div {
+    margin-bottom: 20px;
+  }
+  .careers-section-lede { font-size: 17px; }
+  .careers-quote { margin-top: 40px; padding: 20px 0 20px 20px; }
+  .careers-values { padding-top: 96px; }
+  .careers-values-grid { grid-template-columns: 1fr; }
+  .careers-value {
+    padding: 32px 0;
+  }
+  .careers-value + .careers-value {
+    border-left: none;
+    border-top: 1px solid var(--teal-15);
+  }
+  .careers-benefits-grid { grid-template-columns: 1fr; }
+  .careers-benefit {
+    padding: 24px 0;
+    border-right: none;
+  }
+  .careers-benefit:nth-child(3n+2),
+  .careers-benefit:nth-child(3n) { padding-left: 0; }
+  .careers-benefit:not(:last-child) { border-bottom: none; }
+  .careers-benefit:last-child { border-bottom: 1px solid var(--teal-15); }
+  .careers-position a {
+    grid-template-columns: 1fr auto;
+    gap: 8px 24px;
+    padding: 24px 0;
+  }
+  .careers-position-title { font-size: 20px; grid-column: 1 / -1; }
+  .careers-position-arrow { display: none; }
+}
