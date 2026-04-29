@@ -13,7 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/common.css">
   <link rel="stylesheet" href="styles/nav.css">
-  <!-- page-specific section styles go here -->
+  <link rel="stylesheet" href="styles/sections/about-hero.css">
+  <link rel="stylesheet" href="styles/sections/blog-index.css">
   <link rel="stylesheet" href="styles/footer.css">
 </head>
 <body>
@@ -120,64 +121,275 @@
 
   <main id="main">
 
-    <!-- Blog index / archive content goes here -->
+    <!-- Blog Hero -->
+    <section class="about-hero" id="blog-hero">
+      <div class="about-hero-bg">
+        <img src="images/hero-city.jpg" alt="Dallas cityscape at dusk">
+      </div>
+      <div class="about-hero-inner">
+        <div class="about-hero-text">
+          <div class="about-hero-eyebrow">Insights</div>
+          <h1>Business and commercial litigation <span class="about-hero-accent">writing from our attorneys.</span></h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Index -->
+    <section class="blog-index">
+      <div class="blog-index-inner">
+
+        <!-- Featured (latest) -->
+        <article class="blog-featured reveal">
+          <a href="blog-post.html">
+            <div class="blog-featured-eyebrow">Real Estate Litigation</div>
+            <h2>The Top 5 Real Estate Litigation Law Firms in Dallas Fort Worth</h2>
+            <p class="blog-featured-excerpt">Choosing the right real estate litigation law firm can affect the outcome of disputes that touch ownership, value, and long-term plans for a property. A short look at the firms in DFW with the depth and trial record to handle complex commercial real estate matters.</p>
+            <div class="blog-featured-meta">
+              <span>February 25, 2026</span>
+              <span class="dot"></span>
+              <span>By Kelvin Roquemore</span>
+              <span class="dot"></span>
+              <span>8 min read</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- List of remaining posts -->
+        <ul class="blog-list">
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Feb 25, 2026</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Partnership Disputes</div>
+                <h3>The Top 5 Partnership Dispute Law Firms in Dallas</h3>
+                <p class="blog-row-excerpt">Choosing the right law firm for a partnership dispute in Dallas is rarely about credentials alone &mdash; trial readiness, business sense, and the right team approach all matter.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Feb 20, 2026</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Business Litigation</div>
+                <h3>The Top 5 Commercial Litigation Law Firms in Fort Worth</h3>
+                <p class="blog-row-excerpt">Choosing the right commercial litigation law firm in Fort Worth comes down to local court experience, the depth of the team, and a willingness to take a case to trial when the matter calls for it.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Dec 11, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Contract Law</div>
+                <h3>An Oral Contract Is Generally Worth The Paper It Is Printed On</h3>
+                <p class="blog-row-excerpt">Business owners make deals every day. Some are carefully documented; many are not. When an oral agreement falls apart, what can &mdash; and can&rsquo;t &mdash; be enforced under Texas law.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Dec 7, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Business Formation</div>
+                <h3>LLC Operating Agreement in Texas: Key Requirements and Tips</h3>
+                <p class="blog-row-excerpt">Forming a limited liability company in Texas offers business owners flexibility and protection &mdash; but only if the operating agreement is written with the right provisions in mind.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Oct 24, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Alternative Dispute Resolution</div>
+                <h3>Understanding Arbitration and When to Involve a Lawyer</h3>
+                <p class="blog-row-excerpt">Arbitration is often described as a faster, more private alternative to traditional courtroom litigation. When that is true, when it isn&rsquo;t, and the points where counsel makes a meaningful difference.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Oct 24, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Contract Review</div>
+                <h3>Can ChatGPT Review Business Contracts?</h3>
+                <p class="blog-row-excerpt">AI tools can flag obvious issues in a contract before an attorney looks at it &mdash; but the gap between &ldquo;helpful summary&rdquo; and &ldquo;trustworthy review&rdquo; is wider than it first appears.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Aug 20, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Injunctions &amp; TROs</div>
+                <h3>What Is a Temporary Restraining Order and How It Can Protect Your Company</h3>
+                <p class="blog-row-excerpt">A TRO is an emergency court order that immediately stops a party from certain actions while the underlying dispute moves forward. When a business should consider seeking one and what to expect.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Jun 21, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Business Transactions</div>
+                <h3>What To Consider Before Selling Your Business</h3>
+                <p class="blog-row-excerpt">Selling a company is a monumental decision that requires careful planning long before any buyer is at the table. The structural questions and risk areas to work through first.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Jun 10, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Mergers &amp; Acquisitions</div>
+                <h3>A Guide to Due Diligence for Buying a Business</h3>
+                <p class="blog-row-excerpt">Due diligence is a vital process &mdash; the careful scrutiny of finances, contracts, and assets that determines whether a deal works on the terms you think it does.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">May 21, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Partnership Disputes</div>
+                <h3>How to Resolve a Partnership Dispute</h3>
+                <p class="blog-row-excerpt">Most partnership disputes start with informal negotiation and communication. When that path runs out, what comes next &mdash; and how to keep options open without conceding ground.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">May 14, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Fraud &amp; Embezzlement</div>
+                <h3>What to Do If Your Business Partner Is Stealing Money</h3>
+                <p class="blog-row-excerpt">Suspecting a partner of taking from the company is a hard moment for any business owner. The first practical steps to take, and the evidence to preserve before having a difficult conversation.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">May 5, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Partnership Disputes</div>
+                <h3>Can I Force My Business Partner to Buy Me Out in Texas?</h3>
+                <p class="blog-row-excerpt">Forcing a buyout is generally possible if a buy-sell agreement exists &mdash; but the terms of that agreement, and the conduct of the parties, decide what is realistic.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Apr 28, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">DTPA</div>
+                <h3>The Texas Deceptive Trade Practices Act (DTPA)</h3>
+                <p class="blog-row-excerpt">A working overview of the DTPA, who it protects, and how it shapes commercial disputes when one side claims a misrepresentation drove the deal.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+          <li class="blog-row reveal">
+            <a class="blog-row-link" href="blog-post.html">
+              <div class="blog-row-date">Apr 21, 2025</div>
+              <div class="blog-row-content">
+                <div class="blog-row-category">Non-Compete Agreements</div>
+                <h3>Non-Compete Agreement in Texas: What Independent Contractors Should Know</h3>
+                <p class="blog-row-excerpt">Texas non-compete law applies to contractors differently than to employees. The points worth understanding before signing &mdash; or before pushing back on &mdash; a restrictive covenant.</p>
+              </div>
+              <div class="blog-row-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+          </li>
+
+        </ul>
+
+        <!-- Pagination -->
+        <nav class="blog-pagination" aria-label="Blog pagination">
+          <a href="#" class="blog-pagination-prev" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Previous
+          </a>
+          <div class="blog-pagination-pages">
+            <span class="is-current" aria-current="page">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+          </div>
+          <a href="#" class="blog-pagination-next">
+            Next
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </nav>
+
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta reveal" id="contact">
+      <h2>How can we solve your problem?</h2>
+      <p class="footer-cta-contact">
+        Call <a href="tel:9723256591" class="phone">(972) 325-6591</a> or
+        <a href="#" class="cta-link">contact us</a>
+      </p>
+      <p class="footer-cta-locations">
+        McKinney<span>&middot;</span>Fort Worth<span>&middot;</span>Mansfield<span>&middot;</span>Dallas<span>&middot;</span>Serving all of Texas
+      </p>
+    </section>
 
   </main>
-
-  <!-- Contact Modal -->
-  <div class="contact-modal" id="contact-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
-    <div class="contact-modal-backdrop" data-modal-close></div>
-    <div class="contact-modal-dialog" role="document">
-      <button class="contact-modal-close" data-modal-close aria-label="Close contact form" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
-      </button>
-      <div class="contact-modal-eyebrow">Contact</div>
-      <h2 id="contact-modal-title">Tell us about your matter.</h2>
-      <p class="contact-modal-intro">Share a few details and an attorney will be in touch. For urgent matters call <a href="tel:9723256591">(972) 325-6591</a>.</p>
-      <form class="contact-modal-form" onsubmit="event.preventDefault();">
-        <div class="contact-modal-row">
-          <label>
-            <span>First name</span>
-            <input type="text" name="first-name" autocomplete="given-name" required>
-          </label>
-          <label>
-            <span>Last name</span>
-            <input type="text" name="last-name" autocomplete="family-name" required>
-          </label>
-        </div>
-        <div class="contact-modal-row">
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" required>
-          </label>
-          <label>
-            <span>Phone number</span>
-            <input type="tel" name="phone" autocomplete="tel" required>
-          </label>
-        </div>
-        <label>
-          <span>Business name <em>(optional)</em></span>
-          <input type="text" name="business-name" autocomplete="organization">
-        </label>
-        <label>
-          <span>Describe your situation</span>
-          <textarea name="situation" rows="5" required></textarea>
-        </label>
-        <fieldset class="contact-modal-consent">
-          <legend>Consent</legend>
-          <label class="contact-modal-consent-check">
-            <input type="checkbox" name="consent-disclaimer" required>
-            <span>I have read and agree to the <a href="https://www.roqski.com/disclaimer" target="_blank" rel="noopener noreferrer">Disclaimer</a> and <a href="https://www.roqski.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
-          </label>
-          <label class="contact-modal-consent-check">
-            <input type="checkbox" name="consent-sms" required>
-            <span>I have read and agree to the <a href="https://www.roqski.com/messaging-policy" target="_blank" rel="noopener noreferrer">Text (SMS) Messaging Policy</a>.</span>
-          </label>
-        </fieldset>
-        <button type="submit" class="contact-modal-submit">Send message</button>
-      </form>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="site-footer">
