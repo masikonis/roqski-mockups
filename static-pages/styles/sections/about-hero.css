@@ -30,7 +30,7 @@
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 72px 48px 88px;
-  min-height: 320px;
+  min-height: 400px;
   display: flex;
   align-items: center;
   position: relative;
@@ -61,7 +61,7 @@
 @media (max-width: 768px) {
   .about-hero-inner {
     padding: 56px 24px 64px;
-    min-height: 220px;
+    min-height: 280px;
   }
   .about-hero-eyebrow { font-size: 12px; margin-bottom: 16px; }
   .about-hero h1 { font-size: clamp(26px, 7vw, 34px); }
