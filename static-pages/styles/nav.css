@@ -18,6 +18,9 @@
   background: rgba(255,255,255,0.97);
   box-shadow: 0 1px 0 var(--teal-15);
 }
+.nav:not(.scrolled):has(.nav-dropdown-wrap.panel-active) {
+  background: rgba(11, 48, 48, 0.4);
+}
 .nav-logo {
   flex: 1 1 0;
   display: flex;
