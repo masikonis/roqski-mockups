@@ -30,7 +30,7 @@
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 72px 48px 88px;
-  min-height: 400px;
+  min-height: clamp(440px, 45vh, 560px);
   display: flex;
   align-items: center;
   position: relative;
@@ -57,12 +57,22 @@
   letter-spacing: -0.02em;
   color: var(--white);
 }
+.about-hero-desc {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 20px;
+  max-width: 640px;
+}
 
 @media (max-width: 768px) {
   .about-hero-inner {
     padding: 56px 24px 64px;
-    min-height: 280px;
+    min-height: 266px;
   }
   .about-hero-eyebrow { font-size: 12px; margin-bottom: 16px; }
   .about-hero h1 { font-size: clamp(26px, 7vw, 34px); }
+  .about-hero-desc { font-size: 16px; margin-top: 16px; }
 }

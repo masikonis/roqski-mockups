@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  min-height: 440px;
+  min-height: clamp(440px, 45vh, 600px);
 }
 
 /* Left column: text content */
@@ -96,7 +96,7 @@
   color: var(--orange);
 }
 
-/* Right column: centered square portrait (framed or round via .is-framed/.is-round) */
+/* Right column: centered round portrait */
 .bio-hero-photo {
   flex: 0 0 300px;
   width: 300px;
@@ -104,10 +104,8 @@
   align-self: center;
   margin: 32px 40px 32px 0;
   position: relative;
-  transition: border-radius 320ms var(--ease-out),
-              box-shadow   320ms var(--ease-out),
-              padding      320ms var(--ease-out),
-              background   320ms var(--ease-out);
+  border-radius: 50%;
+  overflow: hidden;
 }
 .bio-hero-photo img {
   display: block;
@@ -115,63 +113,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center 15%;
-}
-
-/* Round mode */
-.bio-hero-photo.is-round { border-radius: 50%; overflow: hidden; }
-.bio-hero-photo.is-round img { border-radius: 50%; }
-
-/* Framed square mode: hairline + thin off-white mat + inner hairline */
-.bio-hero-photo.is-framed {
-  border-radius: 0;
-  background: var(--off-white);
-  padding: 8px;
-  box-shadow:
-    inset 0 0 0 1px rgba(11, 48, 48, 0.35),
-    inset 0 0 0 9px var(--off-white),
-    inset 0 0 0 10px rgba(11, 48, 48, 0.18);
-}
-
-/* Photo-style selector (mockup-only decision aid; minimal text control) */
-.bio-photo-style {
-  position: absolute;
-  right: 48px;
-  top: calc(var(--nav-height) + 24px);
-  z-index: 20;
-  display: inline-flex;
-  align-items: baseline;
-  gap: 14px;
-}
-.bio-photo-style-label {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-}
-.bio-photo-style-pills {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 12px;
-}
-.bio-photo-style-pill {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.55);
-  background: transparent;
-  border: 0;
-  padding: 0 0 2px;
-  border-bottom: 1px solid transparent;
-  cursor: pointer;
-  transition: color 180ms ease, border-color 180ms ease;
-}
-.bio-photo-style-pill:hover { color: var(--white); }
-.bio-photo-style-pill.is-active {
-  color: var(--white);
-  border-bottom-color: var(--orange);
+  border-radius: 50%;
 }
 
 /* --- Responsive --- */
@@ -196,7 +138,6 @@
   .bio-hero-name {
     font-size: clamp(30px, 7vw, 42px);
   }
-  .bio-photo-style { display: none; }
 }
 @media (max-width: 600px) {
   .bio-hero-inner {

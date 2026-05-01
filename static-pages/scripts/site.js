@@ -434,6 +434,21 @@
         activate(tab.dataset.tab);
       });
     });
+
+    function activateFromHash() {
+      var hash = (window.location.hash || '').replace('#', '');
+      if (!hash) return;
+      var matches = tabs.some(function (tab) { return tab.dataset.tab === hash; });
+      if (!matches) return;
+      activate(hash);
+      requestAnimationFrame(function () {
+        var tabsStrip = document.getElementById('about-tabs');
+        if (tabsStrip) tabsStrip.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    activateFromHash();
+    window.addEventListener('hashchange', activateFromHash);
   })();
 
   // ==========================================
@@ -568,6 +583,26 @@
   })();
 
   // ==========================================
+  // PA FAQ ACCORDION — independent expand/collapse
+  // ==========================================
+  (function initFaqAccordion() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.pa-faq-item'));
+    if (!items.length) return;
+
+    items.forEach(function (item) {
+      var toggle = item.querySelector('.pa-faq-toggle');
+      var body = item.querySelector('.pa-faq-body');
+      if (!toggle || !body) return;
+
+      toggle.addEventListener('click', function () {
+        var isOpen = item.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        body.style.maxHeight = isOpen ? body.scrollHeight + 'px' : '0';
+      });
+    });
+  })();
+
+  // ==========================================
   // BIO ACCORDION — expand/collapse credentials
   // ==========================================
   (function initBioAccordion() {
@@ -599,44 +634,6 @@
           body.style.maxHeight = body.scrollHeight + 'px';
         }
       });
-    });
-  })();
-
-  // ==========================================
-  // BIO PHOTO STYLE — framed vs round selector (mockup-only)
-  // ==========================================
-  (function initBioPhotoStyle() {
-    var selector = document.querySelector('[data-photo-style]');
-    var photo = document.getElementById('bio-hero-photo');
-    if (!selector || !photo) return;
-
-    var pills = Array.prototype.slice.call(selector.querySelectorAll('[data-photo-mode]'));
-
-    function setMode(mode) {
-      photo.classList.toggle('is-framed', mode === 'framed');
-      photo.classList.toggle('is-round', mode === 'round');
-      pills.forEach(function (pill) {
-        var on = pill.dataset.photoMode === mode;
-        pill.classList.toggle('is-active', on);
-        pill.setAttribute('aria-checked', on ? 'true' : 'false');
-        pill.tabIndex = on ? 0 : -1;
-      });
-    }
-
-    selector.addEventListener('click', function (e) {
-      var pill = e.target.closest('[data-photo-mode]');
-      if (!pill) return;
-      setMode(pill.dataset.photoMode);
-    });
-
-    selector.addEventListener('keydown', function (e) {
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-      var idx = pills.indexOf(document.activeElement);
-      if (idx < 0) return;
-      var next = pills[(idx + (e.key === 'ArrowRight' ? 1 : pills.length - 1)) % pills.length];
-      next.focus();
-      setMode(next.dataset.photoMode);
-      e.preventDefault();
     });
   })();
 
