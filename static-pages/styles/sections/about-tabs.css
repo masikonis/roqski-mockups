@@ -27,12 +27,12 @@
   position: relative;
   z-index: 2;
   margin-top: -56px;
+  background: var(--off-white);
 }
 .about-tabs-inner {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 36px 0;
-  background: var(--off-white);
   overflow: hidden;
   position: relative;
 }

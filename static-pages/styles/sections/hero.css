@@ -62,7 +62,7 @@
   color: var(--white);
 }
 .hero-your {
-  color: var(--orange);
+  color: var(--white);
   opacity: 0;
   position: absolute;
   pointer-events: none;
@@ -79,6 +79,7 @@
   will-change: transform;
 }
 .hero-cycling {
+  color: var(--orange);
   transition: opacity 0.4s ease;
 }
 .hero-sub {

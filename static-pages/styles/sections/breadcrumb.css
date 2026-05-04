@@ -1,0 +1,40 @@
+/* Breadcrumb — shared across content pages */
+.post-breadcrumb {
+  background: var(--white);
+  border-bottom: 1px solid var(--teal-15);
+}
+.post-breadcrumb-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 18px 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--teal-60);
+}
+.post-breadcrumb-inner a {
+  color: var(--teal-60);
+  transition: color 180ms ease;
+}
+.post-breadcrumb-inner a:hover { color: var(--orange); }
+.post-breadcrumb-sep {
+  color: var(--teal-30);
+  font-size: 12px;
+}
+.post-breadcrumb-current {
+  color: var(--teal);
+  font-weight: 500;
+}
+
+/* When the breadcrumb sits between the hero and the tabbed sub-nav,
+   neutralize the tabs' negative margin so they don't overlap the breadcrumb. */
+.post-breadcrumb + .about-tabs { margin-top: 0; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .post-breadcrumb-inner { padding: 14px 24px; font-size: 12px; }
+}

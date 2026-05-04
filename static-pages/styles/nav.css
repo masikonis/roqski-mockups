@@ -19,7 +19,8 @@
   box-shadow: 0 1px 0 var(--teal-15);
 }
 .nav:not(.scrolled):has(.nav-dropdown-wrap.panel-active) {
-  background: rgba(11, 48, 48, 0.4);
+  background: var(--teal);
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.12);
 }
 .nav-logo {
   flex: 1 1 0;
@@ -133,18 +134,21 @@
   display: grid;
   grid-template-columns: 1fr minmax(346px, 427px);
   gap: 72px;
-  padding: 48px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 36px 56px;
   align-items: center;
 }
 
 .mega-panel-items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px 48px;
+  gap: 29px 14px;
   align-self: center;
 }
 .mega-panel-items.cols-3 {
   grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
 }
 
 .mega-panel-item {
@@ -153,19 +157,20 @@
   transition: transform 200ms ease;
 }
 .mega-panel-item h4 {
-  font-family: var(--font-heading);
-  font-size: 17px;
+  font-family: var(--font-sans);
+  font-size: 14px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
   color: var(--white);
-  margin-bottom: 6px;
-  letter-spacing: -0.005em;
+  margin-bottom: 8px;
   transition: color 200ms ease;
 }
 .mega-panel-item p {
-  font-size: 13.5px;
+  font-size: 16px;
   line-height: 1.55;
   color: rgba(255,255,255,0.65);
-  max-width: 260px;
+  max-width: 280px;
   transition: color 200ms ease;
 }
 .mega-panel-item:hover h4 { color: var(--orange); }
