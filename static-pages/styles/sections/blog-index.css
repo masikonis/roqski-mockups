@@ -7,30 +7,39 @@
   padding: 56px 0 120px;
 }
 
-/* Filter + sort toolbar */
+/* Filter + sort toolbar — same height + overlap as the sub-navigation strip
+   on tabbed content pages (about, careers, etc.). */
 .blog-toolbar {
+  position: relative;
+  z-index: 2;
+  margin-top: -56px;
+}
+.blog-toolbar-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 36px 28px;
+  background: var(--off-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
   flex-wrap: wrap;
-  padding-bottom: 28px;
-  margin-bottom: 56px;
-  border-bottom: 1px solid var(--teal-15);
+  min-height: 110px;
+  box-sizing: border-box;
 }
 .blog-filters {
   display: flex;
   align-items: center;
-  gap: 4px 6px;
+  gap: 2px 4px;
   flex-wrap: wrap;
 }
 .blog-filter {
   position: relative;
   background: transparent;
   border: 0;
-  padding: 8px 14px;
+  padding: 6px 10px;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--teal-60);
@@ -40,9 +49,9 @@
 .blog-filter::after {
   content: '';
   position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 0;
+  left: 10px;
+  right: 10px;
+  bottom: 2px;
   height: 2px;
   background: var(--orange);
   transform: scaleX(0);
@@ -50,7 +59,7 @@
   transition: transform 200ms var(--ease-out);
 }
 .blog-filter:hover { color: var(--teal); }
-.blog-filter:hover::after { transform: scaleX(0.55); }
+.blog-filter:hover::after { transform: scaleX(1); }
 .blog-filter.is-active {
   color: var(--orange);
   font-weight: 600;
@@ -65,7 +74,7 @@
 }
 .blog-sort label {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -80,12 +89,12 @@
   appearance: none;
   -webkit-appearance: none;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--teal);
   background: transparent;
   border: 1px solid var(--teal-15);
-  padding: 9px 36px 9px 14px;
+  padding: 6px 30px 6px 12px;
   cursor: pointer;
   transition: border-color 180ms ease, color 180ms ease;
 }
@@ -93,7 +102,7 @@
 .blog-sort-select:focus { outline: none; border-color: var(--orange); }
 .blog-sort-chevron {
   position: absolute;
-  right: 14px;
+  right: 12px;
   width: 10px;
   height: 7px;
   color: var(--teal-60);
@@ -101,14 +110,15 @@
 }
 
 @media (max-width: 700px) {
-  .blog-toolbar {
+  .blog-toolbar { margin-bottom: 36px; }
+  .blog-toolbar-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 18px;
-    margin-bottom: 36px;
+    gap: 14px;
+    padding: 14px 20px;
   }
   .blog-filters { gap: 2px; overflow-x: auto; flex-wrap: nowrap; max-width: 100%; }
-  .blog-filter { padding: 8px 10px; white-space: nowrap; }
+  .blog-filter { padding: 6px 10px; white-space: nowrap; }
   .blog-filter::after { left: 10px; right: 10px; }
 }
 .blog-index + .footer-cta {

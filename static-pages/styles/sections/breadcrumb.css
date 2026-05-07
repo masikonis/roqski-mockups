@@ -1,15 +1,24 @@
-/* Breadcrumb — sits inside the hero band, on the dark teal ground.
-   No background of its own, no top/bottom dividers — just text. */
+/* Breadcrumb — overlays the top of the hero band so it doesn't contribute
+   to the hero's layout height (heroes stay the same height across pages,
+   including the homepage which has no breadcrumb). */
 .post-breadcrumb {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  z-index: 3;
   background: transparent;
   border: 0;
+  pointer-events: none;
+}
+.post-breadcrumb a,
+.post-breadcrumb-current {
+  pointer-events: auto;
 }
 .post-breadcrumb-inner {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 24px 48px 0;
+  padding: 16px 48px 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -33,17 +42,7 @@
   font-weight: 500;
 }
 
-/* When breadcrumb sits at top of hero, tighten the hero-inner's top padding
-   so the heading doesn't drift too far down. */
-.about-hero > .post-breadcrumb + .about-hero-inner {
-  padding-top: 28px;
-}
-.bio-hero > .post-breadcrumb + .bio-hero-inner .bio-hero-text {
-  padding-top: 28px;
-}
-
 /* Mobile */
 @media (max-width: 768px) {
-  .post-breadcrumb-inner { padding: 18px 24px 0; font-size: 11px; }
-  .about-hero > .post-breadcrumb + .about-hero-inner { padding-top: 24px; }
+  .post-breadcrumb-inner { padding: 12px 24px 0; font-size: 11px; }
 }

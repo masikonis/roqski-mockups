@@ -14,6 +14,9 @@
   --content-width: 1200px;
   --nav-height: 95px;
   --nav-height-scrolled: 70px;
+  --hero-min-height: clamp(440px, 45vh, 600px);
+  --hero-pad-bottom: 56px;
+  --hero-inner-pad-y: 70px;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Source Serif 4', Georgia, serif;
   --font-heading: var(--font-serif);
