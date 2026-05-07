@@ -1,40 +1,49 @@
-/* Breadcrumb — shared across content pages */
+/* Breadcrumb — sits inside the hero band, on the dark teal ground.
+   No background of its own, no top/bottom dividers — just text. */
 .post-breadcrumb {
-  background: var(--white);
-  border-bottom: 1px solid var(--teal-15);
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border: 0;
 }
 .post-breadcrumb-inner {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 18px 48px;
+  padding: 24px 48px 0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.02em;
-  color: var(--teal-60);
+  color: rgba(255, 255, 255, 0.65);
 }
 .post-breadcrumb-inner a {
-  color: var(--teal-60);
+  color: rgba(255, 255, 255, 0.65);
   transition: color 180ms ease;
 }
 .post-breadcrumb-inner a:hover { color: var(--orange); }
 .post-breadcrumb-sep {
-  color: var(--teal-30);
-  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
 }
 .post-breadcrumb-current {
-  color: var(--teal);
+  color: var(--white);
   font-weight: 500;
 }
 
-/* When the breadcrumb sits between the hero and the tabbed sub-nav,
-   neutralize the tabs' negative margin so they don't overlap the breadcrumb. */
-.post-breadcrumb + .about-tabs { margin-top: 0; }
+/* When breadcrumb sits at top of hero, tighten the hero-inner's top padding
+   so the heading doesn't drift too far down. */
+.about-hero > .post-breadcrumb + .about-hero-inner {
+  padding-top: 28px;
+}
+.bio-hero > .post-breadcrumb + .bio-hero-inner .bio-hero-text {
+  padding-top: 28px;
+}
 
 /* Mobile */
 @media (max-width: 768px) {
-  .post-breadcrumb-inner { padding: 14px 24px; font-size: 12px; }
+  .post-breadcrumb-inner { padding: 18px 24px 0; font-size: 11px; }
+  .about-hero > .post-breadcrumb + .about-hero-inner { padding-top: 24px; }
 }

@@ -1,5 +1,7 @@
 /* ===========================================
    FOOTER CTA
+   (Pre-footer "How can we solve your problem?" block.
+   Stays on the off-white ground above the green footer.)
    =========================================== */
 .footer-cta {
   background: var(--off-white);
@@ -57,124 +59,163 @@
 .footer-cta-locations span { margin: 0 8px; }
 
 /* ===========================================
-   FOOTER
+   FOOTER (dark teal ground, white type)
    =========================================== */
 .site-footer {
-  padding: 72px 0 40px;
+  background: var(--teal);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 88px 0 40px;
 }
 .site-footer .container {
   max-width: 1440px;
   padding: 0 56px;
 }
 
-.footer-meta {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 32px;
-  padding-bottom: 56px;
-}
-.footer-quote {
-  font-family: var(--font-heading);
-  font-size: clamp(20px, 2.1vw, 28px);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--teal);
-  white-space: nowrap;
-}
-.footer-available {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--teal);
-  white-space: nowrap;
-  padding-top: 8px;
-}
-.footer-available-dot {
-  position: relative;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--orange);
-}
-.footer-available-dot::before,
-.footer-available-dot::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: var(--orange);
-  animation: footer-dot-pulse 2.4s ease-out infinite;
-}
-.footer-available-dot::after {
-  animation-delay: 1.2s;
-}
-@keyframes footer-dot-pulse {
-  0%   { transform: scale(1);   opacity: 0.55; }
-  80%  { transform: scale(3.5); opacity: 0; }
-  100% { transform: scale(3.5); opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .footer-available-dot::before,
-  .footer-available-dot::after { animation: none; display: none; }
-}
-
-.footer-divider {
-  height: 1px;
-  background: var(--teal-15);
-  margin: 0;
-}
-
 .footer-main {
   display: grid;
-  grid-template-columns: minmax(280px, 360px) 1fr;
-  gap: 96px;
-  padding: 56px 0 72px;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: 160px;
+  padding-bottom: 64px;
+  align-items: start;
 }
-.footer-brand img { height: 30px; margin-bottom: 20px; }
+.footer-brand img {
+  height: 32px;
+  margin-bottom: 22px;
+}
 .footer-brand p {
   font-size: 14.5px;
   line-height: 1.7;
-  color: var(--teal-60);
+  color: rgba(255, 255, 255, 0.6);
   max-width: 360px;
 }
 
-.footer-nav {
-  display: flex;
-  gap: 48px;
+.footer-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 40px;
+  align-items: start;
 }
-.footer-nav > div {
-  flex: 1 1 0;
-  min-width: 0;
-}
-.footer-nav h3 {
+
+.footer-col h3 {
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--orange);
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
-.footer-nav ul {
+
+/* Make sure the locations column can shrink so the grid doesn't push past
+   the .footer-cols track and overlap the accessibility column. */
+.footer-col { min-width: 0; }
+
+/* Locations: 2x2 outlined cards */
+.footer-locations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.footer-location-card {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 18px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 200ms ease;
+}
+.footer-location-card:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.footer-location-name {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+.footer-location-address {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+.footer-location-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.footer-location-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.01em;
+  transition: color 180ms ease;
+  white-space: nowrap;
+}
+.footer-location-phone:hover { color: var(--orange); }
+.footer-location-phone svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 180ms ease;
+}
+.footer-location-phone:hover svg { color: var(--orange); }
+.footer-location-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.footer-location-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 180ms ease;
+}
+.footer-location-link:hover { color: var(--orange); }
+.footer-location-link svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Accessibility column — sits to the right of the locations grid, with the
+   list flush against the right edge so each link aligns with the disclaimer
+   text in the bottom row. */
+.footer-cols .footer-col:last-child {
+  text-align: right;
+}
+.footer-cols .footer-col:last-child h3 {
+  text-align: right;
+}
+.footer-policies {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
-.footer-nav a {
-  font-size: 14.5px;
-  color: var(--teal-60);
+.footer-policies a {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.6);
   transition: color 200ms ease;
 }
-.footer-nav a:hover { color: var(--orange); }
+.footer-policies a:hover { color: var(--orange); }
 
+/* Bottom row */
 .footer-bottom {
-  border-top: 1px solid var(--teal-15);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding-top: 24px;
   display: flex;
   align-items: center;
@@ -184,7 +225,7 @@
 }
 .footer-copyright {
   font-size: 12px;
-  color: var(--teal-60);
+  color: rgba(255, 255, 255, 0.55);
 }
 .footer-legal {
   display: flex;
@@ -194,26 +235,39 @@
 }
 .footer-legal a {
   font-size: 12px;
-  color: var(--teal-60);
+  color: rgba(255, 255, 255, 0.55);
   transition: color 200ms ease;
 }
 .footer-legal a:hover { color: var(--orange); }
 
 @media (max-width: 1024px) {
-  .footer-main { grid-template-columns: 1fr; gap: 48px; }
-  .footer-nav { flex-wrap: wrap; gap: 36px; }
-  .footer-nav > div { flex: 1 1 calc(50% - 36px); }
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .footer-cols {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 48px;
+  }
 }
 
+@media (max-width: 800px) {
+  .footer-cols { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 700px) {
+  .site-footer { padding: 64px 0 32px; }
+  .site-footer .container { padding: 0 24px; }
+  .footer-main { padding-bottom: 48px; gap: 40px; }
+  .footer-locations-grid { grid-template-columns: 1fr; }
+  .footer-location-foot { flex-wrap: wrap; row-gap: 8px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-legal { flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
+}
+
+/* Pre-footer CTA mobile */
 @media (max-width: 768px) {
   .footer-cta { padding: 72px 24px; }
   .footer-cta-locations span { display: none; }
   .footer-cta-locations { line-height: 2; }
-  .site-footer { padding: 48px 0 32px; }
-  .site-footer .container { padding: 0 24px; }
-  .footer-meta { flex-direction: column; gap: 24px; padding-bottom: 36px; }
-  .footer-quote { white-space: normal; }
-  .footer-main { padding: 36px 0 48px; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
-  .footer-legal { flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
 }

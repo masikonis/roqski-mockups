@@ -162,6 +162,37 @@
   })();
 
   // ==========================================
+  // NAV — search panel toggle
+  // ==========================================
+  (function initNavSearch() {
+    var nav = document.getElementById('nav');
+    var toggle = document.getElementById('nav-search-toggle');
+    var panel = document.getElementById('nav-search-panel');
+    var input = document.getElementById('nav-search-input');
+    var closeBtn = document.getElementById('nav-search-close');
+    if (!nav || !toggle || !panel) return;
+
+    function open() {
+      nav.classList.add('search-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('aria-hidden', 'false');
+      if (input) setTimeout(function () { input.focus(); }, 80);
+    }
+    function close() {
+      nav.classList.remove('search-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+    }
+    toggle.addEventListener('click', function () {
+      if (nav.classList.contains('search-open')) close(); else open();
+    });
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('search-open')) close();
+    });
+  })();
+
+  // ==========================================
   // NAV — mobile overlay + accordion
   // ==========================================
   (function initMobileNav() {
@@ -558,6 +589,65 @@
       var openModalEl = document.querySelector('.contact-modal.is-open');
       if (openModalEl) closeModal(openModalEl);
     });
+  })();
+
+  // ==========================================
+  // BLOG INDEX — filter + sort controls
+  // ==========================================
+  (function initBlogToolbar() {
+    var toolbar = document.querySelector('.blog-toolbar');
+    if (!toolbar) return;
+
+    var filterButtons = Array.prototype.slice.call(toolbar.querySelectorAll('.blog-filter'));
+    var sortSelect = toolbar.querySelector('.blog-sort-select');
+    var rows = Array.prototype.slice.call(document.querySelectorAll('.blog-list .blog-row'));
+    var list = document.querySelector('.blog-list');
+    if (!rows.length || !list) return;
+
+    function slug(text) {
+      return (text || '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+
+    rows.forEach(function (row) {
+      var cat = row.querySelector('.blog-row-category');
+      if (cat) row.dataset.category = slug(cat.textContent);
+      var dateEl = row.querySelector('.blog-row-date');
+      if (dateEl) {
+        var d = new Date(dateEl.textContent);
+        row.dataset.timestamp = isNaN(d.getTime()) ? '0' : String(d.getTime());
+      }
+    });
+
+    function applyFilter(filter) {
+      rows.forEach(function (row) {
+        var category = row.dataset.category || '';
+        var matches = filter === 'all' || category.indexOf(filter) !== -1 || filter.indexOf(category) !== -1;
+        row.style.display = matches ? '' : 'none';
+      });
+    }
+
+    function applySort(direction) {
+      var sorted = rows.slice().sort(function (a, b) {
+        var ta = parseInt(a.dataset.timestamp || '0', 10);
+        var tb = parseInt(b.dataset.timestamp || '0', 10);
+        return direction === 'oldest' ? ta - tb : tb - ta;
+      });
+      sorted.forEach(function (row) { list.appendChild(row); });
+    }
+
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterButtons.forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        applyFilter(btn.dataset.filter);
+      });
+    });
+
+    if (sortSelect) {
+      sortSelect.addEventListener('change', function () {
+        applySort(sortSelect.value);
+      });
+    }
   })();
 
   // ==========================================

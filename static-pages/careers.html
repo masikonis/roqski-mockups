@@ -28,8 +28,7 @@
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-logo">
-      <img class="logo-white" src="images/logo-white.svg" alt="Roquemore Skierski PLLC">
-      <img class="logo-color" src="images/logo.svg" alt="Roquemore Skierski PLLC">
+      <img src="images/logo-white.svg" alt="Roquemore Skierski PLLC">
     </a>
     <ul class="nav-links">
       <li class="nav-dropdown-wrap">
@@ -137,13 +136,55 @@
           </div>
         </div>
       </li>
-      <li><a href="#" class="nav-link">Resources</a></li>
+      <li class="nav-dropdown-wrap">
+        <a href="#" class="nav-link">
+          Resources
+          <svg class="nav-arrow" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2.5l4 3 4-3"/></svg>
+        </a>
+        <div class="mega-panel">
+          <div class="mega-panel-inner">
+            <div class="mega-panel-items cols-3">
+              <a href="blog.html" class="mega-panel-item">
+                <h4>Blog</h4>
+                <p>Writing on commercial litigation, business law, and developments in Texas courts.</p>
+              </a>
+              <a href="#" class="mega-panel-item">
+                <h4>FAQ</h4>
+                <p>Common questions on retaining counsel, fees, and the litigation process.</p>
+              </a>
+              <a href="#" class="mega-panel-item">
+                <h4>Case Studies</h4>
+                <p>Detailed write-ups of representative matters and how we resolved them.</p>
+              </a>
+            </div>
+            <div class="mega-panel-feature">
+              <div class="mega-panel-feature-image"><img src="images/hero-city.jpg" alt="Dallas cityscape at dusk"></div>
+              <p class="mega-panel-feature-caption">Substantive material for clients evaluating outside counsel and for the broader legal community.</p>
+            </div>
+          </div>
+        </div>
+      </li>
     </ul>
     <div class="nav-right">
+      <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Open search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
       <a href="#contact" class="nav-contact-btn">Contact</a>
       <button class="nav-hamburger" id="nav-open" aria-label="Open menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
+    </div>
+    <!-- Search panel -->
+    <div class="nav-search-panel" id="nav-search-panel" aria-hidden="true">
+      <div class="nav-search-inner">
+        <span class="nav-search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </span>
+        <input type="search" class="nav-search-input" id="nav-search-input" placeholder="Search the site &mdash; practice areas, attorneys, insights">
+        <button class="nav-search-close" id="nav-search-close" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -174,7 +215,14 @@
     </div>
     <a href="#">Case Results</a>
     <a href="#">Locations</a>
-    <a href="blog.html">Resources</a>
+    <div class="mobile-nav-group">
+      <button class="mobile-nav-toggle">Resources <span class="toggle-icon">+</span></button>
+      <div class="mobile-nav-sub">
+        <a href="blog.html">Blog</a>
+        <a href="#">FAQ</a>
+        <a href="#">Case Studies</a>
+      </div>
+    </div>
     <a href="#contact" class="mobile-nav-contact">Contact</a>
   </div>
 
@@ -185,6 +233,14 @@
       <div class="about-hero-bg">
         <img src="images/hero-city.jpg" alt="Dallas cityscape at dusk">
       </div>
+      <!-- Breadcrumb (top of hero band) -->
+      <nav class="post-breadcrumb" aria-label="Breadcrumb">
+        <div class="post-breadcrumb-inner">
+          <a href="index.html">Home</a>
+          <span class="post-breadcrumb-sep">/</span>
+          <span class="post-breadcrumb-current" aria-current="page">Careers</span>
+        </div>
+      </nav>
       <div class="about-hero-inner">
         <div class="about-hero-text">
           <div class="about-hero-eyebrow">Careers</div>
@@ -193,25 +249,22 @@
       </div>
     </section>
 
-    <!-- Breadcrumb -->
-    <nav class="post-breadcrumb" aria-label="Breadcrumb">
-      <div class="post-breadcrumb-inner">
-        <a href="index.html">Home</a>
-        <span class="post-breadcrumb-sep">/</span>
-        <span class="post-breadcrumb-current" aria-current="page">Careers</span>
-      </div>
-    </nav>
-
     <!-- Sub-navigation -->
     <nav class="about-tabs" id="careers-tabs" aria-label="Careers sections">
       <div class="about-tabs-inner">
         <div class="about-tabs-list">
-          <a class="about-tab" href="#values">Values</a>
-          <a class="about-tab" href="#benefits">Benefits</a>
-          <a class="about-tab" href="#positions">Open Positions</a>
+          <button class="about-tab is-active" data-tab="values" type="button">Values</button>
+          <button class="about-tab" data-tab="benefits" type="button">Benefits</button>
+          <button class="about-tab" data-tab="positions" type="button">Open Positions</button>
         </div>
       </div>
     </nav>
+
+    <!-- Tab panels -->
+    <div class="about-tab-panels">
+
+    <!-- VALUES (default panel — includes positioning + standard intro) -->
+    <section class="about-tab-panel is-active" data-panel="values">
 
     <!-- Our Firm — centered positioning statement -->
     <section class="positioning positioning--wide">
@@ -266,6 +319,12 @@
       </div>
     </section>
 
+    </section>
+    <!-- /VALUES panel -->
+
+    <!-- BENEFITS panel -->
+    <section class="about-tab-panel" data-panel="benefits">
+
     <!-- Benefits -->
     <section class="careers-section careers-benefits" id="benefits">
       <div class="careers-section-inner">
@@ -316,6 +375,12 @@
       </div>
     </section>
 
+    </section>
+    <!-- /BENEFITS panel -->
+
+    <!-- POSITIONS panel -->
+    <section class="about-tab-panel" data-panel="positions">
+
     <!-- Open Positions -->
     <section class="careers-section careers-positions" id="positions">
       <div class="careers-section-inner">
@@ -338,6 +403,12 @@
       </div>
     </section>
 
+    </section>
+    <!-- /POSITIONS panel -->
+
+    </div>
+    <!-- /tab panels -->
+
     <!-- Footer CTA -->
     <section class="footer-cta reveal" id="contact">
       <div class="footer-cta-eyebrow">Explore a career with Roquemore Skierski PLLC</div>
@@ -355,52 +426,84 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-meta">
-        <p class="footer-quote">Focused on business law and commercial litigation.</p>
-        <div class="footer-available">
-          <span class="footer-available-dot"></span>
-          Available 24/7
-        </div>
-      </div>
-      <div class="footer-divider"></div>
       <div class="footer-main">
         <div class="footer-brand">
-          <img src="images/logo.svg" alt="Roquemore Skierski PLLC">
+          <img src="images/logo-white.svg" alt="Roquemore Skierski PLLC">
           <p>A Dallas-Fort Worth business law and commercial litigation firm representing companies, entrepreneurs, and executives in business transactions and commercial disputes across Texas.</p>
         </div>
-        <div class="footer-nav">
-          <div>
-            <h3>Firm</h3>
-            <ul>
-              <li><a href="about.html">About</a></li>
-              <li><a href="#">Case Results</a></li>
-              <li><a href="careers.html">Careers</a></li>
-              <li><a href="blog.html">Insights</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3>Practice Areas</h3>
-            <ul>
-              <li><a href="#">Litigation</a></li>
-              <li><a href="#">Business Law</a></li>
-              <li><a href="#">Real Estate</a></li>
-              <li><a href="#">Intellectual Property</a></li>
-              <li><a href="#">Business Transactions</a></li>
-              <li><a href="#">Fraud &amp; Misrepresentation</a></li>
-            </ul>
-          </div>
-          <div>
+        <div class="footer-cols">
+          <div class="footer-col">
             <h3>Locations</h3>
-            <ul>
-              <li><a href="#">McKinney</a></li>
-              <li><a href="#">Fort Worth</a></li>
-              <li><a href="#">Mansfield</a></li>
-              <li><a href="#">Dallas</a></li>
-            </ul>
+            <div class="footer-locations-grid">
+              <div class="footer-location-card">
+                <div class="footer-location-name">Dallas</div>
+                <div class="footer-location-address">1722 Routh Street, Suite 770<br>Dallas, TX 75201</div>
+                <div class="footer-location-foot">
+
+                  <a href="tel:9723256591" class="footer-location-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg><span>(972) 325-6591</span></a>
+
+                  <div class="footer-location-actions">
+                  <a class="footer-location-link" href="https://maps.google.com/?q=1722+Routh+Street+Dallas+TX" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Directions
+                  </a>
+                </div>
+
+                </div>
+              </div>
+              <div class="footer-location-card">
+                <div class="footer-location-name">Fort Worth</div>
+                <div class="footer-location-address">600 W. 6th Street, Suite 230<br>Fort Worth, TX 76102</div>
+                <div class="footer-location-foot">
+
+                  <a href="tel:9723256591" class="footer-location-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg><span>(972) 325-6591</span></a>
+
+                  <div class="footer-location-actions">
+                  <a class="footer-location-link" href="https://maps.google.com/?q=600+W+6th+Street+Fort+Worth+TX" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Directions
+                  </a>
+                </div>
+
+                </div>
+              </div>
+              <div class="footer-location-card">
+                <div class="footer-location-name">McKinney</div>
+                <div class="footer-location-address">2150 S. Central Expressway, Suite 200<br>McKinney, TX 75070</div>
+                <div class="footer-location-foot">
+
+                  <a href="tel:9723256591" class="footer-location-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg><span>(972) 325-6591</span></a>
+
+                  <div class="footer-location-actions">
+                  <a class="footer-location-link" href="https://maps.google.com/?q=2150+S+Central+Expressway+McKinney+TX" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Directions
+                  </a>
+                </div>
+
+                </div>
+              </div>
+              <div class="footer-location-card">
+                <div class="footer-location-name">Mansfield</div>
+                <div class="footer-location-address">1110 N. Walnut Creek Drive, Suite 270<br>Mansfield, TX 76063</div>
+                <div class="footer-location-foot">
+
+                  <a href="tel:9723256591" class="footer-location-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg><span>(972) 325-6591</span></a>
+
+                  <div class="footer-location-actions">
+                  <a class="footer-location-link" href="https://maps.google.com/?q=1110+N+Walnut+Creek+Mansfield+TX" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Directions
+                  </a>
+                </div>
+
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
+          <div class="footer-col">
             <h3>Accessibility</h3>
-            <ul>
+            <ul class="footer-policies">
               <li><a href="https://www.roqski.com/communications-policy">Communications Policy</a></li>
               <li><a href="https://www.roqski.com/messaging-policy">Text Messaging Policy</a></li>
               <li><a href="https://www.roqski.com/ai-use-disclosure">AI Use Disclosure</a></li>

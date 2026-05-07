@@ -104,7 +104,9 @@
   align-self: center;
   margin: 32px 40px 32px 0;
   position: relative;
-  border-radius: 50%;
+  background: var(--white);
+  outline: 10px solid var(--white);
+  outline-offset: 0;
   overflow: hidden;
 }
 .bio-hero-photo img {
@@ -113,7 +115,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center 15%;
-  border-radius: 50%;
 }
 
 /* --- Responsive --- */

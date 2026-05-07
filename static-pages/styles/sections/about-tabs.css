@@ -22,17 +22,20 @@
   .about-hero--tall h1 { font-size: clamp(28px, 8vw, 38px); }
 }
 
-/* --- Sub-navigation strip: mirrors the homepage trust logos bar --- */
+/* --- Sub-navigation strip: mirrors the homepage trust logos bar.
+   The off-white band is constrained to the content width (1200px),
+   not full-width — matching .awards on the homepage. --- */
 .about-tabs {
   position: relative;
   z-index: 2;
   margin-top: -56px;
-  background: var(--off-white);
+  background: transparent;
 }
 .about-tabs-inner {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 36px 0;
+  background: var(--off-white);
   overflow: hidden;
   position: relative;
 }

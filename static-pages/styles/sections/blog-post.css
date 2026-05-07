@@ -109,13 +109,13 @@
 .post-toc-list li a:hover .post-toc-arrow { color: var(--orange); }
 .post-toc-list li a:hover .post-toc-arrow { transform: translateX(4px); }
 
-/* Article body — same content width as bio-content (960px) */
+/* Article body — same content width as the blog index (1200px) */
 .post-body {
   padding: 88px 0 96px;
   background: var(--white);
 }
 .post-body-inner {
-  max-width: 960px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 48px;
 }
@@ -187,7 +187,7 @@
   padding: 64px 0;
 }
 .post-author-inner {
-  max-width: 960px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 48px;
   display: flex;
