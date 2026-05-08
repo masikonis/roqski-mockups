@@ -13,7 +13,7 @@
   align-items: center;
   padding: 0 48px;
   z-index: 100;
-  background: rgba(11, 48, 48, 0.9);
+  background: rgba(11, 48, 48, 0.75);
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
@@ -126,7 +126,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(11, 48, 48, 0.9);
+  background: rgba(11, 48, 48, 0.75);
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   overflow: hidden;
@@ -226,7 +226,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(11, 48, 48, 0.9);
+  background: rgba(11, 48, 48, 0.75);
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   overflow: hidden;
