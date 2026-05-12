@@ -5,7 +5,15 @@
    that matches the bio panel on attorney-bio.html.
    =========================================== */
 
-/* Hero — extends about-hero with article meta */
+/* Hero — extends about-hero with article meta.
+   Blog post lacks the on-page tab strip that overlaps the bottom of the
+   hero on other pages, so a centered cluster floats with empty whitespace
+   below the meta. Anchor the cluster near the bottom of the dark band
+   instead — the eyebrow ends up at roughly the same Y as the about page h1,
+   the gap between breadcrumb and content opens up. */
+.blog-post-hero .about-hero-inner {
+  align-items: flex-end;
+}
 .blog-post-hero h1 {
   max-width: 920px;
   margin-bottom: 32px;
