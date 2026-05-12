@@ -635,13 +635,44 @@
       sorted.forEach(function (row) { list.appendChild(row); });
     }
 
+    var filterDropdown = toolbar.querySelector('[data-filter-dropdown]');
+    var filterTrigger = filterDropdown ? filterDropdown.querySelector('.blog-filter-trigger') : null;
+    var filterValueLabel = filterDropdown ? filterDropdown.querySelector('.blog-filter-trigger-value') : null;
+
+    function closeFilterMenu() {
+      if (!filterDropdown) return;
+      filterDropdown.classList.remove('is-open');
+      if (filterTrigger) filterTrigger.setAttribute('aria-expanded', 'false');
+    }
+
     filterButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        filterButtons.forEach(function (b) { b.classList.remove('is-active'); });
+        filterButtons.forEach(function (b) {
+          b.classList.remove('is-active');
+          if (b.getAttribute('role') === 'menuitemradio') b.setAttribute('aria-checked', 'false');
+        });
         btn.classList.add('is-active');
+        if (btn.getAttribute('role') === 'menuitemradio') btn.setAttribute('aria-checked', 'true');
         applyFilter(btn.dataset.filter);
+        if (filterValueLabel) filterValueLabel.textContent = btn.textContent;
+        closeFilterMenu();
       });
     });
+
+    if (filterTrigger && filterDropdown) {
+      filterTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var willOpen = !filterDropdown.classList.contains('is-open');
+        filterDropdown.classList.toggle('is-open', willOpen);
+        filterTrigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+      document.addEventListener('click', function (e) {
+        if (!filterDropdown.contains(e.target)) closeFilterMenu();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeFilterMenu();
+      });
+    }
 
     if (sortSelect) {
       sortSelect.addEventListener('change', function () {

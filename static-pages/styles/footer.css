@@ -90,10 +90,7 @@
 }
 
 .footer-cols {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 180px;
-  gap: 40px;
-  align-items: start;
+  display: block;
 }
 
 .footer-col h3 {
@@ -105,34 +102,39 @@
   margin-bottom: 22px;
 }
 
-/* Make sure the locations column can shrink so the grid doesn't push past
-   the .footer-cols track and overlap the accessibility column. */
 .footer-col { min-width: 0; }
 
-/* Locations: 2x2 outlined cards */
+/* Locations cards + heading: same right-aligned 84% strip so the eyebrow
+   sits flush with the left edge of the card grid below it. */
+.footer-cols .footer-col h3 {
+  width: 84%;
+  margin-left: auto;
+}
 .footer-locations-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+  width: 84%;
+  margin-left: auto;
 }
 .footer-location-card {
   min-width: 0;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--white);
   padding: 18px 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  transition: border-color 200ms ease;
+  transition: box-shadow 200ms ease;
 }
 .footer-location-card:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 24px -12px rgba(0,0,0,0.35);
 }
 .footer-location-name {
   font-family: var(--font-heading);
   font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--white);
+  color: var(--orange);
 }
 .footer-location-address {
   display: inline-flex;
@@ -140,16 +142,16 @@
   gap: 8px;
   font-size: 13px;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--teal-60);
   transition: color 180ms ease;
 }
-a.footer-location-address:hover { color: var(--white); }
+a.footer-location-address:hover { color: var(--orange); }
 .footer-location-address svg {
   flex-shrink: 0;
   width: 13px;
   height: 13px;
   margin-top: 2px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--orange);
   transition: color 180ms ease;
 }
 a.footer-location-address:hover svg { color: var(--orange); }
@@ -160,7 +162,7 @@ a.footer-location-address:hover svg { color: var(--orange); }
   gap: 12px;
   margin-top: 8px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--teal-15);
 }
 .footer-location-phone {
   display: inline-flex;
@@ -168,7 +170,7 @@ a.footer-location-address:hover svg { color: var(--orange); }
   gap: 8px;
   font-size: 13.5px;
   font-weight: 500;
-  color: var(--white);
+  color: var(--teal);
   letter-spacing: 0.01em;
   transition: color 180ms ease;
   white-space: nowrap;
@@ -178,10 +180,10 @@ a.footer-location-address:hover svg { color: var(--orange); }
   width: 13px;
   height: 13px;
   flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--orange);
   transition: color 180ms ease;
 }
-.footer-location-phone:hover svg { color: var(--orange); }
+.footer-location-phone:hover svg { color: var(--orange-hover); }
 .footer-location-actions {
   display: inline-flex;
   align-items: center;
@@ -208,28 +210,6 @@ a.footer-location-address:hover svg { color: var(--orange); }
   padding: 2px;
   margin: -2px;
 }
-
-/* Accessibility column — sits to the right of the locations grid, with the
-   list flush against the right edge so each link aligns with the disclaimer
-   text in the bottom row. */
-.footer-cols .footer-col:last-child {
-  text-align: right;
-}
-.footer-cols .footer-col:last-child h3 {
-  text-align: right;
-}
-.footer-policies {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.footer-policies a {
-  font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.6);
-  transition: color 200ms ease;
-}
-.footer-policies a:hover { color: var(--orange); }
 
 /* Bottom row */
 .footer-bottom {
@@ -263,16 +243,11 @@ a.footer-location-address:hover svg { color: var(--orange); }
     grid-template-columns: 1fr;
     gap: 48px;
   }
-  .footer-cols {
-    grid-template-columns: minmax(0, 1fr) 160px;
-    gap: 32px;
+  .footer-cols .footer-col h3,
+  .footer-locations-grid {
+    width: 100%;
+    margin-left: 0;
   }
-  .footer-cols .footer-col:last-child,
-  .footer-cols .footer-col:last-child h3 { text-align: left; }
-}
-
-@media (max-width: 720px) {
-  .footer-cols { grid-template-columns: 1fr; gap: 40px; }
 }
 
 @media (max-width: 600px) {
@@ -282,7 +257,6 @@ a.footer-location-address:hover svg { color: var(--orange); }
   .footer-locations-grid { grid-template-columns: 1fr; }
   .footer-location-foot { flex-wrap: wrap; row-gap: 8px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
-  .footer-legal { flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
 }
 
 /* Pre-footer CTA mobile */

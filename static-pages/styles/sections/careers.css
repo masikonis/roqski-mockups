@@ -155,30 +155,109 @@
   white-space: nowrap;
 }
 
-/* Open positions — dark teal block, matching the Case Results pattern */
-.careers-positions {
-  background: var(--teal);
+/* Life at the firm — editorial: one wide team image + prose + 3-up philosophy */
+.careers-life {
+  background: var(--white);
 }
-.careers-positions .careers-eyebrow {
-  color: var(--orange);
+.careers-life-figure {
+  margin: 8px 0 80px;
 }
-.careers-positions .careers-section-header h2 {
-  color: var(--white);
+.careers-life-photo {
+  overflow: hidden;
+  background: var(--off-white);
 }
-.careers-positions .careers-section-lede {
-  color: rgba(255,255,255,0.7);
+.careers-life-photo--wide {
+  aspect-ratio: 16 / 9;
 }
-.careers-positions .careers-section-lede a {
-  color: var(--orange);
+.careers-life-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(10%);
+  transition: filter 400ms ease;
+}
+.careers-life-figure:hover .careers-life-photo img {
+  filter: grayscale(0%);
+}
+.careers-life-caption {
+  margin: 18px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.careers-life-caption-names {
   font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 0;
 }
-.careers-positions .careers-section-lede a:hover { color: var(--orange-hover); }
+.careers-life-caption-role {
+  font-weight: 400;
+  color: var(--teal-60);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.careers-life-prose {
+  margin: 0 0 88px;
+  padding-bottom: 88px;
+  border-bottom: 1px solid var(--teal-15);
+}
+.careers-life-prose p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--teal-60);
+}
+.careers-life-prose p + p {
+  margin-top: 20px;
+}
+
+/* On the Values tab the Values section and the footer CTA share the same
+   off-white ground, so add a hairline to keep them visually distinct. */
+body:has(.careers-values):has(.about-tab-panel.is-active[data-panel="values"]) .footer-cta {
+  border-top: 1px solid var(--teal-15);
+}
+.careers-life-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.careers-life-item {
+  padding: 0 32px 8px;
+}
+.careers-life-item + .careers-life-item {
+  border-left: 1px solid var(--teal-15);
+}
+.careers-life-item:first-child { padding-left: 0; }
+.careers-life-item:last-child { padding-right: 0; }
+.careers-life-item h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--teal);
+  margin-bottom: 14px;
+}
+.careers-life-item p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--teal-60);
+}
+
+/* Open positions — white ground, hairline rules. The tab strip stays
+   off-white when this tab is active. */
+.careers-positions {
+  background: var(--white);
+}
 .careers-positions-list {
   list-style: none;
-  border-top: 1px solid rgba(255,255,255,0.15);
+  border-top: 1px solid var(--teal-15);
 }
 .careers-position {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid var(--teal-15);
 }
 .careers-position a {
   display: grid;
@@ -186,7 +265,7 @@
   gap: 32px;
   align-items: center;
   padding: 32px 0;
-  color: var(--white);
+  color: var(--teal);
   transition: color 180ms ease;
 }
 .careers-position a:hover { color: var(--orange); }
@@ -200,13 +279,13 @@
 .careers-position-meta {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255,255,255,0.65);
+  color: var(--teal-60);
   letter-spacing: 0.02em;
 }
 .careers-position-arrow {
   width: 18px;
   height: 18px;
-  color: rgba(255,255,255,0.4);
+  color: var(--teal-30);
   transition: color 180ms ease, transform 180ms ease;
 }
 .careers-position a:hover .careers-position-arrow {
@@ -215,10 +294,10 @@
 }
 .careers-positions-empty {
   padding: 32px 0;
-  border-top: 1px solid rgba(255,255,255,0.15);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid var(--teal-15);
+  border-bottom: 1px solid var(--teal-15);
   font-size: 16px;
-  color: rgba(255,255,255,0.7);
+  color: var(--teal-60);
 }
 
 /* Mobile */
@@ -258,4 +337,19 @@
   }
   .careers-position-title { font-size: 20px; grid-column: 1 / -1; }
   .careers-position-arrow { display: none; }
+
+  .careers-life-figure { margin: 0 0 40px; }
+  .careers-life-photo--wide { aspect-ratio: 4 / 3; }
+  .careers-life-prose { margin-bottom: 48px; }
+  .careers-life-prose p { font-size: 16px; }
+  .careers-life-grid {
+    grid-template-columns: 1fr;
+  }
+  .careers-life-item {
+    padding: 24px 0;
+  }
+  .careers-life-item + .careers-life-item {
+    border-left: none;
+    border-top: 1px solid var(--teal-15);
+  }
 }

@@ -161,6 +161,46 @@
           </div>
         </div>
       </li>
+      <li class="nav-dropdown-wrap">
+        <a href="#" class="nav-link">
+          Accessibility
+          <svg class="nav-arrow" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2.5l4 3 4-3"/></svg>
+        </a>
+        <div class="mega-panel">
+          <div class="mega-panel-inner">
+            <div class="mega-panel-items cols-3">
+              <a href="https://www.roqski.com/privacy-policy" class="mega-panel-item">
+                <h4>Privacy Policy</h4>
+                <p>How we handle information collected through this site.</p>
+              </a>
+              <a href="https://www.roqski.com/disclaimer" class="mega-panel-item">
+                <h4>Disclaimer</h4>
+                <p>Notices on the use of this site and the information it contains.</p>
+              </a>
+              <a href="https://www.roqski.com/accessibility-statement" class="mega-panel-item">
+                <h4>Accessibility<br>Statement</h4>
+                <p>Our commitment to keeping this site usable for everyone.</p>
+              </a>
+              <a href="https://www.roqski.com/communications-policy" class="mega-panel-item">
+                <h4>Communications<br>Policy</h4>
+                <p>How we communicate with clients and respond to inquiries.</p>
+              </a>
+              <a href="https://www.roqski.com/messaging-policy" class="mega-panel-item">
+                <h4>Text Messaging<br>Policy</h4>
+                <p>Our practices for client text and SMS communication.</p>
+              </a>
+              <a href="https://www.roqski.com/ai-use-disclosure" class="mega-panel-item">
+                <h4>AI Use<br>Disclosure</h4>
+                <p>How we use AI tools in our work and what stays human.</p>
+              </a>
+            </div>
+            <div class="mega-panel-feature">
+              <div class="mega-panel-feature-image"><img src="images/hero-city.jpg" alt="Dallas cityscape at dusk"></div>
+              <p class="mega-panel-feature-caption">Plain-English information about how we communicate, handle data, and disclose our practices.</p>
+            </div>
+          </div>
+        </div>
+      </li>
     </ul>
     <div class="nav-right">
       <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Open search" aria-expanded="false">
@@ -220,6 +260,17 @@
         <a href="#">Case Studies</a>
       </div>
     </div>
+    <div class="mobile-nav-group">
+      <button class="mobile-nav-toggle">Accessibility <span class="toggle-icon">+</span></button>
+      <div class="mobile-nav-sub">
+        <a href="https://www.roqski.com/privacy-policy">Privacy Policy</a>
+        <a href="https://www.roqski.com/disclaimer">Disclaimer</a>
+        <a href="https://www.roqski.com/accessibility-statement">Accessibility Statement</a>
+        <a href="https://www.roqski.com/communications-policy">Communications Policy</a>
+        <a href="https://www.roqski.com/messaging-policy">Text Messaging Policy</a>
+        <a href="https://www.roqski.com/ai-use-disclosure">AI Use Disclosure</a>
+      </div>
+    </div>
     <a href="#contact" class="mobile-nav-contact">Contact</a>
   </div>
 
@@ -249,14 +300,22 @@
     <!-- Filter + sort toolbar (mirrors the sub-navigation strip on tabbed pages) -->
     <nav class="blog-toolbar" aria-label="Filter posts">
       <div class="blog-toolbar-inner">
-        <div class="blog-filters" role="tablist" aria-label="Filter posts by topic">
-          <button type="button" class="blog-filter is-active" data-filter="all">All</button>
-          <button type="button" class="blog-filter" data-filter="real-estate">Real Estate</button>
-          <button type="button" class="blog-filter" data-filter="partnership">Partnership Disputes</button>
-          <button type="button" class="blog-filter" data-filter="business-litigation">Business Litigation</button>
-          <button type="button" class="blog-filter" data-filter="contract">Contract Law</button>
-          <button type="button" class="blog-filter" data-filter="arbitration">Arbitration</button>
-          <button type="button" class="blog-filter" data-filter="injunctions">Injunctions</button>
+        <div class="blog-filter-dropdown" data-filter-dropdown>
+          <button type="button" class="blog-filter-trigger" aria-haspopup="menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+            <span class="blog-filter-trigger-label">Filter</span>
+            <span class="blog-filter-trigger-value">All topics</span>
+            <svg class="blog-filter-trigger-chevron" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2.5l4 3 4-3"/></svg>
+          </button>
+          <div class="blog-filter-menu" role="menu" aria-label="Filter posts by topic">
+            <button type="button" class="blog-filter is-active" data-filter="all" role="menuitemradio" aria-checked="true">All topics</button>
+            <button type="button" class="blog-filter" data-filter="real-estate" role="menuitemradio">Real Estate</button>
+            <button type="button" class="blog-filter" data-filter="partnership" role="menuitemradio">Partnership Disputes</button>
+            <button type="button" class="blog-filter" data-filter="business-litigation" role="menuitemradio">Business Litigation</button>
+            <button type="button" class="blog-filter" data-filter="contract" role="menuitemradio">Contract Law</button>
+            <button type="button" class="blog-filter" data-filter="arbitration" role="menuitemradio">Arbitration</button>
+            <button type="button" class="blog-filter" data-filter="injunctions" role="menuitemradio">Injunctions</button>
+          </div>
         </div>
         <div class="blog-sort">
           <label for="blog-sort-select">Sort</label>
@@ -556,7 +615,7 @@
             <div class="footer-locations-grid">
               <div class="footer-location-card">
                 <div class="footer-location-name">Dallas</div>
-                <a class="footer-location-address" href="https://maps.google.com/?q=1722+Routh+Street+Dallas+TX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>1722 Routh Street, Suite 770<br>Dallas, TX 75201</span></a>
+                <a class="footer-location-address" href="https://maps.google.com/?q=13155+Noel+Rd+Suite+900+Dallas+TX+75240" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>13155 Noel Rd, Suite 900<br>Dallas, TX 75240</span></a>
                 <div class="footer-location-foot">
 
                   <a href="tel:9723256591" class="footer-location-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg><span>(972) 325-6591</span></a>
@@ -564,7 +623,7 @@
               </div>
               <div class="footer-location-card">
                 <div class="footer-location-name">Fort Worth</div>
-                <a class="footer-location-address" href="https://maps.google.com/?q=600+W+6th+Street+Fort+Worth+TX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>600 W. 6th Street, Suite 230<br>Fort Worth, TX 76102</span></a>
+                <a class="footer-location-address" href="https://maps.google.com/?q=9500+Ray+White+Rd+Suite+200+Fort+Worth+TX+76244" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>9500 Ray White Rd, Suite 200<br>Fort Worth, TX 76244</span></a>
                 <div class="footer-location-foot">
 
                   <a href="tel:9723256591" class="footer-location-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg><span>(972) 325-6591</span></a>
@@ -572,7 +631,7 @@
               </div>
               <div class="footer-location-card">
                 <div class="footer-location-name">McKinney</div>
-                <a class="footer-location-address" href="https://maps.google.com/?q=2150+S+Central+Expressway+McKinney+TX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>2150 S. Central Expressway, Suite 200<br>McKinney, TX 75070</span></a>
+                <a class="footer-location-address" href="https://maps.google.com/?q=7300+State+Hwy+121+Suite+300+McKinney+TX+75070" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>7300 State Hwy 121, Suite 300<br>McKinney, TX 75070</span></a>
                 <div class="footer-location-foot">
 
                   <a href="tel:9723256591" class="footer-location-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg><span>(972) 325-6591</span></a>
@@ -580,7 +639,7 @@
               </div>
               <div class="footer-location-card">
                 <div class="footer-location-name">Mansfield</div>
-                <a class="footer-location-address" href="https://maps.google.com/?q=1110+N+Walnut+Creek+Mansfield+TX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>1110 N. Walnut Creek Drive, Suite 270<br>Mansfield, TX 76063</span></a>
+                <a class="footer-location-address" href="https://maps.google.com/?q=601+Strada+Cir+Mansfield+TX+76063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>601 Strada Cir<br>Mansfield, TX 76063</span></a>
                 <div class="footer-location-foot">
 
                   <a href="tel:9723256591" class="footer-location-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.29a2 2 0 0 1 2.11-.45c.9.35 1.84.59 2.8.72a2 2 0 0 1 1.72 2.03z"/></svg><span>(972) 325-6591</span></a>
@@ -588,23 +647,10 @@
               </div>
             </div>
           </div>
-          <div class="footer-col">
-            <h3>Accessibility</h3>
-            <ul class="footer-policies">
-              <li><a href="https://www.roqski.com/communications-policy">Communications Policy</a></li>
-              <li><a href="https://www.roqski.com/messaging-policy">Text Messaging Policy</a></li>
-              <li><a href="https://www.roqski.com/ai-use-disclosure">AI Use Disclosure</a></li>
-              <li><a href="https://www.roqski.com/accessibility-statement">Accessibility Statement</a></li>
-            </ul>
-          </div>
         </div>
       </div>
       <div class="footer-bottom">
         <span class="footer-copyright">&copy; 2026 Roquemore Skierski PLLC. All rights reserved.</span>
-        <div class="footer-legal">
-          <a href="https://www.roqski.com/privacy-policy">Privacy Policy</a>
-          <a href="https://www.roqski.com/disclaimer">Disclaimer</a>
-        </div>
       </div>
     </div>
   </footer>
