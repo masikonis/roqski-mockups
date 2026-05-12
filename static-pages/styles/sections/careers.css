@@ -44,6 +44,12 @@
   color: var(--teal-60);
   max-width: 760px;
 }
+.careers-section-lede a {
+  color: var(--teal);
+  font-weight: 500;
+  transition: color 180ms ease;
+}
+.careers-section-lede a:hover { color: var(--orange); }
 
 /* Override the mission block on careers — overlaps DOWN into the next section
    AND tightens the gap above so it sits closer to the positioning paragraph. */

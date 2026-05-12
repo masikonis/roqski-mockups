@@ -758,4 +758,22 @@
     });
   })();
 
+  // ==========================================
+  // FOOTER POLICIES — click-to-expand inline row
+  // Toggle button lives in .footer-bottom; the strip it
+  // controls is .footer-policies (sibling above the bottom row).
+  // CSS animates grid-template-rows from 0fr -> 1fr on .is-open.
+  // ==========================================
+  (function initFooterPolicies() {
+    var btn = document.querySelector('.footer-policies-toggle');
+    var strip = document.querySelector('[data-footer-policies]');
+    if (!btn || !strip) return;
+
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      strip.classList.toggle('is-open', !open);
+    });
+  })();
+
 })();

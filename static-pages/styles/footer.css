@@ -104,18 +104,10 @@
 
 .footer-col { min-width: 0; }
 
-/* Locations cards + heading: same right-aligned 84% strip so the eyebrow
-   sits flush with the left edge of the card grid below it. */
-.footer-cols .footer-col h3 {
-  width: 84%;
-  margin-left: auto;
-}
 .footer-locations-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  width: 84%;
-  margin-left: auto;
 }
 .footer-location-card {
   min-width: 0;
@@ -211,6 +203,54 @@ a.footer-location-address:hover svg { color: var(--orange); }
   margin: -2px;
 }
 
+/* ===========================================
+   POLICIES STRIP (collapsed by default)
+   Editorial inline row of legal/policy links that slides
+   in above the copyright row. Animated via the
+   grid-template-rows 0fr -> 1fr trick — auto-sizes content
+   without measuring scrollHeight in JS.
+   =========================================== */
+.footer-policies {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms var(--ease-out, cubic-bezier(0.22, 0.61, 0.36, 1));
+}
+.footer-policies.is-open { grid-template-rows: 1fr; }
+.footer-policies-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.footer-policies-list {
+  list-style: none;
+  margin: 0;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+}
+.footer-policies-list li {
+  position: relative;
+}
+.footer-policies-list li + li::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+.footer-policies-list a {
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.62);
+  transition: color 180ms ease;
+}
+.footer-policies-list a:hover { color: var(--orange); }
+
 /* Bottom row */
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -225,29 +265,62 @@ a.footer-location-address:hover svg { color: var(--orange); }
   font-size: 12px;
   color: rgba(255, 255, 255, 0.55);
 }
-.footer-legal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 20px;
-  justify-content: flex-end;
+
+/* Toggle — quiet, editorial, mirrors the copyright weight on the opposite side */
+.footer-policies-toggle {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 4px 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: color 180ms ease;
 }
-.footer-legal a {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.55);
-  transition: color 200ms ease;
+.footer-policies-toggle:hover { color: var(--orange); }
+.footer-policies-toggle-label { line-height: 1; }
+.footer-policies-toggle-mark {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
 }
-.footer-legal a:hover { color: var(--orange); }
+.footer-policies-toggle-bar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  background: currentColor;
+  transition: transform 240ms var(--ease-out, cubic-bezier(0.22, 0.61, 0.36, 1));
+  transform-origin: 50% 50%;
+}
+.footer-policies-toggle-bar:nth-child(1) { transform: translateY(-0.5px) rotate(0deg); }
+.footer-policies-toggle-bar:nth-child(2) { transform: translateY(-0.5px) rotate(90deg); }
+.footer-policies-toggle[aria-expanded="true"] .footer-policies-toggle-bar:nth-child(1) {
+  transform: translateY(-0.5px) rotate(45deg);
+}
+.footer-policies-toggle[aria-expanded="true"] .footer-policies-toggle-bar:nth-child(2) {
+  transform: translateY(-0.5px) rotate(-45deg);
+}
 
 @media (max-width: 1024px) {
   .footer-main {
     grid-template-columns: 1fr;
     gap: 48px;
   }
-  .footer-cols .footer-col h3,
-  .footer-locations-grid {
-    width: 100%;
-    margin-left: 0;
-  }
+}
+@media (max-width: 600px) {
+  .footer-policies-list { gap: 8px 22px; padding: 18px 0; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 14px; }
 }
 
 @media (max-width: 600px) {
