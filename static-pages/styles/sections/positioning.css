@@ -12,7 +12,7 @@
 .positioning h2 {
   font-family: var(--font-heading);
   font-size: clamp(28px, 3vw, 40px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--teal);

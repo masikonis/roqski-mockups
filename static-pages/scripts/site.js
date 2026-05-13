@@ -776,4 +776,36 @@
     });
   })();
 
+  // ==========================================
+  // CASE RESULTS — practice-area filter chips
+  // Each .cr-row carries a data-area; clicking a
+  // .cr-filter chip with data-filter="x" shows only
+  // rows whose data-area matches (or all when "all").
+  // ==========================================
+  (function initCaseResultsFilter() {
+    var filters = document.querySelectorAll('.cr-filter');
+    var rows = document.querySelectorAll('.cr-row');
+    var empty = document.getElementById('cr-empty');
+    if (!filters.length || !rows.length) return;
+
+    filters.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = btn.getAttribute('data-filter');
+
+        filters.forEach(function (f) { f.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+
+        var visibleCount = 0;
+        rows.forEach(function (row) {
+          var area = row.getAttribute('data-area');
+          var show = target === 'all' || area === target;
+          row.hidden = !show;
+          if (show) visibleCount++;
+        });
+
+        if (empty) empty.classList.toggle('is-visible', visibleCount === 0);
+      });
+    });
+  })();
+
 })();

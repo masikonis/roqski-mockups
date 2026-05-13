@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="styles/nav.css">
   <link rel="stylesheet" href="styles/sections/about-hero.css">
   <link rel="stylesheet" href="styles/sections/breadcrumb.css">
+  <link rel="stylesheet" href="styles/sections/practice-areas-page.css">
   <link rel="stylesheet" href="styles/footer.css">
 </head>
 <body>
@@ -240,14 +241,270 @@
       <div class="about-hero-inner">
         <div class="about-hero-text">
           <div class="about-hero-eyebrow">Practice Areas</div>
-          <h1>Strategic counsel <span class="about-hero-accent">across commercial matters.</span></h1>
+          <h1>Strategic counsel<br><span class="about-hero-accent">across commercial matters.</span></h1>
         </div>
       </div>
     </section>
 
-    <!-- TODO: page content goes here. Section markup and styles to be
-         designed by Luka. Keep the breadcrumb pattern in the hero above
-         and the footer CTA below; everything in between is open canvas. -->
+    <!-- Intro: editorial statement + practice index -->
+    <section class="pa-intro reveal">
+      <div class="container">
+        <div class="pa-intro-statement-wrap">
+          <div class="pa-intro-eyebrow">Practice</div>
+          <h2 class="pa-intro-statement">Counsel for companies, founders, and executives &mdash; <em>across the lifecycle of a business.</em></h2>
+          <p class="pa-intro-body">Roquemore Skierski PLLC represents clients in commercial matters from formation and transactions through litigation and recovery. Our work concentrates in Texas state and federal courts; our reach is statewide.</p>
+        </div>
+
+        <nav class="pa-index" aria-label="Practice areas index">
+          <a href="#litigation" class="pa-index-item">
+            <span class="pa-index-num">01</span>
+            <span class="pa-index-name">Litigation</span>
+            <span class="pa-index-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+            </span>
+          </a>
+          <a href="#business-law" class="pa-index-item">
+            <span class="pa-index-num">02</span>
+            <span class="pa-index-name">Business Law</span>
+            <span class="pa-index-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+            </span>
+          </a>
+          <a href="#real-estate" class="pa-index-item">
+            <span class="pa-index-num">03</span>
+            <span class="pa-index-name">Real Estate</span>
+            <span class="pa-index-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+            </span>
+          </a>
+          <a href="#intellectual-property" class="pa-index-item">
+            <span class="pa-index-num">04</span>
+            <span class="pa-index-name">Intellectual Property</span>
+            <span class="pa-index-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+            </span>
+          </a>
+          <a href="#business-transactions" class="pa-index-item">
+            <span class="pa-index-num">05</span>
+            <span class="pa-index-name">Business Transactions</span>
+            <span class="pa-index-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+            </span>
+          </a>
+          <a href="#fraud-misrepresentation" class="pa-index-item">
+            <span class="pa-index-num">06</span>
+            <span class="pa-index-name">Fraud &amp; Misrep.</span>
+            <span class="pa-index-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+            </span>
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Practice area entries -->
+    <section class="pa-list">
+      <div class="container">
+
+        <article class="pa-entry" id="litigation">
+          <div class="pa-entry-media">
+            <img src="images/hero-city.jpg" alt="">
+          </div>
+          <div class="pa-entry-content">
+            <header class="pa-entry-header">
+              <span class="pa-entry-num">01</span>
+              <h2 class="pa-entry-title">Litigation</h2>
+              <a href="practice-area.html" class="pa-entry-link">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </header>
+            <p class="pa-entry-lede">When commercial disputes cannot be resolved through negotiation, we bring them to trial in Texas state and federal courts. Decades of courtroom experience, paired with the team approach we apply to every matter, gives our clients leverage at every stage &mdash; from initial demand through verdict.</p>
+            <div class="pa-services">
+              <div class="pa-services-label">What we handle</div>
+              <ul class="pa-services-list">
+                <li>Business Litigation</li>
+                <li>Breach of Contract</li>
+                <li>Breach of Fiduciary Duty</li>
+                <li>Construction Litigation</li>
+                <li>DTPA Violations</li>
+                <li>Fraud Litigation</li>
+                <li>Injunctions &amp; TROs</li>
+                <li>Mediation &amp; Arbitration</li>
+                <li>Partnership Disputes</li>
+                <li>Shareholder Disputes</li>
+                <li>Tortious Interference</li>
+                <li>Unfair Competition</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pa-entry" id="business-law">
+          <div class="pa-entry-media">
+            <img src="images/section-break.jpg" alt="">
+          </div>
+          <div class="pa-entry-content">
+            <header class="pa-entry-header">
+              <span class="pa-entry-num">02</span>
+              <h2 class="pa-entry-title">Business Law</h2>
+              <a href="practice-area.html" class="pa-entry-link">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </header>
+            <p class="pa-entry-lede">Counsel for the lifecycle of a company &mdash; formation, governance, contracts, and the structural decisions that compound over time. We function as outside general counsel for closely held businesses that need senior-level judgment without the overhead of in-house counsel.</p>
+            <div class="pa-services">
+              <div class="pa-services-label">What we handle</div>
+              <ul class="pa-services-list">
+                <li>Business Formation</li>
+                <li>Business Dissolution</li>
+                <li>Contract Drafting &amp; Review</li>
+                <li>LLC Formation</li>
+                <li>Non-Compete Agreements</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pa-entry" id="real-estate">
+          <div class="pa-entry-media">
+            <img src="images/testimonial-bg.jpg" alt="">
+          </div>
+          <div class="pa-entry-content">
+            <header class="pa-entry-header">
+              <span class="pa-entry-num">03</span>
+              <h2 class="pa-entry-title">Real Estate</h2>
+              <a href="practice-area.html" class="pa-entry-link">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </header>
+            <p class="pa-entry-lede">Commercial property work spans transactions and disputes &mdash; leasing, sales, development, and the litigation that follows when one side fails to perform. We represent landlords, owners, developers, and commercial tenants across DFW and Texas.</p>
+            <div class="pa-services">
+              <div class="pa-services-label">What we handle</div>
+              <ul class="pa-services-list">
+                <li>Commercial Real Estate</li>
+                <li>Construction Defects</li>
+                <li>Real Estate Litigation</li>
+                <li>Title Disputes</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pa-entry" id="intellectual-property">
+          <div class="pa-entry-media">
+            <img src="images/hero-city.jpg" alt="">
+          </div>
+          <div class="pa-entry-content">
+            <header class="pa-entry-header">
+              <span class="pa-entry-num">04</span>
+              <h2 class="pa-entry-title">Intellectual Property</h2>
+              <a href="practice-area.html" class="pa-entry-link">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </header>
+            <p class="pa-entry-lede">Protecting and enforcing the assets that distinguish a business &mdash; marks, copyrights, and trade secrets. We bring IP claims in federal court when infringement threatens market position, and we defend clients facing enforcement from competitors.</p>
+            <div class="pa-services">
+              <div class="pa-services-label">What we handle</div>
+              <ul class="pa-services-list">
+                <li>Trademark</li>
+                <li>Trademark &amp; Copyright Litigation</li>
+                <li>Trade Secret Litigation</li>
+                <li>Unfair Competition</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pa-entry" id="business-transactions">
+          <div class="pa-entry-media">
+            <img src="images/section-break.jpg" alt="">
+          </div>
+          <div class="pa-entry-content">
+            <header class="pa-entry-header">
+              <span class="pa-entry-num">05</span>
+              <h2 class="pa-entry-title">Business Transactions</h2>
+              <a href="practice-area.html" class="pa-entry-link">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </header>
+            <p class="pa-entry-lede">Structuring the deals that move companies forward &mdash; acquisitions, sales, financing rounds, and the diligence that supports them. We work alongside management teams and investors to align documentation with strategy on both sides of the table.</p>
+            <div class="pa-services">
+              <div class="pa-services-label">What we handle</div>
+              <ul class="pa-services-list">
+                <li>Mergers &amp; Acquisitions</li>
+                <li>Deceptive Trade Practices Act</li>
+                <li>Private Equity</li>
+                <li>Startups</li>
+                <li>Venture Capital</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pa-entry" id="fraud-misrepresentation">
+          <div class="pa-entry-media">
+            <img src="images/testimonial-bg.jpg" alt="">
+          </div>
+          <div class="pa-entry-content">
+            <header class="pa-entry-header">
+              <span class="pa-entry-num">06</span>
+              <h2 class="pa-entry-title">Fraud &amp; Misrepresentation</h2>
+              <a href="practice-area.html" class="pa-entry-link">
+                Read more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </header>
+            <p class="pa-entry-lede">Recovery actions for businesses that have been deceived &mdash; by partners, advisors, investment managers, or counterparties. These matters move fast and often require injunctive relief, asset preservation, and parallel claims; we are built to bring them quickly.</p>
+            <div class="pa-services">
+              <div class="pa-services-label">What we handle</div>
+              <ul class="pa-services-list">
+                <li>Fraud &amp; Misrepresentation</li>
+                <li>Breach of Fiduciary Duty</li>
+                <li>Embezzlement</li>
+                <li>Investment Fraud</li>
+                <li>Securities Fraud</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- How we work -->
+    <section class="pa-approach reveal">
+      <div class="container">
+        <div class="pa-approach-head">
+          <div class="pa-approach-head-text">
+            <div class="pa-approach-eyebrow">How we work</div>
+            <h2 class="pa-approach-title">A team-based approach,<br>built for speed and depth.</h2>
+          </div>
+          <p class="pa-approach-intro">Every engagement is staffed and managed the same way &mdash; whether the matter is a closing or a courthouse. The structure is what lets us move quickly without sacrificing rigor.</p>
+        </div>
+        <div class="pa-approach-grid">
+          <div class="pa-approach-cell">
+            <div class="pa-approach-num">01</div>
+            <h3>Full team on every matter.</h3>
+            <p>A partner, an attorney, and a paralegal staff each engagement. Urgent issues get same-day attention; routine work moves without bottlenecking the partner.</p>
+          </div>
+          <div class="pa-approach-cell">
+            <div class="pa-approach-num">02</div>
+            <h3>Decades in Texas courts.</h3>
+            <p>120+ combined years practicing in state and federal courts across Dallas, Fort Worth, Collin County, and surrounding jurisdictions. We know the venues, procedural rules, and the unwritten ones.</p>
+          </div>
+          <div class="pa-approach-cell">
+            <div class="pa-approach-num">03</div>
+            <h3>Built on modern infrastructure.</h3>
+            <p>Case management, e-discovery, and communications systems set up so we can move on TROs, injunctions, and settlement windows without operational delay.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer CTA -->
     <section class="footer-cta reveal" id="contact">

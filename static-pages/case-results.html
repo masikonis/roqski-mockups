@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="styles/nav.css">
   <link rel="stylesheet" href="styles/sections/about-hero.css">
   <link rel="stylesheet" href="styles/sections/breadcrumb.css">
+  <link rel="stylesheet" href="styles/sections/case-results-page.css">
   <link rel="stylesheet" href="styles/footer.css">
 </head>
 <body>
@@ -240,14 +241,241 @@
       <div class="about-hero-inner">
         <div class="about-hero-text">
           <div class="about-hero-eyebrow">Case Results</div>
-          <h1>Outcomes that speak <span class="about-hero-accent">for the firm.</span></h1>
+          <h1>Outcomes that<br>speak <span class="about-hero-accent">for the firm.</span></h1>
         </div>
       </div>
     </section>
 
-    <!-- TODO: page content goes here. Section markup and styles to be
-         designed by Luka. Keep the breadcrumb pattern in the hero above
-         and the footer CTA below; everything in between is open canvas. -->
+    <!-- Intro / By the numbers -->
+    <section class="cr-intro reveal">
+      <div class="container">
+        <div class="cr-intro-inner">
+          <div class="cr-intro-text">
+            <div class="cr-intro-eyebrow">Representative Outcomes</div>
+            <p class="cr-intro-lede">Real matters we have handled for business clients across Texas &mdash; anonymized for confidentiality, specific in result.</p>
+            <p class="cr-intro-body">Roquemore Skierski PLLC has recovered funds, defended assets, and enforced contracts in commercial disputes ranging from partnership breakdowns and contract failures to construction defects, M&amp;A defaults, and commercial fraud. Every matter is staffed with a full team and resolved through negotiation, arbitration, or litigation &mdash; whichever protects the client's position best.</p>
+          </div>
+          <div class="cr-stats" aria-label="Firm at a glance">
+            <div class="cr-stat">
+              <div class="cr-stat-figure">20<span class="cr-stat-mark">+</span></div>
+              <div class="cr-stat-label">Years practicing in Texas state and federal courts</div>
+            </div>
+            <div class="cr-stat">
+              <div class="cr-stat-figure">Millions</div>
+              <div class="cr-stat-label">Recovered for commercial clients across DFW and Texas</div>
+            </div>
+            <div class="cr-stat">
+              <div class="cr-stat-figure">6<span class="cr-stat-mark">.</span></div>
+              <div class="cr-stat-label">Practice areas represented in the matters below</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter strip -->
+    <section class="cr-filters" aria-label="Filter case results">
+      <div class="container">
+        <div class="cr-filters-inner">
+          <span class="cr-filters-label">Filter by</span>
+          <ul class="cr-filters-list" role="tablist">
+            <li><button type="button" class="cr-filter is-active" data-filter="all">All<span class="cr-filter-count">14</span></button></li>
+            <li><button type="button" class="cr-filter" data-filter="ma">Business Sales &amp; M&amp;A<span class="cr-filter-count">2</span></button></li>
+            <li><button type="button" class="cr-filter" data-filter="real-estate">Commercial Real Estate<span class="cr-filter-count">3</span></button></li>
+            <li><button type="button" class="cr-filter" data-filter="construction">Construction<span class="cr-filter-count">2</span></button></li>
+            <li><button type="button" class="cr-filter" data-filter="contract">Contract &amp; Collections<span class="cr-filter-count">3</span></button></li>
+            <li><button type="button" class="cr-filter" data-filter="fraud">Fraud &amp; Fiduciary Duty<span class="cr-filter-count">4</span></button></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results list -->
+    <section class="cr-list">
+      <div class="container">
+        <div class="cr-rows" id="cr-rows">
+
+          <article class="cr-row" data-area="ma">
+            <div class="cr-row-outcome">
+              <span class="cr-outcome-mark">$</span>682,000
+              <span class="cr-row-outcome-sub">Recovered</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Business Sales &amp; M&amp;A</div>
+              <p class="cr-row-desc">A physician sold his practice and the underlying LLC through a promissory note. After the buyer defaulted, we enforced the firm&rsquo;s contractual rights and recovered amounts due, plus damages.</p>
+              <div class="cr-row-meta"><span>Practice sale default</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="ma">
+            <div class="cr-row-outcome">
+              <span class="cr-outcome-mark">$</span>450,000
+              <span class="cr-row-outcome-sub">Negotiated sale</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Business Sales &amp; M&amp;A</div>
+              <p class="cr-row-desc">Represented an owner-operator on the sale of a Mesquite hospice operation to a national acquirer. We coordinated due diligence and structured terms to preserve patient continuity and retain staff.</p>
+              <div class="cr-row-meta"><span>Healthcare M&amp;A</span><span>Mesquite, TX</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="real-estate">
+            <div class="cr-row-outcome">
+              Lease enforced
+              <span class="cr-row-outcome-sub">20-year term</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Commercial Real Estate</div>
+              <p class="cr-row-desc">A physician-landlord faced a buyer that defaulted on a 20-year commercial lease two months in. We enforced the lease agreement and pursued damages on behalf of the landlord.</p>
+              <div class="cr-row-meta"><span>Lease default</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="real-estate">
+            <div class="cr-row-outcome">
+              Damages collected
+              <span class="cr-row-outcome-sub">Wrongful termination</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Commercial Real Estate</div>
+              <p class="cr-row-desc">After a property sale, the new landlord wrongfully terminated the largest tenant&rsquo;s lease &mdash; effectively shutting the business down. We brought a breach-of-contract action and collected damages.</p>
+              <div class="cr-row-meta"><span>Tenant displacement</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="real-estate">
+            <div class="cr-row-outcome">
+              Judgment enforced
+              <span class="cr-row-outcome-sub">Post-judgment recovery</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Commercial Real Estate</div>
+              <p class="cr-row-desc">A landlord settled with a breaching tenant; the tenant then breached the settlement itself. We stepped in for post-judgment collection and enforced the agreement against the tenant.</p>
+              <div class="cr-row-meta"><span>Settlement enforcement</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="construction">
+            <div class="cr-row-outcome">
+              <span class="cr-outcome-mark">$</span>250,000<span class="cr-outcome-mark">+</span>
+              <span class="cr-row-outcome-sub">Relief sought, damages secured</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Construction</div>
+              <p class="cr-row-desc">A three-party dispute among a homebuilder, our client, and the construction lender on a $3.8M custom build. We pursued temporary restraining orders, expedited discovery, and depositions to protect the client&rsquo;s position.</p>
+              <div class="cr-row-meta"><span>$3.8M custom home</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="construction">
+            <div class="cr-row-outcome">
+              Damages recovered
+              <span class="cr-row-outcome-sub">Construction defects</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Construction</div>
+              <p class="cr-row-desc">A homebuilder accepted more than $600,000 in deposits, missed deadlines, and left numerous defects flagged by an independent inspector. We pursued and recovered damages for the unfinished work.</p>
+              <div class="cr-row-meta"><span>Custom residential build</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="contract">
+            <div class="cr-row-outcome">
+              <span class="cr-outcome-mark">$</span>200,000
+              <span class="cr-row-outcome-sub">Withheld payment pursued</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Contract &amp; Collections</div>
+              <p class="cr-row-desc">A corporate contractor completed fiber-optic work for a general contractor that withheld $200,000 in payment. We enforced the contract and pursued collection of the withheld amount.</p>
+              <div class="cr-row-meta"><span>Subcontractor payment</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="contract">
+            <div class="cr-row-outcome">
+              TRO dissolved
+              <span class="cr-row-outcome-sub">$485,000 note defended</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Contract &amp; Collections</div>
+              <p class="cr-row-desc">A commercial lender that had purchased a defaulted $485,000 note faced a debtor&rsquo;s wrongful-foreclosure claim and temporary restraining order. We defended the lender and got the TRO dissolved.</p>
+              <div class="cr-row-meta"><span>Lending defense</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="contract">
+            <div class="cr-row-outcome">
+              Judgment secured
+              <span class="cr-row-outcome-sub">Unpaid services</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Contract &amp; Collections</div>
+              <p class="cr-row-desc">A defendant breached a fulfillment services agreement by failing to pay. We pursued amounts due, damages, and an unjust-enrichment claim against the breaching party.</p>
+              <div class="cr-row-meta"><span>Service contract</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="fraud">
+            <div class="cr-row-outcome">
+              Full judgment
+              <span class="cr-row-outcome-sub">Principal + ROI + fees</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Fraud &amp; Fiduciary Duty</div>
+              <p class="cr-row-desc">An investment advisor went silent after taking a $50,000 investment. We brought fraud and breach-of-fiduciary-duty claims and obtained judgment for principal paid, the promised return on investment, and attorneys&rsquo; fees.</p>
+              <div class="cr-row-meta"><span>Investment fraud</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="fraud">
+            <div class="cr-row-outcome">
+              Deposit recovered
+              <span class="cr-row-outcome-sub">Plus additional damages</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Fraud &amp; Fiduciary Duty</div>
+              <p class="cr-row-desc">A homeowner hired a contractor for renovations. The contractor accepted the deposit and vanished. We pursued the claim and recovered the full deposit plus additional damages.</p>
+              <div class="cr-row-meta"><span>Contractor fraud</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="fraud">
+            <div class="cr-row-outcome">
+              Funds returned
+              <span class="cr-row-outcome-sub">Misuse of business credit</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Fraud &amp; Fiduciary Duty</div>
+              <p class="cr-row-desc">A partner excluded from formation paperwork discovered other partners had been charging personal expenses to a business credit card. We sent demand, obtained a temporary restraining order, and secured return of the diverted funds.</p>
+              <div class="cr-row-meta"><span>Partnership / fiduciary breach</span><span>Texas</span></div>
+            </div>
+          </article>
+
+          <article class="cr-row" data-area="fraud">
+            <div class="cr-row-outcome">
+              Recovery pursued
+              <span class="cr-row-outcome-sub">Diverted loan proceeds</span>
+            </div>
+            <div class="cr-row-body">
+              <div class="cr-row-area">Fraud &amp; Fiduciary Duty</div>
+              <p class="cr-row-desc">Startup partners secured a loan together; one partner then diverted the funds to a separate company he controlled and cut off communication. We pursued recovery of the diverted proceeds and breach claims.</p>
+              <div class="cr-row-meta"><span>Funds diversion</span><span>Texas</span></div>
+            </div>
+          </article>
+
+        </div>
+        <div class="cr-empty" id="cr-empty">No matters in this category yet.</div>
+
+        <!-- Disclaimer (sits below the last entry) -->
+        <div class="cr-disclaimer">
+          <div class="cr-disclaimer-inner">
+            <div class="cr-disclaimer-eyebrow">Important Notice</div>
+            <p>Past results do not guarantee a similar outcome. Every matter is evaluated on its own facts, and outcomes depend on the law, evidence, and strategy specific to that representation.</p>
+            <p>Client names, identifying details, and certain figures above have been omitted or generalized to preserve confidentiality.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer CTA -->
     <section class="footer-cta reveal" id="contact">
