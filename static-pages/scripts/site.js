@@ -773,6 +773,11 @@
       var open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));
       strip.classList.toggle('is-open', !open);
+      if (!open) {
+        setTimeout(function () {
+          strip.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }, 340);
+      }
     });
   })();
 
